@@ -4,3 +4,6 @@ url: "https://mister-funable.github.io/"
 theme: jekyll-theme-lead-day
 kramdown:
   toc_levels: 2..3
+
+social:
+  github: https://github.com/Mister-Funable
