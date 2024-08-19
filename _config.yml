@@ -1,7 +1,9 @@
 title: Dolls and Action Figures
 description: Useful information.
 url: "https://mister-funable.github.io/"
-theme: jekyll-theme-lead-day
+remote_theme: pages-themes/leap-day@v0.2.0
+plugins:
+- jekyll-remote-theme
 kramdown:
   toc_levels: 2..3
 
