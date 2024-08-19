@@ -7,5 +7,6 @@ plugins:
 kramdown:
   toc_levels: 2..3
 
-social:
-  github: https://github.com/Mister-Funable
+social-network-links::
+  github: Mister-Funable
+  twitter: Mister-Funable
