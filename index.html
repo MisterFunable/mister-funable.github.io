@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>One Sixth Scale Dolls Collection</title>
+    <title>One Sixth Scale Inventory</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -27,28 +27,114 @@
     <meta property="twitter:description" content="Explore our curated collection of one sixth scale dolls, featuring detailed information and specifications for collectors and enthusiasts.">
     <meta property="twitter:image" content="/og-image.jpg">
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Replace CDN with local Tailwind CSS -->
     <style>
+      /* Base styles */
       html, body {
         height: 100%;
         margin: 0;
-        overflow-x: hidden;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       }
+      
       .responsive-iframe-container {
         position: relative;
         overflow: hidden;
         width: 100%;
         height: 100vh;
+        background: #f8f9fa;
+      }
+      
+      .iframe-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        background: transparent;
+      }
+      
+      .loading-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0.9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        z-index: 1000;
+      }
+      
+      .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 5px solid #f3f3f3;
+        border-top: 5px solid #3498db;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      
+      .error-message {
+        display: none;
+        text-align: center;
+        padding: 20px;
+        color: #721c24;
+        background-color: #f8d7da;
+        border: 1px solid #f5c6cb;
+        border-radius: 4px;
+        margin: 20px;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
       }
     </style>
   </head>
-  <body class="bg-gray-50">
+  <body>
     <div class="responsive-iframe-container">
-      <iframe
-        class="w-full h-full absolute top-0 left-0"
-        src="https://airtable.com/embed/app1visErgGQUtgGR/shrCxbWjNFLjg3zqO"
-        style="border: 0; background: transparent;"
-      ></iframe>
+      <div class="loading-overlay" id="loading">
+        <div class="loading-spinner"></div>
+        <p style="margin-top: 20px;">Loading collection...</p>
+      </div>
+      <div class="error-message" id="error">
+        Unable to load the collection. Please refresh the page or try again later.
+      </div>
+      <div class="iframe-wrapper">
+        <iframe
+          id="airtableFrame"
+          src="https://airtable.com/embed/app1visErgGQUtgGR/shrCxbWjNFLjg3zqO"
+          onload="handleIframeLoad()"
+          onerror="handleIframeError()"
+        ></iframe>
+      </div>
     </div>
+
+    <script>
+      function handleIframeLoad() {
+        document.getElementById('loading').style.display = 'none';
+      }
+
+      function handleIframeError() {
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('error').style.display = 'block';
+      }
+
+      // Add timeout handling
+      setTimeout(() => {
+        if (document.getElementById('loading').style.display !== 'none') {
+          handleIframeError();
+        }
+      }, 30000); // 30 second timeout
+    </script>
   </body>
 </html>
