@@ -1,7 +1,1 @@
----
-layout: default
-title: Dolls and Action Figures
-description: And Probably other toys
----
-
-<iframe src="https://airtable.com/app1visErgGQUtgGR/shrCxbWjNFLjg3zqO" title="Airtable"></iframe>
+<iframe class="airtable-embed" src="https://airtable.com/embed/app1visErgGQUtgGR/shrCxbWjNFLjg3zqO" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
