@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/about.css">
+  </head>
+  <body>
+    <div id="navbar-placeholder"></div>
+
+    <div class="about-container">
+      <header class="about-header">
+        <h1>About My Doll Inventory</h1>
+      </header>
+
+      <section class="about-content">
+        <div class="mission-statement">
+          <h2>Our Mission</h2>
+          <p>My Doll Inventory is a comprehensive platform designed to help collectors catalog, discover, and share custom doll creations. We aim to build a collaborative community where enthusiasts can showcase their work and learn from each other.</p>
+        </div>
+
+        <div class="features">
+          <h2>Key Features</h2>
+          <ul>
+            <li>
+              <h3>Advanced Search</h3>
+              <p>Easily find products by name, model, and brand to discover exactly what you're looking for.</p>
+            </li>
+            <li>
+              <h3>Custom Showcase</h3>
+              <p>Browse through an extensive collection of custom dolls, complete with detailed pictures and parts information.</p>
+            </li>
+            <li>
+              <h3>Inventory Management</h3>
+              <p>Keep track of your collection with our comprehensive inventory system.</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="contribute">
+          <h2>Contributing</h2>
+          <p>We welcome contributions from the community! There are two main ways to participate:</p>
+          <div class="contribute-options">
+            <div class="contribute-card">
+              <h3>Share Your Customs</h3>
+              <p>Have a custom creation to share? Use our <a href="form1.html">Add Your Customs</a> form to showcase your work to the community.</p>
+            </div>
+            <div class="contribute-card">
+              <h3>Expand Our Database</h3>
+              <p>Found a part that's not in our database? Help others by submitting it through our <a href="form2.html">Add Product</a> form.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="community">
+          <h2>Join Our Community</h2>
+          <p>My Doll Inventory is more than just a database - it's a growing community of collectors and creators. We're constantly working to improve the platform and add new features to better serve our users.</p>
+          <p>Your feedback is valuable to us. Feel free to share your suggestions and ideas through our <a href="form3.html">feedback form</a>.</p>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      // Load navbar
+      fetch('components/navbar.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('navbar-placeholder').innerHTML = data;
+        });
+    </script>
+  </body>
+</html> 
