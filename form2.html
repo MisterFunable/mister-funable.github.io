@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/form.css">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+  </head>
+  <body>
+    <div id="navbar-placeholder"></div>
+
+    <div class="form-container">
+      <div class="form-wrapper">
+        <iframe
+          class="airtable-embed"
+          src="https://airtable.com/embed/app1visErgGQUtgGR/pagblMqustUbBrDku/form"
+          frameborder="0"
+          width="100%"
+          height="933"
+          style="background: transparent; border: 1px solid #ccc;"
+          onmousewheel=""
+        ></iframe>
+      </div>
+    </div>
+
+    <script>
+      // Load navbar
+      fetch('components/navbar.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('navbar-placeholder').innerHTML = data;
+        });
+    </script>
+  </body>
+</html> 

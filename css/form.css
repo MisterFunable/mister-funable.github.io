@@ -1,0 +1,39 @@
+.form-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: calc(100vh - 60px);
+  background: #f8f9fa;
+  margin-top: 60px;
+  padding: 20px;
+}
+
+.form-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.form-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: transparent;
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .form-container {
+    height: calc(100vh - 50px);
+    margin-top: 50px;
+    padding: 10px;
+  }
+}
+
+/* iOS Safari fixes */
+@supports (-webkit-touch-callout: none) {
+  .form-container {
+    height: -webkit-fill-available;
+  }
+} 
