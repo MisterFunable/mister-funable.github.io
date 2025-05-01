@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/assets/icons/favicon/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/iframe.css">
+  </head>
+  <body>
+    <!-- Include navbar -->
+    <div id="navbar-placeholder"></div>
+
+    <!-- Main Content -->
+    <div class="responsive-iframe-container">
+      <div class="loading-overlay" id="loading">
+        <div class="loading-spinner"></div>
+        <p style="margin-top: 20px;">Loading collection...</p>
+      </div>
+      <div class="error-message" id="error">
+        Unable to load the collection. Please refresh the page or try again later.
+      </div>
+      <div class="iframe-wrapper">
+        <iframe
+          id="airtableFrame"
+          src="https://airtable.com/embed/appHhGpvrBUBsAz1D/shrj9DKcyZI3xYtLO"
+          onload="handleIframeLoad()"
+          onerror="handleIframeError()"
+          allow="fullscreen"
+          scrolling="yes"
+        ></iframe>
+      </div>
+    </div>
+
+    <script src="js/iframe-handler.js"></script>
+    <script>
+      // Load navbar
+      fetch('components/navbar.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('navbar-placeholder').innerHTML = data;
+        });
+    </script>
+  </body>
+</html>
+
