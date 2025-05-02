@@ -37,6 +37,16 @@ function handleIframeLoad() {
 function handleIframeError() {
     document.getElementById('loading').style.display = 'none';
     document.getElementById('error').style.display = 'block';
+    const retryBtn = document.getElementById('retry-btn');
+    if (retryBtn) {
+        retryBtn.onclick = function() {
+            document.getElementById('error').style.display = 'none';
+            document.getElementById('loading').style.display = 'flex';
+            // Reload the iframe
+            const iframe = document.getElementById('airtableFrame');
+            iframe.src = iframe.src;
+        };
+    }
 }
 
 // Timeout for loading error
