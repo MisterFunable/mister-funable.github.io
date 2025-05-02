@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/iframe.css">
+    <link rel="preconnect" href="https://airtable.com">
   </head>
   <body>
     <!-- Include navbar -->
@@ -30,6 +31,7 @@
         <iframe
           id="airtableFrame"
           src="https://airtable.com/embed/app1visErgGQUtgGR/shrCxbWjNFLjg3zqO"
+          loading="lazy"
           onload="handleIframeLoad()"
           onerror="handleIframeError()"
           allow="fullscreen"
@@ -38,8 +40,9 @@
       </div>
     </div>
 
-    <script src="js/iframe-handler.js"></script>
-    <script>
+    <script src="js/iframe-handler.js" defer></script>
+    <script src="js/age-disclaimer.js" defer></script>
+    <script defer>
       // Load navbar
       fetch('components/navbar.html')
         .then(response => response.text())
