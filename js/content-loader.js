@@ -4,6 +4,26 @@ const gistConfig = {
     en: 'YOUR_ENGLISH_GIST_ID',
     es: 'YOUR_SPANISH_GIST_ID'
   },
+  'lightsabers': {
+    en: {
+      id: '4fe2e2d97a6ca98549e4fa4c5a008556',
+      file: 'lightsabers-fonts.md'
+    },
+    es: {
+      id: '4fe2e2d97a6ca98549e4fa4c5a008556',
+      file: 'lightsabers-fonts.md'
+    }
+  },
+  'aliexpress': {
+    en: {
+      id: '497cc5a1acc7be40f38985825cdd9197',
+      file: 'shopping-tips.md'
+    },
+    es: {
+      id: '497cc5a1acc7be40f38985825cdd9197',
+      file: 'consejos-de-compras.md'
+    }
+  },
   'advise': {
     en: {
       id: '497cc5a1acc7be40f38985825cdd9197',
@@ -20,8 +40,14 @@ const gistConfig = {
 // Function to fetch Gist content
 async function fetchGistContent(gistConfig) {
   try {
+    console.log('Fetching gist:', gistConfig.id, 'file:', gistConfig.file); // Debug log
     const response = await fetch(`https://api.github.com/gists/${gistConfig.id}`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
     const data = await response.json();
+    console.log('Gist data received:', data); // Debug log
+
     // Get the specific file's content
     const fileContent = data.files[gistConfig.file];
     if (!fileContent) {
@@ -36,8 +62,12 @@ async function fetchGistContent(gistConfig) {
 
 // Function to load content for a specific page
 async function loadPageContent(pageName) {
+  console.log('Loading page:', pageName); // Debug log
   const config = gistConfig[pageName];
-  if (!config) return;
+  if (!config) {
+    console.error('No configuration found for page:', pageName); // Debug log
+    return;
+  }
 
   try {
     const [enContent, esContent] = await Promise.all([
@@ -78,7 +108,9 @@ function changeLanguage(lang) {
 
 // Load content when page loads
 document.addEventListener('DOMContentLoaded', () => {
-  // Get page name from URL
-  const pageName = window.location.pathname.split('/').pop().replace('.html', '');
+  // Get page name from URL, handling subdirectories
+  const pathParts = window.location.pathname.split('/');
+  const pageName = pathParts[pathParts.length - 1].replace('.html', '');
+  console.log('Loading content for page:', pageName); // Debug log
   loadPageContent(pageName);
 }); 

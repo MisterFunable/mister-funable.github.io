@@ -11,9 +11,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/landing.css">
-  <title>My Doll Inventory</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/iframe.css">
+  <link rel="preconnect" href="https://airtable.com">
+  <title>Database - My Doll Inventory</title>
   <meta name="description"
     content="Browse and manage your doll inventory collection with ease. View, organize, and keep track of your entire collection in one place.">
   <meta name="robots" content="index, follow">
@@ -29,60 +30,38 @@
   <meta name="twitter:title" content="My Doll Inventory">
   <meta name="twitter:description" content="Browse and manage your doll inventory collection with ease.">
   <meta name="twitter:image" content="https://mydollinventory.com/assets/icons/favicon/favicon-16x16.png">
+  <!-- Preload example -->
   <link rel="preload" as="style"
     href="https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap">
 </head>
 
 <body>
+
+  <!-- Include navbar -->
   <div id="navbar-placeholder"></div>
 
   <!-- Main Content -->
-  <div class="landing-container">
-    <div class="content-box" style="background-image: url('assets/images/default.jpg');">
-      <a href="inventory/1-6-scale/products.html" class="box-link">
-        <h2 class="box-title" data-lang-en="1/6 Scale Products" data-lang-es="Productos Escala 1/6"></h2>
-        <div class="box-content">
-          <p class="box-description"
-            data-lang-en="Find useful information about a variety of 1/6 scale dolls and accessories"
-            data-lang-es="Product information that you were looking for!"></p>
-        </div>
-      </a>
+  <div class="responsive-iframe-container">
+    <div class="loading-overlay" id="loading">
+      <div class="loading-spinner"></div>
+      <p style="margin-top: 20px;" data-lang-en="Loading collection..." data-lang-es="Cargando colección..."></p>
     </div>
-
-    <div class="content-box">
-      <a href="inventory/1-6-scale/brands.html" class="box-link">
-        <h2 class="box-title" data-lang-en="1/6 Scale Brands" data-lang-es="Marcas Escala 1/6"></h2>
-        <div class="box-content">
-          <p class="box-description" data-lang-en="Search Products by Company"
-            data-lang-es="Ver análisis y estadísticas de la colección"></p>
-        </div>
-      </a>
+    <div class="error-message" id="error">
+      <span data-lang-en="Unable to load the collection. Please refresh the page or try again later."
+        data-lang-es="No se pudo cargar la colección. Por favor, actualiza la página o inténtalo más tarde."></span><br>
+      <button id="retry-btn" style="margin-top:1em;" data-lang-en="Retry" data-lang-es="Reintentar"></button>
     </div>
-
-    <div class="content-box">
-      <a href="tips/aliexpress.html" class="box-link">
-        <h2 class="box-title" data-lang-en="Tips" data-lang-es="Contacto"></h2>
-        <div class="box-content">
-          <p class="box-description" data-lang-en="Get in touch with us" data-lang-es="Ponte en contacto con nosotros">
-          </p>
-        </div>
-      </a>
-    </div>
-    <div class="content-box">
-      <a href="about.html" class="box-link">
-        <h2 class="box-title" data-lang-en="About" data-lang-es="Acerca de"></h2>
-        <div class="box-content">
-          <p class="box-description" data-lang-en="Learn more about this collection"
-            data-lang-es="Conoce más sobre esta colección"></p>
-        </div>
-      </a>
+    <div class="iframe-wrapper">
+      <iframe id="airtableFrame" src="https://airtable.com/embed/app1visErgGQUtgGR/shrCxbWjNFLjg3zqO" loading="lazy"
+        allowfullscreen scrolling="yes" title="Doll Inventory" onload="handleIframeLoad()"
+        onerror="handleIframeError()"></iframe>
     </div>
   </div>
 
-  
-
-  <script src="js/navbar-loader.js" defer></script>
-  <script src="js/language-switcher.js" defer></script>
+  <script src="/js/iframe-handler.js" defer></script>
+  <script src="/js/age-disclaimer.js" defer></script>
+  <script src="/js/navbar-loader.js" defer></script>
+  <script src="/js/language-switcher.js" defer></script>
 </body>
 
 </html>

@@ -174,11 +174,13 @@
 .language-label {
   color: #666;
   font-size: 0.9rem;
+  font-family: 'Special Gothic Condensed One', sans-serif;
 }
 
 .language-selected {
   font-weight: 500;
   color: #333;
+  font-family: 'Special Gothic Condensed One', sans-serif;
 }
 
 .language-list {
@@ -211,6 +213,7 @@
   text-decoration: none;
   color: #333;
   transition: background-color 0.3s ease;
+  font-family: 'Special Gothic Condensed One', sans-serif;
 }
 
 .language-list li a:hover {
