@@ -1,9 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
-  // Use relative path that works from any subdirectory
-  const navbarPath = window.location.pathname.includes('/tips/')
-    ? '../components/navbar.html'  // Go up one level if in tips/
-    : 'components/navbar.html';    // Use normal path if in root
+  // Set navbar path to always be at root
+  const navbarPath = '/components/navbar.html';
 
+  // Fetch navbar from root path
   fetch(navbarPath)
     .then(response => {
       if (!response.ok) {
