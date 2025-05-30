@@ -72,6 +72,27 @@
   transition: all 0.3s ease;
 }
 
+/* Nested dropdown specific styles */
+.dropdown-content .dropdown {
+  position: relative;
+  width: 100%;
+}
+
+.dropdown-content .dropdown-btn {
+  width: 100%;
+  text-align: left;
+  padding: 0.75rem 1.25rem;
+  font-size: 1.1rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.dropdown-content .dropdown-content {
+  left: 100%;
+  top: 0;
+  transform: translateX(8px);
+}
+
+/* Hover states */
 .dropdown:hover .dropdown-content,
 .dropdown:focus-within .dropdown-content {
   display: block;
@@ -79,6 +100,14 @@
   transform: translateY(0);
 }
 
+.dropdown-content .dropdown:hover .dropdown-content,
+.dropdown-content .dropdown:focus-within .dropdown-content {
+  display: block;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Dropdown items */
 .dropdown-content a {
   display: block;
   padding: 0.75rem 1.25rem;
@@ -96,10 +125,7 @@
   padding-left: 1.5rem;
 }
 
-.dropdown-content a:not(:last-child) {
-  border-bottom: 1px solid #f0f0f0;
-}
-
+/* Dropdown arrow */
 .dropdown-btn::after {
   content: '▾';
   display: inline-block;
@@ -109,6 +135,22 @@
 
 .dropdown:hover .dropdown-btn::after {
   transform: rotate(180deg);
+}
+
+/* Nested dropdown arrow */
+.dropdown-content .dropdown-btn::after {
+  content: '▸';
+  position: absolute;
+  right: 1rem;
+}
+
+.dropdown-content .dropdown:hover .dropdown-btn::after {
+  transform: rotate(90deg);
+}
+
+/* Ensure proper z-index stacking */
+.dropdown-content .dropdown-content {
+  z-index: 1001;
 }
 
 /* Add language switcher styles */
