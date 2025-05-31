@@ -24,6 +24,16 @@ const gistConfig = {
       file: 'consejos-de-compras.md'
     }
   },
+  'seamless-dolls': {
+    en: {
+      id: '209bc9db081e6316f135adbcf74fdf5e',
+      file: 'seamless-dolls.md'
+    },
+    es: {
+      id: '209bc9db081e6316f135adbcf74fdf5e',
+      file: 'seamless-dolls.md'
+    }
+  },
   'advise': {
     en: {
       id: '497cc5a1acc7be40f38985825cdd9197',

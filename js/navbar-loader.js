@@ -15,7 +15,10 @@ document.addEventListener('DOMContentLoaded', function () {
       // Initialize language after navbar is loaded
       const savedLanguage = localStorage.getItem('preferredLanguage') || 'en';
       if (typeof changeLanguage === 'function') {
-        changeLanguage(savedLanguage);
+        // Small delay to ensure DOM is ready
+        setTimeout(() => {
+          changeLanguage(savedLanguage);
+        }, 0);
       }
     })
     .catch(error => {

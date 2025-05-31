@@ -30,8 +30,8 @@ function changeLanguage(lang) {
   localStorage.setItem('preferredLanguage', lang);
 }
 
-// Initialize with English by default
+// Initialize with saved language preference or default to English
 document.addEventListener('DOMContentLoaded', () => {
-  // Force English as default, ignoring any saved preference
-  changeLanguage('en');
+  const savedLanguage = localStorage.getItem('preferredLanguage') || 'en';
+  changeLanguage(savedLanguage);
 }); 
