@@ -4,6 +4,26 @@ const gistConfig = {
     en: 'YOUR_ENGLISH_GIST_ID',
     es: 'YOUR_SPANISH_GIST_ID'
   },
+  'resin-inventory': {
+    en: {
+      id: 'a59bc0b0db41e68ade5598c58bdea9c1',
+      file: 'en-resin-inventory.md'
+    },
+    es: {
+      id: 'a59bc0b0db41e68ade5598c58bdea9c1',
+      file: 'en-resin-inventory.md'
+    }
+  },
+  'subscribers-suggestions': {
+    en: {
+      id: '54e5fc9e6994014c85e96b6fa5380331',
+      file: 'en-subscribers-suggestions.md'
+    },
+    es: {
+      id: '54e5fc9e6994014c85e96b6fa5380331',
+      file: 'en-subscribers-suggestions.md'
+    }
+  },
   'lightsabers': {
     en: {
       id: '4fe2e2d97a6ca98549e4fa4c5a008556',
@@ -17,21 +37,21 @@ const gistConfig = {
   'aliexpress': {
     en: {
       id: '497cc5a1acc7be40f38985825cdd9197',
-      file: 'shopping-tips.md'
+      file: 'es-aliexpress-advices.md'
     },
     es: {
       id: '497cc5a1acc7be40f38985825cdd9197',
-      file: 'consejos-de-compras.md'
+      file: 'es-aliexpress-advices.md'
     }
   },
   'seamless-dolls': {
     en: {
       id: '209bc9db081e6316f135adbcf74fdf5e',
-      file: 'seamless-dolls.md'
+      file: 'en-seamless-dolls.md'
     },
     es: {
       id: '209bc9db081e6316f135adbcf74fdf5e',
-      file: 'muñecas-seamless.md'
+      file: 'es-seamless-dolls.md'
     }
   },
   'advise': {
