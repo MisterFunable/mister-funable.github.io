@@ -31,7 +31,7 @@ const gistConfig = {
     },
     es: {
       id: '209bc9db081e6316f135adbcf74fdf5e',
-      file: 'seamless-dolls.md'
+      file: 'muñecas-seamless.md'
     }
   },
   'advise': {
@@ -105,15 +105,35 @@ async function loadPageContent(pageName) {
 // Function to show content in selected language
 function showContent(lang) {
   document.querySelectorAll('.content-section').forEach(section => {
-    section.classList.remove('active');
+    section.style.display = 'none';
   });
-  document.getElementById(`content-${lang}`).classList.add('active');
+  const activeSection = document.getElementById(`content-${lang}`);
+  if (activeSection) {
+    activeSection.style.display = 'block';
+  }
 }
 
 // Update the language switcher to handle content
 function changeLanguage(lang) {
-  // Existing language switching code...
+  // Update selected language display
+  const languageSelected = document.querySelector('.language-selected');
+  if (languageSelected) {
+    languageSelected.textContent = lang.toUpperCase();
+  }
+
+  // Update selected state in list
+  document.querySelectorAll('.language-list li').forEach(li => {
+    li.classList.remove('selected');
+    if (li.querySelector('a').getAttribute('onclick').includes(lang)) {
+      li.classList.add('selected');
+    }
+  });
+
+  // Show content in selected language
   showContent(lang);
+  
+  // Save language preference
+  localStorage.setItem('preferredLanguage', lang);
 }
 
 // Load content when page loads
@@ -122,5 +142,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const pathParts = window.location.pathname.split('/');
   const pageName = pathParts[pathParts.length - 1].replace('.html', '');
   console.log('Loading content for page:', pageName); // Debug log
-  loadPageContent(pageName);
+  
+  // Initialize with saved language preference
+  const savedLanguage = localStorage.getItem('preferredLanguage') || 'en';
+  
+  // Load content and then show in correct language
+  loadPageContent(pageName).then(() => {
+    showContent(savedLanguage);
+  });
 }); 

@@ -13,13 +13,14 @@
 
 .content-section {
   display: none;
+  width: 100%;
   line-height: 1.7;
   font-family: 'Special Gothic Condensed One', sans-serif;
   font-weight: normal;
   color: #2c3e50;
 }
 
-.content-section.active {
+.content-section:first-child {
   display: block;
 }
 
