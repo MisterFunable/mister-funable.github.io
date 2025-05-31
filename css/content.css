@@ -5,19 +5,18 @@
 }
 
 .content-wrapper {
-  background: #fafafa;
-  /* Very light gray, almost white */
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 2.5rem;
 }
 
 .content-section {
   display: none;
-  line-height: 1.6;
+  line-height: 1.7;
   font-family: 'Special Gothic Condensed One', sans-serif;
   font-weight: normal;
-  /* Ensure normal weight for paragraphs */
+  color: #2c3e50;
 }
 
 .content-section.active {
@@ -29,74 +28,136 @@
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
   color: #1a1a1a;
-  /* Darker, more readable color */
   font-weight: normal;
+  border-bottom: 2px solid #eaeaea;
+  padding-bottom: 0.5rem;
 }
 
 .content-section h2 {
   font-size: 2rem;
   margin: 2rem 0 1rem;
   color: #2a2a2a;
-  /* Slightly lighter than h1 but still very readable */
   font-weight: normal;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 0.5rem;
 }
 
 .content-section h3 {
   font-size: 1.5rem;
   margin: 1.5rem 0 1rem;
   color: #333333;
-  /* Even lighter but still maintaining good contrast */
   font-weight: normal;
 }
 
 .content-section p {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   font-weight: normal;
-  color: #333333;
-  /* Ensure good readability for paragraphs */
+  color: #2c3e50;
+  font-size: 1.1rem;
+}
+
+.content-section strong {
+  color: #e67e22;
+  font-weight: 600;
+}
+
+.content-section em {
+  color: #27ae60;
+  font-style: italic;
 }
 
 .content-section code {
-  background: #f5f5f5;
+  background: #f8f9fa;
   padding: 0.2rem 0.4rem;
-  border-radius: 3px;
-  font-family: monospace;
-  border: 1px solid #333;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  color: #e74c3c;
+  border: 1px solid #eaeaea;
+  font-size: 0.9em;
 }
 
 .content-section pre {
-  background: #f5f5f5;
-  padding: 1rem;
-  border-radius: 5px;
+  background: #f8f9fa;
+  padding: 1.2rem;
+  border-radius: 8px;
   overflow-x: auto;
-  margin: 1rem 0;
-  border: 2px solid #333;
+  margin: 1.5rem 0;
+  border: 1px solid #eaeaea;
 }
 
 .content-section pre code {
   background: none;
   padding: 0;
   border: none;
+  color: #2c3e50;
+  font-size: 0.95em;
 }
 
 .content-section blockquote {
-  border-left: 4px solid #ddd;
-  margin: 1rem 0;
-  padding-left: 1rem;
-  color: #666;
+  border-left: 4px solid #3498db;
+  margin: 1.5rem 0;
+  padding: 1rem 1.5rem;
+  background: #f8f9fa;
+  border-radius: 0 8px 8px 0;
+  color: #34495e;
 }
 
 .content-section ul,
 .content-section ol {
-  margin: 1rem 0;
+  margin: 1.5rem 0;
   padding-left: 2rem;
+  color: #2c3e50;
+}
+
+/* Main list items */
+.content-section > ul > li,
+.content-section > ol > li {
+  margin-bottom: 1.2rem;
+}
+
+/* Nested list styling */
+.content-section ul ul,
+.content-section ol ol,
+.content-section ul ol,
+.content-section ol ul {
+  margin: 0.1rem 0 0.1rem 0;
+  padding-left: 1.5rem;
+}
+
+/* Subcategory items */
+.content-section ul ul li,
+.content-section ol ol li,
+.content-section ul ol li,
+.content-section ol ul li {
+  margin-bottom: 0.1rem;
+}
+
+/* Remove margin from last subcategory item */
+.content-section ul ul li:last-child,
+.content-section ol ol li:last-child,
+.content-section ul ol li:last-child,
+.content-section ol ul li:last-child {
+  margin-bottom: 0;
+}
+
+/* Add space after a main item with subcategories */
+.content-section > ul > li:has(ul),
+.content-section > ol > li:has(ol) {
+  margin-bottom: 1.2rem;
+}
+
+/* Remove space after a main item without subcategories */
+.content-section > ul > li:not(:has(ul)),
+.content-section > ol > li:not(:has(ol)) {
+  margin-bottom: 1.2rem;
 }
 
 .content-section img {
   max-width: 100%;
   height: auto;
-  border-radius: 5px;
-  margin: 1rem 0;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Table styling */
@@ -107,24 +168,25 @@
   margin: 1.5rem 0;
   font-size: 1rem;
   background: white;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   border-radius: 8px;
   overflow: hidden;
-  border: 2px solid #333;
+  border: 1px solid #eaeaea;
 }
 
 .content-section th {
   background-color: #f8f9fa;
-  color: #333;
+  color: #2c3e50;
   font-weight: 600;
   text-align: left;
   padding: 1rem;
-  border-bottom: 2px solid #333;
+  border-bottom: 2px solid #eaeaea;
 }
 
 .content-section td {
   padding: 1rem;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #eaeaea;
+  color: #2c3e50;
 }
 
 .content-section tr:last-child td {
@@ -139,6 +201,18 @@
   background-color: #f1f3f5;
 }
 
+/* Links */
+.content-section a {
+  color: #3498db;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.content-section a:hover {
+  color: #2980b9;
+  text-decoration: underline;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
   .content-container {
@@ -147,7 +221,7 @@
   }
 
   .content-wrapper {
-    padding: 1rem;
+    padding: 1.5rem;
   }
 
   .content-section h1 {
@@ -162,17 +236,19 @@
     font-size: 1.25rem;
   }
 
+  .content-section p {
+    font-size: 1rem;
+  }
+
   .content-section table {
     display: block;
     overflow-x: auto;
     white-space: nowrap;
     margin: 1rem 0;
-    border: 2px solid #333;
   }
 
   .content-section th,
   .content-section td {
     padding: 0.75rem;
-    border: 1px solid #333;
   }
 }
