@@ -72,10 +72,17 @@ body {
   width: 24px;
   height: 24px;
   transition: transform 0.2s ease;
+  display: block;
+  fill: currentColor;
 }
 
 .social-link:hover .social-icon {
   transform: scale(1.1);
+}
+
+/* Hide the text span */
+.social-link span {
+  display: none;
 }
 
 /* Responsive design */
