@@ -63,6 +63,16 @@ const gistConfig = {
       id: '497cc5a1acc7be40f38985825cdd9197',
       file: 'shopping-tips.md'
     }
+  },
+  'metal-build': {
+    en: {
+      id: '3541088165092cfad95cd92b65cb10b0',
+      file: 'en-metal-build.md'
+    },
+    es: {
+      id: '3541088165092cfad95cd92b65cb10b0',
+      file: 'es-metal-build.md'
+    }
   }
   // Add more pages as needed
 };
