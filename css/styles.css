@@ -141,7 +141,7 @@
 
 .language-btn {
   background: none;
-  border: none;
+  border: 1px solid #333;
   padding: 0.5rem 1rem;
   cursor: pointer;
   font-size: 0.95rem;
@@ -149,14 +149,16 @@
   color: #333;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  border-radius: 4px;
 }
 
 .language-btn:hover {
   color: #007bff;
+  border-color: #007bff;
 }
 
 .language-list {
@@ -173,6 +175,8 @@
   transform: translateY(-10px);
   transition: all 0.3s ease;
   z-index: 1000;
+  border: 1px solid #333;
+  margin-top: 0.5rem;
 }
 
 .language-switcher:hover .language-list {
@@ -193,7 +197,7 @@
   padding: 0.5rem 1rem;
   color: #333;
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
   font-size: 0.95rem;
   font-weight: 600;
   text-transform: uppercase;
