@@ -52,12 +52,17 @@
       <button id="retry-btn" style="margin-top:1em;" data-lang-en="Retry" data-lang-es="Reintentar"></button>
     </div>
     <div class="iframe-wrapper">
-      <iframe id="airtableFrame" src="https://airtable.com/embed/app1visErgGQUtgGR/shrCxbWjNFLjg3zqO" loading="lazy"
-        allowfullscreen scrolling="yes" title="Doll Inventory" onload="handleIframeLoad()"
-        onerror="handleIframeError()"></iframe>
+      <iframe id="airtableFrame" 
+        data-src="https://airtable.com/embed/app1visErgGQUtgGR/shrCxbWjNFLjg3zqO"
+        loading="lazy"
+        allowfullscreen 
+        scrolling="yes" 
+        title="Doll Inventory"
+      ></iframe>
     </div>
   </div>
 
+  <script src="/js/mobile-menu.js" defer></script>
   <script src="/js/iframe-handler.js" defer></script>
   <script src="/js/age-disclaimer.js" defer></script>
   <script src="/js/navbar-loader.js" defer></script>
