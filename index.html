@@ -39,7 +39,7 @@
 
   <!-- Main Content -->
   <div class="landing-container">
-    <div class="content-box" style="background-image: url('assets/images/1-6-dolls.jpg');">
+    <div class="content-box" data-bg="assets/images/1-6-dolls.jpg">
       <a href="inventory/1-6-scale/products.html" class="box-link">
         <h2 class="box-title" data-lang-en="1/6 Scale Inventory" data-lang-es="Inventario de Escala 1/6"></h2>
         <div class="box-content">
@@ -50,7 +50,7 @@
       </a>
     </div>
 
-    <div class="content-box" style="background-image: url('assets/images/1-6-ryza.jpg');">
+    <div class="content-box" data-bg="assets/images/1-6-ryza.jpg">
       <a href="inventory/resin.html" class="box-link">
         <h2 class="box-title" data-lang-en="Resin Inventory" data-lang-es="Inventario de Resinas"></h2>
         <div class="box-content">
@@ -60,7 +60,7 @@
       </a>
     </div>
 
-    <div class="content-box" style="background-image: url('assets/images/default.jpg');">
+    <div class="content-box" data-bg="assets/images/default.jpg">
       <a href="tips/aliexpress.html" class="box-link">
         <h2 class="box-title" data-lang-en="Tips" data-lang-es="Contacto"></h2>
         <div class="box-content">
@@ -70,7 +70,7 @@
       </a>
     </div>
 
-    <div class="content-box" style="background-image: url('assets/images/default.jpg');">
+    <div class="content-box" data-bg="assets/images/default.jpg">
       <a href="about.html" class="box-link"> 
         <h2 class="box-title" data-lang-en="About" data-lang-es="Acerca de"></h2>
         <div class="box-content">
@@ -88,6 +88,13 @@
   <script src="js/navbar-loader.js" defer></script>
   <script src="js/language-switcher.js" defer></script>
   <script src="js/footer-loader.js" defer></script>
+  <script>
+    // Set background images from data-bg attribute
+    document.querySelectorAll('.content-box').forEach(box => {
+      const bgUrl = box.getAttribute('data-bg');
+      box.style.backgroundImage = `url('${bgUrl}')`;
+    });
+  </script>
 </body>
 
 </html>

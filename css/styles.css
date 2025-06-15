@@ -137,27 +137,40 @@
   position: relative;
   z-index: 1001;
   margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .language-btn {
-  background: none;
-  border: none;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 0.5rem 0.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
   font-size: 0.9rem;
-  font-weight: 500;
-  color: #333;
-  transition: color 0.3s ease;
-  border-radius: 4px;
+  font-weight: 600;
+  color: #2c3e50;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 6px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .language-btn:hover {
-  color: #000;
-  background-color: rgba(0, 0, 0, 0.05);
+  color: #1a202c;
+  background-color: rgba(255, 255, 255, 0.98);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.language-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .language-btn:focus {
@@ -170,27 +183,63 @@
 }
 
 .language-selected {
-  font-weight: 500;
+  font-weight: 600;
   color: inherit;
+  letter-spacing: 0.5px;
+  position: relative;
+  padding-right: 1.25rem;
+}
+
+.language-selected::after {
+  content: '▾';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8em;
+  opacity: 0.7;
+  transition: transform 0.3s ease;
+}
+
+.language-switcher.active .language-selected::after {
+  transform: translateY(-50%) rotate(180deg);
 }
 
 .language-list {
   display: none;
   list-style: none;
-  margin: 0;
+  margin: 0.5rem 0 0 0;
   padding: 0.5rem 0;
   position: absolute;
   top: 100%;
   right: 0;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  min-width: 150px;
-  margin-top: 0.5rem;
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  min-width: 160px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  transform-origin: top right;
+  animation: dropdownFade 0.2s ease-out;
 }
 
-.language-switcher:hover .language-list {
+.language-switcher.active .language-list {
   display: block;
+}
+
+.language-list::before {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  right: 1rem;
+  width: 1rem;
+  height: 1rem;
+  background: rgba(255, 255, 255, 0.98);
+  transform: rotate(45deg);
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  z-index: -1;
 }
 
 .language-list li {
@@ -203,28 +252,48 @@
   gap: 0.75rem;
   padding: 0.75rem 1rem;
   text-decoration: none;
-  color: #333;
-  transition: all 0.3s ease;
+  color: #2c3e50;
+  transition: all 0.2s ease;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
   font-size: 0.95rem;
+  font-weight: 500;
 }
 
 .language-list li a:hover {
-  background-color: #f5f5f5;
-  color: #000;
+  background-color: rgba(0, 0, 0, 0.03);
+  color: #1a202c;
+  padding-left: 1.25rem;
 }
 
 .language-list li.selected a {
-  background-color: #f0f0f0;
-  color: #000;
+  background-color: rgba(52, 152, 219, 0.1);
+  color: #3498db;
+  font-weight: 600;
 }
 
 .language-list img {
   width: 20px;
   height: 15px;
   object-fit: cover;
-  border: 1px solid #ddd;
-  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.language-list li a:hover img {
+  transform: scale(1.1);
+}
+
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 /* Mobile responsive styles */
@@ -265,13 +334,12 @@
   }
 
   .language-btn {
-    padding: 0.4rem;
+    padding: 0.4rem 0.6rem;
     font-size: 0.85rem;
   }
 
   .language-list {
-    min-width: 140px;
-    margin-top: 0.25rem;
+    min-width: 150px;
   }
 
   .language-list li a {
@@ -317,12 +385,12 @@
   }
 
   .language-btn {
-    padding: 0.35rem;
+    padding: 0.35rem 0.5rem;
     font-size: 0.8rem;
   }
 
   .language-list {
-    min-width: 130px;
+    min-width: 140px;
   }
 
   .language-list li a {
