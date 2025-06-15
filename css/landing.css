@@ -49,7 +49,7 @@ body::before {
   cursor: pointer;
   border-radius: 30px 0 30px 0;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  border: 2px solid rgba(0, 0, 0, 0.1);
+  border: 2px solid #000;
   padding: 10px;
   transition: all 0.8s ease;
   background-size: cover;
@@ -140,12 +140,17 @@ body::before {
   transform: translateY(0);
   font-weight: bold;
   backdrop-filter: blur(4px);
-  transition: all 0.8s ease;
+  transition: opacity 0.6s ease;
+  opacity: 1;
 }
 
 .content-box:hover .box-title {
-  transform: translateY(-100%);
   opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.content-box:not(:hover) .box-title {
+  transition: opacity 1s ease;
 }
 
 .box-description {
@@ -157,22 +162,24 @@ body::before {
   max-width: 60%;
   font-weight: bold;
   transform: translateY(20px);
-  transition: all 0.8s ease;
+  transition: all 0.6s ease;
   background: rgba(255, 255, 255, 0.9);
   padding: 1.5rem 2.5rem;
   border-radius: 30px 0 30px 0;
   backdrop-filter: blur(4px);
   position: absolute;
   top: 45%;
-  left: 48%;
+  left: 45%;
   transform: translate(-50%, -50%);
   margin: 0 auto;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition-delay: 0.3s;
 }
 
 .content-box:hover .box-description {
   opacity: 1;
   transform: translate(-50%, -50%);
+  transition-delay: 0.3s;
 }
 
 /* Responsive design */
