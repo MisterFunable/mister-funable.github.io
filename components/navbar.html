@@ -1,28 +1,28 @@
-<nav class="navbar">
+<nav class="navbar" role="navigation" aria-label="Main navigation">
   <div class="logo">
-    <a href="/" class="logo-text">My Doll Inventory</a>
+    <a href="/" class="logo-text" aria-label="Home">My Doll Inventory</a>
   </div>
   <div class="nav-links">
     <div class="dropdown">
-      <button class="dropdown-btn">
+      <button class="dropdown-btn" aria-expanded="false" aria-controls="scale-menu">
         1/6 Scale
       </button>
-      <div class="dropdown-content">
-        <a href="/inventory/1-6-scale/accesories.html">Accessories</a>
-        <a href="/inventory/1-6-scale/bodies.html">Bodies</a>
-        <a href="/inventory/1-6-scale/heads.html">Heads</a>
-        <a href="/inventory/1-6-scale/products.html">Products</a>
-        <a href="/inventory/1-6-scale/brands.html">Brands</a>
+      <div class="dropdown-content" id="scale-menu" role="menu">
+        <a href="/inventory/1-6-scale/accesories.html" role="menuitem">Accessories</a>
+        <a href="/inventory/1-6-scale/bodies.html" role="menuitem">Bodies</a>
+        <a href="/inventory/1-6-scale/heads.html" role="menuitem">Heads</a>
+        <a href="/inventory/1-6-scale/products.html" role="menuitem">Products</a>
+        <a href="/inventory/1-6-scale/brands.html" role="menuitem">Brands</a>
         <div class="dropdown">
-          <button class="dropdown-btn">
+          <button class="dropdown-btn" aria-expanded="false" aria-controls="forms-menu">
             Forms
           </button>
-          <div class="dropdown-content">
-            <a href="/inventory/1-6-scale/forms/add-custom.html">Add Custom</a>
-            <a href="/inventory/1-6-scale/forms/add-product.html">Add Product</a>
+          <div class="dropdown-content" id="forms-menu" role="menu">
+            <a href="/inventory/1-6-scale/forms/add-custom.html" role="menuitem">Add Custom</a>
+            <a href="/inventory/1-6-scale/forms/add-product.html" role="menuitem">Add Product</a>
           </div>
         </div>
-        <a href="/info/seamless-dolls.html">Seamless Dolls</a>
+        <a href="/info/seamless-dolls.html" role="menuitem">Seamless Dolls</a>
       </div>
     </div>
     <div class="dropdown">
@@ -56,18 +56,18 @@
   </div>
   <!-- Language Switcher -->
   <div id="languages_block_top" class="language-switcher">
-    <button class="language-btn" aria-label="Change language">
+    <button class="language-btn" aria-label="Change language" aria-expanded="false" aria-controls="language-menu">
       <span class="language-selected">EN</span>
     </button>
-    <ul class="language-list">
+    <ul class="language-list" id="language-menu" role="menu">
       <li class="selected">
-        <a href="#" onclick="changeLanguage('en')" class="lang-btn">
+        <a href="#" onclick="changeLanguage('en')" class="lang-btn" role="menuitem" aria-current="true">
           <img src="/assets/img/flags/en.png" alt="English" />
           <span>English</span>
         </a>
       </li>
       <li>
-        <a href="#" onclick="changeLanguage('es')" class="lang-btn">
+        <a href="#" onclick="changeLanguage('es')" class="lang-btn" role="menuitem">
           <img src="/assets/img/flags/es.png" alt="Español" />
           <span>Español</span>
         </a>
