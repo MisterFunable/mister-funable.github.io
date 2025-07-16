@@ -11,18 +11,174 @@ document.addEventListener('DOMContentLoaded', function () {
       return response.text();
     })
     .then(data => {
-      document.getElementById('navbar-placeholder').innerHTML = data;
-      // Initialize language after navbar is loaded
-      const savedLanguage = localStorage.getItem('preferredLanguage') || 'en';
-      if (typeof changeLanguage === 'function') {
-        // Small delay to ensure DOM is ready
-        setTimeout(() => {
-          changeLanguage(savedLanguage);
-        }, 0);
+      const navbarPlaceholder = document.getElementById('navbar-placeholder');
+      if (navbarPlaceholder) {
+        navbarPlaceholder.innerHTML = data;
+        
+        // Initialize navbar functionality after loading
+        initializeNavbar();
+        
+        // Initialize language after navbar is loaded
+        if (typeof initializeLanguageSwitcher === 'function') {
+          initializeLanguageSwitcher();
+        } else {
+          // Fallback if language switcher script hasn't loaded yet
+          const savedLanguage = localStorage.getItem('preferredLanguage') || 'en';
+          if (typeof changeLanguage === 'function') {
+            setTimeout(() => {
+              changeLanguage(savedLanguage);
+            }, 100);
+          }
+        }
       }
     })
     .catch(error => {
       console.error('Error loading navbar:', error);
-      document.getElementById('navbar-placeholder').innerHTML = 'Error loading navigation';
+      const navbarPlaceholder = document.getElementById('navbar-placeholder');
+      if (navbarPlaceholder) {
+        navbarPlaceholder.innerHTML = '<div class="navbar-error">Error loading navigation</div>';
+      }
     });
 });
+
+function initializeNavbar() {
+  const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+  const navLinks = document.querySelector('.nav-links');
+  const dropdowns = document.querySelectorAll('.dropdown');
+  
+  // Create overlay for mobile menu
+  const navOverlay = document.createElement('div');
+  navOverlay.className = 'nav-overlay';
+  document.body.appendChild(navOverlay);
+
+  // Mobile menu toggle
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+    navOverlay.addEventListener('click', closeMobileMenu);
+  }
+
+  // Initialize dropdowns
+  dropdowns.forEach(dropdown => {
+    const button = dropdown.querySelector('.dropdown-btn');
+    const content = dropdown.querySelector('.dropdown-content');
+    
+    if (button && content) {
+      // Desktop hover is handled by CSS
+      
+      // Mobile click handling
+      button.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          e.stopPropagation();
+          toggleDropdown(dropdown);
+        }
+      });
+    }
+  });
+
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', (e) => {
+    if (window.innerWidth <= 768) {
+      if (!e.target.closest('.dropdown')) {
+        closeAllDropdowns();
+      }
+    }
+  });
+
+  // Handle window resize
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      closeMobileMenu();
+      closeAllDropdowns();
+    }
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', handleKeyboardNavigation);
+
+  function toggleMobileMenu() {
+    const isOpen = navLinks.classList.contains('active');
+    if (isOpen) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
+  }
+
+  function openMobileMenu() {
+    mobileMenuBtn.classList.add('active');
+    navLinks.classList.add('active');
+    navOverlay.classList.add('active');
+    document.body.classList.add('menu-open');
+    mobileMenuBtn.setAttribute('aria-expanded', 'true');
+  }
+
+  function closeMobileMenu() {
+    mobileMenuBtn.classList.remove('active');
+    navLinks.classList.remove('active');
+    navOverlay.classList.remove('active');
+    document.body.classList.remove('menu-open');
+    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    closeAllDropdowns();
+  }
+
+  function toggleDropdown(dropdown) {
+    const button = dropdown.querySelector('.dropdown-btn');
+    const content = dropdown.querySelector('.dropdown-content');
+    const isOpen = dropdown.classList.contains('active');
+    
+    // Close other dropdowns at the same level
+    const siblings = Array.from(dropdown.parentElement.children)
+      .filter(child => child !== dropdown && child.classList.contains('dropdown'));
+    siblings.forEach(sibling => {
+      sibling.classList.remove('active');
+      const siblingBtn = sibling.querySelector('.dropdown-btn');
+      if (siblingBtn) siblingBtn.setAttribute('aria-expanded', 'false');
+    });
+    
+    if (isOpen) {
+      dropdown.classList.remove('active');
+      button.setAttribute('aria-expanded', 'false');
+    } else {
+      dropdown.classList.add('active');
+      button.setAttribute('aria-expanded', 'true');
+    }
+  }
+
+  function closeAllDropdowns() {
+    dropdowns.forEach(dropdown => {
+      dropdown.classList.remove('active');
+      const button = dropdown.querySelector('.dropdown-btn');
+      if (button) button.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  function handleKeyboardNavigation(e) {
+    // Escape key closes mobile menu
+    if (e.key === 'Escape') {
+      if (navLinks.classList.contains('active')) {
+        closeMobileMenu();
+      }
+    }
+    
+    // Handle dropdown keyboard navigation
+    if (e.target.classList.contains('dropdown-btn')) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const dropdown = e.target.closest('.dropdown');
+        if (window.innerWidth <= 768) {
+          toggleDropdown(dropdown);
+        }
+      }
+    }
+  }
+
+  // Set active state for current page
+  const currentPath = window.location.pathname;
+  const navLinksElements = document.querySelectorAll('.nav-links a');
+  navLinksElements.forEach(link => {
+    if (link.getAttribute('href') === currentPath) {
+      link.setAttribute('aria-current', 'page');
+    }
+  });
+}
