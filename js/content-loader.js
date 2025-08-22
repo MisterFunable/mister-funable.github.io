@@ -37,7 +37,7 @@ const gistConfig = {
   'aliexpress': {
     en: {
       id: '497cc5a1acc7be40f38985825cdd9197',
-      file: 'es-aliexpress-advices.md'
+      file: 'en-aliexpress-advices.md'
     },
     es: {
       id: '497cc5a1acc7be40f38985825cdd9197',
