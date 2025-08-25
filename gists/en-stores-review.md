@@ -7,6 +7,12 @@ Always do your own research before purchasing.
 
 ---
 
+- [Chilean Stores](#-chilean-stores)
+- [International Stores](#-international-stores)
+- [AliExpress Stores](#-aliexpress-stores)
+
+---
+
 ## 🇨🇱 Chilean Stores
 
 🇨🇱 *Unless you know the typical price range for a product, relying only on the first search results can lead to outlandish costs. Check multiple pages that list the product (In Stock), and consider the condition: is it new, used, or refurbished?*  
@@ -38,7 +44,7 @@ Always do your own research before purchasing.
 | Ebay                  | Mixed   | ⭐⭐⭐   | Depends on seller | Depends heavily on the seller. Taxes can make some items expensive, so buying a lot (figures, LEGO, etc.) may make more sense. Most of the time, though, everything is overpriced. With shipment costs, consider dedicated stores instead. Additional charges may depend a lot on the carrier than the declared value.                                                                                                     |
 | Amazon                | Mixed   | ⭐⭐⭐   | Normal            | I mostly use it for Steamforged games and other specific items. Everything else tends to be overpriced — Amazon JP is usually better. Orders fulfilled directly by Amazon are shipped with DHL (at least to Chile).                                                                                                                           |
 | Amazon JP             | Figures | ⭐⭐⭐⭐ | Normal/Depends on Seller            | Excellent for Japan exclusives. No proxy needed, and you can order a wide variety of products. Orders shipped by Amazon use DHL (to Chile). Other shipment options are relative safe, and may not punish you that much with taxes.                                                                                                                                                                                                  |
-| Bricklink             | Figures | ⭐⭐⭐⭐ | Relaxed           | Took me a while to buy here. You can filter results for stores that ship to your country. Some display shipping costs right away, while others only provide them after you submit the purchase. Payment is through PayPal. Usually cheaper than Amazon JP if you do the math. I use Bricklink to estimate a fair local price (+30% margin for safety). |
+| Bricklink             | LEGO | ⭐⭐⭐⭐ | Relaxed           | Took me a while to buy here. You can filter results for stores that ship to your country. Some display shipping costs right away, while others only provide them after you submit the purchase. Payment is through PayPal. Usually cheaper than Amazon JP if you do the math. I use Bricklink to estimate a fair local price (+30% margin for safety). |
 | Fanatical Anime Store | Figures | ⭐⭐⭐⭐ | Normal            | Reliable for resin and preorders. Ships with DHL and offers good support.                                                                                                                                                                                                                                                                     |
 | Nin-Nin Game          | Figures | ⭐⭐⭐⭐ | Relaxed            | Wide variety, prices usually fair (though sometimes inflated). Features restock alerts and “pay later” options on some preorders. Be aware: if one item in your order is delayed, the whole shipment waits. Support can cancel items, but I usually prefer waiting.                                        |
 | Solaris Japan         | Figures | ⭐⭐⭐⭐ | Custom           | Good variety with some shipping support. Sometimes products disappear and reappear a few weeks later — more FOMO than actual restocking.                                                                                                                                                                                                      |
