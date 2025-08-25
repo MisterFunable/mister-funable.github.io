@@ -34,6 +34,16 @@ const gistConfig = {
       file: 'lightsabers-fonts.md'
     }
   },
+  'stores-review': {
+    en: {
+      id: '73d7afa3aa3f6d596152a1928c697fd0',
+      file: 'en-stores-review.md'
+    },
+    es: {
+      id: '73d7afa3aa3f6d596152a1928c697fd0',
+      file: 'es-stores-review.md'
+    }
+  },
   'aliexpress': {
     en: {
       id: '497cc5a1acc7be40f38985825cdd9197',
