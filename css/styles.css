@@ -841,48 +841,18 @@ body {
   font-weight: 600;
 }
 
-/* Animations */
-@keyframes slideIn {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideOut {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(100%);
-  }
-}
-
+/* Simple show/hide for mobile nav - no sliding animations */
 .nav-links.active {
-  animation: slideIn 0.3s ease forwards;
+  left: 0;
 }
 
 .nav-links:not(.active) {
-  animation: slideOut 0.3s ease forwards;
+  left: -100%;
 }
 
-/* Enhanced dropdown animations */
+/* Simple dropdown - no animations */
 .dropdown-content {
   transform-origin: top;
-  animation: dropdownFade 0.2s ease;
-}
-
-@keyframes dropdownFade {
-  from {
-    opacity: 0;
-    transform: scaleY(0);
-  }
-  to {
-    opacity: 1;
-    transform: scaleY(1);
-  }
 }
 
 /* Improved focus states */
@@ -946,4 +916,26 @@ body {
 /* Hide iframe error messages */
 .iframe-error-message {
   display: none !important;
+}
+
+/* Prevent FOUC (Flash of Unstyled Content) */
+#navbar-placeholder {
+  min-height: 60px;
+  background: #D8D8DA;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+/* Simple navbar placeholder - no animations */
+#navbar-placeholder:empty {
+  background: #D8D8DA;
+}
+
+/* Smooth transitions for language changes */
+[data-lang-en], [data-lang-es] {
+  transition: opacity 0.2s ease;
 }

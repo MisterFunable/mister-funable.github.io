@@ -1,0 +1,218 @@
+/* Inventory Pages Styles */
+
+/* Page Header */
+.page-header {
+  padding: 60px 0 40px;
+  margin-top: 60px;
+  background: linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 100%);
+  border-bottom: 1px solid #3a3a3a;
+  text-align: center;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: 'Special Gothic Condensed One', sans-serif;
+  letter-spacing: 2px;
+  margin: 0 0 1rem 0;
+}
+
+.page-subtitle {
+  font-size: 1.1rem;
+  color: #b0b0b0;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* Inventory Container */
+.inventory-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 80px 2rem;
+}
+
+/* Inventory Grid */
+.inventory-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+/* Inventory Cards */
+.inventory-card {
+  position: relative;
+  height: 350px;
+  border-radius: 12px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.inventory-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: inherit;
+  background-size: cover;
+  background-position: center;
+  transition: all 0.6s ease;
+  z-index: 0;
+}
+
+.inventory-card:hover::before {
+  transform: scale(1.1);
+  filter: blur(3px);
+}
+
+.inventory-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.card-link {
+  display: block;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  z-index: 1;
+}
+
+/* Card Overlay */
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%);
+  z-index: 1;
+}
+
+/* Card Content */
+.card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem;
+  z-index: 2;
+}
+
+.card-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.5rem;
+  font-family: 'Special Gothic Condensed One', sans-serif;
+  letter-spacing: 1px;
+  transition: transform 0.3s ease;
+}
+
+.card-description {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+}
+
+.inventory-card:hover .card-description {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.inventory-card:hover .card-title {
+  transform: translateY(-5px);
+}
+
+/* Card Arrow Indicator */
+.card-arrow {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  font-size: 1.5rem;
+  color: #D4AF37;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.4s ease;
+  z-index: 2;
+}
+
+.inventory-card:hover .card-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .inventory-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    padding: 40px 0 30px;
+  }
+  
+  .page-title {
+    font-size: 2rem;
+  }
+  
+  .inventory-container {
+    padding: 60px 1.5rem;
+  }
+  
+  .inventory-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .inventory-card {
+    height: 300px;
+  }
+  
+  .card-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 1.8rem;
+  }
+  
+  .page-subtitle {
+    font-size: 1rem;
+  }
+  
+  .inventory-container {
+    padding: 40px 1rem;
+  }
+  
+  .inventory-card {
+    height: 250px;
+  }
+  
+  .card-content {
+    padding: 1.5rem;
+  }
+  
+  .card-title {
+    font-size: 1.3rem;
+  }
+  
+  .card-description {
+    font-size: 0.9rem;
+  }
+}

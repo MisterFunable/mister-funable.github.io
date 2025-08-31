@@ -32,33 +32,99 @@
   <meta name="twitter:image" content="https://mydollinventory.com/assets/icons/favicon/favicon-16x16.png">
   <link rel="preload" as="style"
     href="https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap">
+  <!-- Preload critical resources to prevent FOUC -->
+  <link rel="preload" href="/components/navbar.html" as="fetch" crossorigin>
+  <style>
+    /* Critical CSS to prevent layout shift */
+    #navbar-placeholder {
+      min-height: 60px;
+      background: #D8D8DA;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+  </style>
 </head>
 
 <body>
   <div id="navbar-placeholder"></div>
 
-  <!-- Main Content -->
-  <div class="landing-container">
-    <div class="content-box" data-bg="assets/images/1-6-dolls.jpg">
-      <a href="/main-inventory.html" class="box-link">
-        <h2 class="box-title" data-lang-en="1/6 Scale Doll Inventory" data-lang-es="Inventario de Muñecas Escala 1/6"></h2>
-        <div class="box-content">
-          <p class="box-description"
-            data-lang-en="Find useful information about a variety of 1/6 scale dolls and accessories"
-            data-lang-es="Product information that you were looking for!"></p>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        <span class="hero-main" data-lang-en="My Doll Inventory" data-lang-es="Mi Inventario de Muñecas">My Doll Inventory</span>
+      </h1>
+      <p class="hero-subtitle" data-lang-en="Organize and showcase your collection with professional inventory management" 
+         data-lang-es="Organiza y muestra tu colección con gestión de inventario profesional">
+        Organize and showcase your collection with professional inventory management
+      </p>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number">1000+</span>
+          <span class="stat-label" data-lang-en="Products" data-lang-es="Productos">Products</span>
         </div>
-      </a>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">50+</span>
+          <span class="stat-label" data-lang-en="Brands" data-lang-es="Marcas">Brands</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">24/7</span>
+          <span class="stat-label" data-lang-en="Access" data-lang-es="Acceso">Access</span>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="content-box" data-bg="assets/images/1-6-ryza.jpg">
-      <a href="inventory/resin.html" class="box-link">
-        <h2 class="box-title" data-lang-en="Resin Inventory" data-lang-es="Inventario de Resinas"></h2>
-        <div class="box-content">
-          <p class="box-description" data-lang-en="Excuse to lookup uncensored images" data-lang-es="Solo una excusa para buscar imágenes sin censura">
-          </p>
+  <!-- Collections Section -->
+  <section id="collections" class="collections-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" data-lang-en="Collections" data-lang-es="Colecciones">Collections</h2>
+        <div class="section-divider"></div>
+      </div>
+      
+      <div class="collections-grid">
+        <div class="collection-card" data-bg="assets/images/1-6-dolls.jpg">
+          <a href="/main-inventory.html" class="card-link">
+            <div class="card-overlay"></div>
+            <div class="card-content">
+              <h3 class="card-title" data-lang-en="1/6 Scale Dolls" data-lang-es="Muñecas Escala 1/6">1/6 Scale Dolls</h3>
+              <p class="card-description" data-lang-en="Premium collection of 1/6 scale dolls and accessories" 
+                 data-lang-es="Colección premium de muñecas y accesorios escala 1/6">
+                Premium collection of 1/6 scale dolls and accessories
+              </p>
+              <div class="card-footer">
+                <span class="card-count">500+ Items</span>
+                <span class="card-arrow">→</span>
+              </div>
+            </div>
+          </a>
         </div>
-      </a>
+
+        <div class="collection-card" data-bg="assets/images/1-6-ryza.jpg">
+          <a href="inventory/resin.html" class="card-link">
+            <div class="card-overlay"></div>
+            <div class="card-content">
+              <h3 class="card-title" data-lang-en="Resin Figures" data-lang-es="Figuras de Resina">Resin Figures</h3>
+              <p class="card-description" data-lang-en="High-quality resin figures and statues" 
+                 data-lang-es="Figuras y estatuas de resina de alta calidad">
+                High-quality resin figures and statues
+              </p>
+              <div class="card-footer">
+                <span class="card-count">200+ Items</span>
+                <span class="card-arrow">→</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
     </div>
+  </section>
 
   <!-- Include footer -->
   <div id="footer-placeholder"></div>
@@ -68,10 +134,14 @@
   <script src="js/language-switcher.js" defer></script>
   <script src="js/footer-loader.js" defer></script>
   <script>
-    // Set background images from data-bg attribute
-    document.querySelectorAll('.content-box').forEach(box => {
-      const bgUrl = box.getAttribute('data-bg');
-      box.style.backgroundImage = `url('${bgUrl}')`;
+    // Load background images for collection cards
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.collection-card').forEach(card => {
+        const bgUrl = card.getAttribute('data-bg');
+        if (bgUrl) {
+          card.style.backgroundImage = `url('${bgUrl}')`;
+        }
+      });
     });
   </script>
 </body>
