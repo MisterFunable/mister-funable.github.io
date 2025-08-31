@@ -682,7 +682,6 @@ body {
     background: #fff;
     padding: 80px 20px 20px;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-    transition: left 0.3s ease;
     z-index: 999;
     overflow-y: auto;
     flex-direction: column;
@@ -927,7 +926,6 @@ body {
   left: 0;
   right: 0;
   z-index: 1000;
-  transition: all 0.3s ease;
 }
 
 /* Simple navbar placeholder - no animations */
