@@ -1,10 +1,13 @@
-// Iframe handling functionality
+// Enhanced iframe handling functionality
 document.addEventListener('DOMContentLoaded', function() {
     const iframe = document.getElementById('airtableFrame');
     if (!iframe) return;
     
     const loadingOverlay = document.getElementById('loading');
     const errorMessage = document.getElementById('error');
+    
+    // Get the iframe URL for direct access
+    const iframeUrl = iframe.dataset.src || iframe.src;
     
     // Handle iframe loading
     let loadTimeout;
@@ -19,11 +22,11 @@ document.addEventListener('DOMContentLoaded', function() {
             iframe.src = iframe.dataset.src;
         }
         
-        // Set timeout for loading state
+        // Set timeout for loading state (reduced to 10 seconds)
         loadTimeout = setTimeout(() => {
             loadingOverlay.style.display = 'none';
             errorMessage.style.display = 'block';
-        }, 15000); // 15 second timeout
+        }, 10000); // 10 second timeout
         
         // Handle iframe load
         iframe.onload = () => {
@@ -52,6 +55,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Handle direct access button
+    const directAccessBtn = document.getElementById('direct-access-btn');
+    if (directAccessBtn && iframeUrl) {
+        directAccessBtn.addEventListener('click', () => {
+            window.open(iframeUrl, '_blank');
+        });
+    }
+    
     // Handle mobile detection
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     if (isMobile) {
@@ -72,13 +83,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Timeout for loading error
+// Fallback timeout for loading error (reduced to 12 seconds)
 setTimeout(() => {
     const loadingOverlay = document.getElementById('loading');
     if (loadingOverlay && loadingOverlay.style.display !== 'none') {
         loadingOverlay.style.display = 'none';
-        document.getElementById('error').style.display = 'block';
+        const errorMessage = document.getElementById('error');
+        if (errorMessage) {
+            errorMessage.style.display = 'block';
+        }
     }
-}, 30000);
+}, 12000);
 
 // ... rest of the iframe handling code ... 
