@@ -53,10 +53,13 @@
 
   <!-- Hero Section -->
   <section class="hero-section">
-    <!-- Mascot -->
-    <div class="hero-mascot">
-      <img src="assets/images/iratsutoya-style/pointing.png" alt="Site Mascot" class="mascot-image">
-    </div>
+            <!-- Mascot -->
+        <div class="hero-mascot">
+          <img src="assets/images/iratsutoya-style/pointing.png" alt="Site Mascot" class="mascot-image" 
+               data-normal="assets/images/iratsutoya-style/pointing.png"
+               data-hover="assets/images/iratsutoya-style/pointing-smile.png"
+               data-click="assets/images/iratsutoya-style/pointing-angry-1.png">
+        </div>
     
     <div class="hero-content">
       <h1 class="hero-title">
@@ -147,6 +150,45 @@
           card.style.backgroundImage = `url('${bgUrl}')`;
         }
       });
+      
+      // Mascot image switching functionality
+      const mascotImage = document.querySelector('.mascot-image');
+      if (mascotImage) {
+        const normalSrc = mascotImage.dataset.normal;
+        const hoverSrc = mascotImage.dataset.hover;
+        const clickSrc = mascotImage.dataset.click;
+        
+        // Hover effect
+        mascotImage.addEventListener('mouseenter', function() {
+          this.src = hoverSrc;
+        });
+        
+        mascotImage.addEventListener('mouseleave', function() {
+          this.src = normalSrc;
+        });
+        
+        // Click effect
+        mascotImage.addEventListener('click', function() {
+          this.src = clickSrc; // pointing-angry-1.png
+          this.classList.add('mascot-clicked');
+          
+          // After 1 second, transition to pointing-angry-2.png
+          setTimeout(() => {
+            this.src = 'assets/images/iratsutoya-style/pointing-angry-2.png';
+          }, 1000);
+          
+          // After 2 seconds, transition to pointing-angry-3.png
+          setTimeout(() => {
+            this.src = 'assets/images/iratsutoya-style/pointing-angry-3.png';
+          }, 2000);
+          
+          // After 3 seconds total, go back to normal
+          setTimeout(() => {
+            this.src = normalSrc;
+            this.classList.remove('mascot-clicked');
+          }, 3000);
+        });
+      }
     });
   </script>
 </body>

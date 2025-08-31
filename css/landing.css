@@ -53,11 +53,16 @@ body::before {
   width: 300px; /* Increased from 200px by 50% */
   height: auto;
   filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.3));
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .mascot-image:hover {
   transform: scale(1.05);
+}
+
+.mascot-image.mascot-clicked {
+  animation: mascotBounce 0.6s ease-out;
 }
 
 @keyframes mascotSlideIn {
@@ -68,6 +73,24 @@ body::before {
   100% {
     left: 10%;
     opacity: 1;
+  }
+}
+
+@keyframes mascotBounce {
+  0% {
+    transform: scale(0.95);
+  }
+  25% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  75% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 
