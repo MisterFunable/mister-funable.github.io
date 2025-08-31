@@ -65,24 +65,36 @@
       <h1 class="hero-title">
         <span class="hero-main" data-lang-en="Mister Funable's Documentation" data-lang-es="La documentación de Mister Funable">My Doll Inventory</span>
       </h1>
-      <p class="hero-subtitle" data-lang-en="One place to find information and details about products!" 
+      <p class="hero-subtitle" data-lang-en="Information and details about niche hobbies!" 
          data-lang-es="Información de productos y otras cosas es un solo lugar!">
         Because getting all the information in one place is better than having to search for it all over the internet!
       </p>
       <div class="hero-stats">
         <div class="stat-item">
-          <span class="stat-number">2500+</span>
+          <span class="stat-number">
+            <span class="digit" data-final="2">0</span>
+            <span class="digit" data-final="5">0</span>
+            <span class="digit" data-final="0">0</span>
+            <span class="digit" data-final="0">0</span>
+            <span>+</span>
+          </span>
           <span class="stat-label" data-lang-en="Products" data-lang-es="Productos">Products</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
-          <span class="stat-number">150+</span>
+          <span class="stat-number">
+            <span class="digit" data-final="1">0</span>
+            <span class="digit" data-final="5">0</span>
+            <span class="digit" data-final="0">0</span>
+            <span>+</span>
+          </span>
           <span class="stat-label" data-lang-en="Brands" data-lang-es="Marcas">Brands</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
-          <span class="stat-number">24/7</span>
-          <span class="stat-label" data-lang-en="Access" data-lang-es="Acceso">Access</span>
+          <span class="stat-number">
+            <span class="digit" data-final="5">0</span>
+          <span class="stat-label" data-lang-en="Guides" data-lang-es="Guías">Guides</span>
         </div>
       </div>
     </div>
@@ -189,6 +201,106 @@
           }, 3000);
         });
       }
+      
+      // Digit scrolling animation - Yu-Gi-Oh! countdown effect
+      function animateDigits() {
+        console.log('animateDigits function called');
+        
+        // Get all stat items directly
+        const statItems = document.querySelectorAll('.stat-item');
+        console.log('Found stat items:', statItems.length);
+        
+        const statGroups = [
+          { element: statItems[0], finalValue: 2500, duration: 1000 }, // Products: 2 seconds
+          { element: statItems[1], finalValue: 150, duration: 1000 },  // Brands: 2 seconds  
+          { element: statItems[2], finalValue: 5, duration: 1000 }    // Access: 1 second
+        ];
+        
+        let currentGroupIndex = 0;
+        
+        function animateGroup(group) {
+          const digits = group.element.querySelectorAll('.digit');
+          console.log(`Group has ${digits.length} digits, finalValue: ${group.finalValue}`);
+          
+          const finalValue = group.finalValue;
+          const duration = group.duration;
+          const interval = 5; // 10ms interval for fast countdown
+          
+          console.log(`Animating group with finalValue: ${finalValue}, duration: ${duration}ms, interval: ${interval}ms`);
+          
+          // Convert final value to array of digits (e.g., 2500 -> [2,5,0,0])
+          const finalDigits = finalValue.toString().padStart(digits.length, '0').split('').map(Number);
+          
+          // Start all digits at 9
+          digits.forEach(digit => {
+            digit.textContent = '9';
+          });
+          
+          // Animate each digit from left to right, counting down from 9 to target
+          let currentDigitIndex = 0; // Start from leftmost digit
+          
+          function animateDigit() {
+                         if (currentDigitIndex >= digits.length) {
+               // All digits completed, move to next group
+               console.log(`Group completed: ${finalValue}`);
+               currentGroupIndex++;
+               if (currentGroupIndex < statGroups.length) {
+                 setTimeout(() => animateGroup(statGroups[currentGroupIndex]), 10);
+               }
+               return;
+             }
+            
+            const digit = digits[currentDigitIndex];
+            const targetValue = finalDigits[currentDigitIndex];
+            let currentValue = 9;
+            
+            const digitTimer = setInterval(() => {
+              if (currentValue >= targetValue) {
+                digit.textContent = currentValue;
+                currentValue--;
+              } else {
+                                 clearInterval(digitTimer);
+                 // Move to next digit (right)
+                 currentDigitIndex++;
+                 setTimeout(animateDigit, 50); // Small pause between digits
+              }
+            }, interval);
+          }
+          
+          // Start with the rightmost digit
+          animateDigit();
+        }
+        
+        // Start with the first group (Products)
+        if (statGroups.length > 0) {
+          animateGroup(statGroups[0]);
+        } else {
+          console.log('No stat groups found!');
+        }
+      }
+      
+      // Two-phase animation: first fade-in, then count
+      function startDigitAnimation() {
+        const statItems = document.querySelectorAll('.stat-item');
+        
+        // Phase 1: Sequential fade-in for each stat group
+        statItems.forEach((statItem, index) => {
+          setTimeout(() => {
+            statItem.classList.add('fade-in');
+            console.log(`Stat item ${index + 1} faded in`);
+          }, index * 45); // 800ms delay between each stat group
+        });
+        
+        // Phase 2: Start counting after all fade-ins are complete
+        const totalFadeInTime = (statItems.length - 1) * 600 + 600; // Total fade-in time
+        setTimeout(() => {
+          console.log('Starting digit animation...');
+          animateDigits();
+        }, totalFadeInTime);
+      }
+      
+      // Start digit animation after page loads
+      setTimeout(startDigitAnimation, 500);
     });
   </script>
 </body>
