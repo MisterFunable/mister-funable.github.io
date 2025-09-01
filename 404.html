@@ -2,54 +2,87 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Page Not Found - MDI</title>
+    <title data-lang-en="Page Not Found - My Doll Inventory" data-lang-es="Página No Encontrada - Mi Inventario de Muñecas">Page Not Found - My Doll Inventory</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Sorry, the page you are looking for does not exist. Return to the Doll Inventory homepage or use the navigation to find what you need.">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/assets/icons/favicon/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/footer.css" />
     <style>
-      body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-        font-family: 'Special Gothic Condensed One', sans-serif;
-        background: #f8f9fa;
-        margin: 0;
-      }
       .notfound-container {
         text-align: center;
-        padding: 2em;
+        padding: 4em 2em;
+        max-width: 600px;
+        margin: 0 auto;
+        min-height: 60vh;
       }
       .notfound-container h1 {
-        font-size: 4rem;
+        font-size: 6rem;
         margin-bottom: 0.5em;
+        color: #333;
+        font-weight: bold;
       }
       .notfound-container p {
         font-size: 1.5rem;
-        margin-bottom: 1.5em;
+        margin-bottom: 2em;
+        color: #666;
+        line-height: 1.6;
       }
       .notfound-container a {
         color: #3498db;
         text-decoration: none;
         font-size: 1.2rem;
-        border: 1px solid #3498db;
-        padding: 0.5em 1.5em;
-        border-radius: 4px;
-        transition: background 0.2s, color 0.2s;
+        border: 2px solid #3498db;
+        padding: 0.8em 2em;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        display: inline-block;
+        font-weight: 500;
       }
       .notfound-container a:hover {
         background: #3498db;
         color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+      }
+      .notfound-container .mascot {
+        margin: 2em 0;
+        opacity: 0.7;
+      }
+      .notfound-container .mascot img {
+        width: 120px;
+        height: auto;
       }
     </style>
   </head>
   <body>
+    <div id="navbar-placeholder"></div>
+
     <div class="notfound-container">
       <h1>404</h1>
-      <p>Sorry, the page you are looking for does not exist.</p>
-      <a href="index.html">Go to Homepage</a>
+      <p data-lang-en="Sorry, the page you are looking for does not exist. Use the navigation above or return to the homepage to find what you need." data-lang-es="Lo sentimos, la página que buscas no existe. Usa la navegación de arriba o regresa a la página principal para encontrar lo que necesitas.">Sorry, the page you are looking for does not exist. Use the navigation above or return to the homepage to find what you need.</p>
+      
+      <div class="mascot">
+        <img src="assets/images/iratsutoya-style/pointing-angry-1.png" alt="Confused Mascot" />
+      </div>
+      
+      <a href="/" data-lang-en="Go to Homepage" data-lang-es="Ir a la Página Principal">Go to Homepage</a>
     </div>
+
+    <script src="js/language-switcher.js"></script>
+    <script>
+      // Load navbar
+      fetch('components/navbar.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('navbar-placeholder').innerHTML = data;
+        });
+    </script>
   </body>
 </html>
