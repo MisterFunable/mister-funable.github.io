@@ -10,9 +10,36 @@
   <link rel="stylesheet" href="css/metal-build.css">
   <title data-lang-en="Metal Build Sets" data-lang-es="Sets Metal Build">Metal Build Sets</title>
   <meta name="description" content="Browse Metal Build sets with images and names in a compact, searchable table.">
+  <style>
+    .hugging-gundam-overlay {
+      position: fixed;
+      right: 20px;
+      top: 60%; /* Position 6 out of 10 from top to bottom */
+      z-index: 1000;
+      width: 200px;
+      height: auto;
+      pointer-events: none; /* Allows clicking through the image */
+      opacity: 0.9;
+      transition: opacity 0.3s ease;
+    }
+    
+    .hugging-gundam-overlay:hover {
+      opacity: 1;
+    }
+    
+    @media (max-width: 768px) {
+      .hugging-gundam-overlay {
+        width: 150px;
+        right: 10px;
+      }
+    }
+  </style>
 </head>
 <body>
   <div id="navbar-placeholder"></div>
+
+  <!-- Hugging Gundam Overlay Image -->
+  <img src="assets/images/iratsutoya-style/hugging-gundam.png" alt="Hugging Gundam" class="hugging-gundam-overlay">
 
   <div class="metal-build-container">
     <header class="metal-build-header">
