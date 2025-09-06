@@ -46,20 +46,7 @@
     <meta name="twitter:creator" content="@misterfunable">
     
     <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'GA_MEASUREMENT_ID', {
-        page_title: 'About My Doll Inventory',
-        page_location: window.location.href,
-        custom_map: {
-          'custom_parameter_1': 'about_page',
-          'custom_parameter_2': 'community_info'
-        }
-      });
-    </script>
+    <script src="js/analytics-loader.js" defer></script>
     
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">

@@ -65,12 +65,16 @@ function initializeNavbar() {
     if (button && content) {
       // Desktop hover is handled by CSS
       
-      // Mobile click handling
+      // Click handling for dropdown buttons
       button.addEventListener('click', (e) => {
         if (window.innerWidth <= 768) {
+          // On mobile, prevent default and toggle dropdown
           e.preventDefault();
           e.stopPropagation();
           toggleDropdown(dropdown);
+        } else {
+          // On desktop, allow the link to work normally
+          // The dropdown will still show on hover via CSS
         }
       });
     }

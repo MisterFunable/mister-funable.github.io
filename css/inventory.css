@@ -3,7 +3,7 @@
 /* Page Header */
 .page-header {
   padding: 60px 0 40px;
-  margin-top: 120px;
+  margin-top: 0;
   background: linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 100%);
   border-bottom: 1px solid #3a3a3a;
   position: relative;
@@ -43,8 +43,8 @@
 
 .page-header-text {
   flex: 1;
-  text-align: left;
-  margin-left: 320px;
+  text-align: center;
+  margin-left: 0;
 }
 
 .page-title {

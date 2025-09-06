@@ -147,6 +147,16 @@
 
 .dropdown-btn:hover {
   color: var(--color-primary);
+  text-decoration: none;
+}
+
+/* Ensure dropdown-btn works as both link and dropdown trigger */
+.dropdown-btn:visited {
+  color: var(--color-text);
+}
+
+.dropdown-btn:visited:hover {
+  color: var(--color-primary);
 }
 
 /* Dropdown arrow styling */

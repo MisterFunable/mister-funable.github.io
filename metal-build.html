@@ -12,6 +12,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/metal-build.css">
+  <link rel="stylesheet" href="css/inventory.css">
+  
+  <!-- Google Analytics 4 -->
+  <script src="js/analytics-loader.js" defer></script>
+  
   <title data-lang-en="Metal Build Sets" data-lang-es="Sets Metal Build">Metal Build Sets</title>
   <meta name="description" content="Browse Metal Build sets with images and names in a compact, searchable table.">
   <style>
@@ -62,14 +67,23 @@
 <body>
   <div id="navbar-placeholder"></div>
 
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="page-header-content">
+      <div class="page-header-text">
+        <h1 class="page-title" data-lang-en="Metal Build Mechs" data-lang-es="Mechs Metal Build">Metal Build Mechs</h1>
+        <p class="page-subtitle" data-lang-en="Complete collection of Metal Build mecha figures and accessories" 
+           data-lang-es="Colección completa de figuras de mechas Metal Build y accesorios">
+          Complete collection of Metal Build mecha figures and accessories
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- Hugging Gundam Overlay Image -->
   <img src="assets/images/iratsutoya-style/hugging-gundam.png" alt="Hugging Gundam" class="hugging-gundam-overlay">
 
   <div class="metal-build-container">
-    <header class="metal-build-header">
-      <h1 data-lang-en="Metal Build Instructions" data-lang-es="Instrucciones Metal Build">Metal Build Instructions</h1>
-      <p data-lang-en="Browse the Metal Build collection in a compact, searchable table." data-lang-es="Explora la colección Metal Build en una tabla compacta y fácil de buscar.">Browse the Metal Build collection in a compact, searchable table.</p>
-    </header>
 
     <div style="text-align:right; margin-bottom:1rem;">
       <input type="text" id="mb-search" placeholder="Search by name, series, or type..." style="padding:0.4rem 0.7rem; width: 250px; border-radius: 5px; border: 1px solid #ccc;">
