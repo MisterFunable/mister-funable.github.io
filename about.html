@@ -120,10 +120,9 @@
 
         <div class="mascot-section">
           <h2 data-lang-en="Meet Our Mascot" data-lang-es="Conoce a Nuestra Mascota">Meet Our Mascot</h2>
-          <div class="mascot-content">
-            <div class="mascot-image">
-              <img src="assets/images/iratsutoya-style/pointing.png" alt="Undefined - Website Mascot" class="mascot-img">
-            </div>
+          
+          <!-- Main Mascot Info with Image -->
+          <div class="mascot-main-content">
             <div class="mascot-info">
               <h3 data-lang-en="Undefined" data-lang-es="Undefined">Undefined</h3>
               <p data-lang-en="Meet Undefined, our red-haired mascot! She's here to add something cute and fun to the website, and she's perfect for cosplay inspiration. Her name is 'Undefined' for now (at least until we think of something better!). She appears throughout the site to guide you and make your browsing experience more enjoyable." data-lang-es="¡Conoce a Undefined, nuestra mascota de cabello rojo! Está aquí para agregar algo lindo y divertido al sitio web, y es perfecta para inspiración de cosplay. Su nombre es 'Undefined' por ahora (¡al menos hasta que pensemos en algo mejor!). Aparece en todo el sitio para guiarte y hacer que tu experiencia de navegación sea más agradable.">Meet Undefined, our red-haired mascot! She's here to add something cute and fun to the website, and she's perfect for cosplay inspiration. Her name is 'Undefined' for now (at least until we think of something better!). She appears throughout the site to guide you and make your browsing experience more enjoyable.</p>
@@ -142,34 +141,53 @@
                 </div>
               </div>
             </div>
-            <div class="mascot-design-panel">
-              <h4 data-lang-en="Design Gallery" data-lang-es="Galería de Diseño">Design Gallery</h4>
-              <div class="design-images">
-                <div class="design-image-item">
-                  <img src="assets/images/iratsutoya-style/pointing.png" alt="Undefined - Pointing Pose" class="design-img">
-                  <span data-lang-en="Pointing" data-lang-es="Señalando">Pointing</span>
-                </div>
-                <div class="design-image-item">
-                  <img src="assets/images/iratsutoya-style/pointing-smile.png" alt="Undefined - Smiling" class="design-img">
-                  <span data-lang-en="Smiling" data-lang-es="Sonriendo">Smiling</span>
-                </div>
-                <div class="design-image-item">
-                  <img src="assets/images/iratsutoya-style/pointing-angry-1.png" alt="Undefined - Angry" class="design-img">
-                  <span data-lang-en="Angry" data-lang-es="Enojada">Angry</span>
-                </div>
-                <div class="design-image-item">
-                  <img src="assets/images/iratsutoya-style/calculating.jpeg" alt="Undefined - Calculating" class="design-img">
-                  <span data-lang-en="Calculating" data-lang-es="Calculando">Calculating</span>
-                </div>
-                <div class="design-image-item">
-                  <img src="assets/images/iratsutoya-style/holding-one-six-scale.png" alt="Undefined - Holding Doll" class="design-img">
-                  <span data-lang-en="Holding Doll" data-lang-es="Sosteniendo Muñeca">Holding Doll</span>
-                </div>
-                <div class="design-image-item">
-                  <img src="assets/images/iratsutoya-style/navigating-error.png" alt="Undefined - Error" class="design-img">
-                  <span data-lang-en="Error Mode" data-lang-es="Modo Error">Error Mode</span>
+            <div class="mascot-main-image">
+              <img src="assets/images/iratsutoya-style/pointing.png" alt="Undefined - Website Mascot" class="mascot-main-img">
+            </div>
+          </div>
+
+          <!-- Character Gallery -->
+          <div class="mascot-design-panel">
+            <h4 data-lang-en="Design Gallery" data-lang-es="Galería de Diseño">Design Gallery</h4>
+            <div class="carousel-container">
+              <button class="carousel-btn prev-btn" aria-label="Previous image">‹</button>
+              <div class="carousel-wrapper">
+                <div class="carousel-track">
+                  <div class="design-image-item active">
+                    <img src="assets/images/iratsutoya-style/pointing.png" alt="Undefined - Pointing Pose" class="design-img">
+                    <span data-lang-en="Pointing" data-lang-es="Señalando">Pointing</span>
+                  </div>
+                  <div class="design-image-item">
+                    <img src="assets/images/iratsutoya-style/pointing-smile.png" alt="Undefined - Smiling" class="design-img">
+                    <span data-lang-en="Smiling" data-lang-es="Sonriendo">Smiling</span>
+                  </div>
+                  <div class="design-image-item">
+                    <img src="assets/images/iratsutoya-style/pointing-angry-1.png" alt="Undefined - Angry" class="design-img">
+                    <span data-lang-en="Angry" data-lang-es="Enojada">Angry</span>
+                  </div>
+                  <div class="design-image-item">
+                    <img src="assets/images/iratsutoya-style/calculating.jpeg" alt="Undefined - Calculating" class="design-img">
+                    <span data-lang-en="Calculating" data-lang-es="Calculando">Calculating</span>
+                  </div>
+                  <div class="design-image-item">
+                    <img src="assets/images/iratsutoya-style/holding-one-six-scale.png" alt="Undefined - Holding Doll" class="design-img">
+                    <span data-lang-en="Holding Doll" data-lang-es="Sosteniendo Muñeca">Holding Doll</span>
+                  </div>
+                  <div class="design-image-item">
+                    <img src="assets/images/iratsutoya-style/navigating-error.png" alt="Undefined - Error" class="design-img">
+                    <span data-lang-en="Error Mode" data-lang-es="Modo Error">Error Mode</span>
+                  </div>
                 </div>
               </div>
+              <button class="carousel-btn next-btn" aria-label="Next image">›</button>
+            </div>
+            <div class="carousel-dots">
+              <span class="dot active" data-slide="0"></span>
+              <span class="dot" data-slide="1"></span>
+              <span class="dot" data-slide="2"></span>
+              <span class="dot" data-slide="3"></span>
+              <span class="dot" data-slide="4"></span>
+              <span class="dot" data-slide="5"></span>
             </div>
           </div>
         </div>
@@ -201,5 +219,84 @@
         });
     </script>
     <script src="js/age-disclaimer.js"></script>
+    <script>
+      // Carousel functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        const track = document.querySelector('.carousel-track');
+        const items = document.querySelectorAll('.design-image-item');
+        const dots = document.querySelectorAll('.dot');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        
+        let currentIndex = 0;
+        const totalItems = items.length;
+        
+        function updateCarousel() {
+          // Update active states - only show the current image
+          items.forEach((item, index) => {
+            if (index === currentIndex) {
+              item.classList.add('active');
+              item.style.display = 'flex';
+            } else {
+              item.classList.remove('active');
+              item.style.display = 'none';
+            }
+          });
+          
+          dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+          });
+          
+          // Update button states
+          prevBtn.disabled = currentIndex === 0;
+          nextBtn.disabled = currentIndex === totalItems - 1;
+        }
+        
+        function nextSlide() {
+          if (currentIndex < totalItems - 1) {
+            currentIndex++;
+            updateCarousel();
+          }
+        }
+        
+        function prevSlide() {
+          if (currentIndex > 0) {
+            currentIndex--;
+            updateCarousel();
+          }
+        }
+        
+        // Event listeners
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+        
+        // Dot navigation
+        dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => {
+            currentIndex = index;
+            updateCarousel();
+          });
+        });
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowLeft') prevSlide();
+          if (e.key === 'ArrowRight') nextSlide();
+        });
+        
+        // Auto-play (optional)
+        setInterval(() => {
+          if (currentIndex < totalItems - 1) {
+            nextSlide();
+          } else {
+            currentIndex = 0;
+            updateCarousel();
+          }
+        }, 3000);
+        
+        // Initialize
+        updateCarousel();
+      });
+    </script>
   </body>
 </html> 
