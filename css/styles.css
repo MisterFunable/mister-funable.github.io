@@ -881,7 +881,7 @@ body {
 
 /* Active state for current page */
 .nav-links a.active {
-  color: #3498db;
+  color: #D4AF37;
   font-weight: 500;
 }
 
@@ -900,7 +900,7 @@ body {
 }
 
 .navbar-nav .nav-link.active {
-  color: #007bff;
+  color: #D4AF37;
   font-weight: 700;
 }
 
