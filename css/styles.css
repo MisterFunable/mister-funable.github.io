@@ -202,7 +202,8 @@
 .dropdown-content {
   position: absolute;
   top: 100%;
-  left: 0;
+  left: auto;
+  right: 0;
   background-color: #ffffff;
   min-width: 220px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -240,12 +241,6 @@
 
 /* Prevent dropdown from going off-screen */
 @media (min-width: 769px) {
-  /* Align all dropdowns to the right */
-  .nav-links > .dropdown .dropdown-content {
-    left: auto;
-    right: 0;
-  }
-  
   /* Nested dropdowns appear to the right by default */
   .dropdown-content .nested-content {
     left: 100%;
