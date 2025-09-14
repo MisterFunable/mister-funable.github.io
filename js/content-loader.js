@@ -1,3 +1,7 @@
+// Flags to prevent multiple executions
+let contentLoaded = false;
+let domContentLoaded = false;
+
 // Configuration for your Gists
 const gistConfig = {
   'about': {
@@ -91,19 +95,49 @@ const gistConfig = {
 async function fetchGistContent(gistConfig) {
   try {
     console.log('Fetching gist:', gistConfig.id, 'file:', gistConfig.file); // Debug log
-    const response = await fetch(`https://api.github.com/gists/${gistConfig.id}`);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+    
+    // Try multiple approaches to fetch the gist content
+    const approaches = [
+      // Approach 1: Direct gist URL
+      `https://gist.githubusercontent.com/anonymous/${gistConfig.id}/raw/${gistConfig.file}`,
+      // Approach 2: CORS proxy
+      `https://cors-anywhere.herokuapp.com/https://gist.githubusercontent.com/anonymous/${gistConfig.id}/raw/${gistConfig.file}`,
+      // Approach 3: Alternative CORS proxy
+      `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://gist.githubusercontent.com/anonymous/${gistConfig.id}/raw/${gistConfig.file}`)}`,
+      // Approach 4: GitHub API with CORS proxy
+      `https://cors-anywhere.herokuapp.com/https://api.github.com/gists/${gistConfig.id}`
+    ];
+    
+    for (let i = 0; i < approaches.length; i++) {
+      try {
+        console.log(`Trying approach ${i + 1}:`, approaches[i]);
+        const response = await fetch(approaches[i]);
+        
+        if (response.ok) {
+          if (i === 3) {
+            // GitHub API approach - need to parse JSON
+            const data = await response.json();
+            const fileContent = data.files[gistConfig.file];
+            if (fileContent) {
+              console.log(`Content loaded successfully using approach ${i + 1}`);
+              return fileContent.content;
+            }
+          } else {
+            // Direct content approaches
+            const content = await response.text();
+            if (content && !content.includes('Error') && !content.includes('Not Found')) {
+              console.log(`Content loaded successfully using approach ${i + 1}`);
+              return content;
+            }
+          }
+        }
+      } catch (approachError) {
+        console.log(`Approach ${i + 1} failed:`, approachError.message);
+        continue;
+      }
     }
-    const data = await response.json();
-    console.log('Gist data received:', data); // Debug log
-
-    // Get the specific file's content
-    const fileContent = data.files[gistConfig.file];
-    if (!fileContent) {
-      throw new Error(`File ${gistConfig.file} not found in Gist`);
-    }
-    return fileContent.content;
+    
+    throw new Error('All fetch approaches failed');
   } catch (error) {
     console.error('Error fetching Gist:', error);
     return 'Error loading content';
@@ -112,10 +146,22 @@ async function fetchGistContent(gistConfig) {
 
 // Function to load content for a specific page
 async function loadPageContent(pageName) {
+  // Prevent multiple loads
+  if (contentLoaded) {
+    console.log('Content already loaded, skipping...');
+    return;
+  }
+  
   console.log('Loading page:', pageName); // Debug log
   const config = gistConfig[pageName];
   if (!config) {
     console.error('No configuration found for page:', pageName); // Debug log
+    // Set error message only if content hasn't been loaded yet
+    if (!contentLoaded) {
+      document.getElementById('content-en').innerHTML = '<p>Error: Page configuration not found</p>';
+      document.getElementById('content-es').innerHTML = '<p>Error: Page configuration not found</p>';
+      contentLoaded = true;
+    }
     return;
   }
 
@@ -125,20 +171,31 @@ async function loadPageContent(pageName) {
       fetchGistContent(config.es)
     ]);
 
-    // Render markdown content
-    document.getElementById('content-en').innerHTML = marked.parse(enContent);
-    document.getElementById('content-es').innerHTML = marked.parse(esContent);
+    // Only update content if it hasn't been loaded yet
+    if (!contentLoaded) {
+      // Render markdown content
+      document.getElementById('content-en').innerHTML = marked.parse(enContent);
+      document.getElementById('content-es').innerHTML = marked.parse(esContent);
 
-    // Initialize syntax highlighting
-    document.querySelectorAll('pre code').forEach((block) => {
-      hljs.highlightBlock(block);
-    });
+      // Initialize syntax highlighting
+      document.querySelectorAll('pre code').forEach((block) => {
+        hljs.highlightBlock(block);
+      });
 
-    // Show content in current language
-    const currentLang = localStorage.getItem('preferredLanguage') || 'en';
-    showContent(currentLang);
+      // Show content in current language
+      const currentLang = localStorage.getItem('preferredLanguage') || 'en';
+      showContent(currentLang);
+      
+      contentLoaded = true;
+    }
   } catch (error) {
     console.error('Error loading page content:', error);
+    // Set error message only if content hasn't been loaded yet
+    if (!contentLoaded) {
+      document.getElementById('content-en').innerHTML = '<p>Error loading content</p>';
+      document.getElementById('content-es').innerHTML = '<p>Error loading content</p>';
+      contentLoaded = true;
+    }
   }
 }
 
@@ -178,10 +235,35 @@ function changeLanguage(lang) {
 
 // Load content when page loads
 document.addEventListener('DOMContentLoaded', () => {
-  // Get page name from URL, handling subdirectories
-  const pathParts = window.location.pathname.split('/');
-  const pageName = pathParts[pathParts.length - 1].replace('.html', '');
+  // Prevent multiple executions
+  if (domContentLoaded) {
+    console.log('DOMContentLoaded already executed, skipping...');
+    return;
+  }
+  domContentLoaded = true;
+  
+  // Get page name from URL, handling subdirectories and clean URLs
+  const pathParts = window.location.pathname.split('/').filter(part => part !== '');
+  let pageName = '';
+  
+  // Handle different URL structures
+  if (pathParts.length === 0 || (pathParts.length === 1 && pathParts[0] === '')) {
+    // Root page
+    pageName = 'about';
+  } else if (pathParts.length === 1) {
+    // Direct page like /aliexpress
+    pageName = pathParts[0];
+  } else if (pathParts.length === 2 && pathParts[0] === 'info') {
+    // Info page like /info/aliexpress
+    pageName = pathParts[1];
+  } else {
+    // Fallback - use last part and remove .html
+    pageName = pathParts[pathParts.length - 1].replace('.html', '');
+  }
+  
   console.log('Loading content for page:', pageName); // Debug log
+  console.log('URL pathname:', window.location.pathname); // Debug log
+  console.log('Path parts:', pathParts); // Debug log
   
   // Initialize with saved language preference
   const savedLanguage = localStorage.getItem('preferredLanguage') || 'en';

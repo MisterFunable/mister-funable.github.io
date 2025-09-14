@@ -11,12 +11,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/styles.css">
-  <link rel="stylesheet" href="/css/content.css">
-  <link rel="stylesheet" href="/css/inventory.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/content.css">
+  <link rel="stylesheet" href="../css/inventory.css">
+  <link rel="stylesheet" href="../css/info.css">
   
   <!-- Google Analytics 4 -->
-  <script src="/js/analytics-loader.js" defer></script>
+  <script src="../js/analytics-loader.js" defer></script>
   
   <!-- Add marked.js for markdown rendering -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -25,26 +26,32 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
 </head>
 
-<script src="js/language-switcher.js" defer></script>
 
 
 <body>
   <!-- Include navbar -->
   <div id="navbar-placeholder"></div>
 
-  <!-- Page Header - Removed -->
+  <!-- Hero Section -->
+  <section class="info-hero">
+    <div class="info-hero-content">
+      <h1 data-lang-en="Shopping Advice" data-lang-es="Consejos de Compra">Shopping Advice</h1>
+      <p class="hero-subtitle" data-lang-en="Expert tips and strategies for smart shopping" data-lang-es="Consejos expertos y estrategias para comprar inteligentemente">Expert tips and strategies for smart shopping</p>
+    </div>
+  </section>
 
   <!-- Main Content -->
-  <div class="content-container">
-    <div class="content-wrapper">
-      <div id="content-en" class="content-section"></div>
-      <div id="content-es" class="content-section"></div>
+  <div class="info-content-container">
+    <div class="info-content-wrapper">
+      <div id="content-en" class="info-content-section"></div>
+      <div id="content-es" class="info-content-section"></div>
     </div>
   </div>
 
   <script src="../js/navbar-loader.js" defer></script>
   <script src="../js/language-switcher.js" defer></script>
   <script src="../js/content-loader.js" defer></script>
+  <script src="../js/clean-urls.js" defer></script>
 </body>
 
 </html>

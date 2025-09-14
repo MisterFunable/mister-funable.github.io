@@ -1,0 +1,477 @@
+/* Info Pages Styling - Professional Design for Gist Content */
+
+/* Hero Section */
+.info-hero {
+  position: relative;
+  height: 45vh;
+  min-height: 300px;
+  max-height: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 3rem;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.info-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px);
+  transform: scale(1.1);
+  z-index: 1;
+}
+
+.info-hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 2;
+}
+
+.info-hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: white;
+  max-width: 800px;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.info-hero h1 {
+  font-family: 'Special Gothic Condensed One', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 2px;
+}
+
+.info-hero .hero-subtitle {
+  font-size: 1.3rem;
+  font-weight: 300;
+  opacity: 0.9;
+  line-height: 1.4;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  margin: 0;
+}
+
+/* Main Content Container */
+.info-content-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+  position: relative;
+}
+
+.info-content-wrapper {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  padding: 3rem;
+  position: relative;
+  z-index: 10;
+  margin-top: -2rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+/* Enhanced Typography for Gist Content */
+.info-content-section {
+  display: none;
+  width: 100%;
+  line-height: 1.8;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  color: #2c3e50;
+}
+
+.info-content-section:first-child {
+  display: block;
+}
+
+/* Headings */
+.info-content-section h1 {
+  font-family: 'Special Gothic Condensed One', sans-serif;
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
+  color: #1a1a1a;
+  font-weight: 400;
+  border-bottom: 3px solid #667eea;
+  padding-bottom: 1rem;
+  position: relative;
+}
+
+.info-content-section h1::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.info-content-section h2 {
+  font-family: 'Special Gothic Condensed One', sans-serif;
+  font-size: 2.2rem;
+  margin: 2.5rem 0 1.5rem;
+  color: #2a2a2a;
+  font-weight: 400;
+  border-bottom: 2px solid #e8f4fd;
+  padding-bottom: 0.8rem;
+  position: relative;
+}
+
+.info-content-section h2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.info-content-section h3 {
+  font-size: 1.6rem;
+  margin: 2rem 0 1rem;
+  color: #333333;
+  font-weight: 600;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.info-content-section h3::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 20px;
+  background: linear-gradient(180deg, #667eea, #764ba2);
+  border-radius: 2px;
+}
+
+/* Paragraphs and Text */
+.info-content-section p {
+  margin-bottom: 1.8rem;
+  font-weight: 400;
+  color: #2c3e50;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.info-content-section strong {
+  color: #667eea;
+  font-weight: 600;
+  background: linear-gradient(120deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.info-content-section em {
+  color: #27ae60;
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* Code Styling */
+.info-content-section code {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Courier New', monospace;
+  color: #e74c3c;
+  border: 1px solid #dee2e6;
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+.info-content-section pre {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 1.5rem;
+  border-radius: 12px;
+  overflow-x: auto;
+  margin: 2rem 0;
+  border: 1px solid #dee2e6;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.info-content-section pre code {
+  background: none;
+  padding: 0;
+  border: none;
+  color: #2c3e50;
+  font-size: 0.95em;
+}
+
+/* Blockquotes */
+.info-content-section blockquote {
+  border-left: 4px solid #667eea;
+  margin: 2rem 0;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e8f4fd 100%);
+  border-radius: 0 12px 12px 0;
+  color: #34495e;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.info-content-section blockquote::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  font-size: 4rem;
+  color: #667eea;
+  opacity: 0.3;
+  font-family: serif;
+}
+
+/* Lists */
+.info-content-section ul,
+.info-content-section ol {
+  margin: 2rem 0;
+  padding-left: 2rem;
+  color: #2c3e50;
+}
+
+.info-content-section > ul > li,
+.info-content-section > ol > li {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.info-content-section ul > li::before {
+  content: '▶';
+  position: absolute;
+  left: -1.5rem;
+  color: #667eea;
+  font-size: 0.8rem;
+}
+
+.info-content-section ol {
+  counter-reset: custom-counter;
+}
+
+.info-content-section ol > li {
+  counter-increment: custom-counter;
+  position: relative;
+}
+
+.info-content-section ol > li::before {
+  content: counter(custom-counter);
+  position: absolute;
+  left: -2rem;
+  top: 0;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Images */
+.info-content-section img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 2rem 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.info-content-section img:hover {
+  transform: scale(1.02);
+}
+
+/* Enhanced Table Styling */
+.info-content-section table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 2rem 0;
+  font-size: 1rem;
+  background: white;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e9ecef;
+}
+
+.info-content-section th {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-weight: 600;
+  text-align: left;
+  padding: 1.2rem;
+  border-bottom: none;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
+.info-content-section td {
+  padding: 1.2rem;
+  border-bottom: 1px solid #f1f3f5;
+  color: #2c3e50;
+  vertical-align: top;
+}
+
+.info-content-section tr:last-child td {
+  border-bottom: none;
+}
+
+.info-content-section tr:nth-child(even) {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.info-content-section tr:hover {
+  background: linear-gradient(135deg, #e8f4fd 0%, #f1f3f5 100%);
+  transform: scale(1.01);
+  transition: all 0.2s ease;
+}
+
+/* Links */
+.info-content-section a {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.info-content-section a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  transition: width 0.3s ease;
+}
+
+.info-content-section a:hover {
+  color: #764ba2;
+}
+
+.info-content-section a:hover::after {
+  width: 100%;
+}
+
+/* Horizontal Rules */
+.info-content-section hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #667eea, #764ba2, transparent);
+  margin: 3rem 0;
+  border-radius: 1px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .info-hero {
+    height: 37.5vh;
+    min-height: 225px;
+  }
+  
+  .info-hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .info-hero p {
+    font-size: 1.1rem;
+  }
+  
+  .info-content-container {
+    padding: 0 1rem 2rem;
+  }
+  
+  .info-content-wrapper {
+    padding: 2rem 1.5rem;
+    margin-top: -1rem;
+  }
+  
+  .info-content-section h1 {
+    font-size: 2.2rem;
+  }
+  
+  .info-content-section h2 {
+    font-size: 1.8rem;
+  }
+  
+  .info-content-section h3 {
+    font-size: 1.4rem;
+  }
+  
+  .info-content-section p {
+    font-size: 1rem;
+  }
+  
+  .info-content-section table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    margin: 1.5rem 0;
+  }
+  
+  .info-content-section th,
+  .info-content-section td {
+    padding: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .info-hero {
+    height: 30vh;
+    min-height: 187px;
+  }
+  
+  .info-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .info-hero p {
+    font-size: 1rem;
+  }
+  
+  .info-content-wrapper {
+    padding: 1.5rem 1rem;
+  }
+  
+  .info-content-section h1 {
+    font-size: 1.8rem;
+  }
+  
+  .info-content-section h2 {
+    font-size: 1.5rem;
+  }
+  
+  .info-content-section h3 {
+    font-size: 1.2rem;
+  }
+}
