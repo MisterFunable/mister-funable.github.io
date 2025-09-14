@@ -215,7 +215,7 @@ body::before {
 
 /* Professional Collections Section */
 .collections-section {
-  padding: 30px 0 100px 0;
+  padding: 30px 0 150px 0;
   background: #ffffff;
   margin-top: 0px;
 }
@@ -398,7 +398,7 @@ body::before {
   }
   
   .collections-section {
-    padding: 20px 0 60px 0;
+    padding: 20px 0 100px 0;
     margin-top: 0px;
   }
   
@@ -431,7 +431,7 @@ body::before {
   }
   
   .collections-section {
-    padding: 15px 0 40px 0;
+    padding: 15px 0 80px 0;
     margin-top: 0px;
   }
   
