@@ -202,8 +202,8 @@
 .dropdown-content {
   position: absolute;
   top: 100%;
-  left: auto;
-  right: 0;
+  left: auto !important;
+  right: 0 !important;
   background-color: #ffffff;
   min-width: 220px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -221,6 +221,12 @@
 .dropdown:hover > .dropdown-content {
   opacity: 1;
   visibility: visible;
+}
+
+/* Ensure all nav-links dropdowns are right-aligned */
+.nav-links .dropdown .dropdown-content {
+  left: auto !important;
+  right: 0 !important;
 }
 
 /* Nested dropdown content positioning */
