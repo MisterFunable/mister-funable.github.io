@@ -20,6 +20,7 @@ class DollInventorySearch {
     this.searchBox.addEventListener('focus', () => this.showResults());
     this.searchBox.addEventListener('blur', () => this.hideResults());
     
+    
     // Close results when clicking outside
     document.addEventListener('click', (e) => {
       if (!e.target.closest('.search-container')) {
@@ -27,6 +28,7 @@ class DollInventorySearch {
       }
     });
   }
+  
   
   loadSearchData() {
     // This would typically load from an API or JSON file

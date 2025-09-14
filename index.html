@@ -130,75 +130,63 @@
       z-index: 1000;
     }
     
-    /* Search functionality styles */
-    .search-container {
-      position: relative;
-      max-width: 600px;
-      margin: 0 auto 40px auto;
-      padding: 0 20px;
+    /* Scroll Down Button */
+    .scroll-down-btn {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
       z-index: 10;
     }
     
-    .search-box {
-      width: 100%;
-      padding: 12px 20px;
-      border: 2px solid #D8D8DA;
-      border-radius: 25px;
-      font-size: 16px;
-      outline: none;
-      transition: border-color 0.3s ease;
+    .scroll-down-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.5);
+      transform: translateX(-50%) translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
     }
     
-    .search-box:focus {
-      border-color: #007bff;
+    .scroll-down-btn:active {
+      transform: translateX(-50%) translateY(-1px);
     }
     
-    .search-results {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background: white;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      max-height: 300px;
-      overflow-y: auto;
-      z-index: 1000;
-      display: none;
+    .scroll-arrow {
+      color: #ffffff;
+      transition: transform 0.3s ease;
     }
     
-    .search-result-item {
-      padding: 12px 20px;
-      border-bottom: 1px solid #eee;
-      cursor: pointer;
-      transition: background-color 0.2s ease;
+    .scroll-down-btn:hover .scroll-arrow {
+      transform: translateY(2px);
     }
     
-    .search-result-item:hover {
-      background-color: #f8f9fa;
+    /* Bounce animation */
+    .scroll-down-btn {
+      animation: bounce 2s infinite;
     }
     
-    .search-result-item:last-child {
-      border-bottom: none;
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+      }
+      40% {
+        transform: translateX(-50%) translateY(-10px);
+      }
+      60% {
+        transform: translateX(-50%) translateY(-5px);
+      }
     }
     
-    .search-result-title {
-      font-weight: bold;
-      color: #333;
-      margin-bottom: 4px;
-    }
-    
-    .search-result-description {
-      color: #666;
-      font-size: 14px;
-    }
-    
-    .search-result-category {
-      color: #999;
-      font-size: 12px;
-      text-transform: uppercase;
-    }
   </style>
 </head>
 
@@ -207,11 +195,6 @@
 
   <!-- Hero Section -->
   <section class="hero-section">
-    <!-- Search Container -->
-    <div class="search-container">
-      <input type="text" id="searchBox" class="search-box" placeholder="Search dolls, brands, accessories..." autocomplete="off">
-      <div id="searchResults" class="search-results"></div>
-    </div>
             <!-- Mascot -->
         <div class="hero-mascot">
           <img src="assets/images/iratsutoya-style/pointing.png" alt="Site Mascot pointing at doll collection" class="mascot-image" 
@@ -256,6 +239,13 @@
           <span class="stat-label" data-lang-en="Guides" data-lang-es="Guías">Guides</span>
         </div>
       </div>
+    </div>
+    
+    <!-- Scroll Down Button -->
+    <div class="scroll-down-btn" onclick="scrollToCollections()">
+      <svg class="scroll-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
     </div>
   </section>
 
@@ -312,9 +302,19 @@
   <script src="js/navbar-loader.js" defer></script>
   <script src="js/language-switcher.js" defer></script>
   <script src="js/footer-loader.js" defer></script>
-  <script src="js/search.js" defer></script>
   <script src="js/analytics.js" defer></script>
   <script>
+    // Scroll to collections function
+    function scrollToCollections() {
+      const collectionsSection = document.getElementById('collections');
+      if (collectionsSection) {
+        collectionsSection.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    }
+    
     // Load background images for collection cards
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('.collection-card').forEach(card => {

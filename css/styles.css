@@ -165,6 +165,7 @@
   height: 8px;
   transition: transform 0.3s ease;
   flex-shrink: 0;
+  margin-left: 0.5rem;
 }
 
 .dropdown:hover > .dropdown-btn .dropdown-arrow {
@@ -239,14 +240,8 @@
 
 /* Prevent dropdown from going off-screen */
 @media (min-width: 769px) {
-  /* Center the first dropdown */
-  .nav-links > .dropdown:first-child .dropdown-content {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  
-  /* Align second dropdown to prevent overflow */
-  .nav-links > .dropdown:nth-child(2) .dropdown-content {
+  /* Align all dropdowns to the right */
+  .nav-links > .dropdown .dropdown-content {
     left: auto;
     right: 0;
   }
@@ -260,8 +255,8 @@
     margin-right: 0;
   }
   
-  /* For the Resources dropdown (second), nested menus go to the left */
-  .nav-links > .dropdown:nth-child(2) .dropdown-content .nested-content {
+  /* For the Resources dropdown (third), nested menus go to the left */
+  .nav-links > .dropdown:nth-child(3) .dropdown-content .nested-content {
     left: auto;
     right: 100%;
     margin-left: 0;

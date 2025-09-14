@@ -32,11 +32,14 @@ body::before {
 /* Professional Hero Section */
 .hero-section {
   position: relative;
-  padding: 80px 0;
+  padding: 40px 0 120px 0;
   margin-top: 60px;
   background: linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 100%);
   border-bottom: 1px solid #3a3a3a;
   overflow: hidden;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
 }
 
 /* Hero Mascot */
@@ -212,8 +215,9 @@ body::before {
 
 /* Professional Collections Section */
 .collections-section {
-  padding: 80px 0;
+  padding: 30px 0 100px 0;
   background: #ffffff;
+  margin-top: 0px;
 }
 
 .container {
@@ -224,17 +228,23 @@ body::before {
 
 .section-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
+  margin-top: 0;
 }
 
 .section-title {
   font-size: 2rem;
   font-weight: 700;
   color: #1a1a1a;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
   font-family: 'Special Gothic Condensed One', sans-serif;
   letter-spacing: 1px;
   text-transform: uppercase;
+}
+
+/* Collections section specific styling */
+.collections-section .section-title {
+  margin-bottom: 1rem;
 }
 
 .section-divider {
@@ -248,13 +258,13 @@ body::before {
 .collections-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  margin-top: 3rem;
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
 
 .collection-card {
   position: relative;
-  height: 400px;
+  height: 280px; /* Reduced from 400px by 30% */
   border-radius: 12px;
   overflow: hidden;
   background-size: cover;
@@ -295,23 +305,23 @@ body::before {
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 2.5rem;
+  padding: 1.75rem; /* Reduced from 2.5rem by 30% */
   color: white;
   z-index: 1;
 }
 
 .card-title {
-  font-size: 1.8rem;
+  font-size: 1.4rem; /* Reduced from 1.8rem by ~22% */
   font-weight: 700;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.6rem; /* Reduced from 0.8rem by 25% */
   font-family: 'Special Gothic Condensed One', sans-serif;
 }
 
 .card-description {
-  font-size: 1rem;
-  line-height: 1.5;
+  font-size: 0.9rem; /* Reduced from 1rem by 10% */
+  line-height: 1.4; /* Slightly tighter line height */
   color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem; /* Reduced from 1.5rem by 33% */
 }
 
 .card-footer {
@@ -339,7 +349,8 @@ body::before {
 /* Responsive Design */
 @media (max-width: 768px) {
   .hero-section {
-    padding: 60px 0;
+    padding: 30px 0 80px 0;
+    min-height: 50vh;
   }
   
   .hero-main {
@@ -386,12 +397,18 @@ body::before {
     }
   }
   
+  .collections-section {
+    padding: 20px 0 60px 0;
+    margin-top: 0px;
+  }
+  
   .collections-grid {
     grid-template-columns: 1fr;
+    gap: 1.2rem;
   }
   
   .collection-card {
-    height: 350px;
+    height: 250px; /* Reduced from 350px by ~29% */
   }
   
   .section-title {
@@ -400,12 +417,22 @@ body::before {
 }
 
 @media (max-width: 480px) {
+  .hero-section {
+    padding: 20px 0 60px 0;
+    min-height: 45vh;
+  }
+  
   .hero-main {
     font-size: 2rem;
   }
   
   .hero-subtitle {
     font-size: 1rem;
+  }
+  
+  .collections-section {
+    padding: 15px 0 40px 0;
+    margin-top: 0px;
   }
   
   /* Mascot small screen adjustments */
@@ -443,10 +470,10 @@ body::before {
   }
   
   .card-title {
-    font-size: 1.5rem;
+    font-size: 1.2rem; /* Reduced from 1.5rem by 20% */
   }
   
   .card-content {
-    padding: 2rem;
+    padding: 1.4rem; /* Reduced from 2rem by 30% */
   }
 }

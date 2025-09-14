@@ -15,6 +15,14 @@
   transform: translateY(20px);
 }
 
+/* Transparent footer when at bottom */
+.footer.at-bottom {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(2px);
+  border-top: 1px solid rgba(234, 234, 234, 0.2);
+  box-shadow: none;
+}
+
 /* Show footer when class is added */
 .footer.show {
   bottom: 0;

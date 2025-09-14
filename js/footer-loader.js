@@ -27,7 +27,7 @@ function initFooterScroll() {
     
     // Show footer when user is within 150px of bottom or at the very bottom
     const nearBottom = scrollTop + windowHeight >= documentHeight - 150;
-    const atBottom = scrollTop + windowHeight >= documentHeight;
+    const atBottom = scrollTop + windowHeight >= documentHeight - 10; // 10px tolerance for "at bottom"
     
     if (nearBottom && !isFooterVisible) {
       footer.classList.add('show');
@@ -35,6 +35,13 @@ function initFooterScroll() {
     } else if (!nearBottom && isFooterVisible && !atBottom) {
       footer.classList.remove('show');
       isFooterVisible = false;
+    }
+    
+    // Add transparent class when at bottom
+    if (atBottom) {
+      footer.classList.add('at-bottom');
+    } else {
+      footer.classList.remove('at-bottom');
     }
   }
 
