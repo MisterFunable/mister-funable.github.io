@@ -27,11 +27,24 @@
 }
 
 .mission-statement {
-  background: #f8f9fa;
-  padding: 30px;
-  border-radius: 8px;
+  background: #f0f8f0;
+  padding: 35px;
+  border-radius: 12px;
   margin-bottom: 40px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  border-left: 4px solid #27ae60;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.mission-statement:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.mission-statement h2 {
+  color: #1e8449;
+  margin-bottom: 20px;
 }
 
 .features {
@@ -79,35 +92,35 @@
   box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
-/* Individual feature colors */
+/* Individual feature colors - soft solid colors */
 .features li:nth-child(1) {
-  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+  background: #f8f0ff;
   color: #2c3e50;
-  border-left-color: #ff6b6b;
+  border-left-color: #9b59b6;
 }
 
 .features li:nth-child(1) h3 {
-  color: #d63031;
+  color: #8e44ad;
 }
 
 .features li:nth-child(2) {
-  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+  background: #f0f8ff;
   color: #2c3e50;
-  border-left-color: #00b894;
+  border-left-color: #3498db;
 }
 
 .features li:nth-child(2) h3 {
-  color: #00b894;
+  color: #2980b9;
 }
 
 .features li:nth-child(3) {
-  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  background: #fff8f0;
   color: #2c3e50;
-  border-left-color: #e17055;
+  border-left-color: #e67e22;
 }
 
 .features li:nth-child(3) h3 {
-  color: #e17055;
+  color: #d35400;
 }
 
 .mascot-section {
@@ -362,7 +375,7 @@
   background: linear-gradient(135deg, #5865F2 0%, #7289DA 100%);
   padding: 40px;
   border-radius: 12px;
-  margin: 40px 0;
+  margin: 0 0 40px 0;
   color: white;
   text-align: center;
 }
@@ -450,6 +463,21 @@ h2 {
   color: #333;
   margin-bottom: 20px;
   font-weight: 600;
+}
+
+/* Section titles outside of blocks */
+.about-content > h2 {
+  margin-top: 50px;
+  margin-bottom: 30px;
+  font-size: 2.2rem;
+  text-align: left;
+}
+
+.community-title {
+  text-align: center !important;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  font-size: 2.2rem;
 }
 
 h3 {

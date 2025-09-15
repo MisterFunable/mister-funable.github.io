@@ -13,13 +13,14 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/metal-build.css">
   <link rel="stylesheet" href="css/inventory.css">
+  <link rel="stylesheet" href="css/info.css">
   
   <!-- Google Analytics 4 -->
   <script src="js/analytics-loader.js" defer></script>
   <script src="js/clean-urls.js" defer></script>
   
-  <title data-lang-en="Metal Build Sets" data-lang-es="Sets Metal Build">Metal Build Sets</title>
-  <meta name="description" content="Browse Metal Build sets with images and names in a compact, searchable table.">
+  <title data-lang-en="Metal Build Instructions" data-lang-es="Instructiones Metal Build">Metal Build Instructions</title>
+  <meta name="description" content="Consolidating manuals in one place">
   <style>
     .hugging-gundam-overlay {
       position: fixed;
@@ -68,41 +69,53 @@
 <body>
   <div id="navbar-placeholder"></div>
 
-  <!-- Page Header - Removed -->
+  <!-- Hero Section -->
+  <section class="info-hero">
+    <div class="info-hero-content">
+      <h1 data-lang-en="Metal Build Collection" data-lang-es="Colección Metal Build">Metal Build Collection</h1>
+      <p class="hero-subtitle" data-lang-en="Explore our comprehensive collection of Metal Build mechs and accessories"
+         data-lang-es="Explora nuestra colección completa de mechas y accesorios Metal Build">
+        Explore our comprehensive collection of Metal Build mechs and accessories
+      </p>
+    </div>
+  </section>
 
   <!-- Hugging Gundam Overlay Image -->
   <img src="assets/images/iratsutoya-style/hugging-gundam.png" alt="Hugging Gundam" class="hugging-gundam-overlay">
 
-  <div class="metal-build-container">
+  <!-- Main Content -->
+  <div class="info-content-container">
+    <div class="info-content-wrapper">
+      <div class="metal-build-container">
 
-    <!-- Description Section -->
-    <div class="metal-build-description" style="margin-bottom: 2rem; padding: 1.5rem; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #D4AF37;">
-      <h3 style="margin-top: 0; margin-bottom: 1rem; color: #2c3e50; font-family: 'Special Gothic Condensed One', sans-serif;">Useful Links</h3>
-      <ul style="margin: 0; padding-left: 1.5rem; line-height: 1.6;">
-        <li style="margin-bottom: 0.5rem;">
-          <a href="https://tamashiiweb.com/torisetsu//?wovn=es#" target="_blank" rel="noopener noreferrer" style="color: #3498db; text-decoration: none; font-weight: 500;">
-            <strong>Manual list</strong>
-          </a>: 
-          <span data-lang-en="filter by brand and select additional years" data-lang-es="filtra por marca y selecciona años adicionales">
-            filter by brand and select additional years
-          </span>
-        </li>
-        <li style="margin-bottom: 0;">
-          <a href="https://tamashiiweb.com/special/simulator/alternativestrikes/" target="_blank" rel="noopener noreferrer" style="color: #3498db; text-decoration: none; font-weight: 500;">
-            <strong>Strike simulator</strong>
-          </a>: 
-          <span data-lang-en="allows you to look the STRIKER PACKS" data-lang-es="te permite ver los STRIKER PACKS">
-            allows you to look the STRIKER PACKS
-          </span>
-        </li>
-      </ul>
-    </div>
+        <!-- Description Section -->
+        <div class="metal-build-description" style="margin-bottom: 2rem; padding: 1.5rem; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #D4AF37;">
+          <h3 style="margin-top: 0; margin-bottom: 1rem; color: #2c3e50; font-family: 'Special Gothic Condensed One', sans-serif;">Useful Links</h3>
+          <ul style="margin: 0; padding-left: 1.5rem; line-height: 1.6;">
+            <li style="margin-bottom: 0.5rem;">
+              <a href="https://tamashiiweb.com/torisetsu//?wovn=es#" target="_blank" rel="noopener noreferrer" style="color: #3498db; text-decoration: none; font-weight: 500;">
+                <strong>Manual list</strong>
+              </a>: 
+              <span data-lang-en="filter by brand and select additional years" data-lang-es="filtra por marca y selecciona años adicionales">
+                filter by brand and select additional years
+              </span>
+            </li>
+            <li style="margin-bottom: 0;">
+              <a href="https://tamashiiweb.com/special/simulator/alternativestrikes/" target="_blank" rel="noopener noreferrer" style="color: #3498db; text-decoration: none; font-weight: 500;">
+                <strong>Strike simulator</strong>
+              </a>: 
+              <span data-lang-en="allows you to look the STRIKER PACKS" data-lang-es="te permite ver los STRIKER PACKS">
+                allows you to look the STRIKER PACKS
+              </span>
+            </li>
+          </ul>
+        </div>
 
-    <div style="text-align:right; margin-bottom:1rem;">
-      <input type="text" id="mb-search" placeholder="Search by name, series, or type..." style="padding:0.4rem 0.7rem; width: 250px; border-radius: 5px; border: 1px solid #ccc;">
-    </div>
+        <div style="text-align:right; margin-bottom:1rem;">
+          <input type="text" id="mb-search" placeholder="Search by name, series, or type..." style="padding:0.4rem 0.7rem; width: 250px; border-radius: 5px; border: 1px solid #ccc;">
+        </div>
 
-    <section class="metal-build-content">
+        <section class="metal-build-content">
       <table class="metal-build-table" id="mb-table">
         <thead>
           <tr>
@@ -375,6 +388,8 @@
         </tbody>
       </table>
     </section>
+      </div>
+    </div>
   </div>
 
   <!-- Modal for image zoom -->
