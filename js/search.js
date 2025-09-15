@@ -37,7 +37,7 @@ class DollInventorySearch {
       {
         title: "1/6 Scale Dolls",
         description: "Browse 2500+ 1/6 scale dolls, bodies, and accessories",
-        url: "/main-inventory.html",
+        url: "/one-sixth.html",
         category: "Collections",
         keywords: ["1/6 scale", "dolls", "bodies", "accessories", "collectibles"]
       },

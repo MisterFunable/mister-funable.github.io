@@ -51,7 +51,7 @@ Replace `GA_MEASUREMENT_ID` in these files with your actual Measurement ID:
 
 **Files to update:**
 - `index.html` (line 76 and 81)
-- `main-inventory.html` (line 53 and 58)
+- `one-sixth.html` (line 53 and 58)
 - `about.html` (line 49 and 54)
 
 **Example:**
@@ -135,7 +135,7 @@ With these improvements, you should see:
 
 ### Files Modified
 - `index.html` - Enhanced with SEO and analytics
-- `main-inventory.html` - Collection page optimization
+- `one-sixth.html` - Collection page optimization
 - `about.html` - About page optimization
 - `js/search.js` - Internal search functionality
 - `js/analytics.js` - Advanced analytics tracking

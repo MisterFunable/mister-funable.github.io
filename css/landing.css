@@ -477,3 +477,76 @@ body::before {
     padding: 1.4rem; /* Reduced from 2rem by 30% */
   }
 }
+
+/* Coming Soon Card Styles */
+.collection-card.coming-soon {
+  position: relative;
+  opacity: 0.85;
+  filter: grayscale(20%);
+  transition: all 0.3s ease;
+}
+
+.collection-card.coming-soon:hover {
+  opacity: 0.95;
+  filter: grayscale(10%);
+  transform: translateY(-2px);
+}
+
+.collection-card.coming-soon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(243, 156, 18, 0.1) 100%);
+  border-radius: 12px;
+  z-index: 1;
+}
+
+.collection-card.coming-soon .card-overlay {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.5) 100%);
+  z-index: 2;
+}
+
+.collection-card.coming-soon .card-content {
+  position: relative;
+  z-index: 3;
+}
+
+.coming-soon-badge {
+  background: linear-gradient(135deg, #D4AF37 0%, #f39c12 100%) !important;
+  color: white !important;
+  padding: 0.3rem 0.8rem !important;
+  border-radius: 20px !important;
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3) !important;
+  animation: pulse 2s infinite !important;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 16px rgba(212, 175, 55, 0.5);
+  }
+  100% {
+    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+  }
+}
+
+/* Mobile adjustments for coming soon card */
+@media (max-width: 768px) {
+  .collection-card.coming-soon {
+    opacity: 0.9;
+  }
+  
+  .coming-soon-badge {
+    font-size: 0.75rem !important;
+    padding: 0.25rem 0.6rem !important;
+  }
+}

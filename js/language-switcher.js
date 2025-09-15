@@ -52,8 +52,15 @@ function changeLanguage(lang) {
   
   // Close language dropdown after selection
   const languageSwitcher = document.querySelector('.language-switcher');
+  const languageBtn = document.querySelector('.language-btn');
+  
   if (languageSwitcher) {
     languageSwitcher.classList.remove('active');
+    // Also remove focus to close hover-based dropdown
+    if (languageBtn) {
+      languageBtn.blur();
+      languageBtn.setAttribute('aria-expanded', 'false');
+    }
   }
 }
 
@@ -101,12 +108,15 @@ function initializeLanguageSwitcher() {
     languageList.addEventListener('click', (e) => {
       if (e.target.closest('.lang-btn')) {
         e.preventDefault();
-        // The onclick handler will be called, then we close the dropdown
-        setTimeout(() => {
-          if (languageBtn) {
-            languageBtn.setAttribute('aria-expanded', 'false');
-          }
-        }, 100);
+        e.stopPropagation();
+        // Close the dropdown immediately
+        if (languageSwitcher) {
+          languageSwitcher.classList.remove('active');
+        }
+        if (languageBtn) {
+          languageBtn.setAttribute('aria-expanded', 'false');
+          languageBtn.blur();
+        }
       }
     });
   }
