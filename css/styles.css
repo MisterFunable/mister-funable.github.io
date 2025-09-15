@@ -200,6 +200,15 @@
   transform: rotate(180deg);
 }
 
+/* Ensure arrow points down by default and up on hover */
+.dropdown-arrow {
+  transform: rotate(0deg);
+}
+
+.dropdown:hover .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
 /* Nested dropdown styling */
 .dropdown.nested {
   width: 100%;
@@ -261,6 +270,32 @@
   right: 0 !important;
 }
 
+/* Force right alignment for all dropdowns in navbar */
+.navbar .dropdown-content {
+  left: auto !important;
+  right: 0 !important;
+}
+
+/* Specific rule for dropdown positioning */
+.dropdown {
+  position: relative;
+}
+
+.dropdown .dropdown-content {
+  position: absolute !important;
+  left: auto !important;
+  right: 0 !important;
+  top: calc(100% + 0.75rem) !important;
+}
+
+/* Override any conflicting styles for dropdown positioning */
+.navbar .nav-links .dropdown .dropdown-content {
+  position: absolute !important;
+  left: auto !important;
+  right: 0 !important;
+  top: calc(100% + 0.75rem) !important;
+}
+
 /* Nested dropdown content positioning */
 .dropdown-content.nested-content {
   position: absolute;
@@ -269,16 +304,31 @@
   margin-top: 0;
   margin-left: 0.25rem;
   transform: translateX(0);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Show nested dropdown on hover */
+/* Show nested dropdown only when hovering over the nested dropdown button itself */
 .dropdown.nested:hover > .dropdown-content.nested-content {
   opacity: 1;
   visibility: visible;
 }
 
+/* Prevent nested dropdown from showing when hovering over parent dropdown */
+.dropdown-content:hover .dropdown-content.nested-content {
+  opacity: 0;
+  visibility: hidden;
+}
+
 /* Prevent dropdown from going off-screen */
 @media (min-width: 769px) {
+  /* Ensure all main dropdowns are right-aligned on desktop */
+  .nav-links .dropdown .dropdown-content {
+    left: auto !important;
+    right: 0 !important;
+  }
+  
   /* Nested dropdowns appear to the right by default */
   .dropdown-content .nested-content {
     left: 100%;
@@ -286,6 +336,21 @@
     top: 0;
     margin-left: 0.25rem;
     margin-right: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Show nested dropdown only when hovering over the nested dropdown button */
+  .dropdown.nested:hover .dropdown-content.nested-content {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* Prevent nested dropdown from showing when hovering over parent dropdown content */
+  .dropdown-content:hover .dropdown-content.nested-content {
+    opacity: 0;
+    visibility: hidden;
   }
   
   /* For the Resources dropdown (third), nested menus go to the left */
@@ -988,6 +1053,58 @@ body {
 /* Hide iframe error messages */
 .iframe-error-message {
   display: none !important;
+}
+
+/* Desktop dropdown positioning - override mobile styles */
+@media (min-width: 769px) {
+  .navbar .nav-links .dropdown {
+    position: relative !important;
+  }
+  
+  .navbar .nav-links .dropdown .dropdown-content {
+    position: absolute !important;
+    left: auto !important;
+    right: 0 !important;
+    top: calc(100% + 0.75rem) !important;
+    width: auto !important;
+    min-width: 240px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12) !important;
+    padding: 0.5rem 0 !important;
+    margin: 0 !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 12px !important;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    transform: translateY(-10px) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+  
+  .navbar .nav-links .dropdown:hover .dropdown-content {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+  }
+  
+  /* Nested dropdown behavior - only show when hovering over the nested button */
+  .navbar .nav-links .dropdown-content .nested-content {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+  
+  .navbar .nav-links .dropdown.nested:hover .dropdown-content.nested-content {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  
+  /* Prevent nested dropdown from showing when hovering over parent dropdown content */
+  .navbar .nav-links .dropdown-content:hover .dropdown-content.nested-content {
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
 }
 
 /* Prevent FOUC (Flash of Unstyled Content) */
