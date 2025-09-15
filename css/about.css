@@ -48,10 +48,66 @@
 
 .features li {
   background: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  transition: all 0.3s ease;
+  border-left: 4px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.features li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.features li:hover::before {
+  opacity: 1;
+}
+
+.features li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* Individual feature colors */
+.features li:nth-child(1) {
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+  color: #2c3e50;
+  border-left-color: #ff6b6b;
+}
+
+.features li:nth-child(1) h3 {
+  color: #d63031;
+}
+
+.features li:nth-child(2) {
+  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+  color: #2c3e50;
+  border-left-color: #00b894;
+}
+
+.features li:nth-child(2) h3 {
+  color: #00b894;
+}
+
+.features li:nth-child(3) {
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  color: #2c3e50;
+  border-left-color: #e17055;
+}
+
+.features li:nth-child(3) h3 {
+  color: #e17055;
 }
 
 .mascot-section {
@@ -425,6 +481,11 @@ a:hover {
 
   .features ul {
     grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .features li {
+    padding: 20px;
   }
 
   .contribute-options {
