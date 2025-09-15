@@ -5,19 +5,7 @@
     // Flag to prevent multiple executions
     let hasExecuted = false;
     
-    // Only run on pages that have .html in the URL
-    if (window.location.pathname.includes('.html')) {
-        // Get the clean URL (remove .html)
-        const cleanUrl = window.location.pathname.replace(/\.html$/, '');
-        
-        // Update the URL without reloading the page
-        if (cleanUrl !== window.location.pathname) {
-            window.history.replaceState({}, document.title, cleanUrl);
-        }
-    }
-    
-    // Handle navigation to clean URLs
-    function handleCleanUrlNavigation() {
+    function handleCleanUrls() {
         // Prevent multiple executions
         if (hasExecuted) return;
         hasExecuted = true;
@@ -36,9 +24,15 @@
             return;
         }
         
-        // If the path doesn't end with .html and doesn't end with /
-        if (!currentPath.endsWith('.html') && !currentPath.endsWith('/') && currentPath !== '/') {
-            // For production, use fetch to check if the file exists
+        // If the URL has .html, remove it from the address bar
+        if (currentPath.includes('.html')) {
+            const cleanUrl = currentPath.replace(/\.html$/, '');
+            if (cleanUrl !== currentPath) {
+                window.history.replaceState({}, document.title, cleanUrl);
+            }
+        }
+        // If the URL is clean (no .html), try to load the .html version
+        else if (!currentPath.endsWith('/') && currentPath !== '/') {
             fetch(currentPath + '.html')
                 .then(response => {
                     if (response.ok) {
@@ -53,6 +47,6 @@
         }
     }
     
-    // Run only on DOMContentLoaded to prevent immediate execution
-    document.addEventListener('DOMContentLoaded', handleCleanUrlNavigation);
+    // Run on DOMContentLoaded
+    document.addEventListener('DOMContentLoaded', handleCleanUrls);
 })();
