@@ -96,15 +96,31 @@ async function fetchGistContent(gistConfig) {
   try {
     console.log('Fetching gist:', gistConfig.id, 'file:', gistConfig.file); // Debug log
     
+    // Owner can be provided; default to account owner
+    const DEFAULT_GIST_OWNER = 'MisterFunable';
+    const owner = gistConfig.owner || DEFAULT_GIST_OWNER;
+    const revision = gistConfig.revision || gistConfig.rev || gistConfig.sha || '';
+    
+    const rawOwnerUrl = revision
+      ? `https://gist.githubusercontent.com/${owner}/${gistConfig.id}/raw/${revision}/${gistConfig.file}`
+      : `https://gist.githubusercontent.com/${owner}/${gistConfig.id}/raw/${gistConfig.file}`;
+    const rawAnonUrl = revision
+      ? `https://gist.githubusercontent.com/anonymous/${gistConfig.id}/raw/${revision}/${gistConfig.file}`
+      : `https://gist.githubusercontent.com/anonymous/${gistConfig.id}/raw/${gistConfig.file}`;
+
     // Try multiple approaches to fetch the gist content
     const approaches = [
-      // Approach 1: Direct gist URL
-      `https://gist.githubusercontent.com/anonymous/${gistConfig.id}/raw/${gistConfig.file}`,
-      // Approach 2: CORS proxy
-      `https://cors-anywhere.herokuapp.com/https://gist.githubusercontent.com/anonymous/${gistConfig.id}/raw/${gistConfig.file}`,
-      // Approach 3: Alternative CORS proxy
-      `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://gist.githubusercontent.com/anonymous/${gistConfig.id}/raw/${gistConfig.file}`)}`,
-      // Approach 4: GitHub API with CORS proxy
+      // Approach 1: Direct gist URL with owner
+      rawOwnerUrl,
+      // Approach 2: Direct gist URL (anonymous fallback)
+      rawAnonUrl,
+      // Approach 3: GitHub API (usually CORS enabled)
+      `https://api.github.com/gists/${gistConfig.id}`,
+      // Approach 4: CORS proxy (owner)
+      `https://cors-anywhere.herokuapp.com/${rawOwnerUrl}`,
+      // Approach 5: Alternative CORS proxy (owner)
+      `https://api.allorigins.win/raw?url=${encodeURIComponent(rawOwnerUrl)}`,
+      // Approach 6: CORS proxy for API
       `https://cors-anywhere.herokuapp.com/https://api.github.com/gists/${gistConfig.id}`
     ];
     
@@ -114,11 +130,11 @@ async function fetchGistContent(gistConfig) {
         const response = await fetch(approaches[i]);
         
         if (response.ok) {
-          if (i === 3) {
-            // GitHub API approach - need to parse JSON
+          // GitHub API response (approach 3 or 6)
+          if (approaches[i].includes('api.github.com/gists/')) {
             const data = await response.json();
-            const fileContent = data.files[gistConfig.file];
-            if (fileContent) {
+            const fileContent = data.files && data.files[gistConfig.file];
+            if (fileContent && typeof fileContent.content === 'string') {
               console.log(`Content loaded successfully using approach ${i + 1}`);
               return fileContent.content;
             }
@@ -153,7 +169,25 @@ async function loadPageContent(pageName) {
   }
   
   console.log('Loading page:', pageName); // Debug log
-  const config = gistConfig[pageName];
+  // Try direct match first
+  let config = gistConfig[pageName];
+  
+  // Fallbacks: normalize page name and try common variants
+  if (!config && typeof pageName === 'string') {
+    const candidates = [];
+    const lower = pageName.toLowerCase();
+    const noHtml = pageName.replace(/\.html$/i, '');
+    const lowerNoHtml = lower.replace(/\.html$/i, '');
+    candidates.push(lower, noHtml, lowerNoHtml);
+    for (let i = 0; i < candidates.length; i++) {
+      const key = candidates[i];
+      if (gistConfig[key]) {
+        console.warn('Resolved page key from', pageName, 'to', key);
+        config = gistConfig[key];
+        break;
+      }
+    }
+  }
   if (!config) {
     console.error('No configuration found for page:', pageName); // Debug log
     // Set error message only if content hasn't been loaded yet
@@ -201,7 +235,7 @@ async function loadPageContent(pageName) {
 
 // Function to show content in selected language
 function showContent(lang) {
-  document.querySelectorAll('.content-section').forEach(section => {
+  document.querySelectorAll('.content-section, .info-content-section').forEach(section => {
     section.style.display = 'none';
   });
   const activeSection = document.getElementById(`content-${lang}`);
@@ -251,11 +285,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Root page
     pageName = 'about';
   } else if (pathParts.length === 1) {
-    // Direct page like /aliexpress
-    pageName = pathParts[0];
+    // Direct page like /aliexpress or /aliexpress.html
+    pageName = pathParts[0].replace('.html', '');
   } else if (pathParts.length === 2 && pathParts[0] === 'info') {
-    // Info page like /info/aliexpress
-    pageName = pathParts[1];
+    // Info page like /info/aliexpress or /info/aliexpress.html
+    pageName = pathParts[1].replace('.html', '');
   } else {
     // Fallback - use last part and remove .html
     pageName = pathParts[pathParts.length - 1].replace('.html', '');

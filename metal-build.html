@@ -133,7 +133,6 @@
             <td data-lang-en="Mech" data-lang-es="Mecha">Mech</td>
           </tr>
           <tr>
-          <tr>
             <td><img src="assets/images/metal-build/item_0000015133_AdFbTqOi_300_first_image.png" alt="Zeta Gundam" class="mb-thumb" data-zoom="assets/images/metal-build/item_0000015133_AdFbTqOi_300_first_image.png"></td>
             <td><a href="https://tamashiiweb.com/images/item/item_0000015133_AdFbTqOi_300.pdf" target="_blank" rel="noopener noreferrer" data-lang-en="Zeta Gundam" data-lang-es="Zeta Gundam">Zeta Gundam</a></td>
             <td data-lang-en="UC" data-lang-es="UC">UC</td>
@@ -407,19 +406,24 @@
       });
 
     // Search/filter functionality
-    document.getElementById('mb-search').addEventListener('input', function() {
-      const filter = this.value.toLowerCase();
-      const rows = document.querySelectorAll('#mb-table tbody tr');
-      rows.forEach(row => {
-        const name = row.cells[1].textContent.toLowerCase();
-        const series = row.cells[2].textContent.toLowerCase();
-        const type = row.cells[3].textContent.toLowerCase();
-        if (name.includes(filter) || series.includes(filter) || type.includes(filter)) {
-          row.style.display = '';
-        } else {
-          row.style.display = 'none';
-        }
-      });
+    document.addEventListener('DOMContentLoaded', function() {
+      const searchInput = document.getElementById('mb-search');
+      if (searchInput) {
+        searchInput.addEventListener('input', function() {
+          const filter = this.value.toLowerCase();
+          const rows = document.querySelectorAll('#mb-table tbody tr');
+          rows.forEach(row => {
+            const name = row.cells[1].textContent.toLowerCase();
+            const series = row.cells[2].textContent.toLowerCase();
+            const type = row.cells[3].textContent.toLowerCase();
+            if (name.includes(filter) || series.includes(filter) || type.includes(filter)) {
+              row.style.display = '';
+            } else {
+              row.style.display = 'none';
+            }
+          });
+        });
+      }
     });
 
     // Language switcher for table
