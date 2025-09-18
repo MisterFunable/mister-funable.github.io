@@ -382,7 +382,7 @@
         const clothesThresholds = [5, 8, 10]; // total consecutive clicks
         let rapidClickCount = 0;
         let rapidClickResetTimer = null;
-        const CLICK_RESET_MS = 1500;
+        const CLICK_RESET_MS = 3000;
         
         // Hover effect
         mascotImage.addEventListener('mouseenter', function() {
@@ -397,7 +397,7 @@
         
         // Click effect
         mascotImage.addEventListener('click', function() {
-          // Track rapid consecutive clicks
+          // Track rapid consecutive clicks regardless of current image
           rapidClickCount += 1;
           if (rapidClickResetTimer) clearTimeout(rapidClickResetTimer);
           rapidClickResetTimer = setTimeout(() => { rapidClickCount = 0; }, CLICK_RESET_MS);
@@ -424,7 +424,10 @@
           }
 
           // Normal angry click sequence if not already running
-          if (isClickSequenceActive) return;
+          if (isClickSequenceActive) {
+            // Still count clicks during running sequence, but don't start another normal animation
+            return;
+          }
           isClickSequenceActive = true;
           this.src = clickSrc; // angry-1
           this.classList.add('mascot-clicked');
