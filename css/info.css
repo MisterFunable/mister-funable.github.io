@@ -13,6 +13,7 @@
   margin-bottom: 3rem;
   margin-top: 0;
   padding-top: 0;
+  background-color: #000000;
 }
 
 .info-hero::before {
@@ -22,7 +23,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('../assets/images/banners/exia.png') center/cover;
+  background: var(--info-hero-bg, none) center/cover;
   filter: blur(8px);
   transform: scale(1.1);
   z-index: 1;
@@ -111,7 +112,7 @@
   margin-bottom: 2rem;
   color: #1a1a1a;
   font-weight: 400;
-  border-bottom: 3px solid #c7d2fe;
+  border-bottom: 3px solid rgba(212, 175, 55, 0.35);
   padding-bottom: 1rem;
   position: relative;
 }
@@ -123,7 +124,7 @@
   left: 0;
   width: 60px;
   height: 3px;
-  background: linear-gradient(90deg, #a5b4fc, #c4b5fd);
+  background: linear-gradient(90deg, var(--color-primary), #f39c12);
 }
 
 .info-content-section h2 {
@@ -132,7 +133,7 @@
   margin: 2.5rem 0 1.5rem;
   color: #2a2a2a;
   font-weight: 400;
-  border-bottom: 2px solid #e8f4fd;
+  border-bottom: 2px solid rgba(212, 175, 55, 0.25);
   padding-bottom: 0.8rem;
   position: relative;
 }
@@ -144,7 +145,7 @@
   bottom: -2px;
   width: 40px;
   height: 2px;
-  background: linear-gradient(90deg, #a5b4fc, #c4b5fd);
+  background: linear-gradient(90deg, var(--color-primary), #f39c12);
 }
 
 .info-content-section h3 {
@@ -153,20 +154,10 @@
   color: #333333;
   font-weight: 600;
   position: relative;
-  padding-left: 1rem;
 }
 
-.info-content-section h3::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 4px;
-  height: 20px;
-  background: linear-gradient(180deg, #a5b4fc, #c4b5fd);
-  border-radius: 2px;
-}
+/* Remove vertical bar decoration on h3 titles */
+.info-content-section h3::before { content: none; }
 
 /* Paragraphs and Text */
 .info-content-section p {
@@ -178,9 +169,9 @@
 }
 
 .info-content-section strong {
-  color: #667eea;
+  color: var(--color-primary);
   font-weight: 600;
-  background: linear-gradient(120deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(120deg, var(--color-primary) 0%, #f39c12 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -224,10 +215,10 @@
 
 /* Blockquotes */
 .info-content-section blockquote {
-  border-left: 4px solid #667eea;
+  border-left: 4px solid var(--color-primary);
   margin: 2rem 0;
   padding: 1.5rem 2rem;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e8f4fd 100%);
+  background: linear-gradient(135deg, #fffdf5 0%, #fff8e1 100%);
   border-radius: 0 12px 12px 0;
   color: #34495e;
   position: relative;
@@ -240,7 +231,7 @@
   top: -10px;
   left: 20px;
   font-size: 4rem;
-  color: #667eea;
+  color: var(--color-primary);
   opacity: 0.3;
   font-family: serif;
 }
@@ -249,7 +240,7 @@
 .info-content-section ul,
 .info-content-section ol {
   margin: 2rem 0;
-  padding-left: 2rem;
+  padding-left: 1.25rem;
   color: #2c3e50;
 }
 
@@ -259,16 +250,25 @@
   position: relative;
 }
 
+/* Ensure all list items can host custom markers */
+.info-content-section li {
+  position: relative;
+}
+
+/* Use default bullets for unordered lists */
+.info-content-section ul {
+  list-style: disc outside;
+}
+.info-content-section ul ul {
+  list-style: circle outside;
+}
 .info-content-section ul > li::before {
-  content: '▶';
-  position: absolute;
-  left: -1.5rem;
-  color: #667eea;
-  font-size: 0.8rem;
+  content: none;
 }
 
 .info-content-section ol {
-  counter-reset: custom-counter;
+  list-style: none;
+  counter-reset: none;
 }
 
 .info-content-section ol > li {
@@ -277,20 +277,30 @@
 }
 
 .info-content-section ol > li::before {
-  content: counter(custom-counter);
+  content: '';
   position: absolute;
-  left: -2rem;
-  top: 0;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-  width: 1.5rem;
-  height: 1.5rem;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.8rem;
-  font-weight: 600;
+  left: 0;
+  top: 0.6em;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 1.1em;
+  background: linear-gradient(180deg, var(--color-primary), #f39c12);
+  border-radius: 2px;
+}
+
+/* Nested lists spacing/alignment */
+.info-content-section ul ul,
+.info-content-section ol ol {
+  margin: 0.75rem 0;
+  padding-left: 1.25rem;
+}
+
+/* Slightly adjust nested markers so they align nicely */
+.info-content-section ul ul > li::before {
+  content: none;
+}
+.info-content-section ol ol > li::before {
+  left: 0;
 }
 
 /* Images */
@@ -322,14 +332,14 @@
 }
 
 .info-content-section th {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: #f7f8fb;
+  color: #2c3e50;
   font-weight: 600;
   text-align: left;
-  padding: 1.2rem;
-  border-bottom: none;
+  padding: 1.1rem 1.2rem;
+  border-bottom: 2px solid rgba(212, 175, 55, 0.22);
   font-size: 0.95rem;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
 }
 
 .info-content-section td {
@@ -344,18 +354,18 @@
 }
 
 .info-content-section tr:nth-child(even) {
-  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  background: #fafbfc;
 }
 
 .info-content-section tr:hover {
-  background: linear-gradient(135deg, #e8f4fd 0%, #f1f3f5 100%);
-  transform: scale(1.01);
-  transition: all 0.2s ease;
+  background: #f2f4f7;
+  transform: scale(1.005);
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 /* Links */
 .info-content-section a {
-  color: #667eea;
+  color: var(--color-primary);
   text-decoration: none;
   font-weight: 500;
   position: relative;
@@ -369,12 +379,12 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, #667eea, #764ba2);
+  background: linear-gradient(90deg, var(--color-primary), #f39c12);
   transition: width 0.3s ease;
 }
 
 .info-content-section a:hover {
-  color: #764ba2;
+  color: #f39c12;
 }
 
 .info-content-section a:hover::after {
@@ -385,7 +395,7 @@
 .info-content-section hr {
   border: none;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #667eea, #764ba2, transparent);
+  background: linear-gradient(90deg, transparent, var(--color-primary), #f39c12, transparent);
   margin: 3rem 0;
   border-radius: 1px;
 }
