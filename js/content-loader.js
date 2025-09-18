@@ -211,6 +211,7 @@ async function loadPageContent(pageName) {
       document.getElementById('content-en').innerHTML = marked.parse(enContent);
       document.getElementById('content-es').innerHTML = marked.parse(esContent);
 
+
       // Initialize syntax highlighting
       document.querySelectorAll('pre code').forEach((block) => {
         hljs.highlightBlock(block);
