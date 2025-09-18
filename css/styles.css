@@ -239,8 +239,8 @@
 .dropdown-content {
   position: absolute;
   top: 100%;
-  left: auto !important;
-  right: 0 !important;
+  left: 0 !important;
+  right: auto !important;
   background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
   min-width: 240px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
@@ -266,14 +266,14 @@
 
 /* Ensure all nav-links dropdowns are right-aligned */
 .nav-links .dropdown .dropdown-content {
-  left: auto !important;
-  right: 0 !important;
+  left: 0 !important;
+  right: auto !important;
 }
 
 /* Force right alignment for all dropdowns in navbar */
 .navbar .dropdown-content {
-  left: auto !important;
-  right: 0 !important;
+  left: 0 !important;
+  right: auto !important;
 }
 
 /* Specific rule for dropdown positioning */
@@ -283,16 +283,16 @@
 
 .dropdown .dropdown-content {
   position: absolute !important;
-  left: auto !important;
-  right: 0 !important;
+  left: 0 !important;
+  right: auto !important;
   top: calc(100% + 0.75rem) !important;
 }
 
 /* Override any conflicting styles for dropdown positioning */
 .navbar .nav-links .dropdown .dropdown-content {
   position: absolute !important;
-  left: auto !important;
-  right: 0 !important;
+  left: 0 !important;
+  right: auto !important;
   top: calc(100% + 0.75rem) !important;
 }
 
@@ -325,8 +325,8 @@
 @media (min-width: 769px) {
   /* Ensure all main dropdowns are right-aligned on desktop */
   .nav-links .dropdown .dropdown-content {
-    left: auto !important;
-    right: 0 !important;
+    left: 0 !important;
+    right: auto !important;
   }
   
   /* Nested dropdowns appear to the right by default */
@@ -1063,8 +1063,8 @@ body {
   
   .navbar .nav-links .dropdown .dropdown-content {
     position: absolute !important;
-    left: auto !important;
-    right: 0 !important;
+    left: 0 !important;
+    right: auto !important;
     top: calc(100% + 0.75rem) !important;
     width: auto !important;
     min-width: 240px !important;
