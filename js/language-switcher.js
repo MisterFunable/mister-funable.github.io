@@ -4,30 +4,18 @@ function changeLanguage(lang) {
   currentLanguage = lang;
   document.documentElement.lang = lang;
 
-  // Update selected language display in desktop navbar
-  const languageSelected = document.querySelector('.language-selected');
-  const flagIcon = document.querySelector('.language-btn .flag-icon');
-  
-  if (languageSelected) {
-    languageSelected.textContent = lang.toUpperCase();
-  }
-  
-  if (flagIcon) {
-    flagIcon.src = `/assets/img/flags/${lang}.png`;
-    flagIcon.alt = lang === 'en' ? 'English' : 'Español';
+  // Update inline flag buttons active state
+  const enBtn = document.getElementById('lang-en');
+  const esBtn = document.getElementById('lang-es');
+  if (enBtn && esBtn) {
+    enBtn.classList.toggle('active', lang === 'en');
+    esBtn.classList.toggle('active', lang === 'es');
+    enBtn.setAttribute('aria-pressed', String(lang === 'en'));
+    esBtn.setAttribute('aria-pressed', String(lang === 'es'));
   }
 
-  // Update selected state in desktop dropdown list
-  document.querySelectorAll('.language-list li').forEach(li => {
-    li.classList.remove('selected');
-    const link = li.querySelector('a');
-    if (link && link.getAttribute('onclick').includes(lang)) {
-      li.classList.add('selected');
-      link.setAttribute('aria-current', 'true');
-    } else if (link) {
-      link.removeAttribute('aria-current');
-    }
-  });
+  // Remove any legacy dropdown selected states if present
+  document.querySelectorAll('.language-list li').forEach(li => li.classList.remove('selected'));
 
   // Update mobile language switcher active states
   document.querySelectorAll('.mobile-language-switcher .lang-btn').forEach(btn => {
@@ -49,75 +37,25 @@ function changeLanguage(lang) {
 
   // Save language preference
   localStorage.setItem('preferredLanguage', lang);
-  
-  // Close language dropdown after selection
-  const languageSwitcher = document.querySelector('.language-switcher');
-  const languageBtn = document.querySelector('.language-btn');
-  
-  if (languageSwitcher) {
-    languageSwitcher.classList.remove('active');
-    // Also remove focus to close hover-based dropdown
-    if (languageBtn) {
-      languageBtn.blur();
-      languageBtn.setAttribute('aria-expanded', 'false');
-    }
-  }
+  // No dropdown anymore; nothing to close
 }
 
 // Initialize language functionality
 function initializeLanguageSwitcher() {
-  const languageSwitcher = document.querySelector('.language-switcher');
-  const languageBtn = document.querySelector('.language-btn');
-  const languageList = document.querySelector('.language-list');
+  const enBtn = document.getElementById('lang-en');
+  const esBtn = document.getElementById('lang-es');
 
-  if (languageBtn && languageSwitcher) {
-    // Toggle language dropdown on click
-    languageBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isExpanded = languageBtn.getAttribute('aria-expanded') === 'true';
-      languageBtn.setAttribute('aria-expanded', !isExpanded);
-      languageSwitcher.classList.toggle('active');
-    });
-
-    // Keyboard navigation
-    languageBtn.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        const isExpanded = languageBtn.getAttribute('aria-expanded') === 'true';
-        languageBtn.setAttribute('aria-expanded', !isExpanded);
-        languageSwitcher.classList.toggle('active');
-      } else if (e.key === 'Escape') {
-        languageBtn.setAttribute('aria-expanded', 'false');
-        languageSwitcher.classList.remove('active');
-      }
+  if (enBtn) {
+    enBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      changeLanguage('en');
     });
   }
 
-  // Close language switcher when clicking outside
-  document.addEventListener('click', (e) => {
-    if (languageSwitcher && !languageSwitcher.contains(e.target)) {
-      languageSwitcher.classList.remove('active');
-      if (languageBtn) {
-        languageBtn.setAttribute('aria-expanded', 'false');
-      }
-    }
-  });
-
-  // Handle language selection clicks
-  if (languageList) {
-    languageList.addEventListener('click', (e) => {
-      if (e.target.closest('.lang-btn')) {
-        e.preventDefault();
-        e.stopPropagation();
-        // Close the dropdown immediately
-        if (languageSwitcher) {
-          languageSwitcher.classList.remove('active');
-        }
-        if (languageBtn) {
-          languageBtn.setAttribute('aria-expanded', 'false');
-          languageBtn.blur();
-        }
-      }
+  if (esBtn) {
+    esBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      changeLanguage('es');
     });
   }
 
