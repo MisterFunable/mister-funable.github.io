@@ -75,14 +75,16 @@
       <a href="/about" class="nav-link inline-flex items-center gap-2 px-5 py-3 rounded-lg transition" data-lang-en="About" data-lang-es="Acerca de">About</a>
     </div>
     
-    <!-- Language Switcher: inline flags (click to select) -->
-    <div id="languages_block_top" class="language-switcher relative flex items-center gap-2 flex-shrink-0 justify-self-end" role="group" aria-label="Language selector">
-      <button id="lang-en" class="lang-flag-btn" type="button" aria-pressed="false" aria-label="English">
-        <img src="/assets/img/flags/en.png" alt="English" class="flag-icon" />
-      </button>
-      <button id="lang-es" class="lang-flag-btn" type="button" aria-pressed="false" aria-label="Español">
-        <img src="/assets/img/flags/es.png" alt="Español" class="flag-icon" />
-      </button>
+    <!-- Language Switcher: single rectangle with two flags -->
+    <div id="languages_block_top" class="language-switcher relative flex-shrink-0 justify-self-end">
+      <div class="lang-flag-group inline-flex items-center" role="group" aria-label="Language selector">
+        <button id="lang-en" class="lang-flag-btn" type="button" aria-pressed="false" aria-label="English">
+          <img src="/assets/img/flags/en.png" alt="English" class="flag-icon" />
+        </button>
+        <button id="lang-es" class="lang-flag-btn" type="button" aria-pressed="false" aria-label="Español">
+          <img src="/assets/img/flags/es.png" alt="Español" class="flag-icon" />
+        </button>
+      </div>
     </div>
   </div>
 </nav>

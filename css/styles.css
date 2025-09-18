@@ -376,34 +376,44 @@
   object-fit: cover;
 }
 
-/* Inline flag buttons */
-.lang-flag-btn {
+/* Group container: single rectangle */
+.lang-flag-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
   border: 2px solid rgba(212, 175, 55, 0.25);
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 6px 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* Inline flag buttons inside the group */
+.lang-flag-btn {
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  padding: 2px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
 }
 
 .lang-flag-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.22);
+  background: rgba(212, 175, 55, 0.08);
 }
 
 .lang-flag-btn[aria-pressed="true"],
 .lang-flag-btn.active {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.25) inset, 0 6px 14px rgba(212, 175, 55, 0.25);
+  background: rgba(212, 175, 55, 0.12);
 }
 
 .lang-flag-btn:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.25);
 }
 
 /* Mobile language switcher in footer - hidden by default */
