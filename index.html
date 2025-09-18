@@ -372,36 +372,45 @@
         const normalSrc = mascotImage.dataset.normal;
         const hoverSrc = mascotImage.dataset.hover;
         const clickSrc = mascotImage.dataset.click;
+        let isClickSequenceActive = false;
+        let clickTimers = [];
         
         // Hover effect
         mascotImage.addEventListener('mouseenter', function() {
+          if (isClickSequenceActive) return;
           this.src = hoverSrc;
         });
         
         mascotImage.addEventListener('mouseleave', function() {
+          if (isClickSequenceActive) return;
           this.src = normalSrc;
         });
         
         // Click effect
         mascotImage.addEventListener('click', function() {
-          this.src = clickSrc; // pointing-angry-1.png
+          if (isClickSequenceActive) return;
+          isClickSequenceActive = true;
+          this.src = clickSrc; // angry-1
           this.classList.add('mascot-clicked');
-          
-          // After 1 second, transition to pointing-angry-2.png
-          setTimeout(() => {
-            this.src = 'assets/images/iratsutoya-style/pointing-angry-2.png';
-          }, 1000);
-          
-          // After 2 seconds, transition to pointing-angry-3.png
-          setTimeout(() => {
-            this.src = 'assets/images/iratsutoya-style/pointing-angry-3.png';
-          }, 2000);
-          
-          // After 3 seconds total, go back to normal
-          setTimeout(() => {
-            this.src = normalSrc;
-            this.classList.remove('mascot-clicked');
-          }, 3000);
+
+          // Clear any previous timers
+          clickTimers.forEach(t => clearTimeout(t));
+          clickTimers = [];
+
+          // Slower sequence: 1.5s -> angry-2, 3.0s -> angry-3, 4.5s -> back to normal
+          clickTimers.push(setTimeout(() => {
+            mascotImage.src = 'assets/images/iratsutoya-style/pointing-angry-2.png';
+          }, 1500));
+
+          clickTimers.push(setTimeout(() => {
+            mascotImage.src = 'assets/images/iratsutoya-style/pointing-angry-3.png';
+          }, 3000));
+
+          clickTimers.push(setTimeout(() => {
+            mascotImage.src = normalSrc;
+            mascotImage.classList.remove('mascot-clicked');
+            isClickSequenceActive = false;
+          }, 4500));
         });
       }
       
