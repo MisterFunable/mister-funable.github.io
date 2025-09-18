@@ -32,12 +32,12 @@ body::before {
 /* Professional Hero Section */
 .hero-section {
   position: relative;
-  padding: 40px 0 120px 0;
-  margin-top: 60px;
+  padding: 20px 0 40px 0;
+  margin-top: 0;
   background: linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 100%);
   border-bottom: 1px solid #3a3a3a;
   overflow: hidden;
-  min-height: 60vh;
+  min-height: calc(100vh - 60px);
   display: flex;
   align-items: center;
 }
@@ -215,7 +215,7 @@ body::before {
 
 /* Professional Collections Section */
 .collections-section {
-  padding: 30px 0 150px 0;
+  padding: 30px 0 220px 0;
   background: #ffffff;
   margin-top: 0px;
 }
@@ -349,8 +349,8 @@ body::before {
 /* Responsive Design */
 @media (max-width: 768px) {
   .hero-section {
-    padding: 30px 0 80px 0;
-    min-height: 50vh;
+    padding: 16px 0 40px 0;
+    min-height: calc(100vh - 60px);
   }
   
   .hero-main {
@@ -398,7 +398,7 @@ body::before {
   }
   
   .collections-section {
-    padding: 20px 0 100px 0;
+    padding: 20px 0 140px 0;
     margin-top: 0px;
   }
   
@@ -418,8 +418,8 @@ body::before {
 
 @media (max-width: 480px) {
   .hero-section {
-    padding: 20px 0 60px 0;
-    min-height: 45vh;
+    padding: 12px 0 32px 0;
+    min-height: calc(100vh - 60px);
   }
   
   .hero-main {
@@ -431,7 +431,7 @@ body::before {
   }
   
   .collections-section {
-    padding: 15px 0 80px 0;
+    padding: 15px 0 110px 0;
     margin-top: 0px;
   }
   

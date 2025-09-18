@@ -62,6 +62,29 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap" rel="stylesheet">
   
+  <!-- Tailwind (Play CDN) - Preflight disabled to preserve existing styles -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      corePlugins: { preflight: false },
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              gold: '#D4AF37',
+              accent: '#f39c12',
+              text: '#2C2C2C',
+              bg: '#ffffff'
+            }
+          },
+          fontFamily: {
+            heading: ['Special Gothic Condensed One', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+  
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/landing.css">
@@ -194,49 +217,50 @@
   <div id="navbar-placeholder"></div>
 
   <!-- Hero Section -->
-  <section class="hero-section">
+  <section class="hero-section relative flex items-center justify-center w-full min-h-[calc(100vh-60px)]">
             <!-- Mascot -->
-        <div class="hero-mascot">
+        <div class="hero-mascot select-none">
           <img src="assets/images/iratsutoya-style/pointing.png" alt="Site Mascot pointing at doll collection" class="mascot-image" 
                data-normal="assets/images/iratsutoya-style/pointing.png"
                data-hover="assets/images/iratsutoya-style/pointing-smile.png"
                data-click="assets/images/iratsutoya-style/pointing-angry-1.png">
         </div>
     
-    <div class="hero-content">
-      <h1 class="hero-title">
-        <span class="hero-main" data-lang-en="Mister Doll Groper's Documentation" data-lang-es="La documentación de Mister Funable">My Doll Inventory</span>
+    <div class="hero-content max-w-5xl mx-auto text-center px-4 md:px-6">
+      <h1 class="hero-title font-heading text-5xl md:text-6xl text-[#2c3e50]">
+        <span class="hero-main block" data-lang-en="Mister Doll Groper's Documentation" data-lang-es="La documentación de Mister Funable">My Doll Inventory</span>
       </h1>
-      <p class="hero-subtitle" data-lang-en="Information and details about my niche hobbies!" 
+      <p class="hero-subtitle mt-3 text-lg md:text-xl text-white/90" data-lang-en="Information and details about my niche hobbies!" 
          data-lang-es="Información sobre los hobbies que adoro!">
         Because getting all the information in one place is better than having to search for it all over the internet!
       </p>
-      <div class="hero-stats">
-        <div class="stat-item">
-          <span class="stat-number">
+      <div class="hero-stats mt-6 flex items-center justify-center gap-6">
+        <div class="stat-item flex flex-col items-center">
+          <span class="stat-number text-3xl font-semibold text-[#D4AF37]">
             <span class="digit" data-final="2">0</span>
             <span class="digit" data-final="5">0</span>
             <span class="digit" data-final="0">0</span>
             <span class="digit" data-final="0">0</span>
             <span>+</span>
           </span>
-          <span class="stat-label" data-lang-en="Products" data-lang-es="Productos">Products</span>
+          <span class="stat-label text-sm uppercase tracking-wide text-[#2c3e50]/70" data-lang-en="Products" data-lang-es="Productos">Products</span>
         </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <span class="stat-number">
+        <div class="stat-divider w-px h-8 bg-black/10"></div>
+        <div class="stat-item flex flex-col items-center">
+          <span class="stat-number text-3xl font-semibold text-[#D4AF37]">
             <span class="digit" data-final="1">0</span>
             <span class="digit" data-final="5">0</span>
             <span class="digit" data-final="0">0</span>
             <span>+</span>
           </span>
-          <span class="stat-label" data-lang-en="By Brands" data-lang-es="Por Marcas">Brands</span>
+          <span class="stat-label text-sm uppercase tracking-wide text-[#2c3e50]/70" data-lang-en="By Brands" data-lang-es="Por Marcas">Brands</span>
         </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <span class="stat-number">
+        <div class="stat-divider w-px h-8 bg-black/10"></div>
+        <div class="stat-item flex flex-col items-center">
+          <span class="stat-number text-3xl font-semibold text-[#D4AF37]">
             <span class="digit" data-final="5">0</span>
-          <span class="stat-label" data-lang-en="Guides" data-lang-es="Guías">Guides</span>
+          </span>
+          <span class="stat-label text-sm uppercase tracking-wide text-[#2c3e50]/70" data-lang-en="Guides" data-lang-es="Guías">Guides</span>
         </div>
       </div>
     </div>
@@ -250,60 +274,60 @@
   </section>
 
   <!-- Collections Section -->
-  <section id="collections" class="collections-section">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title" data-lang-en="Collections" data-lang-es="Colecciones">Collections</h2>
-        <div class="section-divider"></div>
+  <section id="collections" class="collections-section py-16 pb-28 md:pb-40">
+    <div class="container max-w-7xl mx-auto px-4 md:px-6">
+      <div class="section-header text-center mb-8">
+        <h2 class="section-title font-heading text-3xl md:text-4xl text-[#2c3e50]" data-lang-en="Collections" data-lang-es="Colecciones">Collections</h2>
+        <div class="section-divider mx-auto mt-3 h-1 w-16 rounded"></div>
       </div>
       
-      <div class="collections-grid">
-        <div class="collection-card" data-bg="assets/images/1-6-dolls.jpg">
-          <a href="/one-sixth" class="card-link">
-            <div class="card-overlay"></div>
-            <div class="card-content">
-              <h3 class="card-title" data-lang-en="1/6 Scale Dolls" data-lang-es="Muñecas Escala 1/6">1/6 Scale Dolls</h3>
-              <p class="card-description" data-lang-en="Products and photos!" 
+      <div class="collections-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="collection-card relative bg-cover bg-center rounded-xl overflow-hidden shadow-lg transition hover:shadow-2xl" data-bg="assets/images/1-6-dolls.jpg">
+          <a href="/one-sixth" class="card-link block h-full">
+            <div class="card-overlay absolute inset-0 bg-black/30"></div>
+            <div class="card-content relative z-10 p-6 flex flex-col justify-end min-h-[220px]">
+              <h3 class="card-title text-white text-2xl font-semibold drop-shadow" data-lang-en="1/6 Scale Dolls" data-lang-es="Muñecas Escala 1/6">1/6 Scale Dolls</h3>
+              <p class="card-description text-white/90 mt-2 text-sm" data-lang-en="Products and photos!" 
                  data-lang-es="Productos y fotos!">
                 1/6 scale dolls, bodies, and accessories
               </p>
-              <div class="card-footer">
-                <span class="card-count">2500+ Items</span>
-                <span class="card-arrow">→</span>
+              <div class="card-footer flex items-center justify-between mt-4 text-white/90">
+                <span class="card-count text-sm font-medium">2500+ Items</span>
+                <span class="card-arrow text-xl">→</span>
               </div>
             </div>
           </a>
         </div>
 
-        <div class="collection-card" data-bg="assets/images/1-6-ryza.jpg">
-          <a href="/inventory/resin" class="card-link">
-            <div class="card-overlay"></div>
-            <div class="card-content">
-              <h3 class="card-title" data-lang-en="Resin Figures" data-lang-es="Figuras de Resina">Resin Figures</h3>
-              <p class="card-description" data-lang-en="Most photos uncensored!" 
+        <div class="collection-card relative bg-cover bg-center rounded-xl overflow-hidden shadow-lg transition hover:shadow-2xl" data-bg="assets/images/1-6-ryza.jpg">
+          <a href="/inventory/resin" class="card-link block h-full">
+            <div class="card-overlay absolute inset-0 bg-black/30"></div>
+            <div class="card-content relative z-10 p-6 flex flex-col justify-end min-h-[220px]">
+              <h3 class="card-title text-white text-2xl font-semibold drop-shadow" data-lang-en="Resin Figures" data-lang-es="Figuras de Resina">Resin Figures</h3>
+              <p class="card-description text-white/90 mt-2 text-sm" data-lang-en="Most photos uncensored!" 
                  data-lang-es="Varias fotos sin censura!">
                 Most photos uncensored!
               </p>
-              <div class="card-footer">
-                <span class="card-count">5500+ Items</span>
-                <span class="card-arrow">→</span>
+              <div class="card-footer flex items-center justify-between mt-4 text-white/90">
+                <span class="card-count text-sm font-medium">5500+ Items</span>
+                <span class="card-arrow text-xl">→</span>
               </div>
             </div>
           </a>
         </div>
 
-        <div class="collection-card coming-soon" data-bg="assets/images/1-1-dolls.jpg">
-          <a href="/" class="card-link">
-            <div class="card-overlay"></div>
-            <div class="card-content">
-              <h3 class="card-title" data-lang-en="1/1 Scale Dolls" data-lang-es="Muñecas Escala 1/1">1/1 Scale Dolls</h3>
-              <p class="card-description" data-lang-en="Life-size dolls and premium collectibles" 
+        <div class="collection-card coming-soon relative bg-cover bg-center rounded-xl overflow-hidden shadow-lg transition hover:shadow-2xl" data-bg="assets/images/1-1-dolls.jpg">
+          <a href="/" class="card-link block h-full">
+            <div class="card-overlay absolute inset-0 bg-black/30"></div>
+            <div class="card-content relative z-10 p-6 flex flex-col justify-end min-h-[220px]">
+              <h3 class="card-title text-white text-2xl font-semibold drop-shadow" data-lang-en="1/1 Scale Dolls" data-lang-es="Muñecas Escala 1/1">1/1 Scale Dolls</h3>
+              <p class="card-description text-white/90 mt-2 text-sm" data-lang-en="Life-size dolls and premium collectibles" 
                  data-lang-es="Muñecas de tamaño real y coleccionables premium">
                 Life-size dolls and premium collectibles
               </p>
-              <div class="card-footer">
-                <span class="card-count coming-soon-badge" data-lang-en="Coming Soon" data-lang-es="Próximamente">Coming Soon</span>
-                <span class="card-arrow">→</span>
+              <div class="card-footer flex items-center justify-between mt-4 text-white/90">
+                <span class="card-count coming-soon-badge text-sm font-medium" data-lang-en="Coming Soon" data-lang-es="Próximamente">Coming Soon</span>
+                <span class="card-arrow text-xl">→</span>
               </div>
             </div>
           </a>

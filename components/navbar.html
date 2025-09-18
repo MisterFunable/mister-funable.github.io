@@ -1,7 +1,7 @@
-<nav class="navbar" role="navigation" aria-label="Main navigation">
-  <div class="navbar-container">
-    <div class="logo">
-      <a href="/" class="logo-text" aria-label="Home">My Doll Inventory</a>
+<nav class="navbar fixed top-0 inset-x-0 h-[60px] bg-gradient-to-br from-white to-[#f8f9fa] z-[1000] backdrop-blur-lg border-b border-white/20" role="navigation" aria-label="Main navigation">
+  <div class="navbar-container max-w-[1400px] mx-auto h-full grid grid-cols-[1fr_auto_1fr] items-center px-8 relative">
+    <div class="logo justify-self-start z-[1001]">
+      <a href="/" class="logo-text font-heading no-underline text-[#2c3e50] text-[1.75rem] font-normal tracking-[1px] transition-all" aria-label="Home">My Doll Inventory</a>
     </div>
     
     <!-- Mobile menu button -->
@@ -11,15 +11,15 @@
       <span></span>
     </button>
     
-    <div class="nav-links">
-      <div class="dropdown">
-        <a href="/one-sixth" class="dropdown-btn" aria-expanded="false" aria-controls="scale-menu">
+    <div class="nav-links flex items-center gap-2 font-sans justify-self-center">
+      <div class="dropdown relative inline-block">
+        <a href="/one-sixth" class="dropdown-btn inline-flex items-center gap-2 px-5 py-3 rounded-lg transition" aria-expanded="false" aria-controls="scale-menu">
           <span data-lang-en="1/6 Scale" data-lang-es="Escala 1/6">1/6 Scale</span>
-          <svg class="dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+          <svg class="dropdown-arrow ml-2 w-3 h-2" width="12" height="8" viewBox="0 0 12 8" fill="none">
             <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </a>
-        <div class="dropdown-content" id="scale-menu" role="menu">
+        <div class="dropdown-content absolute top-full mt-3 left-0 bg-gradient-to-br from-white to-[#f8f9fa] min-w-[240px] rounded-[12px] shadow-xl border border-white/20 backdrop-blur-lg opacity-0 invisible transition" id="scale-menu" role="menu">
           <a href="/inventory/1-6-scale/accesories" role="menuitem" data-lang-en="Accessories" data-lang-es="Accesorios">Accessories</a>
           <a href="/inventory/1-6-scale/bodies" role="menuitem" data-lang-en="Bodies" data-lang-es="Cuerpos">Bodies</a>
           <a href="/inventory/1-6-scale/heads" role="menuitem" data-lang-en="Heads" data-lang-es="Cabezas">Heads</a>
@@ -43,14 +43,14 @@
         </div>
       </div>
 
-      <div class="dropdown">
-        <button class="dropdown-btn" aria-expanded="false" aria-controls="guides-menu">
+      <div class="dropdown relative inline-block">
+        <button class="dropdown-btn inline-flex items-center gap-2 px-5 py-3 rounded-lg transition" aria-expanded="false" aria-controls="guides-menu">
           <span data-lang-en="Guides" data-lang-es="Guías">Guides</span>
-          <svg class="dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+          <svg class="dropdown-arrow ml-2 w-3 h-2" width="12" height="8" viewBox="0 0 12 8" fill="none">
             <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </button>
-        <div class="dropdown-content" id="guides-menu" role="menu">
+        <div class="dropdown-content absolute top-full mt-3 left-0 bg-gradient-to-br from-white to-[#f8f9fa] min-w-[240px] rounded-[12px] shadow-xl border border-white/20 backdrop-blur-lg opacity-0 invisible transition" id="guides-menu" role="menu">
           <a href="/info/aliexpress" role="menuitem" data-lang-en="Aliexpress Tips" data-lang-es="Consejos de Aliexpress">Aliexpress Tips</a>
           <a href="/info/lightsabers" role="menuitem" data-lang-en="Lightsabers Fonts" data-lang-es="Fuentes de Sables de Luz">Lightsabers Fonts</a>
           <a href="/info/stores-review" role="menuitem" data-lang-en="Stores Review" data-lang-es="Comentarios de Tiendas">Stores Review</a>
@@ -59,32 +59,32 @@
         </div>
       </div>
       
-      <div class="dropdown">
-        <button class="dropdown-btn" aria-expanded="false" aria-controls="resources-menu">
+      <div class="dropdown relative inline-block">
+        <button class="dropdown-btn inline-flex items-center gap-2 px-5 py-3 rounded-lg transition" aria-expanded="false" aria-controls="resources-menu">
           <span data-lang-en="YouTube" data-lang-es="YouTube">YouTube</span>
-          <svg class="dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+          <svg class="dropdown-arrow ml-2 w-3 h-2" width="12" height="8" viewBox="0 0 12 8" fill="none">
             <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </button>
-        <div class="dropdown-content" id="resources-menu" role="menu">
+        <div class="dropdown-content absolute top-full mt-3 left-0 bg-gradient-to-br from-white to-[#f8f9fa] min-w-[240px] rounded-[12px] shadow-xl border border-white/20 backdrop-blur-lg opacity-0 invisible transition" id="resources-menu" role="menu">
           <a href="/info/resin-inventory" role="menuitem" data-lang-en="Resin Lineups" data-lang-es="Alineaciones de Resina">Resin Lineups</a>
           <a href="/info/subscribers-suggestions" role="menuitem" data-lang-en="Subscribers' Suggestions" data-lang-es="Sugerencias de Suscriptores">Subscribers' Suggestions</a>
         </div>
       </div>
       
-      <a href="/about" class="nav-link" data-lang-en="About" data-lang-es="Acerca de">About</a>
+      <a href="/about" class="nav-link inline-flex items-center gap-2 px-5 py-3 rounded-lg transition" data-lang-en="About" data-lang-es="Acerca de">About</a>
     </div>
     
     <!-- Language Switcher -->
-    <div id="languages_block_top" class="language-switcher">
-      <button class="language-btn" aria-label="Change language" aria-expanded="false" aria-controls="language-menu">
-        <img src="/assets/img/flags/en.png" alt="" class="flag-icon" />
+    <div id="languages_block_top" class="language-switcher relative flex-shrink-0 justify-self-end">
+      <button class="language-btn inline-flex items-center gap-2 px-3 py-2 rounded-lg transition border border-[rgba(212,175,55,0.2)] shadow-sm" aria-label="Change language" aria-expanded="false" aria-controls="language-menu">
+        <img src="/assets/img/flags/en.png" alt="" class="flag-icon w-5 h-3.5 rounded-[2px] object-cover" />
         <span class="language-selected">EN</span>
-        <svg class="dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+        <svg class="dropdown-arrow ml-2 w-3 h-2" width="12" height="8" viewBox="0 0 12 8" fill="none">
           <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
       </button>
-      <ul class="language-list" id="language-menu" role="menu">
+      <ul class="language-list absolute top-full right-0 bg-gradient-to-br from-white to-[#f8f9fa] rounded-[12px] shadow-xl border border-white/20 mt-3 p-2 min-w-[160px] opacity-0 invisible transition z-[1000] list-none" id="language-menu" role="menu">
         <li class="selected">
           <a href="#" onclick="changeLanguage('en'); return false;" class="lang-btn" role="menuitem" aria-current="true">
             <img src="/assets/img/flags/en.png" alt="English" />

@@ -11,6 +11,29 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind (Play CDN) - Preflight disabled to preserve existing styles -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      corePlugins: { preflight: false },
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              gold: '#D4AF37',
+              accent: '#f39c12',
+              text: '#2C2C2C',
+              bg: '#ffffff'
+            }
+          },
+          fontFamily: {
+            heading: ['Special Gothic Condensed One', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/inventory.css">
   <link rel="stylesheet" href="css/footer.css">
