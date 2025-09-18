@@ -93,7 +93,7 @@
   <!-- Preload Critical Resources -->
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap">
   <link rel="preload" href="/components/navbar.html" as="fetch" crossorigin>
-  <link rel="preload" href="assets/images/iratsutoya-style/pointing.png" as="image">
+  <link rel="preload" href="assets/images/iratsutoya-style/pointing.png" as="image" fetchpriority="high">
   
   <!-- Google Analytics 4 -->
   <script src="js/analytics-loader.js" defer></script>
@@ -137,10 +137,8 @@
     }
   }
   </script>
-  <link rel="preload" as="style"
-    href="https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap">
   <!-- Preload critical resources to prevent FOUC -->
-  <link rel="preload" href="/components/navbar.html" as="fetch" crossorigin>
+  <!-- Removed duplicate font and navbar preload -->
   <style>
     /* Critical CSS to prevent layout shift */
     #navbar-placeholder {
@@ -220,7 +218,7 @@
   <section class="hero-section relative flex items-center justify-center w-full min-h-[calc(100vh-60px)]">
             <!-- Mascot -->
         <div class="hero-mascot select-none">
-          <img src="assets/images/iratsutoya-style/pointing.png" alt="Site Mascot pointing at doll collection" class="mascot-image" 
+          <img src="assets/images/iratsutoya-style/pointing.png" alt="Site Mascot pointing at doll collection" class="mascot-image" width="300" height="300" decoding="async" fetchpriority="high"
                data-normal="assets/images/iratsutoya-style/pointing.png"
                data-hover="assets/images/iratsutoya-style/pointing-smile.png"
                data-click="assets/images/iratsutoya-style/pointing-angry-1.png">
@@ -234,7 +232,7 @@
          data-lang-es="Información sobre los hobbies que adoro!">
         Because getting all the information in one place is better than having to search for it all over the internet!
       </p>
-      <div class="hero-stats mt-6 flex items-center justify-center gap-6">
+      <div class="hero-stats mt-6 flex items-center justify-center gap-6" aria-live="polite">
         <div class="stat-item flex flex-col items-center">
           <span class="stat-number text-3xl font-semibold text-[#D4AF37]">
             <span class="digit" data-final="2">0</span>
@@ -455,11 +453,8 @@
       
       // Digit scrolling animation - Yu-Gi-Oh! countdown effect
       function animateDigits() {
-        console.log('animateDigits function called');
-        
         // Get all stat items directly
         const statItems = document.querySelectorAll('.stat-item');
-        console.log('Found stat items:', statItems.length);
         
         const statGroups = [
           { element: statItems[0], finalValue: 2500, duration: 1000 }, // Products: 2 seconds
@@ -471,13 +466,10 @@
         
         function animateGroup(group) {
           const digits = group.element.querySelectorAll('.digit');
-          console.log(`Group has ${digits.length} digits, finalValue: ${group.finalValue}`);
           
           const finalValue = group.finalValue;
           const duration = group.duration;
           const interval = 5; // 10ms interval for fast countdown
-          
-          console.log(`Animating group with finalValue: ${finalValue}, duration: ${duration}ms, interval: ${interval}ms`);
           
           // Convert final value to array of digits (e.g., 2500 -> [2,5,0,0])
           const finalDigits = finalValue.toString().padStart(digits.length, '0').split('').map(Number);
@@ -493,7 +485,6 @@
           function animateDigit() {
                          if (currentDigitIndex >= digits.length) {
                // All digits completed, move to next group
-               console.log(`Group completed: ${finalValue}`);
                currentGroupIndex++;
                if (currentGroupIndex < statGroups.length) {
                  setTimeout(() => animateGroup(statGroups[currentGroupIndex]), 10);
@@ -545,13 +536,25 @@
         // Phase 2: Start counting after all fade-ins are complete
         const totalFadeInTime = (statItems.length - 1) * 600 + 600; // Total fade-in time
         setTimeout(() => {
-          console.log('Starting digit animation...');
           animateDigits();
         }, totalFadeInTime);
       }
       
       // Start digit animation after page loads
-      setTimeout(startDigitAnimation, 500);
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!prefersReducedMotion) {
+        setTimeout(startDigitAnimation, 500);
+      } else {
+        // Set digits to final values immediately for reduced motion users
+        const statItems = document.querySelectorAll('.stat-item');
+        const finals = [2500, 150, 5];
+        statItems.forEach((item, idx) => {
+          const digits = item.querySelectorAll('.digit');
+          const finalString = String(finals[idx] || 0).padStart(digits.length, '0');
+          digits.forEach((digitEl, i) => { digitEl.textContent = finalString[i]; });
+          item.classList.add('fade-in');
+        });
+      }
       
       // Track page view with Google Analytics
       if (typeof gtag !== 'undefined') {
