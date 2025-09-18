@@ -30,6 +30,18 @@ document.addEventListener('DOMContentLoaded', function () {
             }, 100);
           }
         }
+
+        // Ensure age disclaimer script is loaded exactly once
+        const hasModal = !!document.getElementById('age-disclaimer-modal');
+        const hasScriptTag = !!document.querySelector('script[src$="/js/age-disclaimer.js"], script[src$="js/age-disclaimer.js"]');
+        const injectedOnce = !!document.querySelector('script[data-age-disclaimer="true"]');
+        if (!hasScriptTag && !injectedOnce) {
+          const ageScript = document.createElement('script');
+          ageScript.src = '/js/age-disclaimer.js';
+          ageScript.defer = true;
+          ageScript.setAttribute('data-age-disclaimer', 'true');
+          document.body.appendChild(ageScript);
+        }
       }
     })
     .catch(error => {

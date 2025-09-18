@@ -1,12 +1,17 @@
-<div id="age-disclaimer-modal" class="modal-overlay" style="display:none;">
-    <div class="modal-content">
-      <h2>Age & Content Disclaimer</h2>
-      <p>
-        This site contains images and discussions of dolls that may feature partial nudity, mature themes, and topics not suitable for all audiences. 
-        By entering, you confirm that you are at least 18 years old and are comfortable viewing such content.<br><br>
-        If you are under 18 or do not wish to view this material, please leave now.
-      </p>
-      <button id="accept-age-btn">I am 18 or older, enter</button>
-      <button id="leave-site-btn" style="margin-left: 1em; background: #bbb; color: #222;">I am under 18, leave</button>
+<div id="age-disclaimer-modal" class="fixed inset-0 z-[9999] hidden justify-center items-center bg-black/60 backdrop-blur-sm">
+  <div class="relative p-4 w-full max-w-md">
+    <div class="relative bg-white rounded-lg shadow-sm">
+      <div class="p-6 text-center">
+        <svg class="mx-auto mb-4 text-red-600 w-12 h-12" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+        </svg>
+        <h2 class="mb-2 text-xl font-semibold text-gray-800">Adults Only (18+)</h2>
+        <p class="mb-5 text-gray-600 leading-relaxed">This site contains mature content . Are you 18 or older?</p>
+        <div class="flex justify-center gap-3">
+          <button id="accept-age-btn" type="button" class="w-36 h-10 inline-flex items-center justify-center text-sm font-medium rounded-lg text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-4 focus:ring-emerald-300">Enter</button>
+          <button id="leave-site-btn" type="button" class="w-36 h-10 inline-flex items-center justify-center text-sm font-medium rounded-lg text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-300">Leave</button>
+        </div>
+      </div>
     </div>
   </div>
+</div>
