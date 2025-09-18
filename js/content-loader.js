@@ -211,6 +211,9 @@ async function loadPageContent(pageName) {
       document.getElementById('content-en').innerHTML = marked.parse(enContent);
       document.getElementById('content-es').innerHTML = marked.parse(esContent);
 
+      // Apply Tailwind styles to rendered tables
+      tailwindifyTables('en');
+      tailwindifyTables('es');
 
       // Initialize syntax highlighting
       document.querySelectorAll('pre code').forEach((block) => {
@@ -243,6 +246,31 @@ function showContent(lang) {
   if (activeSection) {
     activeSection.style.display = 'block';
   }
+}
+
+// Add Tailwind-like utility classes to markdown tables
+function tailwindifyTables(lang) {
+  const container = document.getElementById(`content-${lang}`);
+  if (!container) return;
+  const tables = Array.from(container.querySelectorAll('table'));
+  tables.forEach((table) => {
+    // Wrap for horizontal scroll on small screens
+    if (!table.parentElement.classList.contains('tw-table-wrap')) {
+      const wrap = document.createElement('div');
+      wrap.className = 'tw-table-wrap overflow-x-auto rounded-lg border border-gray-200 shadow-sm my-4';
+      table.parentElement.insertBefore(wrap, table);
+      wrap.appendChild(table);
+    }
+    table.classList.add('w-full', 'text-left', 'text-gray-700');
+    const thead = table.querySelector('thead');
+    if (thead) thead.classList.add('bg-gray-50');
+    table.querySelectorAll('th').forEach((th) => th.classList.add('px-4', 'py-2', 'font-semibold', 'text-gray-700', 'border-b', 'border-gray-200'));
+    table.querySelectorAll('td').forEach((td) => td.classList.add('px-4', 'py-2', 'border-b', 'border-gray-100'));
+    const rows = Array.from(table.querySelectorAll('tbody tr'));
+    rows.forEach((tr, idx) => {
+      tr.classList.add(idx % 2 === 0 ? 'bg-white' : 'bg-gray-50', 'hover:bg-gray-100');
+    });
+  });
 }
 
 // Update the language switcher to handle content
