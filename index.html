@@ -374,6 +374,15 @@
         const clickSrc = mascotImage.dataset.click;
         let isClickSequenceActive = false;
         let clickTimers = [];
+        const clothesOffImages = [
+          'assets/images/iratsutoya-style/pointing-clothes-off-1.png',
+          'assets/images/iratsutoya-style/pointing-clothes-off-2.png',
+          'assets/images/iratsutoya-style/pointing-clothes-off-3.png'
+        ];
+        const clothesThresholds = [5, 8, 10]; // total consecutive clicks
+        let rapidClickCount = 0;
+        let rapidClickResetTimer = null;
+        const CLICK_RESET_MS = 1500;
         
         // Hover effect
         mascotImage.addEventListener('mouseenter', function() {
@@ -388,6 +397,33 @@
         
         // Click effect
         mascotImage.addEventListener('click', function() {
+          // Track rapid consecutive clicks
+          rapidClickCount += 1;
+          if (rapidClickResetTimer) clearTimeout(rapidClickResetTimer);
+          rapidClickResetTimer = setTimeout(() => { rapidClickCount = 0; }, CLICK_RESET_MS);
+
+          // Check for clothes-off easter egg thresholds
+          const stageIndex = clothesThresholds.indexOf(rapidClickCount);
+          if (stageIndex !== -1) {
+            // Trigger clothes-off image, overriding any running sequence
+            clickTimers.forEach(t => clearTimeout(t));
+            clickTimers = [];
+            isClickSequenceActive = true;
+            mascotImage.src = clothesOffImages[stageIndex];
+            mascotImage.classList.add('mascot-clicked');
+            clickTimers.push(setTimeout(() => {
+              mascotImage.src = normalSrc;
+              mascotImage.classList.remove('mascot-clicked');
+              isClickSequenceActive = false;
+              // After completing the 3rd stage, reset the counter so the sequence can restart
+              if (stageIndex === clothesOffImages.length - 1) {
+                rapidClickCount = 0;
+              }
+            }, 4500));
+            return;
+          }
+
+          // Normal angry click sequence if not already running
           if (isClickSequenceActive) return;
           isClickSequenceActive = true;
           this.src = clickSrc; // angry-1
