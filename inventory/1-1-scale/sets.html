@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/assets/icons/favicon/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/iframe.css">
+  <link rel="preconnect" href="https://airtable.com">
+  <title>1/1 Scale - Complete Sets</title>
+  <meta name="description" content="Browse 1/1 scale complete sets in the My Doll Inventory database.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mydollinventory.com/inventory/1-1-scale/sets.html">
+  <!-- Social sharing (Open Graph) -->
+  <meta property="og:title" content="1/1 Scale - Complete Sets | My Doll Inventory">
+  <meta property="og:description" content="Browse 1/1 scale complete sets in the My Doll Inventory database.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mydollinventory.com/inventory/1-1-scale/sets.html">
+  <meta property="og:image" content="https://mydollinventory.com/assets/icons/favicon/favicon-16x16.png">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="1/1 Scale - Complete Sets | My Doll Inventory">
+  <meta name="twitter:description" content="Browse 1/1 scale complete sets in the My Doll Inventory database.">
+  <meta name="twitter:image" content="https://mydollinventory.com/assets/icons/favicon/favicon-16x16.png">
+  <!-- Preload example -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap">
+</head>
+
+<body>
+
+  <!-- Include navbar -->
+  <div id="navbar-placeholder"></div>
+
+  <!-- Main Content -->
+  <div class="responsive-iframe-container">
+    <div class="loading-overlay" id="loading">
+      <div class="loading-spinner"></div>
+      <p data-lang-en="Loading Complete Sets..." data-lang-es="Cargando Sets Completos..."></p>
+    </div>
+    <div class="error-message" id="error">
+      <span class="error-icon">⚠️</span>
+      <h3 class="error-title" data-lang-en="Collection Loading Failed" data-lang-es="Error al Cargar Colección">Collection Loading Failed</h3>
+      <p class="error-description" data-lang-en="We couldn't load the collection in the embedded view. This might be due to network issues or Airtable being temporarily unavailable." data-lang-es="No pudimos cargar la colección en la vista integrada. Esto puede deberse a problemas de red o Airtable estando temporalmente no disponible."></p>
+      <div class="button-group">
+        <button id="retry-btn" data-lang-en="Try Again" data-lang-es="Intentar de Nuevo">Try Again</button>
+        <button id="direct-access-btn" data-lang-en="Open in Airtable" data-lang-es="Abrir en Airtable">Open in Airtable</button>
+      </div>
+    </div>
+    <div class="iframe-wrapper">
+      <iframe id="airtableFrame"
+        data-src="https://airtable.com/embed/appootaAxez6SMydv/shrXXXXXX"
+        loading="lazy"
+        allowfullscreen
+        scrolling="yes"
+        title="1/1 Scale - Complete Sets"
+      ></iframe>
+    </div>
+  </div>
+
+  <script src="/js/mobile-menu.js" defer></script>
+  <script src="/js/iframe-handler.js" defer></script>
+  <script src="/js/age-disclaimer.js" defer></script>
+  <script src="/js/navbar-loader.js" defer></script>
+  <script src="/js/language-switcher.js" defer></script>
+</body>
+
+</html>
