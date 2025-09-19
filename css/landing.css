@@ -245,6 +245,7 @@ body::before {
   padding: 30px 0 220px 0;
   background: #ffffff;
   margin-top: 0px;
+  min-height: 50vh; /* Ensure roughly half-page height */
 }
 
 .container {

@@ -468,7 +468,9 @@
         let discoveredCount = 0;
         let discovering = false;
         let clClickCount = 0;
+        let clTransitionActive = false;
         let clTransitionTimer = null;
+        let clTransitionInterval = null;
         const baseSrc = clMascotImage.getAttribute('src');
 
         function preload(src) {
@@ -494,12 +496,24 @@
         }
 
         function startFourClickTransition() {
-          // No auto-looping; simply schedule a revert to normal after 5 seconds
-          if (clTransitionTimer) { clearTimeout(clTransitionTimer); }
+          if (clTransitionActive) return;
+          clTransitionActive = true;
+          // Rapidly cycle through available fight images for 5 seconds
+          if (discoveredCount > 0) {
+            let index = 1;
+            clTransitionInterval = setInterval(() => {
+              clMascotImage.src = `${clMascotImage.dataset.fightPrefix}${index}${clMascotImage.dataset.fightExt}`;
+              index = (index % discoveredCount) + 1;
+            }, 400);
+          } else {
+            // No fight images found; do a simple click animation
+            clMascotImage.classList.add('mascot-clicked');
+          }
           clTransitionTimer = setTimeout(() => {
+            if (clTransitionInterval) { clearInterval(clTransitionInterval); clTransitionInterval = null; }
             clMascotImage.src = baseSrc;
             clMascotImage.classList.remove('mascot-clicked');
-            clTransitionTimer = null;
+            clTransitionActive = false;
           }, 5000);
         }
 
@@ -514,13 +528,14 @@
             }
           }
 
-          // Every 4 clicks, trigger auto-revert after 5 seconds (no auto-loop)
-          if (clClickCount % 4 === 0) {
+          // Every 4 clicks, trigger transition and auto-revert after 5 seconds
+          if (!clTransitionActive && clClickCount % 4 === 0) {
             startFourClickTransition();
+            return;
           }
 
-          // Regular single-step cycle on every click
-          if (discoveredCount > 0) {
+          // Regular single-step cycle when not in transition
+          if (!clTransitionActive && discoveredCount > 0) {
             fightCount = (fightCount % discoveredCount) + 1;
             clMascotImage.src = `${clMascotImage.dataset.fightPrefix}${fightCount}${clMascotImage.dataset.fightExt}`;
           }
