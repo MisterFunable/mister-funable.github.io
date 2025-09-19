@@ -72,8 +72,13 @@ format: format-html format-css format-js
 
 # Start local server for testing
 local:
-	@echo "$(CYAN)Starting local server...$(RESET)"
-	@$(PYTHON) -m http.server 8000
+	@echo "$(CYAN)Starting local server...$(RESET)"; \
+	$(PYTHON) -m http.server 8000 & pid=$$!; \
+	echo "$(CYAN)Waiting for server to be ready on http://localhost:8000 ...$(RESET)"; \
+	until curl -sSf http://localhost:8000 >/dev/null; do sleep 0.3; done; \
+	echo "$(GREEN)Server is up. Opening browser...$(RESET)"; \
+	open http://localhost:8000; \
+	wait $$pid
 
 # Deploy to GitHub Pages
 deploy:
@@ -100,7 +105,7 @@ help:
 	@echo "  $(GREEN)make build$(RESET)        - Build the site"
 	@echo "  $(GREEN)make clean$(RESET)        - Clean built files"
 	@echo "  $(GREEN)make format$(RESET)       - Format all files (HTML, CSS, JS)"
-	@echo "  $(GREEN)make serve-local$(RESET)  - Start local Python server"
+	@echo "  $(GREEN)make local$(RESET)       - Start local server and open browser"
 	@echo "  $(GREEN)make deploy$(RESET)       - Deploy to GitHub Pages"
 	@echo "  $(GREEN)make validate$(RESET)     - Validate HTML files"
 	@echo "  $(GREEN)make help$(RESET)         - Show this help message"

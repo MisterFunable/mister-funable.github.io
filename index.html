@@ -217,11 +217,18 @@
   <!-- Hero Section -->
   <section class="hero-section relative flex items-center justify-center w-full min-h-[calc(100vh-60px)]">
             <!-- Mascot -->
-        <div class="hero-mascot select-none">
+        <div class="hero-mascot select-none animate">
           <img src="assets/images/iratsutoya-style/pointing.png" alt="Site Mascot pointing at doll collection" class="mascot-image" width="300" height="300" decoding="async" fetchpriority="high"
                data-normal="assets/images/iratsutoya-style/pointing.png"
                data-hover="assets/images/iratsutoya-style/pointing-smile.png"
                data-click="assets/images/iratsutoya-style/pointing-angry-1.png">
+        </div>
+
+        <!-- Chile-specific mascot (appears from the right) -->
+        <div class="hero-mascot-right select-none" style="display:none;">
+          <img src="assets/images/iratsutoya-style/chilean-dress.png" alt="Mascot in Chilean dress" class="mascot-image cl-mascot" width="300" height="300" decoding="async"
+               data-fight-prefix="assets/images/iratsutoya-style/chilean-dress-fight-"
+               data-fight-ext=".png">
         </div>
     
     <div class="hero-content max-w-5xl mx-auto text-center px-4 md:px-6">
@@ -365,7 +372,9 @@
       });
       
       // Mascot image switching functionality
-      const mascotImage = document.querySelector('.mascot-image');
+      const mascotImage = document.querySelector('.hero-mascot .mascot-image');
+      const clMascotWrapper = document.querySelector('.hero-mascot-right');
+      const clMascotImage = document.querySelector('.cl-mascot');
       if (mascotImage) {
         const normalSrc = mascotImage.dataset.normal;
         const hoverSrc = mascotImage.dataset.hover;
@@ -448,6 +457,73 @@
             mascotImage.classList.remove('mascot-clicked');
             isClickSequenceActive = false;
           }, 4500));
+        });
+      }
+
+      // Chile-specific fight image cycle and 4-click transition logic
+      if (clMascotImage) {
+        let fightCount = 0;
+        // Probe repository for how many fight images exist by attempting to load sequentially until one fails
+        // To avoid too many requests up-front, lazily discover on first click
+        let discoveredCount = 0;
+        let discovering = false;
+        let clClickCount = 0;
+        let clTransitionTimer = null;
+        const baseSrc = clMascotImage.getAttribute('src');
+
+        function preload(src) {
+          const i = new Image();
+          i.src = src;
+        }
+
+        function discoverImages(maxProbe = 10) {
+          return new Promise((resolve) => {
+            if (discovering || discoveredCount > 0) { resolve(discoveredCount); return; }
+            discovering = true;
+            let i = 1;
+            function tryNext() {
+              if (i > maxProbe) { discovering = false; resolve(discoveredCount); return; }
+              const url = `${clMascotImage.dataset.fightPrefix}${i}${clMascotImage.dataset.fightExt}`;
+              const test = new Image();
+              test.onload = () => { discoveredCount = i; preload(url); i++; tryNext(); };
+              test.onerror = () => { discovering = false; resolve(discoveredCount); };
+              test.src = url + `?v=${Date.now()}`; // bust cache during probe
+            }
+            tryNext();
+          });
+        }
+
+        function startFourClickTransition() {
+          // No auto-looping; simply schedule a revert to normal after 5 seconds
+          if (clTransitionTimer) { clearTimeout(clTransitionTimer); }
+          clTransitionTimer = setTimeout(() => {
+            clMascotImage.src = baseSrc;
+            clMascotImage.classList.remove('mascot-clicked');
+            clTransitionTimer = null;
+          }, 5000);
+        }
+
+        clMascotImage.addEventListener('click', async () => {
+          clClickCount += 1;
+
+          if (discoveredCount === 0) {
+            await discoverImages(10);
+            // Preload first image if available
+            if (discoveredCount > 0) {
+              preload(`${clMascotImage.dataset.fightPrefix}1${clMascotImage.dataset.fightExt}`);
+            }
+          }
+
+          // Every 4 clicks, trigger auto-revert after 5 seconds (no auto-loop)
+          if (clClickCount % 4 === 0) {
+            startFourClickTransition();
+          }
+
+          // Regular single-step cycle on every click
+          if (discoveredCount > 0) {
+            fightCount = (fightCount % discoveredCount) + 1;
+            clMascotImage.src = `${clMascotImage.dataset.fightPrefix}${fightCount}${clMascotImage.dataset.fightExt}`;
+          }
         });
       }
       
@@ -565,6 +641,47 @@
           content_group2: 'Collection Database'
         });
       }
+    });
+  </script>
+
+  <script>
+    // Toggle mascots when language changes
+    function toggleMascotsForLanguage(lang) {
+      const leftMascot = document.querySelector('.hero-mascot');
+      const rightMascot = document.querySelector('.hero-mascot-right');
+      if (!leftMascot || !rightMascot) return;
+      const leftVisible = leftMascot.style.display !== 'none';
+      const rightVisible = rightMascot.style.display !== 'none';
+      if (lang === 'cl') {
+        if (!rightVisible) {
+          leftMascot.style.display = 'none';
+          rightMascot.style.display = 'block';
+          rightMascot.classList.remove('animate');
+          requestAnimationFrame(() => rightMascot.classList.add('animate'));
+        }
+        return; // avoid touching EN/ES state when already CL
+      }
+      // Non-CL: only switch if currently showing CL
+      if (!leftVisible) {
+        rightMascot.style.display = 'none';
+        leftMascot.style.display = 'block';
+        leftMascot.classList.remove('animate');
+        requestAnimationFrame(() => leftMascot.classList.add('animate'));
+      }
+    }
+    // Expose globally so language-switcher can call it
+    window.toggleMascotsForLanguage = toggleMascotsForLanguage;
+    // React to language change events
+    window.addEventListener('language-changed', (e) => {
+      const lang = (e && e.detail && e.detail.lang) || (localStorage.getItem('preferredLanguage') || 'en');
+      toggleMascotsForLanguage(lang);
+    });
+    // Ensure initial state after switcher initializes
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        const savedLanguage = localStorage.getItem('preferredLanguage') || 'en';
+        toggleMascotsForLanguage(savedLanguage);
+      }, 200);
     });
   </script>
 </body>

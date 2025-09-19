@@ -49,11 +49,27 @@ body::before {
   top: 70%; /* Lowered from 50% to 70% so torso appears */
   transform: translateY(-50%);
   z-index: 3;
+}
+
+.hero-mascot.animate {
   animation: mascotSlideIn 1.2s ease-out 0.5s forwards;
 }
 
+/* Right-side mascot (Chile) */
+.hero-mascot-right {
+  position: absolute;
+  right: -300px; /* Start off-screen to the right */
+  top: 70%;
+  transform: translateY(-50%);
+  z-index: 3;
+}
+
+.hero-mascot-right.animate {
+  animation: mascotSlideInRight 1.2s ease-out 0.5s forwards;
+}
+
 .mascot-image {
-  width: 300px; /* Increased from 200px by 50% */
+  width: clamp(220px, 16vw + 60px, 420px);
   height: auto;
   filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.3));
   transition: all 0.3s ease;
@@ -75,6 +91,17 @@ body::before {
   }
   100% {
     left: 10%;
+    opacity: 1;
+  }
+}
+
+@keyframes mascotSlideInRight {
+  0% {
+    right: -300px;
+    opacity: 0;
+  }
+  100% {
+    right: 10%;
     opacity: 1;
   }
 }
@@ -141,7 +168,7 @@ body::before {
 }
 
 .hero-main {
-  font-size: 3rem;
+  font-size: clamp(2.5rem, 4vw + 1rem, 5rem);
   font-weight: 700;
   color: #ffffff;
   font-family: 'Special Gothic Condensed One', sans-serif;
@@ -379,7 +406,19 @@ body::before {
   .hero-mascot {
     left: -225px; /* Adjusted for larger size */
     top: 75%; /* Even lower on mobile */
+  }
+
+  .hero-mascot.animate {
     animation: mascotSlideInMobile 1.2s ease-out 0.5s forwards;
+  }
+
+  .hero-mascot-right {
+    right: -225px;
+    top: 75%;
+  }
+
+  .hero-mascot-right.animate {
+    animation: mascotSlideInRightMobile 1.2s ease-out 0.5s forwards;
   }
   
   .mascot-image {
@@ -393,6 +432,17 @@ body::before {
     }
     100% {
       left: 5%;
+      opacity: 1;
+    }
+  }
+
+  @keyframes mascotSlideInRightMobile {
+    0% {
+      right: -225px;
+      opacity: 0;
+    }
+    100% {
+      right: 5%;
       opacity: 1;
     }
   }
@@ -439,7 +489,19 @@ body::before {
   .hero-mascot {
     left: -180px; /* Adjusted for larger size */
     top: 80%; /* Even lower on small screens */
+  }
+
+  .hero-mascot.animate {
     animation: mascotSlideInSmall 1.2s ease-out 0.5s forwards;
+  }
+
+  .hero-mascot-right {
+    right: -180px;
+    top: 80%;
+  }
+
+  .hero-mascot-right.animate {
+    animation: mascotSlideInRightSmall 1.2s ease-out 0.5s forwards;
   }
   
   .mascot-image {
@@ -453,6 +515,17 @@ body::before {
     }
     100% {
       left: 2%;
+      opacity: 1;
+    }
+  }
+
+  @keyframes mascotSlideInRightSmall {
+    0% {
+      right: -180px;
+      opacity: 0;
+    }
+    100% {
+      right: 2%;
       opacity: 1;
     }
   }

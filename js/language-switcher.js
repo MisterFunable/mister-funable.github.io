@@ -7,11 +7,18 @@ function changeLanguage(lang) {
   // Update inline flag buttons active state
   const enBtn = document.getElementById('lang-en');
   const esBtn = document.getElementById('lang-es');
-  if (enBtn && esBtn) {
+  const clBtn = document.getElementById('lang-cl');
+  if (enBtn) {
     enBtn.classList.toggle('active', lang === 'en');
-    esBtn.classList.toggle('active', lang === 'es');
     enBtn.setAttribute('aria-pressed', String(lang === 'en'));
+  }
+  if (esBtn) {
+    esBtn.classList.toggle('active', lang === 'es');
     esBtn.setAttribute('aria-pressed', String(lang === 'es'));
+  }
+  if (clBtn) {
+    clBtn.classList.toggle('active', lang === 'cl');
+    clBtn.setAttribute('aria-pressed', String(lang === 'cl'));
   }
 
   // Remove any legacy dropdown selected states if present
@@ -28,15 +35,41 @@ function changeLanguage(lang) {
   }
 
   // Update all elements with language data
+  const effectiveLang = (lang === 'cl') ? 'es' : lang; // Chile uses Spanish content
   document.querySelectorAll('[data-lang-en]').forEach(element => {
-    const key = element.getAttribute(`data-lang-${lang}`);
-    if (key) {  // Only update if the attribute exists
+    const key = element.getAttribute(`data-lang-${effectiveLang}`);
+    if (key) {
       element.textContent = key;
     }
   });
 
+  // Homepage mascot handling: if dual mascots exist, let homepage script handle toggling
+  const hasDualMascots = document.querySelector('.hero-mascot-right');
+  if (!hasDualMascots) {
+    // Legacy fallback: single mascot swap (non-home pages that might still use it)
+    const mascotImage = document.querySelector('.mascot-image');
+    if (mascotImage) {
+      if (lang === 'cl') {
+        mascotImage.src = 'assets/images/iratsutoya-style/chilean-dress.png';
+        mascotImage.classList.remove('mascot-clicked');
+      } else {
+        const normalSrc = mascotImage.dataset.normal;
+        if (normalSrc) {
+          mascotImage.src = normalSrc;
+        }
+      }
+    }
+  }
+
   // Save language preference
   localStorage.setItem('preferredLanguage', lang);
+  // Notify listeners on pages that react to language changes
+  try {
+    window.dispatchEvent(new CustomEvent('language-changed', { detail: { lang } }));
+  } catch (e) {}
+  if (typeof window.toggleMascotsForLanguage === 'function') {
+    try { window.toggleMascotsForLanguage(lang); } catch (e) {}
+  }
   // No dropdown anymore; nothing to close
 }
 
@@ -44,6 +77,7 @@ function changeLanguage(lang) {
 function initializeLanguageSwitcher() {
   const enBtn = document.getElementById('lang-en');
   const esBtn = document.getElementById('lang-es');
+  const clBtn = document.getElementById('lang-cl');
 
   if (enBtn) {
     enBtn.addEventListener('click', (e) => {
@@ -56,6 +90,13 @@ function initializeLanguageSwitcher() {
     esBtn.addEventListener('click', (e) => {
       e.preventDefault();
       changeLanguage('es');
+    });
+  }
+
+  if (clBtn) {
+    clBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      changeLanguage('cl');
     });
   }
 
@@ -75,4 +116,5 @@ document.addEventListener('DOMContentLoaded', () => {
 // Also initialize when called from navbar loader
 if (typeof window !== 'undefined') {
   window.initializeLanguageSwitcher = initializeLanguageSwitcher;
+  window.changeLanguage = changeLanguage;
 }
