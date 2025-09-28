@@ -96,8 +96,16 @@
   <link rel="preload" href="assets/images/iratsutoya-style/pointing.png" as="image" fetchpriority="high">
   
   <!-- Google Analytics 4 -->
-  <script src="js/analytics-loader.js" defer></script>
-  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RJ7GFZ6R5Q"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-RJ7GFZ6R5Q');
+  </script>
+
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
   {
@@ -349,7 +357,6 @@
   <script src="js/language-switcher.js" defer></script>
   <script src="js/footer-loader.js" defer></script>
   <script src="js/clean-urls.js" defer></script>
-  <script src="js/analytics.js" defer></script>
   <script>
     // Scroll to collections function
     function scrollToCollections() {
@@ -647,14 +654,26 @@
         });
       }
       
-      // Track page view with Google Analytics
+      // Track page view and test event with Google Analytics
       if (typeof gtag !== 'undefined') {
+        console.log('Google Analytics is loaded!');
+        
+        // Send page view
         gtag('event', 'page_view', {
           page_title: 'My Doll Inventory - Home',
           page_location: window.location.href,
           content_group1: 'Homepage',
           content_group2: 'Collection Database'
         });
+        
+        // Send test event
+        gtag('event', 'test_event', {
+          event_category: 'Testing',
+          event_label: 'Analytics Test',
+          value: 1
+        });
+      } else {
+        console.error('Google Analytics (gtag) is not loaded!');
       }
     });
   </script>
