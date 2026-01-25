@@ -1,0 +1,148 @@
+/* ============================================
+   PAGE BANNER COMPONENT
+   Smart banner with custom image support
+   ============================================ */
+
+.page-banner {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  background: linear-gradient(165deg, #1e293b 0%, #334155 50%, #475569 100%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 3rem;
+}
+
+/* Overlay for better text readability */
+.page-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5));
+  z-index: 1;
+}
+
+/* Banner content container */
+.page-banner-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 900px;
+  padding: 2rem;
+  color: white;
+}
+
+.page-banner-title {
+  font-family: 'Special Gothic Condensed One', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin: 0 0 0.75rem 0;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  letter-spacing: 1px;
+  line-height: 1.1;
+}
+
+.page-banner-subtitle {
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin: 0;
+  opacity: 0.95;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.page-banner-badge {
+  display: inline-block;
+  background: rgba(212, 175, 55, 0.9);
+  color: #1a1a1a;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-shadow: none;
+}
+
+/* Decorative elements */
+.page-banner-decoration {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.1), transparent);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* When custom image is loaded */
+.page-banner.has-custom-image::before {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .page-banner {
+    height: 220px;
+    margin-bottom: 2rem;
+  }
+
+  .page-banner-title {
+    font-size: 2.5rem;
+  }
+
+  .page-banner-subtitle {
+    font-size: 1rem;
+  }
+
+  .page-banner-content {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-banner {
+    height: 180px;
+    margin-bottom: 1.5rem;
+  }
+
+  .page-banner-title {
+    font-size: 2rem;
+  }
+
+  .page-banner-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .page-banner-badge {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.8rem;
+  }
+
+  .page-banner-content {
+    padding: 1rem;
+  }
+}
+
+/* Animation */
+.page-banner-content {
+  animation: bannerFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes bannerFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
