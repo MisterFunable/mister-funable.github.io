@@ -1,0 +1,350 @@
+/* ============================================
+   MODERN AGE DISCLAIMER MODAL
+   Enhanced design with image placeholder
+   ============================================ */
+
+.age-disclaimer-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  padding: 1rem;
+  animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.age-disclaimer-content {
+  position: relative;
+  background: #ffffff;
+  border-radius: 24px;
+  max-width: 500px;
+  width: 100%;
+  padding: 0;
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(0, 0, 0, 0.1);
+  animation: slideUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  overflow: hidden;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Image Section */
+.age-disclaimer-image {
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(165deg, #1e293b 0%, #334155 50%, #475569 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.age-disclaimer-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 70% 80%, rgba(243, 156, 18, 0.12) 0%, transparent 50%);
+  animation: gradientPulse 8s ease-in-out infinite;
+}
+
+@keyframes gradientPulse {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.age-disclaimer-image img {
+  max-width: 180px;
+  max-height: 180px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  z-index: 1;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.3));
+  animation: floatImage 3s ease-in-out infinite;
+}
+
+@keyframes floatImage {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Fallback icon if no image */
+.age-disclaimer-icon {
+  font-size: 5rem;
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.2));
+  z-index: 1;
+  animation: floatImage 3s ease-in-out infinite;
+}
+
+/* Content Section */
+.age-disclaimer-body {
+  padding: 2rem 2.5rem;
+  text-align: center;
+}
+
+.age-disclaimer-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #1a202c;
+  margin: 0 0 0.75rem 0;
+  font-family: 'Special Gothic Condensed One', -apple-system, sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.age-disclaimer-message {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #4a5568;
+  margin: 0 0 2rem 0;
+  font-weight: 400;
+}
+
+/* Warning Badge */
+.age-disclaimer-warning {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(220, 38, 38, 0.1) 100%);
+  color: #dc2626;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.age-disclaimer-warning::before {
+  content: '⚠️';
+  font-size: 1.2rem;
+}
+
+/* Buttons */
+.age-disclaimer-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.age-disclaimer-btn {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  font-family: inherit;
+  position: relative;
+  overflow: hidden;
+}
+
+.age-disclaimer-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.5s, height 0.5s;
+}
+
+.age-disclaimer-btn:active::before {
+  width: 300px;
+  height: 300px;
+}
+
+.age-disclaimer-btn-confirm {
+  background: linear-gradient(135deg, #D4AF37 0%, #f39c12 100%);
+  color: white;
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.3);
+}
+
+.age-disclaimer-btn-confirm:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.4);
+}
+
+.age-disclaimer-btn-confirm:active {
+  transform: translateY(0);
+}
+
+.age-disclaimer-btn-cancel {
+  background: #e2e8f0;
+  color: #4a5568;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.age-disclaimer-btn-cancel:hover {
+  background: #cbd5e0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.age-disclaimer-btn-cancel:active {
+  transform: translateY(0);
+}
+
+/* Info Footer */
+.age-disclaimer-footer {
+  padding: 1.5rem 2.5rem;
+  background: linear-gradient(to bottom, transparent, rgba(248, 249, 250, 0.5));
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.age-disclaimer-info {
+  font-size: 0.85rem;
+  color: #718096;
+  line-height: 1.5;
+  margin: 0;
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .age-disclaimer-content {
+    max-width: 90%;
+    border-radius: 20px;
+  }
+
+  .age-disclaimer-image {
+    height: 160px;
+  }
+
+  .age-disclaimer-image img {
+    max-width: 140px;
+    max-height: 140px;
+  }
+
+  .age-disclaimer-icon {
+    font-size: 4rem;
+  }
+
+  .age-disclaimer-body {
+    padding: 1.75rem 2rem;
+  }
+
+  .age-disclaimer-title {
+    font-size: 1.5rem;
+  }
+
+  .age-disclaimer-message {
+    font-size: 0.95rem;
+  }
+
+  .age-disclaimer-footer {
+    padding: 1.25rem 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .age-disclaimer-modal {
+    padding: 0.75rem;
+  }
+
+  .age-disclaimer-content {
+    border-radius: 16px;
+  }
+
+  .age-disclaimer-image {
+    height: 140px;
+  }
+
+  .age-disclaimer-image img {
+    max-width: 120px;
+    max-height: 120px;
+  }
+
+  .age-disclaimer-icon {
+    font-size: 3.5rem;
+  }
+
+  .age-disclaimer-body {
+    padding: 1.5rem;
+  }
+
+  .age-disclaimer-title {
+    font-size: 1.35rem;
+  }
+
+  .age-disclaimer-message {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .age-disclaimer-buttons {
+    flex-direction: column;
+  }
+
+  .age-disclaimer-btn {
+    padding: 0.875rem 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  .age-disclaimer-footer {
+    padding: 1rem 1.5rem;
+  }
+
+  .age-disclaimer-info {
+    font-size: 0.8rem;
+  }
+}
+
+/* Accessibility */
+.age-disclaimer-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .age-disclaimer-modal,
+  .age-disclaimer-content,
+  .age-disclaimer-image img,
+  .age-disclaimer-icon {
+    animation: none;
+  }
+}

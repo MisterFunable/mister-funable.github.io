@@ -1,0 +1,280 @@
+/* ============================================
+   ENHANCED IFRAME LOADING
+   Blurred preview with modern loading state
+   ============================================ */
+
+.responsive-iframe-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: calc(100vh - 70px);
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  margin-top: 70px;
+  padding-top: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, sans-serif;
+}
+
+.iframe-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.5s ease;
+}
+
+/* Blurred preview effect while loading */
+.iframe-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(135deg, rgba(248, 249, 250, 0.9) 0%, rgba(233, 236, 239, 0.9) 100%),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(0, 0, 0, 0.02) 10px,
+      rgba(0, 0, 0, 0.02) 20px
+    );
+  z-index: 0;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+}
+
+.iframe-wrapper.loaded::before {
+  opacity: 0;
+}
+
+iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  opacity: 0;
+  filter: blur(20px);
+  transform: scale(1.02);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+iframe.loaded {
+  opacity: 1;
+  filter: blur(0);
+  transform: scale(1);
+}
+
+/* Enhanced Loading Overlay with Glassmorphism */
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  border-radius: 16px;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.loading-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Modern Loading Spinner */
+.loading-overlay .loading-spinner {
+  width: 70px;
+  height: 70px;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.loading-overlay .loading-spinner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 4px solid rgba(212, 175, 55, 0.2);
+  border-radius: 50%;
+  border-top-color: #D4AF37;
+  animation: spin 1s linear infinite;
+}
+
+.loading-overlay .loading-spinner::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  border: 3px solid rgba(243, 156, 18, 0.3);
+  border-radius: 50%;
+  border-bottom-color: #f39c12;
+  animation: spin 1.5s linear infinite reverse;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Loading Message */
+.loading-overlay p {
+  color: #2c3e50;
+  font-size: 1.15rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 0;
+  max-width: 350px;
+  line-height: 1.6;
+  padding: 0 1rem;
+}
+
+/* Loading Progress Hint */
+.loading-overlay .loading-hint {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: rgba(44, 62, 80, 0.7);
+  font-weight: 400;
+}
+
+/* Pulse animation for loading text */
+.loading-overlay p::after {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  margin-left: 0.5rem;
+  background: #D4AF37;
+  border-radius: 50%;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+}
+
+/* Click-to-load overlay */
+.click-to-load-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.click-to-load-overlay:hover {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.click-to-load-btn {
+  background: linear-gradient(135deg, #D4AF37 0%, #f39c12 100%);
+  color: white;
+  border: none;
+  padding: 1.25rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 14px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.3);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  margin-bottom: 1rem;
+}
+
+.click-to-load-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 32px rgba(212, 175, 55, 0.4);
+}
+
+.click-to-load-btn:active {
+  transform: translateY(-1px) scale(1);
+}
+
+.click-to-load-hint {
+  color: rgba(44, 62, 80, 0.7);
+  font-size: 0.95rem;
+  max-width: 300px;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .responsive-iframe-container {
+    height: calc(100vh - 65px);
+    margin-top: 65px;
+  }
+
+  .iframe-wrapper {
+    border-radius: 12px;
+  }
+
+  .loading-overlay .loading-spinner {
+    width: 60px;
+    height: 60px;
+  }
+
+  .loading-overlay p {
+    font-size: 1.05rem;
+  }
+
+  .click-to-load-btn {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .loading-overlay .loading-spinner {
+    width: 50px;
+    height: 50px;
+  }
+
+  .loading-overlay p {
+    font-size: 1rem;
+  }
+
+  .click-to-load-btn {
+    padding: 0.875rem 1.75rem;
+    font-size: 0.95rem;
+  }
+}

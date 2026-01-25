@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nAdd comprehensive CLAUDE.md documentation for repository\n\nCreate detailed documentation file for future Claude Code instances including:\n- Development commands and build tools\n- Component system architecture \\(navbar, footer, age disclaimer\\)\n- JavaScript module organization and responsibilities\n- CSS organization and naming patterns\n- Multi-language support implementation\n- Airtable integration approach\n- Content loading strategies for Gist-based pages\n- Practical guides for common modifications\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nFix path issues in /info/ subpages by converting to absolute paths\n\nAll pages in the /info/ directory were using relative paths \\(../\\) for CSS and JS resources, which caused loading failures. Updated all 7 files to use absolute paths \\(/\\) for consistency with /inventory/ pages.\n\nChanged:\n- ../css/ → /css/\n- ../js/ → /js/\n- ../assets/ → /assets/\n\nFiles updated:\n- info/advise.html\n- info/aliexpress.html\n- info/lightsabers.html\n- info/resin-inventory.html\n- info/seamless-dolls.html\n- info/stores-review.html\n- info/subscribers-suggestions.html\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push:*)",
+      "Bash(git pull:*)",
+      "Bash(curl:*)",
+      "Bash(for gist_id in \"a59bc0b0db41e68ade5598c58bdea9c1\" \"54e5fc9e6994014c85e96b6fa5380331\" \"4fe2e2d97a6ca98549e4fa4c5a008556\" \"73d7afa3aa3f6d596152a1928c697fd0\" \"497cc5a1acc7be40f38985825cdd9197\" \"209bc9db081e6316f135adbcf74fdf5e\" \"3541088165092cfad95cd92b65cb10b0\")",
+      "Bash(do)",
+      "Bash(echo:*)",
+      "Bash(git commit:*)"
+    ]
+  }
+}
