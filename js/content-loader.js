@@ -15,7 +15,7 @@ const gistConfig = {
     },
     es: {
       id: 'a59bc0b0db41e68ade5598c58bdea9c1',
-      file: 'en-resin-inventory.md'
+      file: 'en-resin-inventory.md'  // Spanish version not available yet
     }
   },
   'subscribers-suggestions': {
@@ -25,7 +25,7 @@ const gistConfig = {
     },
     es: {
       id: '54e5fc9e6994014c85e96b6fa5380331',
-      file: 'en-subscribers-suggestions.md'
+      file: 'en-subscribers-suggestions.md'  // Spanish version not available yet
     }
   },
   'lightsabers': {
@@ -45,7 +45,7 @@ const gistConfig = {
     },
     es: {
       id: '73d7afa3aa3f6d596152a1928c697fd0',
-      file: 'es-stores-review.md'
+      file: 'en-stores-review.md'  // Spanish version not available yet
     }
   },
   'aliexpress': {
@@ -71,11 +71,11 @@ const gistConfig = {
   'advise': {
     en: {
       id: '497cc5a1acc7be40f38985825cdd9197',
-      file: 'shopping-tips.md'
+      file: 'en-aliexpress-advices.md'  // Using aliexpress advice for now
     },
     es: {
       id: '497cc5a1acc7be40f38985825cdd9197',
-      file: 'shopping-tips.md'
+      file: 'es-aliexpress-advices.md'  // Using aliexpress advice for now
     }
   },
   'metal-build': {
@@ -85,7 +85,7 @@ const gistConfig = {
     },
     es: {
       id: '3541088165092cfad95cd92b65cb10b0',
-      file: 'es-metal-build.md'
+      file: 'en-metal-build.md'  // Spanish version not available yet
     }
   }
   // Add more pages as needed
