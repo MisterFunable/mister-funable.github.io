@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/metal-build.css">
   <link rel="stylesheet" href="css/inventory.css">
-  <link rel="stylesheet" href="css/info.css">
+  <link rel="stylesheet" href="css/page-banner.css">
   
   <!-- Google Analytics 4 -->
   <!-- Google tag (gtag.js) -->
@@ -100,15 +100,17 @@
 <body>
   <div id="navbar-placeholder"></div>
 
-  <!-- Hero Section -->
-  <section class="info-hero">
-    <div class="info-hero-content">
-      <h1 data-lang-en="Metal Build Manuals" data-lang-es="Manuales de Metal Build">Metal Build Manuals</h1>
-      <p class="hero-subtitle" data-lang-en="Saving you from having to search for them in the official page"
-         data-lang-es="Ahorrando tiempo buscando en la página oficial">
-        Saving you from having to search for them in the official page
+  <!-- Page Banner -->
+  <section class="page-banner" data-page="metal-build">
+    <div class="page-banner-content">
+      <div class="page-banner-badge" data-lang-en="Reference Guide" data-lang-es="Guía de Referencia">Reference Guide</div>
+      <h1 class="page-banner-title" data-lang-en="Metal Build Manuals" data-lang-es="Manuales de Metal Build">Metal Build Manuals</h1>
+      <p class="page-banner-subtitle" data-lang-en="All instruction manuals in one place—no more hunting on the official site"
+         data-lang-es="Todos los manuales de instrucciones en un solo lugar—no más búsquedas en el sitio oficial">
+        All instruction manuals in one place—no more hunting on the official site
       </p>
     </div>
+    <div class="page-banner-decoration"></div>
   </section>
 
   <!-- Hugging Gundam Overlay Image -->
@@ -427,6 +429,7 @@
     <img id="mb-modal-img" src="" alt="Zoomed Metal Build">
   </div>
 
+  <script src="js/page-banner.js"></script>
   <script src="js/language-switcher.js"></script>
   <script>
     // Load navbar
