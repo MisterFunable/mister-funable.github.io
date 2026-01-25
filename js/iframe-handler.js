@@ -3,9 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const iframe = document.getElementById('airtableFrame');
     if (!iframe) return;
     
-    const loadingOverlay = document.getElementById('loading');
-    const errorMessage = document.getElementById('error');
-    
     // Create error popup if it doesn't exist
     function createErrorPopup() {
         if (document.getElementById('error-popup')) return;
@@ -70,35 +67,37 @@ document.addEventListener('DOMContentLoaded', function() {
     // Handle iframe loading
     let loadTimeout;
     const loadIframe = () => {
-        // Show loading state immediately
-        loadingOverlay.style.display = 'flex';
-        errorMessage.style.display = 'none';
-        iframe.style.opacity = '0';
-        
         // Set the actual src from data-src
         if (iframe.dataset.src) {
             iframe.src = iframe.dataset.src;
         }
-        
-        // Set timeout for loading state (reduced to 10 seconds)
+
+        // Set timeout for loading state (45 seconds to match loading screen)
         loadTimeout = setTimeout(() => {
-            loadingOverlay.style.display = 'none';
             showErrorPopup();
-        }, 10000); // 10 second timeout
-        
+        }, 45000);
+
         // Handle iframe load
         iframe.onload = () => {
             clearTimeout(loadTimeout);
-            loadingOverlay.style.display = 'none';
             iframe.style.opacity = '1';
             iframe.classList.add('loaded');
+
+            // Hide the loading screen if it exists
+            if (window.hideLoadingScreen) {
+                window.hideLoadingScreen();
+            }
         };
-        
+
         // Handle iframe error
         iframe.onerror = () => {
             clearTimeout(loadTimeout);
-            loadingOverlay.style.display = 'none';
             showErrorPopup();
+
+            // Hide the loading screen if it exists
+            if (window.hideLoadingScreen) {
+                window.hideLoadingScreen();
+            }
         };
     };
     
@@ -189,22 +188,4 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Fallback timeout for loading error (reduced to 12 seconds)
-setTimeout(() => {
-    const loadingOverlay = document.getElementById('loading');
-    if (loadingOverlay && loadingOverlay.style.display !== 'none') {
-        loadingOverlay.style.display = 'none';
-        // Use popup instead of inline error message
-        if (typeof showErrorPopup === 'function') {
-            showErrorPopup();
-        } else {
-            // Fallback to inline error if popup function not available
-            const errorMessage = document.getElementById('error');
-            if (errorMessage) {
-                errorMessage.style.display = 'block';
-            }
-        }
-    }
-}, 12000);
-
-// ... rest of the iframe handling code ... 
+ 

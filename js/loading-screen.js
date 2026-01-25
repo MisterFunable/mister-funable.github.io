@@ -133,24 +133,55 @@
     // Rotate messages every 3 seconds
     messageInterval = setInterval(rotateMessage, 3000);
 
-    // Listen for page load events
-    if (document.readyState === 'complete') {
-      // Page already loaded
-      setTimeout(hideLoadingScreen, 500);
-    } else {
-      // Wait for page to load
-      window.addEventListener('load', () => {
-        setTimeout(hideLoadingScreen, 500);
-      });
-    }
+    // Check if this is an iframe page
+    const iframe = document.getElementById('airtableFrame');
 
-    // Fallback: force hide after 45 seconds
-    setTimeout(() => {
-      if (!progressComplete) {
-        console.log('Loading screen timeout - force hiding');
-        hideLoadingScreen();
+    if (iframe) {
+      // For iframe pages, wait for the iframe to load
+      const checkIframeLoad = () => {
+        // Load the iframe if it has a data-src
+        if (iframe.dataset.src && !iframe.src) {
+          iframe.src = iframe.dataset.src;
+        }
+
+        // Wait for iframe to load
+        iframe.addEventListener('load', () => {
+          setTimeout(hideLoadingScreen, 500);
+        });
+
+        // Fallback: force hide after 45 seconds
+        setTimeout(() => {
+          if (!progressComplete) {
+            console.log('Loading screen timeout - force hiding');
+            hideLoadingScreen();
+          }
+        }, 45000);
+      };
+
+      // Check if page is already loaded
+      if (document.readyState === 'complete') {
+        checkIframeLoad();
+      } else {
+        window.addEventListener('load', checkIframeLoad);
       }
-    }, 45000);
+    } else {
+      // For non-iframe pages, wait for page to load
+      if (document.readyState === 'complete') {
+        setTimeout(hideLoadingScreen, 500);
+      } else {
+        window.addEventListener('load', () => {
+          setTimeout(hideLoadingScreen, 500);
+        });
+      }
+
+      // Fallback: force hide after 45 seconds
+      setTimeout(() => {
+        if (!progressComplete) {
+          console.log('Loading screen timeout - force hiding');
+          hideLoadingScreen();
+        }
+      }, 45000);
+    }
   }
 
   // Start when DOM is ready
