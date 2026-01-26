@@ -61,13 +61,12 @@
 
 /* Notebook Cover Page */
 .notebook-cover {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  height: 100vh;
+  background: linear-gradient(135deg, #f5f3ee 0%, #e8e5dc 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -76,11 +75,46 @@
   transform-origin: left center;
   transform-style: preserve-3d;
   transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
-  z-index: 100;
+  z-index: 10000;
   overflow: hidden;
+  cursor: pointer;
   box-shadow:
     inset -10px 0 20px rgba(0, 0, 0, 0.1),
     10px 0 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Notebook paper texture on cover */
+.notebook-cover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    repeating-linear-gradient(
+      transparent,
+      transparent 31px,
+      #e3dfd6 31px,
+      #e3dfd6 32px
+    );
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Red margin line on cover */
+.notebook-cover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 80px;
+  width: 2px;
+  height: 100%;
+  background: #ff6b6b;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .notebook-cover.flipped {
@@ -88,10 +122,99 @@
   pointer-events: none;
 }
 
+/* Cover Content */
+.cover-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 700px;
+  backface-visibility: hidden;
+}
+
+.cover-title {
+  font-family: 'Caveat', cursive;
+  font-size: 4.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  line-height: 1.2;
+}
+
+.cover-subtitle {
+  font-family: 'Caveat', cursive;
+  font-size: 2rem;
+  font-weight: 400;
+  color: #5a5a5a;
+  margin-bottom: 3rem;
+  line-height: 1.4;
+}
+
+.cover-mascot {
+  margin-bottom: 2rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+.cover-mascot img {
+  width: 220px;
+  height: 220px;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+/* Hint Text */
+.cover-hint {
+  font-family: 'Caveat', cursive;
+  font-size: 1.4rem;
+  color: #7a7a7a;
+  margin-top: 2rem;
+  opacity: 0.7;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
 /* Mobile Adjustments */
 @media (max-width: 768px) {
   .notebook-paper::after {
     left: 40px;
+  }
+
+  .notebook-cover::after {
+    left: 40px;
+  }
+
+  .cover-title {
+    font-size: 3.5rem;
+  }
+
+  .cover-subtitle {
+    font-size: 1.6rem;
+  }
+
+  .cover-mascot img {
+    width: 180px;
+    height: 180px;
+  }
+
+  .cover-hint {
+    font-size: 1.2rem;
   }
 
   /* Simplified animation for mobile */
@@ -105,6 +228,38 @@
   .notebook-paper::after {
     left: 30px;
   }
+
+  .notebook-cover::after {
+    left: 30px;
+  }
+
+  .cover-title {
+    font-size: 2.8rem;
+  }
+
+  .cover-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+  }
+
+  .cover-mascot {
+    margin-bottom: 1.5rem;
+  }
+
+  .cover-mascot img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .cover-hint {
+    font-size: 1rem;
+  }
+}
+
+/* Accessibility */
+.notebook-cover:focus {
+  outline: 3px solid #D4AF37;
+  outline-offset: -5px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -115,5 +270,10 @@
   .notebook-cover.flipped {
     transform: none;
     opacity: 0;
+  }
+
+  .cover-mascot,
+  .cover-hint {
+    animation: none;
   }
 }

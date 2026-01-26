@@ -226,6 +226,24 @@
 <body>
   <div id="navbar-placeholder"></div>
 
+  <!-- Notebook Cover (Click to Open) -->
+  <div class="notebook-cover" id="notebookCover" role="button" tabindex="0" aria-label="Click to view collections">
+    <div class="cover-content">
+      <div class="cover-mascot">
+        <img src="assets/images/mascot/active-version-design.jpeg" alt="Undefined - Your guide" width="220" height="220" loading="eager" fetchpriority="high">
+      </div>
+      <h1 class="cover-title" data-lang-en="Inventory & Side Notes" data-lang-es="Inventario y Notas Personales">
+        Inventory & Side Notes
+      </h1>
+      <p class="cover-subtitle" data-lang-en="Personal collection notes that might help you too" data-lang-es="Notas de colección personal que también podrían ayudarte">
+        Personal collection notes that might help you too
+      </p>
+      <p class="cover-hint" data-lang-en="Click anywhere to explore" data-lang-es="Haz clic en cualquier lugar para explorar">
+        Click anywhere to explore
+      </p>
+    </div>
+  </div>
+
   <!-- Hero Section -->
   <section class="hero-section relative flex items-center justify-center w-full min-h-[calc(100vh-70px)]">
             <!-- Mascot -->
@@ -363,6 +381,33 @@
   <script src="js/footer-loader.js" defer></script>
   <script src="js/clean-urls.js" defer></script>
   <script>
+    // Open notebook cover
+    function openNotebook() {
+      const cover = document.getElementById('notebookCover');
+      if (cover) {
+        cover.classList.add('flipped');
+
+        // Remove from DOM after animation completes
+        setTimeout(() => {
+          cover.style.display = 'none';
+        }, 1200);
+      }
+    }
+
+    // Click anywhere on cover to open
+    const notebookCover = document.getElementById('notebookCover');
+    if (notebookCover) {
+      notebookCover.addEventListener('click', openNotebook);
+
+      // Keyboard accessibility
+      notebookCover.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openNotebook();
+        }
+      });
+    }
+
     // Scroll to collections function
     function scrollToCollections() {
       const collectionsSection = document.getElementById('collections');
