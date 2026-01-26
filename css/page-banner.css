@@ -38,6 +38,10 @@
   max-width: 900px;
   padding: 2rem;
   color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .page-banner-title {
