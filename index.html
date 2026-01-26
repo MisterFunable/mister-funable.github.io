@@ -60,7 +60,7 @@
   <link rel="preconnect" href="https://www.googletagmanager.com">
   
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
   
   <!-- Tailwind (Play CDN) - Preflight disabled to preserve existing styles -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -88,6 +88,7 @@
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/navbar-modern.css">
+  <link rel="stylesheet" href="css/notebook-cover.css">
   <link rel="stylesheet" href="css/landing-modern.css">
   <link rel="stylesheet" href="css/footer-modern.css">
   
@@ -225,6 +226,32 @@
 <body>
   <div id="navbar-placeholder"></div>
 
+  <!-- Notebook Wrapper -->
+  <div class="notebook-wrapper">
+    <!-- Notebook Cover (First Page) -->
+    <div class="notebook-cover" id="notebookCover" role="button" tabindex="0" aria-label="Open notebook">
+      <div class="cover-content">
+        <div class="cover-mascot">
+          <img src="assets/images/mascot/active-version-design.jpeg" alt="Undefined - Your guide" width="200" height="200" loading="eager" fetchpriority="high">
+        </div>
+        <h1 class="cover-title" data-lang-en="My Personal Notebook" data-lang-es="Mi Cuaderno Personal">
+          My Personal Notebook
+        </h1>
+        <p class="cover-subtitle" data-lang-en="Notes, FAQs, and guides for niche hobbies" data-lang-es="Notas, preguntas frecuentes y guías para hobbies de nicho">
+          Notes, FAQs, and guides for niche hobbies
+        </p>
+        <button class="open-button" onclick="openNotebook()" data-lang-en="Open Notebook" data-lang-es="Abrir Cuaderno">
+          <span>Open Notebook</span>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M9 5L16 12L9 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <p class="cover-hint" data-lang-en="Click anywhere to open" data-lang-es="Haz clic en cualquier lugar para abrir">
+          Click anywhere to open
+        </p>
+      </div>
+    </div>
+
   <!-- Hero Section -->
   <section class="hero-section relative flex items-center justify-center w-full min-h-[calc(100vh-70px)]">
             <!-- Mascot -->
@@ -351,6 +378,7 @@
       </div>
     </div>
   </section>
+  </div><!-- End notebook-wrapper -->
 
   <!-- Include footer -->
   <div id="footer-placeholder"></div>
@@ -362,11 +390,38 @@
   <script src="js/footer-loader.js" defer></script>
   <script src="js/clean-urls.js" defer></script>
   <script>
+    // Open notebook function
+    function openNotebook() {
+      const cover = document.getElementById('notebookCover');
+      if (cover) {
+        cover.classList.add('flipped');
+
+        // Remove from DOM after animation completes
+        setTimeout(() => {
+          cover.style.display = 'none';
+        }, 1200);
+      }
+    }
+
+    // Click anywhere on cover to open
+    const notebookCover = document.getElementById('notebookCover');
+    if (notebookCover) {
+      notebookCover.addEventListener('click', openNotebook);
+
+      // Keyboard accessibility
+      notebookCover.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openNotebook();
+        }
+      });
+    }
+
     // Scroll to collections function
     function scrollToCollections() {
       const collectionsSection = document.getElementById('collections');
       if (collectionsSection) {
-        collectionsSection.scrollIntoView({ 
+        collectionsSection.scrollIntoView({
           behavior: 'smooth',
           block: 'start'
         });

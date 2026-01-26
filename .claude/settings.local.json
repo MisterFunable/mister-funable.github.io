@@ -10,7 +10,8 @@
       "Bash(for gist_id in \"a59bc0b0db41e68ade5598c58bdea9c1\" \"54e5fc9e6994014c85e96b6fa5380331\" \"4fe2e2d97a6ca98549e4fa4c5a008556\" \"73d7afa3aa3f6d596152a1928c697fd0\" \"497cc5a1acc7be40f38985825cdd9197\" \"209bc9db081e6316f135adbcf74fdf5e\" \"3541088165092cfad95cd92b65cb10b0\")",
       "Bash(do)",
       "Bash(echo:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "WebSearch"
     ]
   }
 }
