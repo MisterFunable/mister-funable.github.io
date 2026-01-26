@@ -1,42 +1,15 @@
 /* ============================================
-   NOTEBOOK COVER & PAGE TURNER
-   Interactive cover page with flip animation
+   NOTEBOOK PAPER BACKGROUND
+   Reusable notebook texture for pages
    ============================================ */
 
-.notebook-wrapper {
+/* Notebook paper texture - can be applied to any section */
+.notebook-paper {
   position: relative;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  perspective: 2000px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
-
-/* Notebook Cover Page */
-.notebook-cover {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   background: linear-gradient(135deg, #f5f3ee 0%, #e8e5dc 100%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  transform-origin: left center;
-  transform-style: preserve-3d;
-  transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
-  z-index: 100;
-  cursor: pointer;
-  box-shadow:
-    inset -10px 0 20px rgba(0, 0, 0, 0.1),
-    10px 0 30px rgba(0, 0, 0, 0.3);
 }
 
-/* Notebook paper texture */
-.notebook-cover::before {
+.notebook-paper::before {
   content: '';
   position: absolute;
   top: 0;
@@ -52,10 +25,10 @@
     );
   opacity: 0.5;
   pointer-events: none;
+  z-index: 0;
 }
 
-/* Red margin line */
-.notebook-cover::after {
+.notebook-paper::after {
   content: '';
   position: absolute;
   top: 0;
@@ -65,6 +38,49 @@
   background: #ff6b6b;
   opacity: 0.4;
   pointer-events: none;
+  z-index: 0;
+}
+
+/* Ensure content is above the texture */
+.notebook-paper > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   NOTEBOOK COVER & PAGE TURNER
+   Interactive cover page with flip animation
+   ============================================ */
+
+.notebook-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  perspective: 2000px;
+}
+
+/* Notebook Cover Page */
+.notebook-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+  z-index: 100;
+  overflow: hidden;
+  box-shadow:
+    inset -10px 0 20px rgba(0, 0, 0, 0.1),
+    10px 0 30px rgba(0, 0, 0, 0.3);
 }
 
 .notebook-cover.flipped {
@@ -72,161 +88,10 @@
   pointer-events: none;
 }
 
-/* Cover Content */
-.cover-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  max-width: 600px;
-  backface-visibility: hidden;
-}
-
-.cover-title {
-  font-family: 'Caveat', cursive;
-  font-size: 4rem;
-  font-weight: 700;
-  color: #2c3e50;
-  margin-bottom: 1rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  line-height: 1.2;
-}
-
-.cover-subtitle {
-  font-family: 'Caveat', cursive;
-  font-size: 1.8rem;
-  font-weight: 400;
-  color: #5a5a5a;
-  margin-bottom: 3rem;
-  line-height: 1.4;
-}
-
-.cover-mascot {
-  margin-bottom: 2rem;
-  animation: float 3s ease-in-out infinite;
-}
-
-.cover-mascot img {
-  width: 200px;
-  height: 200px;
-  object-fit: contain;
-  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-15px);
-  }
-}
-
-/* Open Button */
-.open-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 1rem 2rem;
-  background: #2c3e50;
-  color: white;
-  font-family: 'Caveat', cursive;
-  font-size: 1.5rem;
-  font-weight: 600;
-  border: 3px solid #2c3e50;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  position: relative;
-  overflow: hidden;
-}
-
-.open-button::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: width 0.6s ease, height 0.6s ease;
-}
-
-.open-button:hover::before {
-  width: 300px;
-  height: 300px;
-}
-
-.open-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-}
-
-.open-button:active {
-  transform: translateY(-1px);
-}
-
-.open-button svg {
-  transition: transform 0.3s ease;
-}
-
-.open-button:hover svg {
-  transform: translateX(5px);
-}
-
-/* Hint Text */
-.cover-hint {
-  font-family: 'Caveat', cursive;
-  font-size: 1.2rem;
-  color: #7a7a7a;
-  margin-top: 1.5rem;
-  opacity: 0.7;
-  animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 0.7;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-/* Hero Section (behind cover) */
-.hero-section {
-  position: relative;
-  z-index: 1;
-}
-
 /* Mobile Adjustments */
 @media (max-width: 768px) {
-  .notebook-cover::after {
+  .notebook-paper::after {
     left: 40px;
-  }
-
-  .cover-title {
-    font-size: 3rem;
-  }
-
-  .cover-subtitle {
-    font-size: 1.4rem;
-  }
-
-  .cover-mascot img {
-    width: 150px;
-    height: 150px;
-  }
-
-  .open-button {
-    padding: 0.8rem 1.5rem;
-    font-size: 1.3rem;
-  }
-
-  .cover-hint {
-    font-size: 1rem;
   }
 
   /* Simplified animation for mobile */
@@ -237,38 +102,9 @@
 }
 
 @media (max-width: 480px) {
-  .notebook-cover::after {
+  .notebook-paper::after {
     left: 30px;
   }
-
-  .cover-title {
-    font-size: 2.5rem;
-  }
-
-  .cover-subtitle {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-  }
-
-  .cover-mascot {
-    margin-bottom: 1.5rem;
-  }
-
-  .cover-mascot img {
-    width: 120px;
-    height: 120px;
-  }
-
-  .open-button {
-    padding: 0.7rem 1.2rem;
-    font-size: 1.2rem;
-  }
-}
-
-/* Accessibility */
-.notebook-cover:focus {
-  outline: 3px solid #D4AF37;
-  outline-offset: 5px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -279,11 +115,5 @@
   .notebook-cover.flipped {
     transform: none;
     opacity: 0;
-  }
-
-  .cover-mascot,
-  .cover-hint,
-  .open-button::before {
-    animation: none;
   }
 }
