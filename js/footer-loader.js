@@ -5,9 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.text())
         .then(data => {
           footerPlaceholder.innerHTML = data;
-          
+
           // Initialize footer scroll behavior after loading
           initFooterScroll();
+        })
+        .catch(error => {
+          console.error('Failed to load footer:', error);
         });
     }
   });
@@ -57,10 +60,21 @@ function initFooterScroll() {
 
   // Listen for scroll events
   window.addEventListener('scroll', handleScroll, { passive: true });
-  
+
   // Check initial position
   checkScrollPosition();
-  
+
   // Also check on window resize
   window.addEventListener('resize', checkScrollPosition);
+
+  // If page is too short to scroll, show footer immediately
+  setTimeout(() => {
+    const documentHeight = document.documentElement.scrollHeight;
+    const windowHeight = window.innerHeight;
+
+    if (documentHeight <= windowHeight + 50) {
+      footer.classList.add('show');
+      isFooterVisible = true;
+    }
+  }, 100);
 }
