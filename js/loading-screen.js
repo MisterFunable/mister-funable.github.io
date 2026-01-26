@@ -42,7 +42,7 @@
   function createLoadingScreen() {
     const loadingHTML = `
       <div class="loading-screen" id="loading-screen">
-        <img src="/assets/images/iratsutoya-style/pointing.png"
+        <img src="/assets/images/mascot/bunny-suit.png"
              alt="Loading"
              class="loading-mascot"
              onerror="this.style.display='none'">
