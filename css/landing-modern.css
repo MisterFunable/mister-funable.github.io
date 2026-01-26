@@ -47,6 +47,15 @@ body::before {
   min-height: calc(100vh - 60px);
   display: flex;
   align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.hero-section:hover {
+  transform: scale(1.002);
+}
+
+.hero-section:active {
+  transform: scale(0.998);
 }
 
 /* Animated gradient overlay */
