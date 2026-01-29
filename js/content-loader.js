@@ -13,6 +13,10 @@ const gistConfig = {
       id: 'a59bc0b0db41e68ade5598c58bdea9c1',
       file: 'en-resin-inventory.md'
     },
+    jp: {
+      id: 'a59bc0b0db41e68ade5598c58bdea9c1',
+      file: 'jp-resin-inventory.md'
+    },
     es: {
       id: 'a59bc0b0db41e68ade5598c58bdea9c1',
       file: 'en-resin-inventory.md'  // Spanish version not available yet
@@ -22,6 +26,10 @@ const gistConfig = {
     en: {
       id: '54e5fc9e6994014c85e96b6fa5380331',
       file: 'en-subscribers-suggestions.md'
+    },
+    jp: {
+      id: '54e5fc9e6994014c85e96b6fa5380331',
+      file: 'jp-subscribers-suggestions.md'
     },
     es: {
       id: '54e5fc9e6994014c85e96b6fa5380331',
@@ -33,6 +41,10 @@ const gistConfig = {
       id: '4fe2e2d97a6ca98549e4fa4c5a008556',
       file: 'lightsabers-fonts.md'
     },
+    jp: {
+      id: '4fe2e2d97a6ca98549e4fa4c5a008556',
+      file: 'jp-lightsabers-fonts.md'
+    },
     es: {
       id: '4fe2e2d97a6ca98549e4fa4c5a008556',
       file: 'lightsabers-fonts.md'
@@ -42,6 +54,10 @@ const gistConfig = {
     en: {
       id: '73d7afa3aa3f6d596152a1928c697fd0',
       file: 'en-stores-review.md'
+    },
+    jp: {
+      id: '73d7afa3aa3f6d596152a1928c697fd0',
+      file: 'jp-stores-review.md'
     },
     es: {
       id: '73d7afa3aa3f6d596152a1928c697fd0',
@@ -53,6 +69,10 @@ const gistConfig = {
       id: '497cc5a1acc7be40f38985825cdd9197',
       file: 'en-aliexpress-advices.md'
     },
+    jp: {
+      id: '497cc5a1acc7be40f38985825cdd9197',
+      file: 'jp-aliexpress-advices.md'
+    },
     es: {
       id: '497cc5a1acc7be40f38985825cdd9197',
       file: 'es-aliexpress-advices.md'
@@ -63,6 +83,10 @@ const gistConfig = {
       id: '209bc9db081e6316f135adbcf74fdf5e',
       file: 'en-seamless-dolls.md'
     },
+    jp: {
+      id: '209bc9db081e6316f135adbcf74fdf5e',
+      file: 'jp-seamless-dolls.md'
+    },
     es: {
       id: '209bc9db081e6316f135adbcf74fdf5e',
       file: 'es-seamless-dolls.md'
@@ -72,6 +96,10 @@ const gistConfig = {
     en: {
       id: '497cc5a1acc7be40f38985825cdd9197',
       file: 'en-aliexpress-advices.md'  // Using aliexpress advice for now
+    },
+    jp: {
+      id: '497cc5a1acc7be40f38985825cdd9197',
+      file: 'jp-aliexpress-advices.md'  // Using aliexpress advice for now
     },
     es: {
       id: '497cc5a1acc7be40f38985825cdd9197',

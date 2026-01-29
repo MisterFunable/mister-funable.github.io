@@ -113,9 +113,12 @@ Root Pages: index.html, about.html, one-sixth.html, one-one.html, metal-build.ht
 | Module | Purpose |
 |--------|---------|
 | `navbar-loader.js` | Fetch navbar, initialize UI, manage dropdowns |
+| `navbar-scroll.js` | Scroll-triggered navbar styling (adds `.scrolled` class) |
 | `footer-loader.js` | Fetch footer, handle scroll-based visibility |
 | `content-loader.js` | Fetch Gist markdown via GitHub API, render with marked.js |
 | `iframe-handler.js` | Manage Airtable iframe loading/errors with retry logic |
+| `loading-screen.js` | Animated loading screen with rotating ironic messages for iframe pages |
+| `page-banner.js` | Smart banner image loader with PNG/JPG fallback and gradient default |
 | `language-switcher.js` | Language state management, DOM updates, localStorage |
 | `age-disclaimer.js` | Modal injection, acceptance tracking |
 | `search.js` | Client-side search (DollInventorySearch class) |
@@ -139,13 +142,20 @@ Root Pages: index.html, about.html, one-sixth.html, one-one.html, metal-build.ht
 - Mobile menu and dropdown styles
 
 **Feature-Specific Stylesheets**:
-- `landing.css` - Homepage hero and sections
-- `footer.css` - Footer positioning and animations
-- `iframe.css` - Airtable iframe containers, loading states
+- `landing.css` / `landing-modern.css` - Homepage hero and sections
+- `footer.css` / `footer-modern.css` - Footer positioning and animations
+- `navbar-modern.css` - Modern navbar styling with scroll effects
+- `iframe.css` / `iframe-enhanced.css` - Airtable iframe containers, loading states
+- `loading-screen.css` - Loading screen animation and messages
+- `page-banner.css` - Page banner styles with image/gradient backgrounds
+- `notebook-cover.css` - Notebook-style cover sections
+- `age-disclaimer-modern.css` - Modern age disclaimer modal styling
 - `inventory.css` - Collection cards and filters
 - `info.css` - Gist content pages
 - `content.css` - Markdown rendering styles
 - `about.css` - About page sections
+- `metal-build.css` - Metal build showcase page
+- `form.css` - Form styling for Airtable forms
 
 **Naming Conventions**:
 - BEM-inspired: `.navbar-container`, `.dropdown-content`
@@ -203,6 +213,51 @@ Load → Show overlay → Iframe onload → Hide overlay
 
 **Rendering**: marked.js for markdown → highlight.js for code blocks → Tailwind classes applied
 
+### Loading Screen System
+
+The site includes a custom loading screen (`js/loading-screen.js`) that displays while Airtable iframes and page content load:
+
+**Features**:
+- **Rotating Messages**: Array of 20+ ironic/humorous loading messages that rotate every 3 seconds
+- **Visual Elements**: Mascot image (`/assets/images/mascot/bunny-suit.png`), animated spinner, progress bar, and animated dots
+- **Smart Triggers**:
+  - Automatically shown on page load
+  - Hides when iframe `#airtableFrame` loads successfully
+  - 45-second timeout forces hide if content never loads
+  - Detects `document.readyState` for immediate display
+- **Final Message**: Shows "Done! That wasn't so bad... was it? 🎉" before fading out
+- **Manual Control**: `window.hideLoadingScreen()` exposed for programmatic control
+
+**Integration**: Add before closing `</body>` tag:
+```html
+<link rel="stylesheet" href="css/loading-screen.css">
+<script src="/js/loading-screen.js"></script>
+```
+
+**Adding Messages**: Edit `loadingMessages` array in `js/loading-screen.js:10`
+
+### Page Banner System
+
+Dynamic page banner with intelligent image loading (`js/page-banner.js`):
+
+**Behavior**:
+1. Checks for custom banner image at `/assets/images/banners/{page-name}.png`
+2. Falls back to `/assets/images/banners/{page-name}.jpg` if PNG not found
+3. Uses CSS gradient (defined in stylesheet) as final fallback
+4. Adds `.has-custom-image` class when custom image successfully loads
+
+**Page Name Detection**:
+- From `data-page` attribute on `.page-banner` element
+- Or extracted from URL path (e.g., `/one-sixth.html` → `one-sixth`)
+
+**Integration**: Requires element with `.page-banner` class:
+```html
+<div class="page-banner" data-page="custom-name">
+  <!-- Banner content -->
+</div>
+<script src="/js/page-banner.js"></script>
+```
+
 ## Google Analytics Setup
 
 The site includes GA4 integration. To activate:
@@ -242,8 +297,20 @@ See `SEO_SETUP.md` for detailed SEO and analytics setup instructions.
    <script src="/js/navbar-loader.js"></script>
    <script src="/js/footer-loader.js"></script>
    ```
-4. Update `/sitemap.xml` with new page
-5. Add to navbar dropdown if needed (edit `/components/navbar.html`)
+4. **Optional**: Add loading screen for iframe pages:
+   ```html
+   <link rel="stylesheet" href="css/loading-screen.css">
+   <script src="/js/loading-screen.js"></script>
+   ```
+5. **Optional**: Add page banner with custom image:
+   ```html
+   <div class="page-banner" data-page="page-name">
+     <h1>Page Title</h1>
+   </div>
+   <script src="/js/page-banner.js"></script>
+   ```
+6. Update `/sitemap.xml` with new page
+7. Add to navbar dropdown if needed (edit `/components/navbar.html`)
 
 ### Adding Gist Content Pages
 
@@ -325,6 +392,35 @@ try {
 </iframe>
 
 <script src="/js/iframe-handler.js"></script>
+```
+
+### Adding Loading Screen
+
+```html
+<!-- In <head> -->
+<link rel="stylesheet" href="css/loading-screen.css">
+
+<!-- Before closing </body> -->
+<script src="/js/loading-screen.js"></script>
+
+<!-- Optional: Manual control in your code -->
+<script>
+  // Force hide loading screen
+  window.hideLoadingScreen();
+</script>
+```
+
+### Adding Page Banner with Custom Image
+
+```html
+<!-- HTML -->
+<div class="page-banner" data-page="my-page">
+  <h1>Page Title</h1>
+</div>
+
+<!-- Add image to /assets/images/banners/my-page.png or .jpg -->
+<!-- Load script -->
+<script src="/js/page-banner.js"></script>
 ```
 
 ## Browser Compatibility

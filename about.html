@@ -156,25 +156,177 @@
           </ul>
         </div>
 
-        <div class="mascot-mention bg-white rounded-xl shadow-md p-6 md:p-8 border border-[#f0f0f0]">
-          <h2 class="font-heading text-2xl md:text-3xl text-[#2c3e50] mb-3" data-lang-en="Meet Undefined" data-lang-es="Conoce a Undefined">Meet Undefined</h2>
-          <div class="flex flex-col md:flex-row gap-6 items-center">
-            <div class="flex-shrink-0">
-              <img src="assets/images/mascot/active-version-design.jpeg" alt="Undefined - Site Mascot" class="w-40 h-40 object-cover rounded-xl shadow-md">
+        <!-- Mascot Section (Full) -->
+        <section class="mascot-section space-y-8 mt-10">
+          <h2 class="font-heading text-3xl md:text-4xl text-[#2c3e50] text-center mb-8" data-lang-en="Meet Our Mascot" data-lang-es="Conoce a Nuestra Mascota">Meet Our Mascot</h2>
+
+          <!-- Main Mascot Info with Image -->
+          <div class="mascot-main-content grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white rounded-xl p-6 md:p-8 shadow-md border border-[#f0f0f0]">
+            <div class="mascot-info space-y-4">
+              <h3 class="text-3xl font-heading text-[#2c3e50]" data-lang-en="Undefined" data-lang-es="Undefined">Undefined</h3>
+              <p class="text-[1.05rem] leading-7 text-[#2c3e50]" data-lang-en="Meet Undefined, our red-haired mascot! She's here to add something cute and fun to the website, and she's perfect for cosplay inspiration." data-lang-es="¡Conoce a Undefined, nuestra mascota de cabello rojo! Está aquí para agregar algo lindo y divertido al sitio web, y es perfecta para inspiración de cosplay.">Meet Undefined, our red-haired mascot! She's here to add something cute and fun to the website, and she's perfect for cosplay inspiration.</p>
+              <p class="text-[1.05rem] leading-7 text-[#2c3e50]" data-lang-en="Her name is 'Undefined' for now (at least until we think of something better!). She appears throughout the site to guide you and make your browsing experience more enjoyable." data-lang-es="Su nombre es 'Undefined' por ahora (¡al menos hasta que pensemos en algo mejor!). Aparece en todo el sitio para guiarte y hacer que tu experiencia de navegación sea más agradable.">Her name is 'Undefined' for now (at least until we think of something better!). She appears throughout the site to guide you and make your browsing experience more enjoyable.</p>
+
+              <div class="mascot-features grid grid-cols-1 sm:grid-cols-3 gap-3 mt-6">
+                <div class="mascot-feature flex items-center gap-2 px-3 py-2 rounded-lg bg-[#f8f9fa] border border-[#f0f0f0] text-[#2c3e50]">
+                  <span class="feature-icon">🎭</span>
+                  <span data-lang-en="Perfect for Cosplay" data-lang-es="Perfecta para Cosplay">Perfect for Cosplay</span>
+                </div>
+                <div class="mascot-feature flex items-center gap-2 px-3 py-2 rounded-lg bg-[#f8f9fa] border border-[#f0f0f0] text-[#2c3e50]">
+                  <span class="feature-icon">✨</span>
+                  <span data-lang-en="Cute & Fun" data-lang-es="Linda y Divertida">Cute & Fun</span>
+                </div>
+                <div class="mascot-feature flex items-center gap-2 px-3 py-2 rounded-lg bg-[#f8f9fa] border border-[#f0f0f0] text-[#2c3e50]">
+                  <span class="feature-icon">👋</span>
+                  <span data-lang-en="Always Here to Help" data-lang-es="Siempre Aquí para Ayudar">Always Here to Help</span>
+                </div>
+              </div>
             </div>
-            <div class="flex-1">
-              <p class="text-[1.05rem] leading-7 text-[#2c3e50] mb-3" data-lang-en="You'll see Undefined throughout the site—she's our red-haired mascot who appears in different sections to guide you and add a friendly touch." data-lang-es="Verás a Undefined en todo el sitio—es nuestra mascota de cabello rojo que aparece en diferentes secciones para guiarte y agregar un toque amigable.">You'll see Undefined throughout the site—she's our red-haired mascot who appears in different sections to guide you and add a friendly touch.</p>
-              <a href="/mascot" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-brand-gold text-white hover:bg-[#c19b2e] transition">
-                <span data-lang-en="Learn More About Undefined" data-lang-es="Conoce Más Sobre Undefined">Learn More About Undefined</span>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-              </a>
+            <div class="mascot-main-image flex justify-center md:justify-end">
+              <img src="assets/images/mascot/active-version-design.jpeg" alt="Undefined - Website Mascot" class="mascot-main-img max-h-80 rounded-xl shadow-lg">
             </div>
           </div>
-        </div>
 
-        <h2 class="community-title font-heading text-2xl md:text-3xl text-[#2c3e50]" data-lang-en="Join Our Community" data-lang-es="Únete a Nuestra Comunidad">Join Our Community</h2>
+          <!-- Character Gallery -->
+          <div class="mascot-gallery-section bg-white rounded-xl p-6 md:p-8 shadow-md border border-[#f0f0f0]">
+            <h3 class="text-2xl font-heading text-[#2c3e50] mb-2" data-lang-en="AI Design Gallery" data-lang-es="Galería de Diseño AI">AI Design Gallery</h3>
+            <p class="text-[#2c3e50] mb-6" data-lang-en="Explore different versions and styles of Undefined, all generated with AI. From cosplay concepts to various artistic interpretations." data-lang-es="Explora diferentes versiones y estilos de Undefined, todos generados con IA. Desde conceptos de cosplay hasta varias interpretaciones artísticas.">Explore different versions and styles of Undefined, all generated with AI. From cosplay concepts to various artistic interpretations.</p>
+
+            <div class="carousel-container relative mt-6">
+              <button class="carousel-btn prev-btn absolute left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 grid place-items-center rounded-full bg-black/50 text-white hover:bg-black/70 transition" aria-label="Previous image">‹</button>
+              <div class="carousel-wrapper overflow-hidden rounded-xl shadow-lg">
+                <div class="carousel-track flex">
+                  <div class="design-image-item active flex items-center gap-4 p-4 bg-white/80 backdrop-blur rounded-xl">
+                    <a href="assets/images/mascot/base-design.jpeg" target="_blank" class="design-img-link">
+                      <img src="assets/images/mascot/base-design.jpeg" alt="Undefined - Base Design" class="design-img max-h-80 w-auto rounded-lg shadow" />
+                    </a>
+                    <span data-lang-en="Base Design" data-lang-es="Diseño Base">Base Design</span>
+                  </div>
+                  <div class="design-image-item hidden items-center gap-4 p-4 bg-white/80 backdrop-blur rounded-xl">
+                    <a href="assets/images/mascot/classic-iratsuya.jpeg" target="_blank" class="design-img-link">
+                      <img src="assets/images/mascot/classic-iratsuya.jpeg" alt="Undefined - Classic Style" class="design-img max-h-80 w-auto rounded-lg shadow" />
+                    </a>
+                    <span data-lang-en="Classic Style" data-lang-es="Estilo Clásico">Classic Style</span>
+                  </div>
+                  <div class="design-image-item hidden items-center gap-4 p-4 bg-white/80 backdrop-blur rounded-xl">
+                    <a href="assets/images/mascot/v0.0.1.jpeg" target="_blank" class="design-img-link">
+                      <img src="assets/images/mascot/v0.0.1.jpeg" alt="Undefined - Version 0.0.1" class="design-img max-h-80 w-auto rounded-lg shadow" />
+                    </a>
+                    <span data-lang-en="Version 0.0.1" data-lang-es="Versión 0.0.1">Version 0.0.1</span>
+                  </div>
+                  <div class="design-image-item hidden items-center gap-4 p-4 bg-white/80 backdrop-blur rounded-xl">
+                    <a href="assets/images/mascot/v0.0.2-astray-cosplay.jpeg" target="_blank" class="design-img-link">
+                      <img src="assets/images/mascot/v0.0.2-astray-cosplay.jpeg" alt="Undefined - Astray Cosplay" class="design-img max-h-80 w-auto rounded-lg shadow" />
+                    </a>
+                    <span data-lang-en="Astray Cosplay" data-lang-es="Cosplay Astray">Astray Cosplay</span>
+                  </div>
+                  <div class="design-image-item hidden items-center gap-4 p-4 bg-white/80 backdrop-blur rounded-xl">
+                    <a href="assets/images/mascot/v0.0.2-b-style.jpeg" target="_blank" class="design-img-link">
+                      <img src="assets/images/mascot/v0.0.2-b-style.jpeg" alt="Undefined - B-Style" class="design-img max-h-80 w-auto rounded-lg shadow" />
+                    </a>
+                    <span data-lang-en="B-Style" data-lang-es="Estilo B">B-Style</span>
+                  </div>
+                  <div class="design-image-item hidden items-center gap-4 p-4 bg-white/80 backdrop-blur rounded-xl">
+                    <a href="assets/images/mascot/v0.0.2-chibi-with-sanic.jpeg" target="_blank" class="design-img-link">
+                      <img src="assets/images/mascot/v0.0.2-chibi-with-sanic.jpeg" alt="Undefined - Chibi with Sanic" class="design-img max-h-80 w-auto rounded-lg shadow" />
+                    </a>
+                    <span data-lang-en="Chibi with Sanic" data-lang-es="Chibi con Sanic">Chibi with Sanic</span>
+                  </div>
+                  <div class="design-image-item hidden items-center gap-4 p-4 bg-white/80 backdrop-blur rounded-xl">
+                    <a href="assets/images/mascot/v0.0.2-nier-plus-one-sixth-doll.jpeg.jpeg" target="_blank" class="design-img-link">
+                      <img src="assets/images/mascot/v0.0.2-nier-plus-one-sixth-doll.jpeg.jpeg" alt="Undefined - Nier with 1/6 Doll" class="design-img max-h-80 w-auto rounded-lg shadow" />
+                    </a>
+                    <span data-lang-en="Nier with 1/6 Doll" data-lang-es="Nier con Muñeca 1/6">Nier with 1/6 Doll</span>
+                  </div>
+                  <div class="design-image-item hidden items-center gap-4 p-4 bg-white/80 backdrop-blur rounded-xl">
+                    <a href="assets/images/mascot/v0.0.2-nier-plus-one-third-doll.jpeg" target="_blank" class="design-img-link">
+                      <img src="assets/images/mascot/v0.0.2-nier-plus-one-third-doll.jpeg" alt="Undefined - Nier with 1/3 Doll" class="design-img max-h-80 w-auto rounded-lg shadow" />
+                    </a>
+                    <span data-lang-en="Nier with 1/3 Doll" data-lang-es="Nier con Muñeca 1/3">Nier with 1/3 Doll</span>
+                  </div>
+                  <div class="design-image-item hidden items-center gap-4 p-4 bg-white/80 backdrop-blur rounded-xl">
+                    <a href="assets/images/mascot/v0.0.2-reactions.png" target="_blank" class="design-img-link">
+                      <img src="assets/images/mascot/v0.0.2-reactions.png" alt="Undefined - Reactions" class="design-img max-h-80 w-auto rounded-lg shadow" />
+                    </a>
+                    <span data-lang-en="Reactions" data-lang-es="Reacciones">Reactions</span>
+                  </div>
+                  <div class="design-image-item hidden items-center gap-4 p-4 bg-white/80 backdrop-blur rounded-xl">
+                    <a href="assets/images/mascot/v0.0.2-realistic.jpeg" target="_blank" class="design-img-link">
+                      <img src="assets/images/mascot/v0.0.2-realistic.jpeg" alt="Undefined - Realistic" class="design-img max-h-80 w-auto rounded-lg shadow" />
+                    </a>
+                    <span data-lang-en="Realistic" data-lang-es="Realista">Realistic</span>
+                  </div>
+                  <div class="design-image-item hidden items-center gap-4 p-4 bg-white/80 backdrop-blur rounded-xl">
+                    <a href="assets/images/mascot/v0.0.2-scholar-of-the-first-sin.jpeg" target="_blank" class="design-img-link">
+                      <img src="assets/images/mascot/v0.0.2-scholar-of-the-first-sin.jpeg" alt="Undefined - Scholar of the First Sin" class="design-img max-h-80 w-auto rounded-lg shadow" />
+                    </a>
+                    <span data-lang-en="Scholar of the First Sin" data-lang-es="Erudita del Primer Pecado">Scholar of the First Sin</span>
+                  </div>
+                  <div class="design-image-item hidden items-center gap-4 p-4 bg-white/80 backdrop-blur rounded-xl">
+                    <a href="assets/images/mascot/v0.0.2-simple-reactions.jpeg" target="_blank" class="design-img-link">
+                      <img src="assets/images/mascot/v0.0.2-simple-reactions.jpeg" alt="Undefined - Simple Reactions" class="design-img max-h-80 w-auto rounded-lg shadow" />
+                    </a>
+                    <span data-lang-en="Simple Reactions" data-lang-es="Reacciones Simples">Simple Reactions</span>
+                  </div>
+                  <div class="design-image-item hidden items-center gap-4 p-4 bg-white/80 backdrop-blur rounded-xl">
+                    <a href="assets/images/mascot/v0.0.2-sonic-cosplay-with-sanic.jpeg" target="_blank" class="design-img-link">
+                      <img src="assets/images/mascot/v0.0.2-sonic-cosplay-with-sanic.jpeg" alt="Undefined - Sonic Cosplay with Sanic" class="design-img max-h-80 w-auto rounded-lg shadow" />
+                    </a>
+                    <span data-lang-en="Sonic Cosplay with Sanic" data-lang-es="Cosplay de Sonic con Sanic">Sonic Cosplay with Sanic</span>
+                  </div>
+                  <div class="design-image-item hidden items-center gap-4 p-4 bg-white/80 backdrop-blur rounded-xl">
+                    <a href="assets/images/mascot/v0.0.2-swimsuit.jpeg" target="_blank" class="design-img-link">
+                      <img src="assets/images/mascot/v0.0.2-swimsuit.jpeg" alt="Undefined - Swimsuit" class="design-img max-h-80 w-auto rounded-lg shadow" />
+                    </a>
+                    <span data-lang-en="Swimsuit" data-lang-es="Traje de Baño">Swimsuit</span>
+                  </div>
+                </div>
+              </div>
+              <button class="carousel-btn next-btn absolute right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 grid place-items-center rounded-full bg-black/50 text-white hover:bg-black/70 transition" aria-label="Next image">›</button>
+            </div>
+            <div class="carousel-dots flex justify-center items-center gap-2 mt-4">
+              <span class="dot active w-2.5 h-2.5 rounded-full bg-[#D4AF37] cursor-pointer" data-slide="0"></span>
+              <span class="dot w-2.5 h-2.5 rounded-full bg-gray-300 cursor-pointer" data-slide="1"></span>
+              <span class="dot w-2.5 h-2.5 rounded-full bg-gray-300 cursor-pointer" data-slide="2"></span>
+              <span class="dot w-2.5 h-2.5 rounded-full bg-gray-300 cursor-pointer" data-slide="3"></span>
+              <span class="dot w-2.5 h-2.5 rounded-full bg-gray-300 cursor-pointer" data-slide="4"></span>
+              <span class="dot w-2.5 h-2.5 rounded-full bg-gray-300 cursor-pointer" data-slide="5"></span>
+              <span class="dot w-2.5 h-2.5 rounded-full bg-gray-300 cursor-pointer" data-slide="6"></span>
+              <span class="dot w-2.5 h-2.5 rounded-full bg-gray-300 cursor-pointer" data-slide="7"></span>
+              <span class="dot w-2.5 h-2.5 rounded-full bg-gray-300 cursor-pointer" data-slide="8"></span>
+              <span class="dot w-2.5 h-2.5 rounded-full bg-gray-300 cursor-pointer" data-slide="9"></span>
+              <span class="dot w-2.5 h-2.5 rounded-full bg-gray-300 cursor-pointer" data-slide="10"></span>
+              <span class="dot w-2.5 h-2.5 rounded-full bg-gray-300 cursor-pointer" data-slide="11"></span>
+              <span class="dot w-2.5 h-2.5 rounded-full bg-gray-300 cursor-pointer" data-slide="12"></span>
+              <span class="dot w-2.5 h-2.5 rounded-full bg-gray-300 cursor-pointer" data-slide="13"></span>
+            </div>
+          </div>
+
+          <!-- Fun Facts -->
+          <div class="mascot-facts bg-white rounded-xl p-6 md:p-8 shadow-md border border-[#f0f0f0]">
+            <h3 class="text-2xl font-heading text-[#2c3e50] mb-4" data-lang-en="About the Design" data-lang-es="Sobre el Diseño">About the Design</h3>
+            <ul class="space-y-3 text-[#2c3e50]">
+              <li class="flex items-start gap-3">
+                <span class="text-brand-gold">▸</span>
+                <span data-lang-en="All designs were generated using AI image generation tools" data-lang-es="Todos los diseños fueron generados usando herramientas de generación de imágenes con IA">All designs were generated using AI image generation tools</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-brand-gold">▸</span>
+                <span data-lang-en="The character serves as a friendly guide throughout the site" data-lang-es="El personaje sirve como una guía amigable en todo el sitio">The character serves as a friendly guide throughout the site</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-brand-gold">▸</span>
+                <span data-lang-en="Her red hair and cute design make her perfect for cosplay projects" data-lang-es="Su cabello rojo y diseño lindo la hacen perfecta para proyectos de cosplay">Her red hair and cute design make her perfect for cosplay projects</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-brand-gold">▸</span>
+                <span data-lang-en="You'll find her throughout the site in different poses and outfits" data-lang-es="La encontrarás en todo el sitio en diferentes poses y atuendos">You'll find her throughout the site in different poses and outfits</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <h2 class="community-title font-heading text-2xl md:text-3xl text-[#2c3e50] mt-10" data-lang-en="Join Our Community" data-lang-es="Únete a Nuestra Comunidad">Join Our Community</h2>
         <div class="community mt-4">
           <p class="text-[#2c3e50]" data-lang-en="Want to connect with other collectors, share your creations, or get help with your projects? Join our Discord server where you can chat, ask questions, and be part of our growing community!" data-lang-es="¿Quieres conectar con otros coleccionistas, compartir tus creaciones o obtener ayuda con tus proyectos? ¡Únete a nuestro servidor de Discord donde puedes chatear, hacer preguntas y ser parte de nuestra comunidad en crecimiento!">Want to connect with other collectors, share your creations, or get help with your projects? Join our Discord server where you can chat, ask questions, and be part of our growing community!</p>
           
@@ -207,5 +359,91 @@
     <script src="js/footer-loader.js"></script>
     <script src="js/language-switcher.js"></script>
     <script src="js/age-disclaimer.js"></script>
+    <script>
+      // Carousel functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        const track = document.querySelector('.carousel-track');
+        const items = document.querySelectorAll('.design-image-item');
+        const dots = document.querySelectorAll('.dot');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+
+        if (!track || !items.length) return; // Exit if carousel elements don't exist
+
+        let currentIndex = 0;
+        const totalItems = items.length;
+
+        function updateCarousel() {
+          // Update active states - only show the current image
+          items.forEach((item, index) => {
+            if (index === currentIndex) {
+              item.classList.add('active');
+              item.classList.remove('hidden');
+              item.style.display = 'flex';
+            } else {
+              item.classList.remove('active');
+              item.classList.add('hidden');
+              item.style.display = 'none';
+            }
+          });
+
+          dots.forEach((dot, index) => {
+            const isActive = index === currentIndex;
+            dot.classList.toggle('active', isActive);
+            dot.classList.toggle('bg-[#D4AF37]', isActive);
+            dot.classList.toggle('bg-gray-300', !isActive);
+          });
+
+          // Update button states
+          prevBtn.disabled = currentIndex === 0;
+          nextBtn.disabled = currentIndex === totalItems - 1;
+        }
+
+        function nextSlide() {
+          if (currentIndex < totalItems - 1) {
+            currentIndex++;
+            updateCarousel();
+          }
+        }
+
+        function prevSlide() {
+          if (currentIndex > 0) {
+            currentIndex--;
+            updateCarousel();
+          }
+        }
+
+        // Event listeners
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+
+        // Dot navigation
+        dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => {
+            currentIndex = index;
+            updateCarousel();
+          });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowLeft') prevSlide();
+          if (e.key === 'ArrowRight') nextSlide();
+        });
+
+        // Auto-play (optional)
+        setInterval(() => {
+          if (currentIndex < totalItems - 1) {
+            nextSlide();
+          } else {
+            currentIndex = 0;
+            updateCarousel();
+          }
+        }, 3000);
+
+        // Initialize
+        updateCarousel();
+      });
+    </script>
   </body>
 </html> 

@@ -6,19 +6,19 @@ function changeLanguage(lang) {
 
   // Update inline flag buttons active state
   const enBtn = document.getElementById('lang-en');
+  const jpBtn = document.getElementById('lang-jp');
   const esBtn = document.getElementById('lang-es');
-  const clBtn = document.getElementById('lang-cl');
   if (enBtn) {
     enBtn.classList.toggle('active', lang === 'en');
     enBtn.setAttribute('aria-pressed', String(lang === 'en'));
   }
+  if (jpBtn) {
+    jpBtn.classList.toggle('active', lang === 'jp');
+    jpBtn.setAttribute('aria-pressed', String(lang === 'jp'));
+  }
   if (esBtn) {
     esBtn.classList.toggle('active', lang === 'es');
     esBtn.setAttribute('aria-pressed', String(lang === 'es'));
-  }
-  if (clBtn) {
-    clBtn.classList.toggle('active', lang === 'cl');
-    clBtn.setAttribute('aria-pressed', String(lang === 'cl'));
   }
 
   // Remove any legacy dropdown selected states if present
@@ -28,38 +28,19 @@ function changeLanguage(lang) {
   document.querySelectorAll('.mobile-language-switcher .lang-btn').forEach(btn => {
     btn.classList.remove('active');
   });
-  
+
   const activeMobileBtn = document.querySelector(`#mobile-lang-${lang}`);
   if (activeMobileBtn) {
     activeMobileBtn.classList.add('active');
   }
 
   // Update all elements with language data
-  const effectiveLang = (lang === 'cl') ? 'es' : lang; // Chile uses Spanish content
   document.querySelectorAll('[data-lang-en]').forEach(element => {
-    const key = element.getAttribute(`data-lang-${effectiveLang}`);
+    const key = element.getAttribute(`data-lang-${lang}`);
     if (key) {
       element.textContent = key;
     }
   });
-
-  // Homepage mascot handling: if dual mascots exist, let homepage script handle toggling
-  const hasDualMascots = document.querySelector('.hero-mascot-right');
-  if (!hasDualMascots) {
-    // Legacy fallback: single mascot swap (non-home pages that might still use it)
-    const mascotImage = document.querySelector('.mascot-image');
-    if (mascotImage) {
-      if (lang === 'cl') {
-        mascotImage.src = 'assets/images/iratsutoya-style/chilean-dress.png';
-        mascotImage.classList.remove('mascot-clicked');
-      } else {
-        const normalSrc = mascotImage.dataset.normal;
-        if (normalSrc) {
-          mascotImage.src = normalSrc;
-        }
-      }
-    }
-  }
 
   // Save language preference
   localStorage.setItem('preferredLanguage', lang);
@@ -76,8 +57,8 @@ function changeLanguage(lang) {
 // Initialize language functionality
 function initializeLanguageSwitcher() {
   const enBtn = document.getElementById('lang-en');
+  const jpBtn = document.getElementById('lang-jp');
   const esBtn = document.getElementById('lang-es');
-  const clBtn = document.getElementById('lang-cl');
 
   if (enBtn) {
     enBtn.addEventListener('click', (e) => {
@@ -86,17 +67,17 @@ function initializeLanguageSwitcher() {
     });
   }
 
+  if (jpBtn) {
+    jpBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      changeLanguage('jp');
+    });
+  }
+
   if (esBtn) {
     esBtn.addEventListener('click', (e) => {
       e.preventDefault();
       changeLanguage('es');
-    });
-  }
-
-  if (clBtn) {
-    clBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      changeLanguage('cl');
     });
   }
 
