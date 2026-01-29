@@ -8,30 +8,29 @@
 
   // Ironic loading messages - feel free to add more!
   const loadingMessages = [
-    "Do I look like a guy who can use a fast DB?",
-    "Loading everything...",
-    "Still loading...",
-    "Fetching data from the slowest server in existence...",
-    "Compiling all the dolls into one place...",
-    "Asking Airtable politely to wake up...",
-    "Converting coffee to code... wait, wrong script",
-    "Counting all 2500+ items by hand...",
-    "Teaching the hamsters to run faster...",
-    "Upgrading from dial-up... just kidding",
-    "Blaming it on the internet...",
-    "Pretending this is intentional...",
-    "Loading your patience meter...",
-    "Organizing 150+ brands alphabetically... slowly",
-    "Waiting for the servers to finish their coffee break",
-    "Calculating the meaning of life... found: 42 dolls",
-    "Convincing the database to share its secrets...",
-    "Negotiating with the API... it's playing hard to get",
-    "This would go faster if I paid for premium hosting",
-    "Loading... because good things take time (apparently)",
-    "Defragmenting the digital doll collection...",
-    "Summoning data from the cloud... it's very cloudy today"
+    "Waking up the database... it's not a morning person",
+    "Asking Airtable nicely to cooperate... please?",
+    "Teaching hamsters to run faster on the server wheel",
+    "Loading at the speed of a Monday morning",
+    "Convincing the pixels to arrange themselves properly",
+    "Your patience is appreciated and mildly impressive",
+    "Pretending this loading time was intentional",
+    "Counting dolls... lost count... starting over",
+    "Negotiating with the API... it wants a raise",
+    "Buffering your enthusiasm (and this page)",
+    "Loading... blame the previous developer",
+    "This would load faster with carrier pigeons",
+    "Calculating if you'll actually wait this long",
+    "Still faster than shipping from AliExpress",
+    "Brewing digital coffee for the server",
+    "Manifesting faster internet speeds for you",
+    "Error 404: Loading speed not found",
+    "Fun fact: You could've blinked 47 times by now",
+    "Powered by hopes, dreams, and free hosting",
+    "Loading... because instant gratification is overrated"
   ];
 
+  let usedMessages = [];
   let currentMessageIndex = 0;
   let messageInterval;
   let loadingScreen;
@@ -74,6 +73,26 @@
     messageElement = document.getElementById('loading-message');
   }
 
+  // Get random message without immediate repetition
+  function getRandomMessage() {
+    // If all messages used, reset the pool
+    if (usedMessages.length >= loadingMessages.length) {
+      usedMessages = [];
+    }
+
+    // Get available messages
+    const availableMessages = loadingMessages.filter((msg, index) => !usedMessages.includes(index));
+
+    // Pick random from available
+    const randomIndex = Math.floor(Math.random() * availableMessages.length);
+    const messageIndex = loadingMessages.indexOf(availableMessages[randomIndex]);
+
+    // Mark as used
+    usedMessages.push(messageIndex);
+
+    return loadingMessages[messageIndex];
+  }
+
   // Rotate through messages with fade effect
   function rotateMessage() {
     if (!messageElement || progressComplete) return;
@@ -81,9 +100,9 @@
     messageElement.classList.add('fade');
 
     setTimeout(() => {
-      currentMessageIndex = (currentMessageIndex + 1) % loadingMessages.length;
+      const randomMessage = getRandomMessage();
       messageElement.innerHTML = `
-        ${loadingMessages[currentMessageIndex]}
+        ${randomMessage}
         <div class="loading-dots">
           <span></span>
           <span></span>

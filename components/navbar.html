@@ -72,8 +72,18 @@
         </div>
       </div>
 
-      <a href="/about" class="nav-link inline-flex items-center gap-2 px-5 py-3 rounded-lg transition" data-lang-en="About" data-lang-jp="について" data-lang-es="Acerca de">About</a>
-      <a href="/mascot" class="nav-link inline-flex items-center gap-2 px-5 py-3 rounded-lg transition" data-lang-en="Mascot" data-lang-jp="マスコット" data-lang-es="Mascota">Mascot</a>
+      <div class="dropdown relative inline-block">
+        <button class="dropdown-btn inline-flex items-center gap-2 px-5 py-3 rounded-lg transition" aria-expanded="false" aria-controls="about-menu">
+          <span data-lang-en="About" data-lang-jp="について" data-lang-es="Acerca de">About</span>
+          <svg class="dropdown-arrow ml-2 w-3 h-2" width="12" height="8" viewBox="0 0 12 8" fill="none">
+            <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="dropdown-content absolute top-full mt-3 left-0 bg-gradient-to-br from-white to-[#f8f9fa] min-w-[240px] rounded-[12px] shadow-xl border border-white/20 backdrop-blur-lg opacity-0 invisible transition" id="about-menu" role="menu">
+          <a href="/about" role="menuitem" data-lang-en="About Us" data-lang-jp="私たちについて" data-lang-es="Sobre Nosotros">About Us</a>
+          <a href="/about#mascot-section" role="menuitem" data-lang-en="Mascot" data-lang-jp="マスコット" data-lang-es="Mascota">Mascot</a>
+        </div>
+      </div>
     </div>
     
     <!-- Language Switcher: single rectangle with three flags -->
