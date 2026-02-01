@@ -1,7 +1,7 @@
 <nav class="navbar fixed top-0 inset-x-0 h-[60px] bg-gradient-to-br from-white to-[#f8f9fa] z-[1000] backdrop-blur-lg border-b border-white/20" role="navigation" aria-label="Main navigation">
   <div class="navbar-container max-w-[1400px] mx-auto h-full grid grid-cols-[1fr_auto_1fr] items-center px-8 relative">
     <div class="logo justify-self-start z-[1001]">
-      <a href="/" class="logo-text font-heading no-underline text-[#2c3e50] text-[1.75rem] font-normal tracking-[1px] transition-all" aria-label="Home">My Doll Inventory</a>
+      <a href="/" class="logo-text font-heading no-underline text-[#2c3e50] text-[1.75rem] font-normal tracking-[1px] transition-all" aria-label="Home" data-lang-en="Undefined Collectibles" data-lang-jp="Undefined" data-lang-es="Undefined Collectibles">Undefined Collectibles</a>
     </div>
     
     <!-- Mobile menu button -->
@@ -13,12 +13,12 @@
     
     <div class="nav-links flex items-center gap-2 font-sans justify-self-center">
       <div class="dropdown relative inline-block">
-        <a href="/one-sixth" class="dropdown-btn inline-flex items-center gap-2 px-5 py-3 rounded-lg transition" aria-expanded="false" aria-controls="scale-menu">
+        <button class="dropdown-btn inline-flex items-center gap-2 px-5 py-3 rounded-lg transition" aria-expanded="false" aria-controls="scale-menu">
           <span data-lang-en="1/6 Scale" data-lang-jp="1/6スケール" data-lang-es="Escala 1/6">1/6 Scale</span>
           <svg class="dropdown-arrow ml-2 w-3 h-2" width="12" height="8" viewBox="0 0 12 8" fill="none">
             <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           </svg>
-        </a>
+        </button>
         <div class="dropdown-content absolute top-full mt-3 left-0 bg-gradient-to-br from-white to-[#f8f9fa] min-w-[240px] rounded-[12px] shadow-xl border border-white/20 backdrop-blur-lg opacity-0 invisible transition" id="scale-menu" role="menu">
           <a href="/inventory/1-6-scale/accesories" role="menuitem" data-lang-en="Accessories" data-lang-jp="アクセサリー" data-lang-es="Accesorios">Accessories</a>
           <a href="/inventory/1-6-scale/bodies" role="menuitem" data-lang-en="Bodies" data-lang-jp="ボディ" data-lang-es="Cuerpos">Bodies</a>

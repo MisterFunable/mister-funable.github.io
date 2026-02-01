@@ -1,6 +1,13 @@
 /* CSS Custom Properties */
 :root {
-  /* Colors */
+  /* Brand Colors */
+  --brand-primary: #D4AF37; /* Gold */
+  --brand-accent: #f39c12; /* Orange */
+  --brand-text: #2C2C2C; /* Dark text */
+  --brand-bg: #ffffff; /* White background */
+  --brand-dark: #1e293b; /* Dark sections */
+
+  /* Legacy color names (for backwards compatibility) */
   --color-primary: #D4AF37; /* Classic gold */
   --color-text: #2C2C2C; /* Darker text for better contrast */
   --color-background: #ffffff;

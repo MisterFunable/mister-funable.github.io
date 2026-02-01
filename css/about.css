@@ -27,12 +27,12 @@
 }
 
 .mission-statement {
-  background: #f0f8f0;
+  background: #fef9f0;
   padding: 35px;
   border-radius: 12px;
   margin-bottom: 40px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-  border-left: 4px solid #27ae60;
+  border-left: 4px solid var(--brand-primary, #D4AF37);
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
 }
@@ -43,7 +43,7 @@
 }
 
 .mission-statement h2 {
-  color: #1e8449;
+  color: var(--brand-accent, #f39c12);
   margin-bottom: 20px;
 }
 

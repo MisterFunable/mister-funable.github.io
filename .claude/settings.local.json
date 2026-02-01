@@ -11,7 +11,9 @@
       "Bash(do)",
       "Bash(echo:*)",
       "Bash(git commit:*)",
-      "WebSearch"
+      "WebSearch",
+      "WebFetch(domain:mydollinventory.com)",
+      "Bash(grep:*)"
     ]
   }
 }
