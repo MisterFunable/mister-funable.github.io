@@ -241,6 +241,15 @@
                data-fight-prefix="assets/images/iratsutoya-style/chilean-dress-fight-"
                data-fight-ext=".png">
         </div>
+
+        <!-- Japan-specific mascot (appears from the right) -->
+        <div class="hero-mascot-right select-none jp-mascot-container" style="display:none;">
+          <img src="assets/images/iratsutoya-style/yukata.png" alt="Mascot in Japanese yukata" class="mascot-image jp-mascot" width="300" height="300" decoding="async"
+               data-normal="assets/images/iratsutoya-style/yukata.png"
+               data-hover="assets/images/iratsutoya-style/yukata-smile.png"
+               data-click="assets/images/iratsutoya-style/yukata-happy.png"
+               onerror="this.src='assets/images/iratsutoya-style/pointing.png'">
+        </div>
     
     <div class="hero-content max-w-5xl mx-auto text-center px-4 md:px-6">
       <h1 class="hero-title font-heading text-5xl md:text-6xl text-[#2c3e50]">
@@ -577,7 +586,41 @@
           }
         });
       }
-      
+
+      // Japan-specific mascot interaction (yukata)
+      const jpMascotImage = document.querySelector('.jp-mascot');
+      if (jpMascotImage) {
+        const normalSrc = jpMascotImage.dataset.normal;
+        const hoverSrc = jpMascotImage.dataset.hover;
+        const clickSrc = jpMascotImage.dataset.click;
+        let isJpClickActive = false;
+
+        // Hover effect
+        jpMascotImage.addEventListener('mouseenter', function() {
+          if (isJpClickActive) return;
+          this.src = hoverSrc;
+        });
+
+        jpMascotImage.addEventListener('mouseleave', function() {
+          if (isJpClickActive) return;
+          this.src = normalSrc;
+        });
+
+        // Click effect - show happy face for 2 seconds
+        jpMascotImage.addEventListener('click', function() {
+          if (isJpClickActive) return;
+          isJpClickActive = true;
+          this.src = clickSrc;
+          this.classList.add('mascot-clicked');
+
+          setTimeout(() => {
+            jpMascotImage.src = normalSrc;
+            jpMascotImage.classList.remove('mascot-clicked');
+            isJpClickActive = false;
+          }, 2000);
+        });
+      }
+
       // Digit scrolling animation - Yu-Gi-Oh! countdown effect
       function animateDigits() {
         // Get all stat items directly
@@ -711,22 +754,29 @@
     // Toggle mascots when language changes
     function toggleMascotsForLanguage(lang) {
       const leftMascot = document.querySelector('.hero-mascot');
-      const rightMascot = document.querySelector('.hero-mascot-right');
-      if (!leftMascot || !rightMascot) return;
-      const leftVisible = leftMascot.style.display !== 'none';
-      const rightVisible = rightMascot.style.display !== 'none';
-      if (lang === 'cl') {
-        if (!rightVisible) {
-          leftMascot.style.display = 'none';
-          rightMascot.style.display = 'block';
-          rightMascot.classList.remove('animate');
-          requestAnimationFrame(() => rightMascot.classList.add('animate'));
-        }
-        return; // avoid touching EN/ES state when already CL
-      }
-      // Non-CL: only switch if currently showing CL
-      if (!leftVisible) {
-        rightMascot.style.display = 'none';
+      const clMascot = document.querySelector('.hero-mascot-right:not(.jp-mascot-container)');
+      const jpMascot = document.querySelector('.jp-mascot-container');
+
+      if (!leftMascot) return;
+
+      // Hide all mascots first
+      leftMascot.style.display = 'none';
+      if (clMascot) clMascot.style.display = 'none';
+      if (jpMascot) jpMascot.style.display = 'none';
+
+      // Show the appropriate mascot based on language
+      if (lang === 'jp' && jpMascot) {
+        // Show Japanese yukata mascot
+        jpMascot.style.display = 'block';
+        jpMascot.classList.remove('animate');
+        requestAnimationFrame(() => jpMascot.classList.add('animate'));
+      } else if (lang === 'cl' && clMascot) {
+        // Show Chilean dress mascot
+        clMascot.style.display = 'block';
+        clMascot.classList.remove('animate');
+        requestAnimationFrame(() => clMascot.classList.add('animate'));
+      } else {
+        // Show default mascot for all other languages (en, es)
         leftMascot.style.display = 'block';
         leftMascot.classList.remove('animate');
         requestAnimationFrame(() => leftMascot.classList.add('animate'));
