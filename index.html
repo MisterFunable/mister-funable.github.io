@@ -244,10 +244,10 @@
 
         <!-- Japan-specific mascot (appears from the right) -->
         <div class="hero-mascot-right select-none jp-mascot-container" style="display:none;">
-          <img src="assets/images/iratsutoya-style/yukata.png" alt="Mascot in Japanese yukata" class="mascot-image jp-mascot" width="300" height="300" decoding="async"
-               data-normal="assets/images/iratsutoya-style/yukata.png"
-               data-hover="assets/images/iratsutoya-style/yukata-smile.png"
-               data-click="assets/images/iratsutoya-style/yukata-happy.png"
+          <img src="assets/images/iratsutoya-style/japanese-yukata.jpg" alt="Mascot in Japanese yukata" class="mascot-image jp-mascot" width="300" height="300" decoding="async"
+               data-normal="assets/images/iratsutoya-style/japanese-yukata.jpg"
+               data-hover="assets/images/iratsutoya-style/japanese-yukata.jpg"
+               data-click="assets/images/iratsutoya-style/japanese-yukata.jpg"
                onerror="this.src='assets/images/iratsutoya-style/pointing.png'">
         </div>
     
@@ -398,8 +398,8 @@
         }
       });
 
-      // Prevent links and buttons inside hero from triggering the section click
-      const interactiveElements = heroSection.querySelectorAll('a, button');
+      // Prevent links, buttons, and mascot images inside hero from triggering the section click
+      const interactiveElements = heroSection.querySelectorAll('a, button, .mascot-image, .scroll-down-btn');
       interactiveElements.forEach(el => {
         el.addEventListener('click', (e) => {
           e.stopPropagation();
