@@ -135,20 +135,54 @@
     <!-- Channel Hero Section -->
     <section class="channel-hero">
       <div class="channel-info">
-        <h2 data-lang-en="@MisterFunable" data-lang-jp="@MisterFunable" data-lang-es="@MisterFunable">@MisterFunable</h2>
-        <p data-lang-en="Doll collecting, reviews, and tutorials"
-           data-lang-jp="ドールコレクション、レビュー、チュートリアル"
-           data-lang-es="Colección de muñecas, reseñas y tutoriales">
-          Doll collecting, reviews, and tutorials
+        <h2 data-lang-en="@MisterFunable Network" data-lang-jp="@MisterFunableネットワーク" data-lang-es="Red @MisterFunable">@MisterFunable Network</h2>
+        <p data-lang-en="Multiple channels covering different collecting hobbies"
+           data-lang-jp="さまざまなコレクティングホビーをカバーする複数のチャンネル"
+           data-lang-es="Múltiples canales cubriendo diferentes hobbies de coleccionismo">
+          Multiple channels covering different collecting hobbies
         </p>
+
+        <!-- YouTube Channels Grid -->
+        <div class="channels-grid">
+          <a href="https://www.youtube.com/@Mechenable" target="_blank" rel="noopener" class="channel-circle" title="Mechenable - Mech & Gundam Reviews">
+            <img src="/assets/logos/yt-mechenable.png" alt="Mechenable" width="120" height="120">
+            <span class="channel-name">Mechenable</span>
+          </a>
+
+          <a href="https://www.youtube.com/@Jueguenable" target="_blank" rel="noopener" class="channel-circle" title="Jueguenable - Toy Reviews">
+            <img src="/assets/logos/yt-jueguenable.png" alt="Jueguenable" width="120" height="120">
+            <span class="channel-name">Jueguenable</span>
+          </a>
+
+          <a href="https://www.youtube.com/@Dollenable" target="_blank" rel="noopener" class="channel-circle" title="Dollenable - Doll Reviews">
+            <img src="/assets/logos/yt-dollenable.png" alt="Dollenable" width="120" height="120">
+            <span class="channel-name">Dollenable</span>
+          </a>
+
+          <a href="https://www.youtube.com/@Legoenable" target="_blank" rel="noopener" class="channel-circle" title="Legoenable - LEGO Reviews">
+            <img src="/assets/logos/yt-legoenable.png" alt="Legoenable" width="120" height="120">
+            <span class="channel-name">Legoenable</span>
+          </a>
+
+          <a href="https://www.youtube.com/@Posenable" target="_blank" rel="noopener" class="channel-circle" title="Posenable - Poseable Figures">
+            <img src="/assets/logos/yt-posenable.png" alt="Posenable" width="120" height="120">
+            <span class="channel-name">Posenable</span>
+          </a>
+
+          <a href="https://www.youtube.com/@Statuenable" target="_blank" rel="noopener" class="channel-circle" title="Statuenable - Statue Reviews">
+            <img src="/assets/logos/yt-statuenable.png" alt="Statuenable" width="120" height="120">
+            <span class="channel-name">Statuenable</span>
+          </a>
+        </div>
+
         <a href="https://www.youtube.com/@MisterFunable"
            class="btn-subscribe"
            target="_blank"
            rel="noopener"
-           data-lang-en="Subscribe on YouTube"
-           data-lang-jp="YouTubeで登録"
-           data-lang-es="Suscríbete en YouTube">
-          Subscribe on YouTube
+           data-lang-en="Visit Main Channel"
+           data-lang-jp="メインチャンネルを訪問"
+           data-lang-es="Visitar Canal Principal">
+          Visit Main Channel
         </a>
       </div>
     </section>
@@ -243,6 +277,61 @@
       margin: 0 0 2rem 0;
     }
 
+    /* YouTube Channels Grid */
+    .channels-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 2rem;
+      max-width: 900px;
+      margin: 2rem auto 3rem auto;
+      padding: 0 1rem;
+    }
+
+    .channel-circle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+    }
+
+    .channel-circle img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      background: white;
+      padding: 8px;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      object-fit: contain;
+    }
+
+    .channel-circle:hover img {
+      transform: translateY(-8px) scale(1.05);
+      border-color: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .channel-circle:active img {
+      transform: translateY(-4px) scale(1.02);
+    }
+
+    .channel-name {
+      margin-top: 0.75rem;
+      color: white;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-align: center;
+      opacity: 0.9;
+      transition: opacity 0.3s ease;
+    }
+
+    .channel-circle:hover .channel-name {
+      opacity: 1;
+    }
+
     .btn-subscribe {
       display: inline-block;
       background: white;
@@ -290,15 +379,52 @@
         font-size: 1rem;
       }
 
+      .channels-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        margin: 1.5rem auto 2rem auto;
+      }
+
+      .channel-circle img {
+        width: 90px;
+        height: 90px;
+        border-width: 3px;
+        padding: 6px;
+      }
+
+      .channel-name {
+        font-size: 0.85rem;
+        margin-top: 0.5rem;
+      }
+
       .btn-subscribe {
         padding: 0.875rem 2rem;
         font-size: 1rem;
       }
     }
 
+    @media (max-width: 480px) {
+      .channels-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+
+      .channel-circle img {
+        width: 80px;
+        height: 80px;
+        padding: 4px;
+      }
+
+      .channel-name {
+        font-size: 0.8rem;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .btn-subscribe:hover,
-      .inventory-card.channel-cta:hover {
+      .inventory-card.channel-cta:hover,
+      .channel-circle:hover img,
+      .channel-circle:active img {
         transform: none !important;
       }
     }
