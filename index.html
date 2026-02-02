@@ -227,7 +227,7 @@
   <div id="navbar-placeholder"></div>
 
   <!-- Hero Section -->
-  <section class="hero-section relative flex items-center justify-center w-full min-h-[calc(100vh-70px)]" id="main-content">
+  <section class="hero-section relative flex items-center justify-center w-full min-h-[calc(100vh-70px)]" id="main-content" tabindex="0">
             <!-- Mascot -->
         <div class="hero-mascot select-none animate">
           <img src="assets/images/iratsutoya-style/pointing.png" alt="Site Mascot pointing at doll collection" class="mascot-image" width="300" height="300" decoding="async" fetchpriority="high"
@@ -396,8 +396,13 @@
     }
 
     // Make hero section clickable with keyboard support
-    const heroSection = document.getElementById('heroSection');
+    const heroSection = document.getElementById('main-content');
     if (heroSection) {
+      // Click anywhere on hero section to scroll down
+      heroSection.addEventListener('click', (e) => {
+        scrollToCollections();
+      });
+
       // Keyboard accessibility
       heroSection.addEventListener('keypress', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {

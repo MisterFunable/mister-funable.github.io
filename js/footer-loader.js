@@ -28,8 +28,8 @@ function initFooterScroll() {
     const windowHeight = window.innerHeight;
     const documentHeight = document.documentElement.scrollHeight;
     
-    // Show footer when user is within 150px of bottom or at the very bottom
-    const nearBottom = scrollTop + windowHeight >= documentHeight - 150;
+    // Show footer when user is within 50px of bottom or at the very bottom
+    const nearBottom = scrollTop + windowHeight >= documentHeight - 50;
     const atBottom = scrollTop + windowHeight >= documentHeight - 10; // 10px tolerance for "at bottom"
     
     if (nearBottom && !isFooterVisible) {
@@ -72,7 +72,8 @@ function initFooterScroll() {
     const documentHeight = document.documentElement.scrollHeight;
     const windowHeight = window.innerHeight;
 
-    if (documentHeight <= windowHeight + 50) {
+    // Only show footer if page is MUCH shorter than viewport (can't scroll at all)
+    if (documentHeight <= windowHeight + 10) {
       footer.classList.add('show');
       isFooterVisible = true;
     }
