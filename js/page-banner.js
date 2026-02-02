@@ -18,40 +18,44 @@
       return;
     }
 
-    // Try to load custom banner image
-    const customImagePath = `/assets/images/banners/${pageName}.png`;
+    // Try to load custom banner image in order of preference:
+    // 1. WebP (best compression, modern browsers)
+    // 2. PNG (lossless, good for graphics)
+    // 3. JPG (lossy, good for photos)
+    tryLoadImage([
+      `/assets/images/banners/${pageName}.webp`,
+      `/assets/images/banners/${pageName}.png`,
+      `/assets/images/banners/${pageName}.jpg`
+    ], banner);
+  }
+
+  /**
+   * Try loading images from an array of paths, using the first one that exists
+   * @param {string[]} imagePaths - Array of image paths to try in order
+   * @param {HTMLElement} banner - Banner element to apply image to
+   */
+  function tryLoadImage(imagePaths, banner) {
+    if (imagePaths.length === 0) {
+      console.log('No custom banner images found, using default gradient');
+      return;
+    }
+
+    const currentPath = imagePaths[0];
     const img = new Image();
 
     img.onload = function() {
       // Image exists and loaded successfully
-      banner.style.backgroundImage = `url('${customImagePath}')`;
+      banner.style.backgroundImage = `url('${currentPath}')`;
       banner.classList.add('has-custom-image');
-      console.log(`Custom banner loaded: ${customImagePath}`);
+      console.log(`Custom banner loaded: ${currentPath}`);
     };
 
     img.onerror = function() {
-      // Image doesn't exist, use default gradient (already set in CSS)
-      console.log(`No custom banner found for ${pageName}, using default gradient`);
-
-      // Try alternate formats
-      const jpgPath = `/assets/images/banners/${pageName}.jpg`;
-      const jpgImg = new Image();
-
-      jpgImg.onload = function() {
-        banner.style.backgroundImage = `url('${jpgPath}')`;
-        banner.classList.add('has-custom-image');
-        console.log(`Custom banner loaded: ${jpgPath}`);
-      };
-
-      jpgImg.onerror = function() {
-        // No custom image found, stick with gradient
-        console.log(`No custom banner images found for ${pageName}`);
-      };
-
-      jpgImg.src = jpgPath;
+      // Try next image in the list
+      tryLoadImage(imagePaths.slice(1), banner);
     };
 
-    img.src = customImagePath;
+    img.src = currentPath;
   }
 
   /**

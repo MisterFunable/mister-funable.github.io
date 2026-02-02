@@ -433,39 +433,82 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
-    background: #f8f9fa;
-    border-top: 1px solid #e0e0e0;
-    gap: 1rem;
+    padding: 1.5rem 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    gap: 0.75rem;
+    flex-wrap: wrap;
   }
-  
+
   .mobile-language-switcher .lang-btn {
+    /* Button reset */
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    font-family: inherit;
+
+    /* Layout */
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    background: white;
-    border: 1px solid #e0e0e0;
-    border-radius: 4px;
-    text-decoration: none;
-    color: #333;
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
+    /* WCAG 2.1 AA: Minimum touch target 44x44px */
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0.75rem 1.25rem;
+
+    /* Visual */
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    color: #4a5568;
+    font-size: 0.95rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+    /* Animation */
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
-  
+
   .mobile-language-switcher .lang-btn:hover,
   .mobile-language-switcher .lang-btn.active {
-    background-color: var(--color-primary);
+    background: linear-gradient(135deg, #D4AF37 0%, #f39c12 100%);
     color: white;
-    border-color: var(--color-primary);
+    border-color: rgba(212, 175, 55, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
   }
-  
+
+  .mobile-language-switcher .lang-btn:focus {
+    outline: 3px solid #D4AF37;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.2);
+  }
+
+  .mobile-language-switcher .lang-btn:active {
+    transform: translateY(0);
+  }
+
   .mobile-language-switcher img {
-    width: 20px;
-    height: 14px;
-    border-radius: 2px;
+    width: 24px;
+    height: 16px;
+    border-radius: 3px;
     object-fit: cover;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* Reduced motion support for mobile language switcher */
+@media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+  .mobile-language-switcher .lang-btn {
+    transition: none;
+  }
+
+  .mobile-language-switcher .lang-btn:hover,
+  .mobile-language-switcher .lang-btn.active {
+    transform: none;
   }
 }
 

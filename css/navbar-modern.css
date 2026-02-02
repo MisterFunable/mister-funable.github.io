@@ -11,12 +11,22 @@
   right: 0;
   height: 70px;
   background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  /* Reduced blur from 20px to 10px for better performance */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
   z-index: 1000;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Hint browser to optimize blur rendering */
+  will-change: backdrop-filter;
+}
+
+/* Fallback for browsers without backdrop-filter support */
+@supports not (backdrop-filter: blur(10px)) {
+  .navbar {
+    background: rgba(255, 255, 255, 0.95);
+  }
 }
 
 .navbar.scrolled {
@@ -181,8 +191,8 @@
   top: calc(100% + 12px);
   left: 0;
   background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   min-width: 260px;
   border-radius: 16px;
   box-shadow:
@@ -530,6 +540,56 @@
 /* Scroll behavior adjustments */
 body.menu-open {
   overflow: hidden;
+}
+
+/* ============================================
+   PERFORMANCE OPTIMIZATION
+   ============================================ */
+
+/* Reduce blur on mobile for better performance */
+@media (max-width: 768px) {
+  .navbar,
+  .dropdown-content,
+  .nav-links,
+  .lang-flag-group {
+    /* Reduce blur from 10px to 6px on mobile */
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+
+  /* Increase background opacity to compensate */
+  .navbar {
+    background: rgba(255, 255, 255, 0.92);
+  }
+
+  .dropdown-content {
+    background: rgba(255, 255, 255, 0.97);
+  }
+}
+
+/* Disable blur entirely on low-end devices or when GPU acceleration is limited */
+@media (max-width: 480px) and (prefers-reduced-motion: reduce) {
+  .navbar,
+  .dropdown-content,
+  .nav-links,
+  .lang-flag-group,
+  .mobile-menu-overlay {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .navbar {
+    background: rgba(255, 255, 255, 0.98);
+  }
+
+  .dropdown-content,
+  .nav-links {
+    background: rgba(255, 255, 255, 1);
+  }
+
+  .mobile-menu-overlay {
+    background: rgba(0, 0, 0, 0.6);
+  }
 }
 
 /* ============================================

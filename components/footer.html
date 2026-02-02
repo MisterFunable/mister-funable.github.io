@@ -36,18 +36,18 @@
 
   <!-- Mobile Language Switcher -->
   <div class="mobile-language-switcher">
-    <a href="#" onclick="changeLanguage('en'); return false;" class="lang-btn" id="mobile-lang-en">
-      <img src="/assets/img/flags/en.png" alt="English" width="20" height="14" loading="lazy" decoding="async" />
+    <button type="button" onclick="changeLanguage('en')" class="lang-btn" id="mobile-lang-en" aria-pressed="false" aria-label="Switch to English">
+      <img src="/assets/img/flags/en.png" alt="" width="24" height="16" loading="lazy" decoding="async" aria-hidden="true" />
       <span>English</span>
-    </a>
-    <a href="#" onclick="changeLanguage('jp'); return false;" class="lang-btn" id="mobile-lang-jp">
-      <img src="/assets/img/flags/jp.png" alt="日本語" width="20" height="14" loading="lazy" decoding="async" />
+    </button>
+    <button type="button" onclick="changeLanguage('jp')" class="lang-btn" id="mobile-lang-jp" aria-pressed="false" aria-label="日本語に切り替える">
+      <img src="/assets/img/flags/jp.png" alt="" width="24" height="16" loading="lazy" decoding="async" aria-hidden="true" />
       <span>日本語</span>
-    </a>
-    <a href="#" onclick="changeLanguage('es'); return false;" class="lang-btn" id="mobile-lang-es">
-      <img src="/assets/img/flags/cl.png" alt="Español" width="20" height="14" loading="lazy" decoding="async" />
+    </button>
+    <button type="button" onclick="changeLanguage('es')" class="lang-btn" id="mobile-lang-es" aria-pressed="false" aria-label="Cambiar a Español">
+      <img src="/assets/img/flags/cl.png" alt="" width="24" height="16" loading="lazy" decoding="async" aria-hidden="true" />
       <span>Español</span>
-    </a>
+    </button>
   </div>
 
   <div class="footer-container">
