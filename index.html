@@ -603,34 +603,63 @@
       // Japan-specific mascot interaction (yukata)
       const jpMascotImage = document.querySelector('.jp-mascot');
       if (jpMascotImage) {
-        const normalSrc = jpMascotImage.dataset.normal;
-        const hoverSrc = jpMascotImage.dataset.hover;
-        const clickSrc = jpMascotImage.dataset.click;
-        let isJpClickActive = false;
+        // Get all yukata variants
+        const yukataVariants = [
+          jpMascotImage.dataset.yukata1,
+          jpMascotImage.dataset.yukata2,
+          jpMascotImage.dataset.yukata3,
+          jpMascotImage.dataset.yukata4,
+          jpMascotImage.dataset.yukata5,
+          jpMascotImage.dataset.yukata6
+        ].filter(src => src); // Filter out any undefined variants
 
-        // Hover effect
+        let currentYukataIndex = 0;
+        let isJpClickActive = false;
+        let yukataInterval = null;
+
+        // Function to cycle through yukata variants
+        function cycleYukata() {
+          if (isJpClickActive) return;
+          currentYukataIndex = (currentYukataIndex + 1) % yukataVariants.length;
+          jpMascotImage.src = yukataVariants[currentYukataIndex];
+        }
+
+        // Start automatic cycling every 3 seconds
+        yukataInterval = setInterval(cycleYukata, 3000);
+
+        // Hover effect - pause cycling and show next variant
         jpMascotImage.addEventListener('mouseenter', function() {
           if (isJpClickActive) return;
-          this.src = hoverSrc;
+          clearInterval(yukataInterval);
+          cycleYukata();
         });
 
         jpMascotImage.addEventListener('mouseleave', function() {
           if (isJpClickActive) return;
-          this.src = normalSrc;
+          yukataInterval = setInterval(cycleYukata, 3000);
         });
 
-        // Click effect - show happy face for 2 seconds
+        // Click effect - cycle through all variants quickly
         jpMascotImage.addEventListener('click', function() {
           if (isJpClickActive) return;
           isJpClickActive = true;
-          this.src = clickSrc;
+          clearInterval(yukataInterval);
           this.classList.add('mascot-clicked');
 
-          setTimeout(() => {
-            jpMascotImage.src = normalSrc;
-            jpMascotImage.classList.remove('mascot-clicked');
-            isJpClickActive = false;
-          }, 2000);
+          // Quickly cycle through all variants
+          let clickCycleCount = 0;
+          const quickCycleInterval = setInterval(() => {
+            currentYukataIndex = (currentYukataIndex + 1) % yukataVariants.length;
+            jpMascotImage.src = yukataVariants[currentYukataIndex];
+            clickCycleCount++;
+
+            if (clickCycleCount >= yukataVariants.length) {
+              clearInterval(quickCycleInterval);
+              jpMascotImage.classList.remove('mascot-clicked');
+              isJpClickActive = false;
+              yukataInterval = setInterval(cycleYukata, 3000);
+            }
+          }, 300);
         });
       }
 
