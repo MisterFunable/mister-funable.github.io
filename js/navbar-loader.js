@@ -179,12 +179,20 @@ function initializeNavbar() {
 
     // Handle dropdown keyboard navigation
     if (e.target.classList.contains('dropdown-btn')) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        const dropdown = e.target.closest('.dropdown');
+      if (e.key === 'Enter') {
         if (window.innerWidth <= 768) {
+          // Mobile: Toggle dropdown
+          e.preventDefault();
+          const dropdown = e.target.closest('.dropdown');
           toggleDropdown(dropdown);
         }
+        // Desktop: Allow Enter to follow link (default behavior)
+      }
+      if (e.key === ' ') {
+        // Space key always toggles dropdown
+        e.preventDefault();
+        const dropdown = e.target.closest('.dropdown');
+        toggleDropdown(dropdown);
       }
     }
 

@@ -116,6 +116,16 @@
   overflow: hidden;
 }
 
+/* Ensure dropdown-btn works as anchor link */
+a.dropdown-btn {
+  text-decoration: none;
+  color: inherit;
+}
+
+a.dropdown-btn:visited {
+  color: inherit;
+}
+
 /* Current page indicator */
 .nav-link[aria-current="page"],
 .dropdown-btn[aria-current="page"] {
@@ -262,6 +272,23 @@
 .dropdown-content a[aria-current="page"]::before {
   height: 100%;
   width: 4px;
+}
+
+/* Mobile-only overview link */
+.mobile-only-overview {
+  display: none;
+  font-weight: 700 !important;
+  background: linear-gradient(135deg,
+    rgba(212, 175, 55, 0.1) 0%,
+    rgba(243, 156, 18, 0.1) 100%) !important;
+  border-bottom: 2px solid rgba(212, 175, 55, 0.2);
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .mobile-only-overview {
+    display: block;
+  }
 }
 
 /* Language Switcher - Modern Design */

@@ -219,7 +219,8 @@ The site includes a custom loading screen (`js/loading-screen.js`) that displays
 
 **Features**:
 - **Rotating Messages**: Array of 20+ ironic/humorous loading messages that rotate every 3 seconds
-- **Visual Elements**: Mascot image (`/assets/images/mascot/bunny-suit.png`), animated spinner, progress bar, and animated dots
+- **Visual Elements**: Mascot image (`/assets/images/mascot/bunny-suit.png`), animated spinner, and animated dots
+- **Honest Loading Indicators**: No fake progress bars - only shows actual loading status
 - **Smart Triggers**:
   - Automatically shown on page load
   - Hides when iframe `#airtableFrame` loads successfully
@@ -227,6 +228,7 @@ The site includes a custom loading screen (`js/loading-screen.js`) that displays
   - Detects `document.readyState` for immediate display
 - **Final Message**: Shows "Done! That wasn't so bad... was it? 🎉" before fading out
 - **Manual Control**: `window.hideLoadingScreen()` exposed for programmatic control
+- **Accessibility**: Respects `prefers-reduced-motion` for animations
 
 **Integration**: Add before closing `</body>` tag:
 ```html
@@ -236,15 +238,20 @@ The site includes a custom loading screen (`js/loading-screen.js`) that displays
 
 **Adding Messages**: Edit `loadingMessages` array in `js/loading-screen.js:10`
 
+**Note**: Previous versions included a fake progress bar that animated to 95% over 30 seconds regardless of actual loading status. This was removed in favor of honest loading indicators.
+
 ### Page Banner System
 
 Dynamic page banner with intelligent image loading (`js/page-banner.js`):
 
 **Behavior**:
-1. Checks for custom banner image at `/assets/images/banners/{page-name}.png`
-2. Falls back to `/assets/images/banners/{page-name}.jpg` if PNG not found
-3. Uses CSS gradient (defined in stylesheet) as final fallback
-4. Adds `.has-custom-image` class when custom image successfully loads
+1. Checks for custom banner image at `/assets/images/banners/{page-name}.webp` (first priority)
+2. Falls back to `/assets/images/banners/{page-name}.png` if WebP not found
+3. Falls back to `/assets/images/banners/{page-name}.jpg` if PNG not found
+4. Uses CSS gradient (defined in stylesheet) as final fallback
+5. Adds `.has-custom-image` class when custom image successfully loads
+
+**WebP Support**: The banner system now prioritizes WebP images for better performance (25-35% smaller file sizes). See `WEBP_IMPLEMENTATION.md` for conversion guidelines.
 
 **Page Name Detection**:
 - From `data-page` attribute on `.page-banner` element
@@ -280,6 +287,33 @@ The site includes GA4 integration. To activate:
 - Canonical URLs on all pages
 
 See `SEO_SETUP.md` for detailed SEO and analytics setup instructions.
+
+## Documentation Files
+
+The project includes comprehensive documentation for various features and implementations:
+
+- **`WEBP_IMPLEMENTATION.md`**: Complete guide for converting images to WebP format
+  - Priority images to convert (mascots, banners)
+  - Conversion tools and quality guidelines
+  - HTML patterns with `<picture>` elements
+  - Performance testing procedures
+
+- **`BLUR_OPTIMIZATION.md`**: Performance optimization documentation for backdrop-filter blur
+  - Blur reduction strategy (20px → 10px → 6px → 0px)
+  - Performance metrics and testing results
+  - Browser compatibility and fallbacks
+  - Visual trade-offs analysis
+
+- **`TESTING_GUIDE.md`**: Comprehensive testing procedures
+  - Accessibility testing (keyboard, screen reader, WCAG compliance)
+  - Performance testing (Lighthouse, Core Web Vitals)
+  - Cross-browser testing procedures
+  - Mobile device testing
+
+- **`SEO_SETUP.md`**: SEO and analytics setup instructions
+  - Google Analytics configuration
+  - Meta tags and structured data
+  - Sitemap and robots.txt configuration
 
 ## File Modification Guidelines
 
@@ -431,14 +465,77 @@ try {
 - localStorage required for language/age disclaimer
 - Backdrop filters for navbar/footer blur effects
 
+## Accessibility Features
+
+The site is WCAG 2.1 AA compliant with the following features:
+
+**Keyboard Navigation**:
+- Visible focus states on all interactive elements (3px solid #D4AF37 outline)
+- Skip-to-content link for keyboard users
+- Dropdown navigation with Escape key support
+- Focus trap in mobile menu
+- Tab order follows visual hierarchy
+
+**Screen Reader Support**:
+- ARIA landmarks (`role="navigation"`, `role="dialog"`, `role="menu"`)
+- ARIA states (`aria-expanded`, `aria-pressed`, `aria-current="page"`)
+- ARIA labels on interactive elements
+- `aria-hidden="true"` on decorative SVGs
+- `aria-live` regions for dynamic content
+
+**Motion Accessibility**:
+- Full `@media (prefers-reduced-motion: reduce)` support
+- Disables all animations when user prefers reduced motion
+- Instant transitions (0.01ms) instead of animations
+- Respects OS-level accessibility settings
+
+**Touch Targets**:
+- Minimum 44x44px touch targets on all interactive elements (WCAG 2.5.5)
+- Adequate spacing between interactive elements
+- Mobile-optimized button sizes
+
+**Visual Accessibility**:
+- Current page indicator in navbar (`aria-current="page"`)
+- High contrast color scheme (4.5:1 ratio)
+- Focus visible indicators
+- Semantic HTML (`<button>` instead of fake links)
+
+See `/TESTING_GUIDE.md` for comprehensive accessibility testing procedures.
+
 ## Performance Considerations
 
+**Core Web Vitals Optimizations**:
+- CLS < 0.1 (Cumulative Layout Shift)
+- LCP < 2.5s (Largest Contentful Paint)
+- Optimized loading animations to prevent layout shift
+
+**Image Optimization**:
+- WebP support with PNG/JPG fallbacks (25-35% file size reduction)
+- Explicit width/height on all images to prevent layout shift
+- Lazy loading on iframes and images
+- See `WEBP_IMPLEMENTATION.md` for WebP conversion guidelines
+
+**CSS Performance**:
+- Reduced backdrop-filter blur for GPU optimization:
+  - Desktop: 10px blur (reduced from 20px, -30-40% GPU cost)
+  - Mobile: 6px blur (reduced from 10px, -50-60% GPU cost)
+  - Low-end devices: No blur (0px, -100% GPU cost)
+- `will-change` hints on frequently animated elements
+- See `BLUR_OPTIMIZATION.md` for performance metrics
+
+**JavaScript Performance**:
 - Preload critical resources in `<head>`
-- Lazy loading on iframes (`loading="lazy"`)
 - Debounced search input (150ms)
 - Throttled scroll handlers
 - Resource preconnect for fonts and analytics
 - Component loading on DOMContentLoaded
+- IIFE pattern for scope isolation and memory efficiency
+
+**Loading UX**:
+- Removed misleading progress bars (was fake 30s animation)
+- Honest loading indicators (spinner, rotating messages)
+- 45-second timeout with error handling
+- No fake progress that doesn't reflect actual loading status
 
 ## Deployment
 

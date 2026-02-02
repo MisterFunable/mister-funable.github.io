@@ -64,6 +64,14 @@
     <priority>0.8</priority>
   </url>
   
+  <!-- Guides Landing Page -->
+  <url>
+    <loc>https://mydollinventory.com/guides.html</loc>
+    <lastmod>2026-02-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Guides -->
   <url>
     <loc>https://mydollinventory.com/info/aliexpress.html</loc>
@@ -100,6 +108,14 @@
     <priority>0.7</priority>
   </url>
   
+  <!-- YouTube Landing Page -->
+  <url>
+    <loc>https://mydollinventory.com/youtube.html</loc>
+    <lastmod>2026-02-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- YouTube Notes -->
   <url>
     <loc>https://mydollinventory.com/info/resin-inventory.html</loc>
