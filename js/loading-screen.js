@@ -118,15 +118,15 @@
         <div class="loading-spinner"></div>
 
         <div class="loading-message-container">
-          <div class="loading-message" id="loading-message">
+          <div class="loading-message" id="loading-message" aria-live="polite" aria-atomic="true">
             ${messages[0]}
-            <div class="loading-dots">
+            <div class="loading-dots" aria-hidden="true">
               <span></span>
               <span></span>
               <span></span>
             </div>
           </div>
-          <div class="loading-submessage">
+          <div class="loading-submessage" aria-live="polite">
             ${submessage}
           </div>
         </div>

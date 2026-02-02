@@ -226,8 +226,8 @@
   <a href="#main-content" class="skip-to-content">Skip to main content</a>
   <div id="navbar-placeholder"></div>
 
-  <!-- Hero Section (Click anywhere to go to collections) -->
-  <section class="hero-section relative flex items-center justify-center w-full min-h-[calc(100vh-70px)] cursor-pointer" id="main-content" onclick="scrollToCollections()" role="button" tabindex="0" aria-label="Click to view collections">
+  <!-- Hero Section -->
+  <section class="hero-section relative flex items-center justify-center w-full min-h-[calc(100vh-70px)]" id="main-content">
             <!-- Mascot -->
         <div class="hero-mascot select-none animate">
           <img src="assets/images/iratsutoya-style/pointing.png" alt="Site Mascot pointing at doll collection" class="mascot-image" width="300" height="300" decoding="async" fetchpriority="high"
@@ -236,19 +236,26 @@
                data-click="assets/images/iratsutoya-style/pointing-angry-1.png">
         </div>
 
-        <!-- Chile-specific mascot (appears from the right) -->
-        <div class="hero-mascot-right select-none" style="display:none;">
-          <img src="assets/images/iratsutoya-style/chilean-dress.png" alt="Mascot in Chilean dress" class="mascot-image cl-mascot" width="300" height="300" decoding="async"
-               data-fight-prefix="assets/images/iratsutoya-style/chilean-dress-fight-"
-               data-fight-ext=".png">
+        <!-- Spanish/Chilean-specific mascot (appears from the right) -->
+        <div class="hero-mascot-right select-none es-mascot-container" style="display:none;">
+          <img src="assets/images/iratsutoya-style/chilean-dress.png" alt="Mascot in Chilean dress" class="mascot-image es-mascot" width="300" height="300" decoding="async"
+               data-normal="assets/images/iratsutoya-style/chilean-dress.png"
+               data-hover="assets/images/iratsutoya-style/chilean-dress.png"
+               data-click="assets/images/iratsutoya-style/chilean-dress.png">
         </div>
 
         <!-- Japan-specific mascot (appears from the right) -->
         <div class="hero-mascot-right select-none jp-mascot-container" style="display:none;">
-          <img src="assets/images/iratsutoya-style/japanese-yukata.jpg" alt="Mascot in Japanese yukata" class="mascot-image jp-mascot" width="300" height="300" decoding="async"
-               data-normal="assets/images/iratsutoya-style/japanese-yukata.jpg"
-               data-hover="assets/images/iratsutoya-style/japanese-yukata.jpg"
-               data-click="assets/images/iratsutoya-style/japanese-yukata.jpg"
+          <img src="assets/images/iratsutoya-style/yukata-1.png" alt="Mascot in Japanese yukata" class="mascot-image jp-mascot" width="300" height="300" decoding="async"
+               data-normal="assets/images/iratsutoya-style/yukata-1.png"
+               data-hover="assets/images/iratsutoya-style/yukata-2.png"
+               data-click="assets/images/iratsutoya-style/yukata-3.png"
+               data-yukata-1="assets/images/iratsutoya-style/yukata-1.png"
+               data-yukata-2="assets/images/iratsutoya-style/yukata-2.png"
+               data-yukata-3="assets/images/iratsutoya-style/yukata-3.png"
+               data-yukata-4="assets/images/iratsutoya-style/yukata-4.png"
+               data-yukata-5="assets/images/iratsutoya-style/yukata-5.png"
+               data-yukata-6="assets/images/iratsutoya-style/yukata-6.png"
                onerror="this.src='assets/images/iratsutoya-style/pointing.png'">
         </div>
     
@@ -755,14 +762,14 @@
     // Toggle mascots when language changes
     function toggleMascotsForLanguage(lang) {
       const leftMascot = document.querySelector('.hero-mascot');
-      const clMascot = document.querySelector('.hero-mascot-right:not(.jp-mascot-container)');
+      const esMascot = document.querySelector('.es-mascot-container');
       const jpMascot = document.querySelector('.jp-mascot-container');
 
       if (!leftMascot) return;
 
       // Hide all mascots first
       leftMascot.style.display = 'none';
-      if (clMascot) clMascot.style.display = 'none';
+      if (esMascot) esMascot.style.display = 'none';
       if (jpMascot) jpMascot.style.display = 'none';
 
       // Show the appropriate mascot based on language
@@ -771,13 +778,13 @@
         jpMascot.style.display = 'block';
         jpMascot.classList.remove('animate');
         requestAnimationFrame(() => jpMascot.classList.add('animate'));
-      } else if (lang === 'cl' && clMascot) {
-        // Show Chilean dress mascot
-        clMascot.style.display = 'block';
-        clMascot.classList.remove('animate');
-        requestAnimationFrame(() => clMascot.classList.add('animate'));
+      } else if ((lang === 'es' || lang === 'cl') && esMascot) {
+        // Show Chilean dress mascot for Spanish
+        esMascot.style.display = 'block';
+        esMascot.classList.remove('animate');
+        requestAnimationFrame(() => esMascot.classList.add('animate'));
       } else {
-        // Show default mascot for all other languages (en, es)
+        // Show default mascot for English
         leftMascot.style.display = 'block';
         leftMascot.classList.remove('animate');
         requestAnimationFrame(() => leftMascot.classList.add('animate'));
