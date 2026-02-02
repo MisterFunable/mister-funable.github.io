@@ -51,7 +51,7 @@ class DollInventorySearch {
       {
         title: "Doll Accessories",
         description: "Explore a wide variety of 1/6 scale accessories",
-        url: "/inventory/1-6-scale/accesories.html",
+        url: "/inventory/1-6-scale/accessories.html",
         category: "1/6 Scale",
         keywords: ["accessories", "clothes", "shoes", "weapons", "props"]
       },

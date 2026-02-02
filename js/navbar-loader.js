@@ -176,7 +176,7 @@ function initializeNavbar() {
         closeMobileMenu();
       }
     }
-    
+
     // Handle dropdown keyboard navigation
     if (e.target.classList.contains('dropdown-btn')) {
       if (e.key === 'Enter' || e.key === ' ') {
@@ -187,14 +187,65 @@ function initializeNavbar() {
         }
       }
     }
+
+    // Focus trap for mobile menu
+    if (navLinks.classList.contains('active') && e.key === 'Tab') {
+      const focusableElements = navLinks.querySelectorAll(
+        'a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      const firstFocusable = focusableElements[0];
+      const lastFocusable = focusableElements[focusableElements.length - 1];
+
+      if (e.shiftKey) {
+        // Shift + Tab
+        if (document.activeElement === firstFocusable) {
+          e.preventDefault();
+          lastFocusable.focus();
+        }
+      } else {
+        // Tab
+        if (document.activeElement === lastFocusable) {
+          e.preventDefault();
+          firstFocusable.focus();
+        }
+      }
+    }
   }
 
   // Set active state for current page
-  const currentPath = window.location.pathname;
-  const navLinksElements = document.querySelectorAll('.nav-links a');
-  navLinksElements.forEach(link => {
-    if (link.getAttribute('href') === currentPath) {
-      link.setAttribute('aria-current', 'page');
-    }
-  });
+  function setActiveState() {
+    const currentPath = window.location.pathname;
+    const navLinksElements = document.querySelectorAll('.nav-links a, .dropdown-btn');
+
+    navLinksElements.forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href) return;
+
+      // Exact match
+      if (href === currentPath) {
+        link.setAttribute('aria-current', 'page');
+        // Also mark parent dropdown if this is a dropdown item
+        const parentDropdown = link.closest('.dropdown');
+        if (parentDropdown) {
+          const dropdownBtn = parentDropdown.querySelector('.dropdown-btn');
+          if (dropdownBtn) {
+            dropdownBtn.setAttribute('aria-current', 'page');
+          }
+        }
+      }
+      // Partial match for section highlighting (e.g., /inventory/)
+      else if (currentPath.startsWith(href) && href !== '/' && href.length > 1) {
+        const parentDropdown = link.closest('.dropdown');
+        if (parentDropdown) {
+          const dropdownBtn = parentDropdown.querySelector('.dropdown-btn');
+          if (dropdownBtn && !dropdownBtn.getAttribute('aria-current')) {
+            dropdownBtn.style.color = '#D4AF37';
+            dropdownBtn.style.fontWeight = '700';
+          }
+        }
+      }
+    });
+  }
+
+  setActiveState();
 }

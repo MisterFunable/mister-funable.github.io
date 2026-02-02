@@ -278,3 +278,46 @@ iframe.loaded {
     font-size: 0.95rem;
   }
 }
+
+/* ============================================
+   ACCESSIBILITY - REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  /* Disable spinner animations */
+  .loading-overlay .loading-spinner::before,
+  .loading-overlay .loading-spinner::after {
+    animation: none !important;
+  }
+
+  /* Disable pulse animation */
+  .loading-overlay p::after {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  /* Instant iframe visibility */
+  iframe {
+    transition: all 0.01ms !important;
+    filter: none !important;
+    transform: none !important;
+  }
+
+  iframe.loaded {
+    filter: none !important;
+    transform: none !important;
+  }
+
+  /* Keep buttons stable */
+  .click-to-load-btn:hover {
+    transform: none !important;
+  }
+}

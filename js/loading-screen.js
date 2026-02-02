@@ -208,15 +208,10 @@
     }
 
     // Fade out after showing final message
+    // Keep in DOM to prevent CLS - only fade with opacity
     setTimeout(() => {
       loadingScreen.classList.add('fade-out');
-
-      // Remove from DOM after fade completes
-      setTimeout(() => {
-        if (loadingScreen && loadingScreen.parentNode) {
-          loadingScreen.parentNode.removeChild(loadingScreen);
-        }
-      }, 800);
+      // Do NOT remove from DOM - prevents layout shift
     }, 1500);
   }
 

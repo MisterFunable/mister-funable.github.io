@@ -279,3 +279,33 @@
     padding: 0 1.5rem;
   }
 }
+
+/* ============================================
+   ACCESSIBILITY - REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  /* Disable specific animations */
+  .loading-mascot,
+  .loading-spinner,
+  .loading-spinner::before,
+  .loading-spinner::after,
+  .loading-progress-bar,
+  .loading-dots span,
+  .loading-screen::before {
+    animation: none !important;
+  }
+
+  /* Keep fade transitions instant */
+  .loading-screen.fade-out {
+    transition: opacity 0.01ms !important;
+  }
+}

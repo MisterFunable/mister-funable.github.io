@@ -1,18 +1,25 @@
 <link rel="stylesheet" href="/css/age-disclaimer-modern.css">
 
-<div id="age-disclaimer-modal" class="age-disclaimer-modal">
+<div id="age-disclaimer-modal"
+     class="age-disclaimer-modal"
+     role="dialog"
+     aria-modal="true"
+     aria-labelledby="age-disclaimer-title"
+     aria-describedby="age-disclaimer-message">
   <div class="age-disclaimer-content">
     <!-- Image Section -->
     <div class="age-disclaimer-image">
       <!-- U-Bot-Chan mascot image -->
       <img src="/assets/images/mascot/u-bot-chan.png"
            alt="Age verification"
-           onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'age-disclaimer-icon\'>🔞</div>'">
+           aria-hidden="true"
+           onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'age-disclaimer-icon\' aria-hidden=\'true\'>🔞</div>'">
     </div>
 
     <!-- Content Body -->
     <div class="age-disclaimer-body">
-      <h2 class="age-disclaimer-title"
+      <h2 id="age-disclaimer-title"
+          class="age-disclaimer-title"
           data-lang-en="Adults Only (18+)"
           data-lang-jp="成人向け（18歳以上）"
           data-lang-es="Solo Adultos (18+)">
@@ -20,13 +27,15 @@
       </h2>
 
       <div class="age-disclaimer-warning"
+           aria-live="polite"
            data-lang-en="Mature Content Warning"
            data-lang-jp="成人向けコンテンツ警告"
            data-lang-es="Advertencia de Contenido Adulto">
         Mature Content Warning
       </div>
 
-      <p class="age-disclaimer-message"
+      <p id="age-disclaimer-message"
+         class="age-disclaimer-message"
          data-lang-en="This site contains mature content including uncensored figures and adult collectibles. You must be 18 years or older to enter."
          data-lang-jp="このサイトには、無修正フィギュアや成人向けコレクタブルを含む成人向けコンテンツが含まれています。入場するには18歳以上である必要があります。"
          data-lang-es="Este sitio contiene contenido para adultos incluyendo figuras sin censura y coleccionables para adultos. Debes tener 18 años o más para entrar.">

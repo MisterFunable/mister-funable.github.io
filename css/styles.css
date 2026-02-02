@@ -1077,3 +1077,54 @@ body {
 [data-lang-en], [data-lang-es] {
   transition: opacity 0.2s ease;
 }
+
+/* ============================================
+   ACCESSIBILITY - SKIP TO CONTENT
+   ============================================ */
+
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #D4AF37;
+  color: #fff;
+  padding: 8px 16px;
+  z-index: 10000;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: top 0.3s ease;
+}
+
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* ============================================
+   ACCESSIBILITY - ENHANCED FOCUS STATES
+   ============================================ */
+
+/* Comprehensive focus states for all interactive elements */
+.nav-link:focus,
+.dropdown-btn:focus,
+.dropdown-content a:focus,
+.lang-flag-btn:focus,
+.mobile-menu-btn:focus,
+.logo-text:focus,
+a:focus,
+button:focus {
+  outline: 3px solid #D4AF37;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.2);
+}
+
+/* Focus visible - only show focus for keyboard navigation */
+.nav-link:focus:not(:focus-visible),
+.dropdown-btn:focus:not(:focus-visible),
+.dropdown-content a:focus:not(:focus-visible),
+.lang-flag-btn:focus:not(:focus-visible),
+.mobile-menu-btn:focus:not(:focus-visible),
+.logo-text:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
+}

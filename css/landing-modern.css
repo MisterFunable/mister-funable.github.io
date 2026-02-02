@@ -84,31 +84,33 @@ body::before {
   }
 }
 
-/* Hero Mascot - Enhanced */
+/* Hero Mascot - Enhanced (CLS optimized) */
 .hero-mascot {
   position: absolute;
-  left: -320px;
+  left: 10%; /* Start in final position to prevent layout shift */
   top: 70%;
   transform: translateY(-50%);
   z-index: 3;
   filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.4));
+  opacity: 0; /* Start invisible */
 }
 
 .hero-mascot.animate {
-  animation: mascotSlideIn 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
+  animation: mascotFadeIn 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
 }
 
 .hero-mascot-right {
   position: absolute;
-  right: -320px;
+  right: 10%; /* Start in final position to prevent layout shift */
   top: 70%;
   transform: translateY(-50%);
   z-index: 3;
   filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.4));
+  opacity: 0; /* Start invisible */
 }
 
 .hero-mascot-right.animate {
-  animation: mascotSlideInRight 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
+  animation: mascotFadeInRight 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
 }
 
 .mascot-image {
@@ -132,29 +134,26 @@ body::before {
   animation: mascotBounceBig 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-@keyframes mascotSlideIn {
+/* CLS optimized animations - use opacity and scale only */
+@keyframes mascotFadeIn {
   0% {
-    left: -320px;
     opacity: 0;
-    transform: translateY(-50%) rotate(-10deg);
+    transform: translateY(-50%) translateX(-30px) scale(0.9);
   }
   100% {
-    left: 10%;
     opacity: 1;
-    transform: translateY(-50%) rotate(0deg);
+    transform: translateY(-50%) translateX(0) scale(1);
   }
 }
 
-@keyframes mascotSlideInRight {
+@keyframes mascotFadeInRight {
   0% {
-    right: -320px;
     opacity: 0;
-    transform: translateY(-50%) rotate(10deg);
+    transform: translateY(-50%) translateX(30px) scale(0.9);
   }
   100% {
-    right: 10%;
     opacity: 1;
-    transform: translateY(-50%) rotate(0deg);
+    transform: translateY(-50%) translateX(0) scale(1);
   }
 }
 
@@ -552,51 +551,25 @@ body::before {
   }
 
   .hero-mascot {
-    left: -240px;
+    left: 5%; /* Start in final position */
     top: 75%;
   }
 
   .hero-mascot.animate {
-    animation: mascotSlideInMobile 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
+    animation: mascotFadeIn 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
   }
 
   .hero-mascot-right {
-    right: -240px;
+    right: 5%; /* Start in final position */
     top: 75%;
   }
 
   .hero-mascot-right.animate {
-    animation: mascotSlideInRightMobile 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
+    animation: mascotFadeInRight 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
   }
 
   .mascot-image {
     width: 240px;
-  }
-
-  @keyframes mascotSlideInMobile {
-    0% {
-      left: -240px;
-      opacity: 0;
-      transform: translateY(-50%) rotate(-10deg);
-    }
-    100% {
-      left: 5%;
-      opacity: 1;
-      transform: translateY(-50%) rotate(0deg);
-    }
-  }
-
-  @keyframes mascotSlideInRightMobile {
-    0% {
-      right: -240px;
-      opacity: 0;
-      transform: translateY(-50%) rotate(10deg);
-    }
-    100% {
-      right: 5%;
-      opacity: 1;
-      transform: translateY(-50%) rotate(0deg);
-    }
   }
 
   .collections-section {
@@ -634,51 +607,25 @@ body::before {
   }
 
   .hero-mascot {
-    left: -200px;
+    left: 2%; /* Start in final position */
     top: 78%;
   }
 
   .hero-mascot.animate {
-    animation: mascotSlideInSmall 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
+    animation: mascotFadeIn 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
   }
 
   .hero-mascot-right {
-    right: -200px;
+    right: 2%; /* Start in final position */
     top: 78%;
   }
 
   .hero-mascot-right.animate {
-    animation: mascotSlideInRightSmall 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
+    animation: mascotFadeInRight 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
   }
 
   .mascot-image {
     width: 200px;
-  }
-
-  @keyframes mascotSlideInSmall {
-    0% {
-      left: -200px;
-      opacity: 0;
-      transform: translateY(-50%) rotate(-10deg);
-    }
-    100% {
-      left: 2%;
-      opacity: 1;
-      transform: translateY(-50%) rotate(0deg);
-    }
-  }
-
-  @keyframes mascotSlideInRightSmall {
-    0% {
-      right: -200px;
-      opacity: 0;
-      transform: translateY(-50%) rotate(10deg);
-    }
-    100% {
-      right: 2%;
-      opacity: 1;
-      transform: translateY(-50%) rotate(0deg);
-    }
   }
 
   .stat-number {
@@ -707,4 +654,57 @@ body::before {
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+}
+
+/* ============================================
+   ACCESSIBILITY - REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Disable specific problematic animations */
+  .hero-section::before,
+  .hero-mascot.animate,
+  .hero-mascot-right.animate,
+  .mascot-image,
+  .mascot-image.mascot-clicked,
+  .stat-item,
+  .scroll-down-btn,
+  .coming-soon-badge,
+  .collection-card,
+  .card-arrow {
+    animation: none !important;
+  }
+
+  /* Keep hero section stable */
+  .hero-section:hover {
+    transform: none !important;
+  }
+
+  /* Keep mascots in final position immediately */
+  .hero-mascot.animate {
+    left: 10% !important;
+    opacity: 1 !important;
+    transform: translateY(-50%) !important;
+  }
+
+  .hero-mascot-right.animate {
+    right: 10% !important;
+    opacity: 1 !important;
+    transform: translateY(-50%) !important;
+  }
+
+  /* Instant stat item visibility */
+  .stat-item.fade-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
 }

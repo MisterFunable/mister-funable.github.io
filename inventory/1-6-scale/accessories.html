@@ -16,7 +16,18 @@
   <link rel="stylesheet" href="/css/breadcrumbs.css">
   <link rel="stylesheet" href="/css/iframe-enhanced.css">
   <link rel="preconnect" href="https://airtable.com">
-  <title>Database - My Doll Inventory</title>
+  
+  <!-- Google Analytics 4 -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RJ7GFZ6R5Q"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-RJ7GFZ6R5Q');
+  </script>
+  <title>DB - Accessories</title>
   <meta name="description"
     content="Browse and manage your doll inventory collection with ease. View, organize, and keep track of your entire collection in one place.">
   <meta name="robots" content="index, follow">
@@ -35,17 +46,6 @@
   <!-- Preload example -->
   <link rel="preload" as="style"
     href="https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap">
-    
-  <!-- Google Analytics 4 -->
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RJ7GFZ6R5Q"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-RJ7GFZ6R5Q');
-  </script>
 </head>
 
 <body>
@@ -61,7 +61,7 @@
   <div class="responsive-iframe-container">
     <div class="iframe-wrapper">
       <iframe id="airtableFrame" 
-        data-src="https://airtable.com/embed/app1visErgGQUtgGR/shrCxbWjNFLjg3zqO"
+        data-src="https://airtable.com/embed/app1visErgGQUtgGR/shrqSr9Yr6pNO6qSw"
         loading="lazy"
         allowfullscreen 
         scrolling="yes" 
@@ -70,8 +70,6 @@
     </div>
   </div>
 
-  <script src="/js/loading-screen.js"></script>
-  <script src="/js/breadcrumbs.js" defer></script>
   <script src="/js/iframe-handler.js" defer></script>
   <script src="/js/age-disclaimer.js" defer></script>
   <script src="/js/navbar-loader.js" defer></script>

@@ -176,7 +176,7 @@ class DollInventoryAnalytics {
   // Helper method to extract category from URL
   extractCategoryFromUrl(url) {
     const path = new URL(url).pathname;
-    if (path.includes('accesories')) return 'Accessories';
+    if (path.includes('accessories')) return 'Accessories';
     if (path.includes('bodies')) return 'Bodies';
     if (path.includes('heads')) return 'Heads';
     if (path.includes('products')) return 'Full Sets';

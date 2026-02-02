@@ -10,12 +10,16 @@ document.addEventListener('DOMContentLoaded', function() {
         const popup = document.createElement('div');
         popup.id = 'error-popup';
         popup.className = 'iframe-error-popup';
+        popup.setAttribute('role', 'dialog');
+        popup.setAttribute('aria-modal', 'true');
+        popup.setAttribute('aria-labelledby', 'error-title');
+        popup.setAttribute('aria-describedby', 'error-description');
         popup.innerHTML = `
             <div class="iframe-error-message">
                 <button class="close-btn" onclick="closeErrorPopup()" aria-label="Close">&times;</button>
-                <span class="error-icon">⚠️</span>
-                <h3 class="error-title" data-lang-en="Error al Cargar Colección" data-lang-es="Error al Cargar Colección">Error al Cargar Colección</h3>
-                <p class="error-description" data-lang-en="No pudimos cargar la colección en la vista integrada. Esto puede deberse a problemas de red o Airtable estando temporalmente no disponible." data-lang-es="No pudimos cargar la colección en la vista integrada. Esto puede deberse a problemas de red o Airtable estando temporalmente no disponible.">
+                <span class="error-icon" aria-hidden="true">⚠️</span>
+                <h3 id="error-title" class="error-title" data-lang-en="Error al Cargar Colección" data-lang-es="Error al Cargar Colección">Error al Cargar Colección</h3>
+                <p id="error-description" class="error-description" data-lang-en="No pudimos cargar la colección en la vista integrada. Esto puede deberse a problemas de red o Airtable estando temporalmente no disponible." data-lang-es="No pudimos cargar la colección en la vista integrada. Esto puede deberse a problemas de red o Airtable estando temporalmente no disponible.">
                     No pudimos cargar la colección en la vista integrada. Esto puede deberse a problemas de red o Airtable estando temporalmente no disponible.
                 </p>
                 <div class="button-group">

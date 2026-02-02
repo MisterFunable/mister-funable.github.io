@@ -13,6 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
   <link rel="stylesheet" href="/css/loading-screen.css">
+  <link rel="stylesheet" href="/css/breadcrumbs.css">
   <link rel="stylesheet" href="/css/iframe-enhanced.css">
   <link rel="preconnect" href="https://airtable.com">
   <title>DB | Bodies</title>
@@ -48,9 +49,13 @@
 </head>
 
 <body>
+  <a href="#main-content" class="skip-to-content">Skip to main content</a>
 
   <!-- Include navbar -->
   <div id="navbar-placeholder"></div>
+
+  <!-- Breadcrumb Navigation -->
+  <div id="breadcrumb-container"></div>
 
   <!-- Main Content -->
   <div class="responsive-iframe-container">
@@ -66,7 +71,7 @@
   </div>
 
   <script src="/js/loading-screen.js"></script>
-  <script src="/js/mobile-menu.js" defer></script>
+  <script src="/js/breadcrumbs.js" defer></script>
   <script src="/js/iframe-handler.js" defer></script>
   <script src="/js/age-disclaimer.js" defer></script>
   <script src="/js/navbar-loader.js" defer></script>
