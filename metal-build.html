@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap" rel="stylesheet">
-  
+
   <!-- Tailwind (Play CDN) - Preflight disabled to preserve existing styles -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -34,69 +34,23 @@
     };
   </script>
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/navbar-modern.css">
   <link rel="stylesheet" href="css/metal-build.css">
-  <link rel="stylesheet" href="css/inventory.css">
+  <link rel="stylesheet" href="css/footer-modern.css">
   <link rel="stylesheet" href="css/page-banner.css">
-  
+
   <!-- Google Analytics 4 -->
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RJ7GFZ6R5Q"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-RJ7GFZ6R5Q');
   </script>
   <script src="js/clean-urls.js" defer></script>
-  
+
   <title data-lang-en="Metal Build Instructions" data-lang-jp="メタルビルド説明書" data-lang-es="Instructiones Metal Build">Metal Build Instructions</title>
   <meta name="description" content="Consolidating manuals in one place">
-  <style>
-    .hugging-gundam-overlay {
-      position: fixed;
-      right: 20px;
-      top: 60%; /* Position 6 out of 10 from top to bottom */
-      z-index: 1000;
-      width: 200px;
-      height: auto;
-      pointer-events: none; /* Allows clicking through the image */
-      opacity: 0.9;
-      transition: opacity 0.6s ease;
-      /* Animation properties */
-      animation: slideUpAndZoom 3s ease-out forwards;
-      transform: translateY(190px) scale(1.2);
-    }
-    
-    @keyframes slideUpAndZoom {
-      0% {
-        opacity: 0.9;
-        transform: translateY(190px) scale(1.2);
-      }
-      50% {
-        opacity: 0.9;
-        transform: translateY(80px) scale(1.1);
-      }
-      100% {
-        opacity: 0.9;
-        transform: translateY(0) scale(1);
-      }
-    }
-    
-    .hugging-gundam-overlay:hover {
-      opacity: 1;
-      transform: scale(1.05);
-      transition: all 0.3s ease;
-    }
-    
-    @media (max-width: 768px) {
-      .hugging-gundam-overlay {
-        width: 150px;
-        right: 10px;
-      }
-    }
-  </style>
-  <link rel="stylesheet" href="/css/page-navigation.css">
 </head>
 <body>
   <a href="#main-content" class="skip-to-content">Skip to main content</a>
@@ -119,398 +73,210 @@
   <img src="assets/images/iratsutoya-style/hugging-gundam.png" alt="Hugging Gundam" class="hugging-gundam-overlay">
 
   <!-- Main Content -->
-  <div class="info-content-container">
-    <div class="info-content-wrapper">
-      <div class="metal-build-container">
+  <main id="main-content">
+    <div class="metal-build-container">
 
-        <!-- Description Section -->
-        <div class="metal-build-description" style="margin-bottom: 2rem; padding: 1.5rem; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #D4AF37;">
-          <h3 style="margin-top: 0; margin-bottom: 1rem; color: #2c3e50; font-family: 'Special Gothic Condensed One', sans-serif;">Source Links</h3>
-          <ul style="margin: 0; padding-left: 1.5rem; line-height: 1.6;">
-            <li style="margin-bottom: 0.5rem;">
-              <a href="https://tamashiiweb.com/torisetsu//?wovn=es#" target="_blank" rel="noopener noreferrer" style="color: #3498db; text-decoration: none; font-weight: 500;">
-                <strong>Manual list</strong>
-              </a>: 
-              <span data-lang-en="filter by brand and select additional years, a little tricky but you can do it!" data-lang-jp="ブランドでフィルタリングし、追加の年を選択—少し難しいですができます！" data-lang-es="filtra por marca y selecciona años adicionales, un poco complicado pero puedes hacerlo!">
-                filter by brand and select additional years, a little tricky but you can do it!
-              </span>
-            </li>
-            <li style="margin-bottom: 0;">
-              <a href="https://tamashiiweb.com/special/simulator/alternativestrikes/" target="_blank" rel="noopener noreferrer" style="color: #3498db; text-decoration: none; font-weight: 500;">
-                <strong>Strike simulator</strong>
-              </a>: 
-              <span data-lang-en="allows you to look combinations of STRIKER PACKS in different Mobile Suits of SEED Gundam" data-lang-jp="SEEDガンダムの異なるモビルスーツでストライカーパックの組み合わせを確認できます" data-lang-es="te permite ver combinaciones de STRIKER PACKS en distintos Mobile Suits de SEED Gundam">
-                allows you to look combinations of STRIKER PACKS in different Mobile Suits of SEED Gundam
-              </span>
-            </li>
-          </ul>
-        </div>
-
-        <div style="text-align:right; margin-bottom:1rem;">
-          <input type="text" id="mb-search" placeholder="Search by name, series, or type..." style="padding:0.4rem 0.7rem; width: 250px; border-radius: 5px; border: 1px solid #ccc;">
-        </div>
-
-        <section class="metal-build-content">
-      <table class="metal-build-table" id="mb-table">
-        <thead>
-          <tr>
-            <th data-lang-en="Image" data-lang-es="Imagen">Image</th>
-            <th data-lang-en="Name" data-lang-es="Nombre">Name</th>
-            <th data-lang-en="Series" data-lang-es="Serie">Series</th>
-            <th data-lang-en="Type" data-lang-es="Tipo">Type</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000015133_AdFbTqOi_300_first_image.png" alt="Zeta Gundam" class="mb-thumb" data-zoom="assets/images/metal-build/item_0000015133_AdFbTqOi_300_first_image.png"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000015365_Lnjetcl0_300.pdf" target="_blank" rel="noopener noreferrer" data-lang-en="God Gundam" data-lang-es="God Gundam">God Gundam</a></td>
-            <td data-lang-en="UC" data-lang-es="UC">UC</td>
-            <td data-lang-en="Mech" data-lang-es="Mecha">Mech</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000015133_AdFbTqOi_300_first_image.png" alt="Zeta Gundam" class="mb-thumb" data-zoom="assets/images/metal-build/item_0000015133_AdFbTqOi_300_first_image.png"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000015133_AdFbTqOi_300.pdf" target="_blank" rel="noopener noreferrer" data-lang-en="Zeta Gundam" data-lang-es="Zeta Gundam">Zeta Gundam</a></td>
-            <td data-lang-en="UC" data-lang-es="UC">UC</td>
-            <td data-lang-en="Mech" data-lang-es="Mecha">Mech</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000013877_WTrmWfTD_300_first_image.jpeg" alt="Hi-ν Gundam" class="mb-thumb" data-zoom="assets/images/metal-build/item_0000013877_WTrmWfTD_300_first_image.jpeg"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000013877_WTrmWfTD_300.pdf" target="_blank" rel="noopener noreferrer" data-lang-en="Hi-ν Gundam" data-lang-es="Hi-ν Gundam">Hi-ν Gundam</a></td>
-            <td data-lang-en="UC" data-lang-es="UC">UC</td>
-            <td data-lang-en="Mech" data-lang-es="Mecha">Mech</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000014116_RPYj22m2_300_first_image.jpeg" alt="Hi-ν Gundam Hyper Mega Bazooka - Option Set" class="mb-thumb" data-zoom="assets/images/metal-build/item_0000014116_RPYj22m2_300_first_image.jpeg"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000014116_RPYj22m2_300.pdf" target="_blank" rel="noopener noreferrer" data-lang-en="Hi-ν Gundam Hyper Mega Bazooka - Option Set" data-lang-es="Hi-ν Gundam Hyper Mega Bazooka - Set de Opción">Hi-ν Gundam Hyper Mega Bazooka - Option Set</a></td>
-            <td data-lang-en="UC" data-lang-es="UC">UC</td>
-            <td data-lang-en="Option Set" data-lang-es="Set de Opción">Option Set</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000014650_LJIETovX_300_first_image.jpeg" alt="KÄMPFER" class="mb-thumb" data-zoom="assets/images/metal-build/item_0000014650_LJIETovX_300_first_image.jpeg"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000014650_LJIETovX_300.pdf" target="_blank" rel="noopener noreferrer" data-lang-en="KÄMPFER" data-lang-es="KÄMPFER">KÄMPFER</a></td>
-            <td data-lang-en="UC" data-lang-es="UC">UC</td>
-            <td data-lang-en="Mech" data-lang-es="Mecha">Mech</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000015111_2fJGZKIL_300_first_image.jpeg" alt="00 QAN[T] FULL Saber" class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000015111_2fJGZKIL_300.pdf" target="_blank" rel="noopener noreferrer">00 QAN[T] FULL Saber</a></td>
-            <td>00</td>
-            <td>Mech</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000015212_KaxfHU1v_300_first_image.jpeg" alt="00 QAN[T] FULL Saber - Option Set" class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000015212_KaxfHU1v_300.pdf" target="_blank" rel="noopener noreferrer">00 QAN[T] FULL Saber - Option Set</a></td>
-            <td>00</td>
-            <td>Option Set</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000014963_H8GFQTTF_300_first_image.jpeg" alt="Gundam Dynames Saga" class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000014963_H8GFQTTF_300.pdf" target="_blank" rel="noopener noreferrer">Gundam Dynames Saga</a></td>
-            <td>00</td>
-            <td>Mech</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000015292_iDEOoBP5_300_first_image.jpeg" alt="Gundam Exia" class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000015292_iDEOoBP5_300.pdf" target="_blank" rel="noopener noreferrer">Gundam Exia</a></td>
-            <td>00</td>
-            <td>Mech</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000014221_rTPrIx5P_300_first_image.jpeg" alt="Gundam Dynames & Devise Dynames" class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000014221_rTPrIx5P_300.pdf" target="_blank" rel="noopener noreferrer">Gundam Dynames & Devise Dynames</a></td>
-            <td>00</td>
-            <td>Mech</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000014713_YcMekuyB_300_first_image.jpeg" alt="GN ARMS TYPE-D OPTION SET" class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000014713_YcMekuyB_300.pdf" target="_blank" rel="noopener noreferrer">GN ARMS TYPE-D OPTION SET</a></td>
-            <td>00</td>
-            <td>Option Set</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000014254_WCRCKhpT_300_first_image.jpeg" alt="GN Arms TYPE-E" class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000014254_WCRCKhpT_300.pdf" target="_blank" rel="noopener noreferrer">GN Arms TYPE-E</a></td>
-            <td>00</td>
-            <td>Option Set</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000013948_B2EQOMiU_300_first_image.jpeg" alt="GUNDAM DEVISE EXIA" class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000013948_B2EQOMiU_300.pdf" target="_blank" rel="noopener noreferrer">GUNDAM DEVISE EXIA</a></td>
-            <td>00</td>
-            <td>Mech</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000014474_FYbP9EBw_300_first_image.jpeg" alt="Gundam Astraea II" class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000014474_FYbP9EBw_300.pdf" target="_blank" rel="noopener noreferrer">Gundam Astraea II</a></td>
-            <td>00</td>
-            <td>Mech</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000014475_k6CsYaE8_300_first_image.jpeg" alt="PROTO XN UNIT" class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000014475_k6CsYaE8_300.pdf" target="_blank" rel="noopener noreferrer">PROTO XN UNIT</a></td>
-            <td>00</td>
-            <td>Option Set</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000014924_7DY7Pblv_300_first_image.jpeg" alt="Gundam Astray Blue Frame (Full-Weapons) Project Astray" class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000014924_7DY7Pblv_300.pdf" target="_blank" rel="noopener noreferrer">Gundam Astray Blue Frame (Full-Weapons) Project Astray</a></td>
-            <td>Seed</td>
-            <td>Mech</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000013896_9LLu0P23_300_first_image.jpeg" alt="Sniper Pack" class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000013896_9LLu0P23_300.pdf" target="_blank" rel="noopener noreferrer">Sniper Pack</a></td>
-            <td>Seed</td>
-            <td>Option Set</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000014988_Qn0HPfMN_300_first_image.jpeg" alt="Destiny Gundam Full Package (Festival Ver. 2024)" class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000014988_Qn0HPfMN_300.pdf" target="_blank" rel="noopener noreferrer">Destiny Gundam Full Package (Festival Ver. 2024)</a></td>
-            <td>Seed</td>
-            <td>Mech</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000014987_P60u4gvw_300_first_image.png" alt="Strike Freedom Gundam (Festival Ver. 2024)" class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000014987_P60u4gvw_300.pdf" target="_blank" rel="noopener noreferrer">Strike Freedom Gundam (Festival Ver. 2024)</a></td>
-            <td>Seed</td>
-            <td>Mech</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000015076_lQkN072J_300_first_image.jpeg" alt="Strike Freedom Gundam Wing of Light - Option Set (Re-Package)" class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000015076_lQkN072J_300.pdf" target="_blank" rel="noopener noreferrer">Strike Freedom Gundam Wing of Light - Option Set (Re-Package)</a></td>
-            <td>Seed</td>
-            <td>Option Set</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000014624_XSNqLAgZ_300_first_image.jpeg" alt="PROVIDENCE GUNDAM" class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000014624_XSNqLAgZ_300.pdf" target="_blank" rel="noopener noreferrer">PROVIDENCE GUNDAM</a></td>
-            <td>Seed</td>
-            <td>Mech</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000014060_uN8Xi0cH_300_first_image.jpeg" alt="Strike Gundam" class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000014060_uN8Xi0cH_300.pdf" target="_blank" rel="noopener noreferrer">Strike Gundam</a></td>
-            <td>Seed</td>
-            <td>Mech</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000014584_8twheBXW_300_first_image.jpeg" alt="FREEDOM Gundam Concept 2 Snow Sparkle Ver." class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000014584_8twheBXW_300.pdf" target="_blank" rel="noopener noreferrer">FREEDOM Gundam Concept 2 Snow Sparkle Ver.</a></td>
-            <td>Seed</td>
-            <td>Mech</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000014341_gfY4G3CM_300_first_image.jpeg" alt="Gundam Astray Gold Frame (Alternative Strike Ver.)" class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000014341_gfY4G3CM_300.pdf" target="_blank" rel="noopener noreferrer">Gundam Astray Gold Frame (Alternative Strike Ver.)</a></td>
-            <td>Seed</td>
-            <td>Mech</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000014376_vqYiwovh_300_first_image.jpeg" alt="Divine Striker (Alternative Strike Ver.)" class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000014376_vqYiwovh_300.pdf" target="_blank" rel="noopener noreferrer">Divine Striker (Alternative Strike Ver.)</a></td>
-            <td>Seed</td>
-            <td>Option Set</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000014312_PQ665ITI_300_first_image.jpeg" alt="Lightning Striker (Alternative Strike Ver.)" class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000014312_PQ665ITI_300.pdf" target="_blank" rel="noopener noreferrer">Lightning Striker (Alternative Strike Ver.)</a></td>
-            <td>Seed</td>
-            <td>Option Set</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000014724_j4IeO4M7_300_first_image.jpeg" alt="AILE STRIKER" class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000014724_j4IeO4M7_300.pdf" target="_blank" rel="noopener noreferrer">AILE STRIKER</a></td>
-            <td>Seed</td>
-            <td>Option Set</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000014064_pdLQC9Ws_300_first_image.jpeg" alt="LAUNCHER STRIKER (10.ª Ver.)" class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000014064_pdLQC9Ws_300.pdf" target="_blank" rel="noopener noreferrer">LAUNCHER STRIKER (10.ª Ver.)</a></td>
-            <td>Seed</td>
-            <td>Option Set</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000014117_dFtBzLRP_300_first_image.jpeg" alt="SWORD STRIKER (10.ª Ver.)" class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000014117_dFtBzLRP_300.pdf" target="_blank" rel="noopener noreferrer">SWORD STRIKER (10.ª Ver.)</a></td>
-            <td>Seed</td>
-            <td>Option Set</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000014086_duEzz8mt_300_first_image.jpeg" alt="I.W.S.P." class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000014086_duEzz8mt_300.pdf" target="_blank" rel="noopener noreferrer">I.W.S.P.</a></td>
-            <td>Seed</td>
-            <td>Option Set</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000014681_pY5PCHR3_300_first_image.jpeg" alt="OOTORI" class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000014681_pY5PCHR3_300.pdf" target="_blank" rel="noopener noreferrer">OOTORI</a></td>
-            <td>Seed</td>
-            <td>Option Set</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000014132_w9xyhVSI_300_first_image.jpeg" alt="STRIKE NOIR Gundam (Alternative Strike Ver.)" class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000014132_w9xyhVSI_300.pdf" target="_blank" rel="noopener noreferrer">STRIKE NOIR Gundam (Alternative Strike Ver.)</a></td>
-            <td>Seed</td>
-            <td>Mech</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000014139_pAxShlxS_300_first_image.jpeg" alt="Tipo de equipo Strike Rouge Grand Slam" class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000014139_pAxShlxS_300.pdf" target="_blank" rel="noopener noreferrer">Tipo de equipo Strike Rouge Grand Slam</a></td>
-            <td>Seed</td>
-            <td>Option Set</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000013932_B7lXsvj0_300_first_image.jpeg" alt="Conjunto de opciones de unidad de vuelo (Versión de huelga alternativa)" class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000013932_B7lXsvj0_300.pdf" target="_blank" rel="noopener noreferrer">Conjunto de opciones de unidad de vuelo (Versión de huelga alternativa)</a></td>
-            <td>Seed</td>
-            <td>Option Set</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000013930_kbYwtfBz_300_first_image.jpeg" alt="Conjunto de opciones de righead astray" class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000013930_kbYwtfBz_300.pdf" target="_blank" rel="noopener noreferrer">Conjunto de opciones de righead astray</a></td>
-            <td>Seed</td>
-            <td>Option Set</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000013931_2PUX3JVU_300_first_image.jpeg" alt="Juego de opciones Kaletvruff" class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000013931_2PUX3JVU_300.pdf" target="_blank" rel="noopener noreferrer">Juego de opciones Kaletvruff</a></td>
-            <td>Seed</td>
-            <td>Option Set</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000013927_ja3aQKFL_300_first_image.png" alt="CONSTRUCCIÓN DE METAL Gundam Astray Red Dragonics" class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000013927_ja3aQKFL_300.pdf" target="_blank" rel="noopener noreferrer">CONSTRUCCIÓN DE METAL Gundam Astray Red Dragonics</a></td>
-            <td>Seed</td>
-            <td>Mech</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000013808_DMrnDCuT_300_first_image.jpeg" alt="EVANGELION 00 PROTO TYPE / Unidad 00 (modificado)" class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000013808_DMrnDCuT_300.pdf" target="_blank" rel="noopener noreferrer">EVANGELION 00 PROTO TYPE / Unidad 00 (modificado)</a></td>
-            <td>Evangelion</td>
-            <td>Mech</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000013809_e3CvvrPP_300_first_image.jpeg" alt="WEAPON SET FOR EVANGELION" class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000013809_e3CvvrPP_300.pdf" target="_blank" rel="noopener noreferrer">WEAPON SET FOR EVANGELION</a></td>
-            <td>Evangelion</td>
-            <td>Option Set</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000013870_LK8QdPSY_300_first_image.jpeg" alt="Crossbone Gundam X-0 Full Cross" class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000013870_LK8QdPSY_300.pdf" target="_blank" rel="noopener noreferrer">Crossbone Gundam X-0 Full Cross</a></td>
-            <td>Other</td>
-            <td>Mech</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000014431_FXQXb1we_300_first_image.jpeg" alt="CROSSBONE GUNDAM X1 PATCHWORK" class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000014431_FXQXb1we_300.pdf" target="_blank" rel="noopener noreferrer">CROSSBONE GUNDAM X1 PATCHWORK</a></td>
-            <td>Other</td>
-            <td>Mech</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000014453_4BUdl4s8_300_first_image.jpeg" alt="LAEVATEIN ARBALEST REFERENCE" class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000014453_4BUdl4s8_300.pdf" target="_blank" rel="noopener noreferrer">LAEVATEIN ARBALEST REFERENCE</a></td>
-            <td>Other</td>
-            <td>Mech</td>
-          </tr>
-          <tr>
-            <td><img src="assets/images/metal-build/item_0000014456_IYBbaDrN_300_first_image.jpeg" alt="XL-3 BOOSTER FOR LAEVATEIN OPTION SET" class="mb-thumb"></td>
-            <td><a href="https://tamashiiweb.com/images/item/item_0000014456_IYBbaDrN_300.pdf" target="_blank" rel="noopener noreferrer">XL-3 BOOSTER FOR LAEVATEIN OPTION SET</a></td>
-            <td>Other</td>
-            <td>Option Set</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+      <!-- Source Links -->
+      <div class="mb-source-links">
+        <h3 data-lang-en="Source Links" data-lang-jp="ソースリンク" data-lang-es="Enlaces de Origen">Source Links</h3>
+        <ul>
+          <li>
+            <a href="https://tamashiiweb.com/torisetsu//?wovn=es#" target="_blank" rel="noopener noreferrer">
+              <strong data-lang-en="Manual list" data-lang-jp="マニュアルリスト" data-lang-es="Lista de manuales">Manual list</strong>
+            </a>:
+            <span data-lang-en="filter by brand and select additional years, a little tricky but you can do it!"
+                  data-lang-jp="ブランドでフィルタリングし、追加の年を選択—少し難しいですができます！"
+                  data-lang-es="filtra por marca y selecciona años adicionales, un poco complicado pero puedes hacerlo!">
+              filter by brand and select additional years, a little tricky but you can do it!
+            </span>
+          </li>
+          <li>
+            <a href="https://tamashiiweb.com/special/simulator/alternativestrikes/" target="_blank" rel="noopener noreferrer">
+              <strong data-lang-en="Strike simulator" data-lang-jp="ストライクシミュレーター" data-lang-es="Simulador Strike">Strike simulator</strong>
+            </a>:
+            <span data-lang-en="allows you to look combinations of STRIKER PACKS in different Mobile Suits of SEED Gundam"
+                  data-lang-jp="SEEDガンダムの異なるモビルスーツでストライカーパックの組み合わせを確認できます"
+                  data-lang-es="te permite ver combinaciones de STRIKER PACKS en distintos Mobile Suits de SEED Gundam">
+              allows you to look combinations of STRIKER PACKS in different Mobile Suits of SEED Gundam
+            </span>
+          </li>
+        </ul>
       </div>
+
+      <!-- Search & Filter Controls -->
+      <div class="mb-controls">
+        <div class="mb-search-container">
+          <input type="text" id="mb-search" class="mb-search-input"
+            data-lang-en-placeholder="Search by name, series, or type..."
+            data-lang-jp-placeholder="名前、シリーズ、タイプで検索..."
+            data-lang-es-placeholder="Buscar por nombre, serie o tipo..."
+            placeholder="Search by name, series, or type...">
+        </div>
+        <div class="mb-filter-chips" id="mb-filters">
+          <button class="mb-filter-chip active" data-filter="All" data-lang-en="All" data-lang-jp="全て" data-lang-es="Todos">All</button>
+          <button class="mb-filter-chip" data-filter="UC">UC</button>
+          <button class="mb-filter-chip" data-filter="00">00</button>
+          <button class="mb-filter-chip" data-filter="Seed">Seed</button>
+          <button class="mb-filter-chip" data-filter="Evangelion">Evangelion</button>
+          <button class="mb-filter-chip" data-filter="Other" data-lang-en="Other" data-lang-jp="その他" data-lang-es="Otros">Other</button>
+        </div>
+      </div>
+
+      <!-- Results Count -->
+      <div class="mb-results-count" id="mb-results-count"></div>
+
+      <!-- Card Grid -->
+      <div class="mb-cards-grid" id="mb-grid"></div>
+
     </div>
-  </div>
+  </main>
 
   <!-- Modal for image zoom -->
-  <div id="mb-modal">
+  <div id="mb-modal" role="dialog" aria-label="Image zoom">
     <img id="mb-modal-img" src="" alt="Zoomed Metal Build">
   </div>
 
-  <script src="js/page-banner.js"></script>
-  <script src="js/language-switcher.js"></script>
+  <div id="footer-placeholder"></div>
+
+  <script src="/js/navbar-loader.js"></script>
+  <script src="/js/footer-loader.js"></script>
+  <script src="/js/page-banner.js"></script>
+  <script src="/js/language-switcher.js"></script>
+  <script src="js/age-disclaimer.js"></script>
   <script>
-    // Load navbar
-    fetch('components/navbar.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('navbar-placeholder').innerHTML = data;
+  (function() {
+    // === DATA ===
+    var manuals = [
+      { name: "God Gundam", series: "UC", type: "Mech", image: "assets/images/metal-build/item_0000015133_AdFbTqOi_300_first_image.png", pdf: "https://tamashiiweb.com/images/item/item_0000015365_Lnjetcl0_300.pdf" },
+      { name: "Zeta Gundam", series: "UC", type: "Mech", image: "assets/images/metal-build/item_0000015133_AdFbTqOi_300_first_image.png", pdf: "https://tamashiiweb.com/images/item/item_0000015133_AdFbTqOi_300.pdf" },
+      { name: "Hi-\u03BD Gundam", series: "UC", type: "Mech", image: "assets/images/metal-build/item_0000013877_WTrmWfTD_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000013877_WTrmWfTD_300.pdf" },
+      { name: "Hi-\u03BD Gundam Hyper Mega Bazooka - Option Set", series: "UC", type: "Option Set", image: "assets/images/metal-build/item_0000014116_RPYj22m2_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000014116_RPYj22m2_300.pdf" },
+      { name: "K\u00C4MPFER", series: "UC", type: "Mech", image: "assets/images/metal-build/item_0000014650_LJIETovX_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000014650_LJIETovX_300.pdf" },
+      { name: "00 QAN[T] FULL Saber", series: "00", type: "Mech", image: "assets/images/metal-build/item_0000015111_2fJGZKIL_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000015111_2fJGZKIL_300.pdf" },
+      { name: "00 QAN[T] FULL Saber - Option Set", series: "00", type: "Option Set", image: "assets/images/metal-build/item_0000015212_KaxfHU1v_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000015212_KaxfHU1v_300.pdf" },
+      { name: "Gundam Dynames Saga", series: "00", type: "Mech", image: "assets/images/metal-build/item_0000014963_H8GFQTTF_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000014963_H8GFQTTF_300.pdf" },
+      { name: "Gundam Exia", series: "00", type: "Mech", image: "assets/images/metal-build/item_0000015292_iDEOoBP5_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000015292_iDEOoBP5_300.pdf" },
+      { name: "Gundam Dynames & Devise Dynames", series: "00", type: "Mech", image: "assets/images/metal-build/item_0000014221_rTPrIx5P_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000014221_rTPrIx5P_300.pdf" },
+      { name: "GN ARMS TYPE-D OPTION SET", series: "00", type: "Option Set", image: "assets/images/metal-build/item_0000014713_YcMekuyB_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000014713_YcMekuyB_300.pdf" },
+      { name: "GN Arms TYPE-E", series: "00", type: "Option Set", image: "assets/images/metal-build/item_0000014254_WCRCKhpT_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000014254_WCRCKhpT_300.pdf" },
+      { name: "GUNDAM DEVISE EXIA", series: "00", type: "Mech", image: "assets/images/metal-build/item_0000013948_B2EQOMiU_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000013948_B2EQOMiU_300.pdf" },
+      { name: "Gundam Astraea II", series: "00", type: "Mech", image: "assets/images/metal-build/item_0000014474_FYbP9EBw_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000014474_FYbP9EBw_300.pdf" },
+      { name: "PROTO XN UNIT", series: "00", type: "Option Set", image: "assets/images/metal-build/item_0000014475_k6CsYaE8_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000014475_k6CsYaE8_300.pdf" },
+      { name: "Gundam Astray Blue Frame (Full-Weapons) Project Astray", series: "Seed", type: "Mech", image: "assets/images/metal-build/item_0000014924_7DY7Pblv_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000014924_7DY7Pblv_300.pdf" },
+      { name: "Sniper Pack", series: "Seed", type: "Option Set", image: "assets/images/metal-build/item_0000013896_9LLu0P23_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000013896_9LLu0P23_300.pdf" },
+      { name: "Destiny Gundam Full Package (Festival Ver. 2024)", series: "Seed", type: "Mech", image: "assets/images/metal-build/item_0000014988_Qn0HPfMN_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000014988_Qn0HPfMN_300.pdf" },
+      { name: "Strike Freedom Gundam (Festival Ver. 2024)", series: "Seed", type: "Mech", image: "assets/images/metal-build/item_0000014987_P60u4gvw_300_first_image.png", pdf: "https://tamashiiweb.com/images/item/item_0000014987_P60u4gvw_300.pdf" },
+      { name: "Strike Freedom Gundam Wing of Light - Option Set (Re-Package)", series: "Seed", type: "Option Set", image: "assets/images/metal-build/item_0000015076_lQkN072J_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000015076_lQkN072J_300.pdf" },
+      { name: "PROVIDENCE GUNDAM", series: "Seed", type: "Mech", image: "assets/images/metal-build/item_0000014624_XSNqLAgZ_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000014624_XSNqLAgZ_300.pdf" },
+      { name: "Strike Gundam", series: "Seed", type: "Mech", image: "assets/images/metal-build/item_0000014060_uN8Xi0cH_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000014060_uN8Xi0cH_300.pdf" },
+      { name: "FREEDOM Gundam Concept 2 Snow Sparkle Ver.", series: "Seed", type: "Mech", image: "assets/images/metal-build/item_0000014584_8twheBXW_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000014584_8twheBXW_300.pdf" },
+      { name: "Gundam Astray Gold Frame (Alternative Strike Ver.)", series: "Seed", type: "Mech", image: "assets/images/metal-build/item_0000014341_gfY4G3CM_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000014341_gfY4G3CM_300.pdf" },
+      { name: "Divine Striker (Alternative Strike Ver.)", series: "Seed", type: "Option Set", image: "assets/images/metal-build/item_0000014376_vqYiwovh_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000014376_vqYiwovh_300.pdf" },
+      { name: "Lightning Striker (Alternative Strike Ver.)", series: "Seed", type: "Option Set", image: "assets/images/metal-build/item_0000014312_PQ665ITI_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000014312_PQ665ITI_300.pdf" },
+      { name: "AILE STRIKER", series: "Seed", type: "Option Set", image: "assets/images/metal-build/item_0000014724_j4IeO4M7_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000014724_j4IeO4M7_300.pdf" },
+      { name: "LAUNCHER STRIKER (10.\u00AA Ver.)", series: "Seed", type: "Option Set", image: "assets/images/metal-build/item_0000014064_pdLQC9Ws_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000014064_pdLQC9Ws_300.pdf" },
+      { name: "SWORD STRIKER (10.\u00AA Ver.)", series: "Seed", type: "Option Set", image: "assets/images/metal-build/item_0000014117_dFtBzLRP_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000014117_dFtBzLRP_300.pdf" },
+      { name: "I.W.S.P.", series: "Seed", type: "Option Set", image: "assets/images/metal-build/item_0000014086_duEzz8mt_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000014086_duEzz8mt_300.pdf" },
+      { name: "OOTORI", series: "Seed", type: "Option Set", image: "assets/images/metal-build/item_0000014681_pY5PCHR3_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000014681_pY5PCHR3_300.pdf" },
+      { name: "STRIKE NOIR Gundam (Alternative Strike Ver.)", series: "Seed", type: "Mech", image: "assets/images/metal-build/item_0000014132_w9xyhVSI_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000014132_w9xyhVSI_300.pdf" },
+      { name: "Tipo de equipo Strike Rouge Grand Slam", series: "Seed", type: "Option Set", image: "assets/images/metal-build/item_0000014139_pAxShlxS_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000014139_pAxShlxS_300.pdf" },
+      { name: "Conjunto de opciones de unidad de vuelo (Versi\u00F3n de huelga alternativa)", series: "Seed", type: "Option Set", image: "assets/images/metal-build/item_0000013932_B7lXsvj0_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000013932_B7lXsvj0_300.pdf" },
+      { name: "Conjunto de opciones de righead astray", series: "Seed", type: "Option Set", image: "assets/images/metal-build/item_0000013930_kbYwtfBz_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000013930_kbYwtfBz_300.pdf" },
+      { name: "Juego de opciones Kaletvruff", series: "Seed", type: "Option Set", image: "assets/images/metal-build/item_0000013931_2PUX3JVU_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000013931_2PUX3JVU_300.pdf" },
+      { name: "CONSTRUCCI\u00D3N DE METAL Gundam Astray Red Dragonics", series: "Seed", type: "Mech", image: "assets/images/metal-build/item_0000013927_ja3aQKFL_300_first_image.png", pdf: "https://tamashiiweb.com/images/item/item_0000013927_ja3aQKFL_300.pdf" },
+      { name: "EVANGELION 00 PROTO TYPE / Unidad 00 (modificado)", series: "Evangelion", type: "Mech", image: "assets/images/metal-build/item_0000013808_DMrnDCuT_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000013808_DMrnDCuT_300.pdf" },
+      { name: "WEAPON SET FOR EVANGELION", series: "Evangelion", type: "Option Set", image: "assets/images/metal-build/item_0000013809_e3CvvrPP_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000013809_e3CvvrPP_300.pdf" },
+      { name: "Crossbone Gundam X-0 Full Cross", series: "Other", type: "Mech", image: "assets/images/metal-build/item_0000013870_LK8QdPSY_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000013870_LK8QdPSY_300.pdf" },
+      { name: "CROSSBONE GUNDAM X1 PATCHWORK", series: "Other", type: "Mech", image: "assets/images/metal-build/item_0000014431_FXQXb1we_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000014431_FXQXb1we_300.pdf" },
+      { name: "LAEVATEIN ARBALEST REFERENCE", series: "Other", type: "Mech", image: "assets/images/metal-build/item_0000014453_4BUdl4s8_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000014453_4BUdl4s8_300.pdf" },
+      { name: "XL-3 BOOSTER FOR LAEVATEIN OPTION SET", series: "Other", type: "Option Set", image: "assets/images/metal-build/item_0000014456_IYBbaDrN_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000014456_IYBbaDrN_300.pdf" },
+      { name: "Crossbone Gundam X1", series: "Other", type: "Mech", image: "", pdf: "/assets/manuals/metal-build-crossbone-gundam-x1.pdf" }
+    ];
+
+    var activeFilter = 'All';
+    var searchQuery = '';
+    var grid = document.getElementById('mb-grid');
+    var resultsCount = document.getElementById('mb-results-count');
+    var modal = document.getElementById('mb-modal');
+    var modalImg = document.getElementById('mb-modal-img');
+
+    function escapeHtml(str) {
+      var div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    function renderCards() {
+      var filtered = manuals.filter(function(m) {
+        var matchesFilter = activeFilter === 'All' || m.series === activeFilter;
+        if (!matchesFilter) return false;
+        if (!searchQuery) return true;
+        var q = searchQuery.toLowerCase();
+        return m.name.toLowerCase().indexOf(q) !== -1 ||
+               m.series.toLowerCase().indexOf(q) !== -1 ||
+               m.type.toLowerCase().indexOf(q) !== -1;
       });
 
-    // Search/filter functionality
-    document.addEventListener('DOMContentLoaded', function() {
-      const searchInput = document.getElementById('mb-search');
-      if (searchInput) {
-        searchInput.addEventListener('input', function() {
-          const filter = this.value.toLowerCase();
-          const rows = document.querySelectorAll('#mb-table tbody tr');
-          rows.forEach(row => {
-            const name = row.cells[1].textContent.toLowerCase();
-            const series = row.cells[2].textContent.toLowerCase();
-            const type = row.cells[3].textContent.toLowerCase();
-            if (name.includes(filter) || series.includes(filter) || type.includes(filter)) {
-              row.style.display = '';
-            } else {
-              row.style.display = 'none';
-            }
-          });
-        });
+      resultsCount.textContent = filtered.length + ' of ' + manuals.length + ' manuals';
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '<div class="mb-no-results">No manuals found matching your search.</div>';
+        return;
       }
-    });
 
-    // Language switcher for table
-    function updateTableLang(lang) {
-      // Headers
-      document.querySelectorAll('.metal-build-table th').forEach(th => {
-        if (th.dataset['lang' + lang.charAt(0).toUpperCase() + lang.slice(1)]) {
-          th.textContent = th.dataset['lang' + lang.charAt(0).toUpperCase() + lang.slice(1)];
+      var html = '';
+      for (var i = 0; i < filtered.length; i++) {
+        var m = filtered[i];
+        var imgHtml;
+        if (m.image) {
+          imgHtml = '<img src="' + escapeHtml(m.image) + '" alt="' + escapeHtml(m.name) + '" loading="lazy">';
+        } else {
+          imgHtml = '<div class="mb-no-image">' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>' +
+            '<span>No image</span></div>';
         }
-      });
-      // Cells
-      document.querySelectorAll('#mb-table tbody tr').forEach(row => {
-        // Name
-        const a = row.cells[1].querySelector('a');
-        if (a && a.dataset['lang' + lang.charAt(0).toUpperCase() + lang.slice(1)]) {
-          a.textContent = a.dataset['lang' + lang.charAt(0).toUpperCase() + lang.slice(1)];
-        }
-        // Series
-        const series = row.cells[2];
-        if (series.dataset['lang' + lang.charAt(0).toUpperCase() + lang.slice(1)]) {
-          series.textContent = series.dataset['lang' + lang.charAt(0).toUpperCase() + lang.slice(1)];
-        }
-        // Type
-        const type = row.cells[3];
-        if (type.dataset['lang' + lang.charAt(0).toUpperCase() + lang.slice(1)]) {
-          type.textContent = type.dataset['lang' + lang.charAt(0).toUpperCase() + lang.slice(1)];
-        }
+
+        html += '<div class="mb-card" data-series="' + escapeHtml(m.series) + '" data-type="' + escapeHtml(m.type) + '">' +
+          '<div class="mb-card-img" data-idx="' + i + '">' + imgHtml + '</div>' +
+          '<div class="mb-card-body">' +
+            '<a href="' + escapeHtml(m.pdf) + '" target="_blank" rel="noopener noreferrer" class="mb-card-title">' + escapeHtml(m.name) + '</a>' +
+            '<div class="mb-card-badges">' +
+              '<span class="mb-badge mb-badge-series">' + escapeHtml(m.series) + '</span>' +
+              '<span class="mb-badge mb-badge-type">' + escapeHtml(m.type) + '</span>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+      }
+      grid.innerHTML = html;
+
+      // Bind image zoom clicks
+      grid.querySelectorAll('.mb-card-img img').forEach(function(img) {
+        img.addEventListener('click', function(e) {
+          e.preventDefault();
+          modal.classList.add('active');
+          modalImg.src = img.src;
+          modalImg.alt = img.alt;
+        });
       });
     }
-    // Listen for language change (assumes language-switcher.js sets window.currentLang)
-    window.addEventListener('languageChange', function(e) {
-      updateTableLang(e.detail.lang);
-    });
-    // On page load, set initial language
-    document.addEventListener('DOMContentLoaded', function() {
-      updateTableLang(window.currentLang || 'en');
+
+    // Search input
+    document.getElementById('mb-search').addEventListener('input', function() {
+      searchQuery = this.value;
+      renderCards();
     });
 
-    // Image zoom modal
-    const modal = document.getElementById('mb-modal');
-    const modalImg = document.getElementById('mb-modal-img');
-    document.querySelectorAll('.mb-thumb').forEach(img => {
-      img.addEventListener('click', function() {
-        let zoomSrc = img.getAttribute('data-zoom');
-        if (!zoomSrc || zoomSrc === 'null') zoomSrc = img.src;
-        modal.classList.add('active');
-        modalImg.src = zoomSrc;
-        modalImg.alt = img.alt;
-      });
+    // Filter chips
+    document.getElementById('mb-filters').addEventListener('click', function(e) {
+      var chip = e.target.closest('.mb-filter-chip');
+      if (!chip) return;
+      document.querySelectorAll('.mb-filter-chip').forEach(function(c) { c.classList.remove('active'); });
+      chip.classList.add('active');
+      activeFilter = chip.getAttribute('data-filter');
+      renderCards();
     });
-    // Close modal on click outside or Escape
+
+    // Modal close
     modal.addEventListener('click', function(e) {
       if (e.target === modal) {
         modal.classList.remove('active');
@@ -523,8 +289,10 @@
         modalImg.src = '';
       }
     });
+
+    // Initial render
+    renderCards();
+  })();
   </script>
-  <script src="js/age-disclaimer.js"></script>
-  <script src="/js/page-navigation.js" defer></script>
 </body>
-</html> 
+</html>
