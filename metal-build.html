@@ -115,6 +115,7 @@
         <div class="mb-filter-chips" id="mb-filters">
           <button class="mb-filter-chip active" data-filter="All" data-lang-en="All" data-lang-jp="全て" data-lang-es="Todos">All</button>
           <button class="mb-filter-chip" data-filter="UC">UC</button>
+          <button class="mb-filter-chip" data-filter="FC">FC</button>
           <button class="mb-filter-chip" data-filter="00">00</button>
           <button class="mb-filter-chip" data-filter="Seed">Seed</button>
           <button class="mb-filter-chip" data-filter="Evangelion">Evangelion</button>
@@ -147,7 +148,7 @@
   (function() {
     // === DATA ===
     var manuals = [
-      { name: "God Gundam", series: "UC", type: "Mech", image: "assets/images/metal-build/item_0000015133_AdFbTqOi_300_first_image.png", pdf: "https://tamashiiweb.com/images/item/item_0000015365_Lnjetcl0_300.pdf" },
+      { name: "God Gundam", series: "FC", type: "Mech", image: "assets/images/metal-build/item_0000015133_AdFbTqOi_300_first_image.png", pdf: "https://tamashiiweb.com/images/item/item_0000015365_Lnjetcl0_300.pdf" },
       { name: "Zeta Gundam", series: "UC", type: "Mech", image: "assets/images/metal-build/item_0000015133_AdFbTqOi_300_first_image.png", pdf: "https://tamashiiweb.com/images/item/item_0000015133_AdFbTqOi_300.pdf" },
       { name: "Hi-\u03BD Gundam", series: "UC", type: "Mech", image: "assets/images/metal-build/item_0000013877_WTrmWfTD_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000013877_WTrmWfTD_300.pdf" },
       { name: "Hi-\u03BD Gundam Hyper Mega Bazooka - Option Set", series: "UC", type: "Option Set", image: "assets/images/metal-build/item_0000014116_RPYj22m2_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000014116_RPYj22m2_300.pdf" },
@@ -186,11 +187,17 @@
       { name: "CONSTRUCCI\u00D3N DE METAL Gundam Astray Red Dragonics", series: "Seed", type: "Mech", image: "assets/images/metal-build/item_0000013927_ja3aQKFL_300_first_image.png", pdf: "https://tamashiiweb.com/images/item/item_0000013927_ja3aQKFL_300.pdf" },
       { name: "EVANGELION 00 PROTO TYPE / Unidad 00 (modificado)", series: "Evangelion", type: "Mech", image: "assets/images/metal-build/item_0000013808_DMrnDCuT_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000013808_DMrnDCuT_300.pdf" },
       { name: "WEAPON SET FOR EVANGELION", series: "Evangelion", type: "Option Set", image: "assets/images/metal-build/item_0000013809_e3CvvrPP_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000013809_e3CvvrPP_300.pdf" },
-      { name: "Crossbone Gundam X-0 Full Cross", series: "Other", type: "Mech", image: "assets/images/metal-build/item_0000013870_LK8QdPSY_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000013870_LK8QdPSY_300.pdf" },
-      { name: "CROSSBONE GUNDAM X1 PATCHWORK", series: "Other", type: "Mech", image: "assets/images/metal-build/item_0000014431_FXQXb1we_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000014431_FXQXb1we_300.pdf" },
+      { name: "Crossbone Gundam X-0 Full Cross", series: "UC", type: "Mech", image: "assets/images/metal-build/item_0000013870_LK8QdPSY_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000013870_LK8QdPSY_300.pdf" },
+      { name: "CROSSBONE GUNDAM X1 PATCHWORK", series: "UC", type: "Mech", image: "assets/images/metal-build/item_0000014431_FXQXb1we_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000014431_FXQXb1we_300.pdf" },
       { name: "LAEVATEIN ARBALEST REFERENCE", series: "Other", type: "Mech", image: "assets/images/metal-build/item_0000014453_4BUdl4s8_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000014453_4BUdl4s8_300.pdf" },
       { name: "XL-3 BOOSTER FOR LAEVATEIN OPTION SET", series: "Other", type: "Option Set", image: "assets/images/metal-build/item_0000014456_IYBbaDrN_300_first_image.jpeg", pdf: "https://tamashiiweb.com/images/item/item_0000014456_IYBbaDrN_300.pdf" },
-      { name: "Crossbone Gundam X1", series: "Other", type: "Mech", image: "", pdf: "/assets/manuals/metal-build-crossbone-gundam-x1.pdf" }
+      { name: "Crossbone Gundam X1", series: "UC", type: "Mech", image: "", pdf: "/assets/manuals/metal-build-crossbone-gundam-x1.pdf" },
+      { name: "GN Arms TYPE-E", series: "00", type: "Option Set", image: "", pdf: "https://tamashiiweb.com/images/item/item_0000015577_xCbYmqf1_300.pdf" },
+      { name: "Freedom Gundam CONCEPT 2", series: "Seed", type: "Mech", image: "", pdf: "https://tamashiiweb.com/images/item/item_0000013226_IOCIhuPE_300.pdf" },
+      { name: "Evangelion Unit-01 30th with the Spear of Gaius", series: "Evangelion", type: "Mech", image: "", pdf: "https://tamashiiweb.com/images/item/item_0000015392_4aL9wIIR_300.pdf" },
+      { name: "Providence Gundam CLIMAX BATTLE Ver.", series: "Seed", type: "Mech", image: "", pdf: "https://tamashiiweb.com/images/item/item_0000015544_DCq3YslP_300.pdf" },
+      { name: "God Gundam & God Gundam II (Second)", series: "FC", type: "Mech", image: "", pdf: "https://tamashiiweb.com/images/item/item_0000015371_t10GGlm9_300.pdf" },
+      { name: "1.5 (Eyes) Gundam", series: "00", type: "Mech", image: "", pdf: "https://tamashiiweb.com/images/item/item_0000015403_nLEG2mLD_300.pdf" }
     ];
 
     var activeFilter = 'All';
