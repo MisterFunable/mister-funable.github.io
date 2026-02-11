@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/assets/icons/favicon/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap" rel="stylesheet">
+
+  <!-- Tailwind (Play CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      corePlugins: { preflight: false },
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              gold: '#D4AF37',
+              accent: '#f39c12',
+              text: '#2C2C2C',
+              bg: '#ffffff'
+            }
+          },
+          fontFamily: {
+            heading: ['Special Gothic Condensed One', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/navbar-modern.css">
+  <link rel="stylesheet" href="/css/posts.css">
+  <link rel="stylesheet" href="/css/footer-modern.css">
+
+  <!-- marked.js for markdown rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RJ7GFZ6R5Q"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RJ7GFZ6R5Q');
+  </script>
+  <script src="/js/clean-urls.js" defer></script>
+
+  <title>Loading article...</title>
+</head>
+<body>
+  <a href="#main-content" class="skip-to-content">Skip to main content</a>
+  <div id="navbar-placeholder"></div>
+
+  <main id="main-content">
+    <div class="article-container">
+      <a href="/posts.html" class="article-back-link">&larr; Back to Posts</a>
+
+      <div id="article-header" class="article-header" style="display:none;">
+        <div class="article-header-date" id="article-date"></div>
+        <h1 class="article-header-title" id="article-title"></h1>
+        <a href="#" class="article-medium-btn" id="article-medium-link" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 1043.63 592.71" xmlns="http://www.w3.org/2000/svg"><path d="M588.67 296.36c0 163.67-131.78 296.35-294.33 296.35S0 460 0 296.36 131.78 0 294.34 0s294.33 132.69 294.33 296.36M911.56 296.36c0 154.06-65.89 278.88-147.17 278.88s-147.17-124.82-147.17-278.88S683.11 17.48 764.39 17.48s147.17 124.82 147.17 278.88M1043.63 296.36c0 138-23.17 249.94-51.76 249.94s-51.75-111.91-51.75-249.94 23.17-249.94 51.75-249.94 51.76 111.9 51.76 249.94"/></svg>
+          Read on Medium
+        </a>
+      </div>
+
+      <div id="article-content" class="article-content"></div>
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="/js/navbar-loader.js"></script>
+  <script src="/js/footer-loader.js"></script>
+  <script src="/js/language-switcher.js"></script>
+  <script src="/js/post-loader.js"></script>
+</body>
+</html>

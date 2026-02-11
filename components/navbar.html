@@ -62,6 +62,21 @@
       </div>
 
       <div class="dropdown relative inline-block">
+        <a href="/posts.html" class="dropdown-btn inline-flex items-center gap-2 px-5 py-3 rounded-lg transition" aria-expanded="false" aria-controls="posts-menu">
+          <span data-lang-en="Posts" data-lang-jp="投稿" data-lang-es="Publicaciones">Posts</span>
+          <svg class="dropdown-arrow ml-2 w-3 h-2" width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+            <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </a>
+        <div class="dropdown-content absolute top-full mt-3 left-0 bg-gradient-to-br from-white to-[#f8f9fa] min-w-[240px] rounded-[12px] shadow-xl border border-white/20 backdrop-blur-lg opacity-0 invisible transition" id="posts-menu" role="menu">
+          <a href="/posts.html" role="menuitem" class="mobile-only-overview" data-lang-en="All Posts" data-lang-jp="すべての投稿" data-lang-es="Todas las Publicaciones">All Posts</a>
+          <a href="/posts.html#anime-dolls" role="menuitem" data-lang-en="Anime & Dolls" data-lang-jp="アニメ＆ドール" data-lang-es="Anime y Muñecas">Anime & Dolls</a>
+          <a href="/posts.html#tech" role="menuitem" data-lang-en="Tech" data-lang-jp="テック" data-lang-es="Tecnología">Tech</a>
+          <a href="https://medium.com/@mister.funable" target="_blank" rel="noopener" role="menuitem" data-lang-en="Visit Medium →" data-lang-jp="Mediumを訪問 →" data-lang-es="Visitar Medium →">Visit Medium →</a>
+        </div>
+      </div>
+
+      <div class="dropdown relative inline-block">
         <a href="/youtube.html" class="dropdown-btn inline-flex items-center gap-2 px-5 py-3 rounded-lg transition" aria-expanded="false" aria-controls="resources-menu">
           <span data-lang-en="YouTube" data-lang-jp="YouTube" data-lang-es="YouTube">YouTube</span>
           <svg class="dropdown-arrow ml-2 w-3 h-2" width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true">
