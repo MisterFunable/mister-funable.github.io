@@ -91,7 +91,7 @@ footer-loader.js → (page-specific loaders)
 ### Page Structure
 
 ```
-Root Pages: index.html, about.html, one-sixth.html, one-one.html, metal-build.html, custom.html
+Root Pages: index.html, about.html, one-sixth.html, one-one.html, metal-build.html, custom.html, posts.html
 
 /info/
   - Content-driven pages using GitHub Gists
@@ -104,8 +104,19 @@ Root Pages: index.html, about.html, one-sixth.html, one-one.html, metal-build.ht
   - Forms for adding content
   - 1:1 scale and 1:6 scale subdirectories
 
+/medium/
+  - Imported Medium blog articles (markdown + images)
+  - Self-contained: each article has its own directory
+  - Images stored in /medium/images/{article-id}/
+
 /components/
   - Reusable HTML snippets (navbar, footer, age-disclaimer, analytics)
+
+/docs/
+  - Project documentation (WEBP_IMPLEMENTATION.md, BLUR_OPTIMIZATION.md, etc.)
+
+/assets/images/
+  - All site images (mascot, banners, flags, covers, etc.)
 ```
 
 ### JavaScript Module Organization
@@ -251,7 +262,7 @@ Dynamic page banner with intelligent image loading (`js/page-banner.js`):
 4. Uses CSS gradient (defined in stylesheet) as final fallback
 5. Adds `.has-custom-image` class when custom image successfully loads
 
-**WebP Support**: The banner system now prioritizes WebP images for better performance (25-35% smaller file sizes). See `WEBP_IMPLEMENTATION.md` for conversion guidelines.
+**WebP Support**: The banner system now prioritizes WebP images for better performance (25-35% smaller file sizes). See `docs/WEBP_IMPLEMENTATION.md` for conversion guidelines.
 
 **Page Name Detection**:
 - From `data-page` attribute on `.page-banner` element
@@ -286,34 +297,17 @@ The site includes GA4 integration. To activate:
 - Robots.txt for crawling instructions
 - Canonical URLs on all pages
 
-See `SEO_SETUP.md` for detailed SEO and analytics setup instructions.
+See `docs/SEO_SETUP.md` for detailed SEO and analytics setup instructions.
 
 ## Documentation Files
 
-The project includes comprehensive documentation for various features and implementations:
+Documentation lives in `/docs/`:
 
-- **`WEBP_IMPLEMENTATION.md`**: Complete guide for converting images to WebP format
-  - Priority images to convert (mascots, banners)
-  - Conversion tools and quality guidelines
-  - HTML patterns with `<picture>` elements
-  - Performance testing procedures
-
-- **`BLUR_OPTIMIZATION.md`**: Performance optimization documentation for backdrop-filter blur
-  - Blur reduction strategy (20px → 10px → 6px → 0px)
-  - Performance metrics and testing results
-  - Browser compatibility and fallbacks
-  - Visual trade-offs analysis
-
-- **`TESTING_GUIDE.md`**: Comprehensive testing procedures
-  - Accessibility testing (keyboard, screen reader, WCAG compliance)
-  - Performance testing (Lighthouse, Core Web Vitals)
-  - Cross-browser testing procedures
-  - Mobile device testing
-
-- **`SEO_SETUP.md`**: SEO and analytics setup instructions
-  - Google Analytics configuration
-  - Meta tags and structured data
-  - Sitemap and robots.txt configuration
+- **`docs/WEBP_IMPLEMENTATION.md`**: WebP image conversion guide (tools, quality, HTML patterns)
+- **`docs/BLUR_OPTIMIZATION.md`**: Backdrop-filter blur performance optimization
+- **`docs/TESTING_GUIDE.md`**: Accessibility, performance, cross-browser, and mobile testing
+- **`docs/SEO_SETUP.md`**: Google Analytics, meta tags, structured data, sitemap config
+- **`docs/CHANGES_SUMMARY.md`**: Changelog of major feature implementations
 
 ## File Modification Guidelines
 
@@ -500,7 +494,7 @@ The site is WCAG 2.1 AA compliant with the following features:
 - Focus visible indicators
 - Semantic HTML (`<button>` instead of fake links)
 
-See `/TESTING_GUIDE.md` for comprehensive accessibility testing procedures.
+See `docs/TESTING_GUIDE.md` for comprehensive accessibility testing procedures.
 
 ## Performance Considerations
 
@@ -513,7 +507,7 @@ See `/TESTING_GUIDE.md` for comprehensive accessibility testing procedures.
 - WebP support with PNG/JPG fallbacks (25-35% file size reduction)
 - Explicit width/height on all images to prevent layout shift
 - Lazy loading on iframes and images
-- See `WEBP_IMPLEMENTATION.md` for WebP conversion guidelines
+- See `docs/WEBP_IMPLEMENTATION.md` for WebP conversion guidelines
 
 **CSS Performance**:
 - Reduced backdrop-filter blur for GPU optimization:
@@ -521,7 +515,7 @@ See `/TESTING_GUIDE.md` for comprehensive accessibility testing procedures.
   - Mobile: 6px blur (reduced from 10px, -50-60% GPU cost)
   - Low-end devices: No blur (0px, -100% GPU cost)
 - `will-change` hints on frequently animated elements
-- See `BLUR_OPTIMIZATION.md` for performance metrics
+- See `docs/BLUR_OPTIMIZATION.md` for performance metrics
 
 **JavaScript Performance**:
 - Preload critical resources in `<head>`
