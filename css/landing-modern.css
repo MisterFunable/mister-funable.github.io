@@ -272,7 +272,7 @@ body::before {
 /* Scroll Down Button - Enhanced */
 .scroll-down-btn {
   position: absolute;
-  bottom: 40px;
+  bottom: 80px;
   left: 50%;
   transform: translateX(-50%);
   width: 56px;

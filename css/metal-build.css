@@ -338,8 +338,7 @@
   }
 
   .hugging-gundam-overlay {
-    width: 150px;
-    right: 10px;
+    display: none;
   }
 }
 

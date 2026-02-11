@@ -94,7 +94,7 @@
   <!-- Preload Critical Resources -->
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap">
   <link rel="preload" href="/components/navbar.html" as="fetch" crossorigin>
-  <link rel="preload" href="assets/images/iratsutoya-style/pointing.png" as="image" fetchpriority="high">
+  <link rel="preload" href="assets/images/mascot/hero/en/default.png" as="image" fetchpriority="high">
   
   <!-- Google Analytics 4 -->
   <!-- Google tag (gtag.js) -->
@@ -165,7 +165,7 @@
     /* Scroll Down Button */
     .scroll-down-btn {
       position: absolute;
-      bottom: 30px;
+      bottom: 80px;
       left: 50%;
       transform: translateX(-50%);
       width: 50px;
@@ -228,35 +228,33 @@
 
   <!-- Hero Section -->
   <section class="hero-section relative flex items-center justify-center w-full min-h-[calc(100vh-70px)]" id="main-content" tabindex="0">
-            <!-- Mascot -->
+            <!-- Mascot (English - default) -->
         <div class="hero-mascot select-none animate">
-          <img src="assets/images/iratsutoya-style/pointing.png" alt="Site Mascot pointing at doll collection" class="mascot-image" width="300" height="300" decoding="async" fetchpriority="high"
-               data-normal="assets/images/iratsutoya-style/pointing.png"
-               data-hover="assets/images/iratsutoya-style/pointing-smile.png"
-               data-click="assets/images/iratsutoya-style/pointing-angry-1.png">
+          <img src="assets/images/mascot/hero/en/default.png" alt="Site Mascot pointing at doll collection" class="mascot-image" width="300" height="300" decoding="async" fetchpriority="high"
+               data-normal="assets/images/mascot/hero/en/default.png"
+               data-hover="assets/images/mascot/hero/en/hover.png"
+               data-click="assets/images/mascot/hero/en/angry-1.png">
         </div>
 
-        <!-- Spanish/Chilean-specific mascot (appears from the right) -->
+        <!-- Spanish/Chilean mascot (appears from the right) -->
         <div class="hero-mascot-right select-none es-mascot-container" style="display:none;">
-          <img src="assets/images/iratsutoya-style/chilean-dress.png" alt="Mascot in Chilean dress" class="mascot-image es-mascot" width="300" height="300" decoding="async"
-               data-normal="assets/images/iratsutoya-style/chilean-dress.png"
-               data-hover="assets/images/iratsutoya-style/chilean-dress.png"
-               data-click="assets/images/iratsutoya-style/chilean-dress.png">
+          <img src="assets/images/mascot/hero/es/dress.png" alt="Mascot in Chilean dress" class="mascot-image es-mascot" width="300" height="300" decoding="async"
+               data-normal="assets/images/mascot/hero/es/dress.png"
+               data-hover="assets/images/mascot/hero/es/dress.png"
+               data-click="assets/images/mascot/hero/es/fight-1.png"
+               data-fight-count="4"
+               data-fight-prefix="assets/images/mascot/hero/es/fight-"
+               data-fight-ext=".png">
         </div>
 
-        <!-- Japan-specific mascot (appears from the right) -->
+        <!-- Japan mascot (appears from the right) -->
         <div class="hero-mascot-right select-none jp-mascot-container" style="display:none;">
-          <img src="assets/images/iratsutoya-style/yukata-1.png" alt="Mascot in Japanese yukata" class="mascot-image jp-mascot" width="300" height="300" decoding="async"
-               data-normal="assets/images/iratsutoya-style/yukata-1.png"
-               data-hover="assets/images/iratsutoya-style/yukata-2.png"
-               data-click="assets/images/iratsutoya-style/yukata-3.png"
-               data-yukata-1="assets/images/iratsutoya-style/yukata-1.png"
-               data-yukata-2="assets/images/iratsutoya-style/yukata-2.png"
-               data-yukata-3="assets/images/iratsutoya-style/yukata-3.png"
-               data-yukata-4="assets/images/iratsutoya-style/yukata-4.png"
-               data-yukata-5="assets/images/iratsutoya-style/yukata-5.png"
-               data-yukata-6="assets/images/iratsutoya-style/yukata-6.png"
-               onerror="this.src='assets/images/iratsutoya-style/pointing.png'">
+          <img src="assets/images/mascot/hero/jp/yukata-1.png" alt="Mascot in Japanese yukata" class="mascot-image jp-mascot" width="300" height="300" decoding="async"
+               data-normal="assets/images/mascot/hero/jp/yukata-1.png"
+               data-yukata-count="6"
+               data-yukata-prefix="assets/images/mascot/hero/jp/yukata-"
+               data-yukata-ext=".png"
+               onerror="this.src='assets/images/mascot/hero/en/default.png'">
         </div>
     
     <div class="hero-content max-w-5xl mx-auto text-center px-4 md:px-6">
@@ -309,7 +307,7 @@
   </section>
 
   <!-- Collections Section -->
-  <section id="collections" class="collections-section min-h-screen flex items-center py-16" style="margin-top: -3rem;">
+  <section id="collections" class="collections-section min-h-screen flex items-center py-16">
     <div class="container max-w-7xl mx-auto px-4 md:px-6 w-full">
       <div class="section-header text-center mb-12">
         <h2 class="section-title font-heading text-4xl md:text-5xl text-[#2c3e50]" data-lang-en="Collections" data-lang-jp="コレクション" data-lang-es="Colecciones">Collections</h2>
@@ -440,9 +438,9 @@
         let isClickSequenceActive = false;
         let clickTimers = [];
         const clothesOffImages = [
-          'assets/images/iratsutoya-style/pointing-clothes-off-1.png',
-          'assets/images/iratsutoya-style/pointing-clothes-off-2.png',
-          'assets/images/iratsutoya-style/pointing-clothes-off-3.png'
+          'assets/images/mascot/hero/en/clothes-off-1.png',
+          'assets/images/mascot/hero/en/clothes-off-2.png',
+          'assets/images/mascot/hero/en/clothes-off-3.png'
         ];
         const clothesThresholds = [5, 8, 10]; // total consecutive clicks
         let rapidClickCount = 0;
@@ -503,11 +501,11 @@
 
           // Slower sequence: 1.5s -> angry-2, 3.0s -> angry-3, 4.5s -> back to normal
           clickTimers.push(setTimeout(() => {
-            mascotImage.src = 'assets/images/iratsutoya-style/pointing-angry-2.png';
+            mascotImage.src = 'assets/images/mascot/hero/en/angry-2.png';
           }, 1500));
 
           clickTimers.push(setTimeout(() => {
-            mascotImage.src = 'assets/images/iratsutoya-style/pointing-angry-3.png';
+            mascotImage.src = 'assets/images/mascot/hero/en/angry-3.png';
           }, 3000));
 
           clickTimers.push(setTimeout(() => {
@@ -518,148 +516,71 @@
         });
       }
 
-      // Chile-specific fight image cycle and 4-click transition logic
-      if (clMascotImage) {
-        let fightCount = 0;
-        // Probe repository for how many fight images exist by attempting to load sequentially until one fails
-        // To avoid too many requests up-front, lazily discover on first click
-        let discoveredCount = 0;
-        let discovering = false;
-        let clClickCount = 0;
-        let clTransitionActive = false;
-        let clTransitionTimer = null;
-        let clTransitionInterval = null;
-        const baseSrc = clMascotImage.getAttribute('src');
+      // Chilean mascot - progressive click through dress → fight-1 → fight-2 → fight-3 → fight-4 → dress
+      const esMascotImage = document.querySelector('.es-mascot');
+      if (esMascotImage) {
+        const esFightCount = parseInt(esMascotImage.dataset.fightCount) || 4;
+        const esFightPrefix = esMascotImage.dataset.fightPrefix;
+        const esFightExt = esMascotImage.dataset.fightExt;
+        const esBaseSrc = esMascotImage.dataset.normal;
+        let esCurrentIndex = 0; // 0 = dress, 1-4 = fight images
+        let esRevertTimer = null;
 
-        function preload(src) {
-          const i = new Image();
-          i.src = src;
+        // Preload fight images
+        for (let i = 1; i <= esFightCount; i++) {
+          const img = new Image();
+          img.src = `${esFightPrefix}${i}${esFightExt}`;
         }
 
-        function discoverImages(maxProbe = 10) {
-          return new Promise((resolve) => {
-            if (discovering || discoveredCount > 0) { resolve(discoveredCount); return; }
-            discovering = true;
-            let i = 1;
-            function tryNext() {
-              if (i > maxProbe) { discovering = false; resolve(discoveredCount); return; }
-              const url = `${clMascotImage.dataset.fightPrefix}${i}${clMascotImage.dataset.fightExt}`;
-              const test = new Image();
-              test.onload = () => { discoveredCount = i; preload(url); i++; tryNext(); };
-              test.onerror = () => { discovering = false; resolve(discoveredCount); };
-              test.src = url + `?v=${Date.now()}`; // bust cache during probe
-            }
-            tryNext();
-          });
-        }
-
-        function startFourClickTransition() {
-          if (clTransitionActive) return;
-          clTransitionActive = true;
-          // Rapidly cycle through available fight images for 5 seconds
-          if (discoveredCount > 0) {
-            let index = 1;
-            clTransitionInterval = setInterval(() => {
-              clMascotImage.src = `${clMascotImage.dataset.fightPrefix}${index}${clMascotImage.dataset.fightExt}`;
-              index = (index % discoveredCount) + 1;
-            }, 400);
+        esMascotImage.addEventListener('click', () => {
+          if (esRevertTimer) clearTimeout(esRevertTimer);
+          esCurrentIndex = (esCurrentIndex + 1) % (esFightCount + 1);
+          if (esCurrentIndex === 0) {
+            esMascotImage.src = esBaseSrc;
           } else {
-            // No fight images found; do a simple click animation
-            clMascotImage.classList.add('mascot-clicked');
+            esMascotImage.src = `${esFightPrefix}${esCurrentIndex}${esFightExt}`;
           }
-          clTransitionTimer = setTimeout(() => {
-            if (clTransitionInterval) { clearInterval(clTransitionInterval); clTransitionInterval = null; }
-            clMascotImage.src = baseSrc;
-            clMascotImage.classList.remove('mascot-clicked');
-            clTransitionActive = false;
+          esMascotImage.classList.add('mascot-clicked');
+          setTimeout(() => esMascotImage.classList.remove('mascot-clicked'), 300);
+
+          // Auto-revert to dress after 5s of no clicks
+          esRevertTimer = setTimeout(() => {
+            esCurrentIndex = 0;
+            esMascotImage.src = esBaseSrc;
           }, 5000);
-        }
-
-        clMascotImage.addEventListener('click', async () => {
-          clClickCount += 1;
-
-          if (discoveredCount === 0) {
-            await discoverImages(10);
-            // Preload first image if available
-            if (discoveredCount > 0) {
-              preload(`${clMascotImage.dataset.fightPrefix}1${clMascotImage.dataset.fightExt}`);
-            }
-          }
-
-          // Every 4 clicks, trigger transition and auto-revert after 5 seconds
-          if (!clTransitionActive && clClickCount % 4 === 0) {
-            startFourClickTransition();
-            return;
-          }
-
-          // Regular single-step cycle when not in transition
-          if (!clTransitionActive && discoveredCount > 0) {
-            fightCount = (fightCount % discoveredCount) + 1;
-            clMascotImage.src = `${clMascotImage.dataset.fightPrefix}${fightCount}${clMascotImage.dataset.fightExt}`;
-          }
         });
       }
 
-      // Japan-specific mascot interaction (yukata)
+      // Japanese mascot - progressive click through yukata-1 → yukata-2 → ... → yukata-6 → yukata-1
       const jpMascotImage = document.querySelector('.jp-mascot');
       if (jpMascotImage) {
-        // Get all yukata variants
-        const yukataVariants = [
-          jpMascotImage.dataset.yukata1,
-          jpMascotImage.dataset.yukata2,
-          jpMascotImage.dataset.yukata3,
-          jpMascotImage.dataset.yukata4,
-          jpMascotImage.dataset.yukata5,
-          jpMascotImage.dataset.yukata6
-        ].filter(src => src); // Filter out any undefined variants
+        const jpCount = parseInt(jpMascotImage.dataset.yukataCount) || 6;
+        const jpPrefix = jpMascotImage.dataset.yukataPrefix;
+        const jpExt = jpMascotImage.dataset.yukataExt;
+        let jpCurrentIndex = 1; // starts at yukata-1
 
-        let currentYukataIndex = 0;
-        let isJpClickActive = false;
-        let yukataInterval = null;
-
-        // Function to cycle through yukata variants
-        function cycleYukata() {
-          if (isJpClickActive) return;
-          currentYukataIndex = (currentYukataIndex + 1) % yukataVariants.length;
-          jpMascotImage.src = yukataVariants[currentYukataIndex];
+        // Preload all yukata images
+        for (let i = 1; i <= jpCount; i++) {
+          const img = new Image();
+          img.src = `${jpPrefix}${i}${jpExt}`;
         }
 
-        // Start automatic cycling every 3 seconds
-        yukataInterval = setInterval(cycleYukata, 3000);
+        // Click advances to next yukata
+        jpMascotImage.addEventListener('click', function() {
+          jpCurrentIndex = (jpCurrentIndex % jpCount) + 1;
+          jpMascotImage.src = `${jpPrefix}${jpCurrentIndex}${jpExt}`;
+          this.classList.add('mascot-clicked');
+          setTimeout(() => this.classList.remove('mascot-clicked'), 300);
+        });
 
-        // Hover effect - pause cycling and show next variant
+        // Hover shows next variant preview
         jpMascotImage.addEventListener('mouseenter', function() {
-          if (isJpClickActive) return;
-          clearInterval(yukataInterval);
-          cycleYukata();
+          const previewIndex = (jpCurrentIndex % jpCount) + 1;
+          jpMascotImage.src = `${jpPrefix}${previewIndex}${jpExt}`;
         });
 
         jpMascotImage.addEventListener('mouseleave', function() {
-          if (isJpClickActive) return;
-          yukataInterval = setInterval(cycleYukata, 3000);
-        });
-
-        // Click effect - cycle through all variants quickly
-        jpMascotImage.addEventListener('click', function() {
-          if (isJpClickActive) return;
-          isJpClickActive = true;
-          clearInterval(yukataInterval);
-          this.classList.add('mascot-clicked');
-
-          // Quickly cycle through all variants
-          let clickCycleCount = 0;
-          const quickCycleInterval = setInterval(() => {
-            currentYukataIndex = (currentYukataIndex + 1) % yukataVariants.length;
-            jpMascotImage.src = yukataVariants[currentYukataIndex];
-            clickCycleCount++;
-
-            if (clickCycleCount >= yukataVariants.length) {
-              clearInterval(quickCycleInterval);
-              jpMascotImage.classList.remove('mascot-clicked');
-              isJpClickActive = false;
-              yukataInterval = setInterval(cycleYukata, 3000);
-            }
-          }, 300);
+          jpMascotImage.src = `${jpPrefix}${jpCurrentIndex}${jpExt}`;
         });
       }
 
