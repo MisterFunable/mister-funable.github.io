@@ -39,7 +39,7 @@ const gistConfig = {
   'lightsabers': {
     en: {
       id: '4fe2e2d97a6ca98549e4fa4c5a008556',
-      file: 'lightsabers-fonts.md'
+      file: 'en-lightsabers-fonts.md'
     },
     jp: {
       id: '4fe2e2d97a6ca98549e4fa4c5a008556',
@@ -47,7 +47,7 @@ const gistConfig = {
     },
     es: {
       id: '4fe2e2d97a6ca98549e4fa4c5a008556',
-      file: 'lightsabers-fonts.md'
+      file: 'es-lightsabers-fonts.md'
     }
   },
   'stores-review': {
@@ -61,7 +61,7 @@ const gistConfig = {
     },
     es: {
       id: '73d7afa3aa3f6d596152a1928c697fd0',
-      file: 'en-stores-review.md'  // Spanish version not available yet
+      file: 'es-stores-review.md'
     }
   },
   'aliexpress': {
