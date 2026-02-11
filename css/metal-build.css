@@ -52,15 +52,13 @@
 /* Search & Filter Bar */
 .mb-controls {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  align-items: center;
+  flex-direction: column;
+  gap: 0.75rem;
   margin-bottom: 1.5rem;
 }
 
 .mb-search-container {
-  flex: 1;
-  min-width: 220px;
+  width: 100%;
 }
 
 .mb-search-input {
@@ -309,11 +307,6 @@
   .metal-build-container {
     padding: 0 1rem 2rem;
     margin: 1.5rem auto;
-  }
-
-  .mb-controls {
-    flex-direction: column;
-    align-items: stretch;
   }
 
   .mb-filter-chips {

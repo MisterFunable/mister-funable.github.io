@@ -221,7 +221,7 @@
 }
 
 .age-disclaimer-btn-cancel {
-  background: linear-gradient(135deg, #64748b 0%, #475569 100%);
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
   color: white;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
@@ -229,7 +229,7 @@
 .age-disclaimer-btn-cancel:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-  background: linear-gradient(135deg, #475569 0%, #334155 100%);
+  background: linear-gradient(135deg, #2d2d2d 0%, #404040 100%);
 }
 
 .age-disclaimer-btn-cancel:active {
