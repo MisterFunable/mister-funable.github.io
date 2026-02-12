@@ -683,16 +683,6 @@
   color: #444;
 }
 
-#accept-age-btn {
-  margin-top: 1em;
-  padding: 0.5em 2em;
-  font-size: 1.1em;
-  background: #222;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
 
 .content-box {
   background-size: cover;
