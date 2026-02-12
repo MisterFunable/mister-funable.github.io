@@ -275,7 +275,7 @@ a.dropdown-btn:visited {
 }
 
 /* Mobile-only overview link */
-.mobile-only-overview {
+.dropdown-content a.mobile-only-overview {
   display: none;
   font-weight: 700 !important;
   background: linear-gradient(135deg,

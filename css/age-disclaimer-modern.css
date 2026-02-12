@@ -208,6 +208,7 @@
   background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
   color: white;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  min-width: 140px;
 }
 
 .age-disclaimer-btn-confirm:hover {
@@ -221,15 +222,17 @@
 }
 
 .age-disclaimer-btn-cancel {
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-  color: white;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  background: transparent;
+  color: #1a1a1a;
+  box-shadow: none;
+  border: 2px solid #1a1a1a;
+  min-width: 140px;
 }
 
 .age-disclaimer-btn-cancel:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-  background: linear-gradient(135deg, #2d2d2d 0%, #404040 100%);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .age-disclaimer-btn-cancel:active {

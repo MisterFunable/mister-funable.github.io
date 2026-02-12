@@ -74,9 +74,9 @@
 
 /* Main Content Container */
 .info-content-container {
-  max-width: 1000px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 2rem 4rem;
+  padding: 0 2rem 6rem;
   position: relative;
 }
 
