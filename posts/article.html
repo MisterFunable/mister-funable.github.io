@@ -77,10 +77,13 @@
       <div id="article-header" class="article-header" style="display:none;">
         <div class="article-header-date" id="article-date"></div>
         <h1 class="article-header-title" id="article-title"></h1>
-        <a href="#" class="article-medium-btn" id="article-medium-link" target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 1043.63 592.71" xmlns="http://www.w3.org/2000/svg"><path d="M588.67 296.36c0 163.67-131.78 296.35-294.33 296.35S0 460 0 296.36 131.78 0 294.34 0s294.33 132.69 294.33 296.36M911.56 296.36c0 154.06-65.89 278.88-147.17 278.88s-147.17-124.82-147.17-278.88S683.11 17.48 764.39 17.48s147.17 124.82 147.17 278.88M1043.63 296.36c0 138-23.17 249.94-51.76 249.94s-51.75-111.91-51.75-249.94 23.17-249.94 51.75-249.94 51.76 111.9 51.76 249.94"/></svg>
-          Read on Medium
-        </a>
+        <div class="article-header-actions">
+          <a href="#" class="article-medium-btn" id="article-medium-link" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 1043.63 592.71" xmlns="http://www.w3.org/2000/svg"><path d="M588.67 296.36c0 163.67-131.78 296.35-294.33 296.35S0 460 0 296.36 131.78 0 294.34 0s294.33 132.69 294.33 296.36M911.56 296.36c0 154.06-65.89 278.88-147.17 278.88s-147.17-124.82-147.17-278.88S683.11 17.48 764.39 17.48s147.17 124.82 147.17 278.88M1043.63 296.36c0 138-23.17 249.94-51.76 249.94s-51.75-111.91-51.75-249.94 23.17-249.94 51.75-249.94 51.76 111.9 51.76 249.94"/></svg>
+            Read on Medium
+          </a>
+          <div id="google_translate_element"></div>
+        </div>
       </div>
 
       <div id="article-content" class="article-content"></div>
@@ -93,5 +96,18 @@
   <script src="/js/footer-loader.js"></script>
   <script src="/js/language-switcher.js"></script>
   <script src="/js/post-loader.js"></script>
+
+  <!-- Google Translate Widget -->
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,es,ja,ko,zh-CN,zh-TW,fr,de,pt,it,ru',
+        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
