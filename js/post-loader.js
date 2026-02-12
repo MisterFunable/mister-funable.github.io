@@ -116,6 +116,141 @@
       mediumUrl: "https://medium.com/@mister.funable/my-favorite-figmas-2025-a4dd70db6be4",
       file: "/medium/13 - My Favorite Figmas \u2014 2025.md",
       published: "2025-11-26"
+    },
+    {
+      id: "14",
+      title: "Backing Up N8N When the Data Lives in a Docker Volume",
+      category: "tech",
+      image: "/medium/images/14/img-01.png",
+      mediumUrl: "https://funable.medium.com/backing-up-n8n-when-the-data-lives-in-a-docker-volume-62e200d79172",
+      file: "/medium/14 - Backing Up N8N When the Data Lives in a Docker Volume.md",
+      published: "2025-12-06"
+    },
+    {
+      id: "15",
+      title: "BoardGameGeek Player Resources / Aids",
+      category: "tech",
+      image: "/medium/images/15/img-01.png",
+      mediumUrl: "https://funable.medium.com/boardgamegeek-player-resources-aids-b0a37d238455",
+      file: "/medium/15 - BoardGameGeek Player Resources Aids.md",
+      published: "2025-12-21"
+    },
+    {
+      id: "16",
+      title: "Marvel Champions Resources",
+      category: "tech",
+      image: "/medium/images/16/img-01.png",
+      mediumUrl: "https://funable.medium.com/marvel-champions-resources-7f6cef0bffe7",
+      file: "/medium/16 - Marvel Champions Resources.md",
+      published: "2025-12-21"
+    },
+    {
+      id: "17",
+      title: "Sony A6700 Updated Settings for Turntables with a Green Background",
+      category: "anime-dolls",
+      image: "/medium/images/17/img-01.png",
+      mediumUrl: "https://funable.medium.com/sony-a6700-updated-settings-for-turntables-with-a-green-background-657dcd66d160",
+      file: "/medium/17 - Sony A6700 Updated Settings for Turntables with a Green Background.md",
+      published: "2025-12-27"
+    },
+    {
+      id: "18",
+      title: "A Silly Little osascript Utility That Types Notes For You",
+      category: "tech",
+      image: "/medium/images/18/img-01.png",
+      mediumUrl: "https://funable.medium.com/a-silly-little-osascript-utility-that-types-notes-for-you-dc5948a523d2",
+      file: "/medium/18 - A Silly Little osascript Utility That Types Notes For You.md",
+      published: "2025-12-29"
+    },
+    {
+      id: "19",
+      title: "How to Design Your Medium Profile",
+      category: "tech",
+      image: "/medium/images/19/img-01.png",
+      mediumUrl: "https://funable.medium.com/how-to-design-your-medium-profile-47d93edd7e9d",
+      file: "/medium/19 - How to Design Your Medium Profile.md",
+      published: "2025-12-29"
+    },
+    {
+      id: "20",
+      title: "Getting Instagram Posts with N8N (The Simple Way Part 2: The Final Part)",
+      category: "tech",
+      image: "/medium/images/20/img-01.png",
+      mediumUrl: "https://funable.medium.com/getting-instagram-posts-with-n8n-the-simple-way-part-2-the-final-part-fdad1e999d74",
+      file: "/medium/20 - Getting Instagram Posts with N8N (The Simple Way Part 2 The Final Part).md",
+      published: "2025-12-31"
+    },
+    {
+      id: "21",
+      title: "Adding Multiple Instagram Accounts to Your n8n Automation",
+      category: "tech",
+      image: "/medium/images/21/img-01.png",
+      mediumUrl: "https://funable.medium.com/adding-multiple-instagram-accounts-to-your-n8n-automation-772fd26af4a1",
+      file: "/medium/21 - Adding Multiple Instagram Accounts to Your n8n Automation.md",
+      published: "2026-01-01"
+    },
+    {
+      id: "22",
+      title: "From Zero \u2014 YouTube Lessons Part 0",
+      category: "tech",
+      image: "/medium/images/22/img-01.png",
+      mediumUrl: "https://funable.medium.com/from-zero-youtube-lessons-part-0-822bb8a9c883",
+      file: "/medium/22 - From Zero \u2014 YouTube Lessons Part 0.md",
+      published: "2026-01-03"
+    },
+    {
+      id: "23",
+      title: "From Zero \u2014 YouTube Lessons Part 1",
+      category: "tech",
+      image: "/medium/images/23/img-01.png",
+      mediumUrl: "https://funable.medium.com/from-zero-youtube-lessons-part-1-efd9a93f2d1b",
+      file: "/medium/23 - From Zero \u2014 YouTube Lessons Part 1.md",
+      published: "2026-01-03"
+    },
+    {
+      id: "24",
+      title: "Part 3\u2014 Designing a Mascot/Logo: A Fresh Start",
+      category: "tech",
+      image: "/medium/images/24/img-01.png",
+      mediumUrl: "https://funable.medium.com/part-3-designing-a-mascot-logo-a-fresh-start-45f17906c0d2",
+      file: "/medium/24 - Part 3\u2014 Designing a MascotLogo A Fresh Start.md",
+      published: "2026-01-05"
+    },
+    {
+      id: "25",
+      title: "Why Your AI Images Look Worse After Each Iteration",
+      category: "tech",
+      image: "/medium/images/25/img-01.png",
+      mediumUrl: "https://funable.medium.com/why-your-ai-images-look-worse-after-each-iteration-b66abc24fced",
+      file: "/medium/25 - Why Your AI Images Look Worse After Each Iteration.md",
+      published: "2026-01-12"
+    },
+    {
+      id: "26",
+      title: "Uploading Instagram Videos to YouTube with n8n",
+      category: "tech",
+      image: "/medium/images/26/img-01.png",
+      mediumUrl: "https://funable.medium.com/uploading-instagram-videos-to-youtube-with-n8n-6df5ad3c2523",
+      file: "/medium/26 - Uploading Instagram Videos to YouTube with n8n.md",
+      published: "2026-01-17"
+    },
+    {
+      id: "27",
+      title: "Side Notes #1: What Yu-Gi-Oh Taught Me About Leadership",
+      category: "tech",
+      image: "/medium/images/27/img-01.png",
+      mediumUrl: "https://funable.medium.com/side-notes-1-what-yu-gi-oh-taught-me-about-leadership-cd13634fbde7",
+      file: "/medium/27 - Side Notes #1 What Yu-Gi-Oh Taught Me About Leadership.md",
+      published: "2026-01-23"
+    },
+    {
+      id: "28",
+      title: "Claude Code (Part 1): Do You Actually Need This If You Have Cursor?",
+      category: "tech",
+      image: "/medium/images/28/img-01.png",
+      mediumUrl: "https://funable.medium.com/claude-code-part-1-do-you-actually-need-this-if-you-have-cursor-30b902668de4",
+      file: "/medium/28 - Claude Code (Part 1) Do You Actually Need This If You Have Cursor.md",
+      published: "2026-01-23"
     }
   ];
 
@@ -175,6 +310,28 @@
 
     // Set page title
     document.title = post.title + ' | My Doll Inventory';
+
+    // Update meta tags for SEO
+    var pageUrl = 'https://mydollinventory.com/posts/article.html?id=' + post.id;
+    var pageImage = post.image ? 'https://mydollinventory.com' + post.image : 'https://mydollinventory.com/assets/images/mascot/bunny-suit.png';
+    var pageDesc = post.title + ' - Read on My Doll Inventory';
+
+    var metaUpdates = {
+      'meta[name="description"]': { attr: 'content', val: pageDesc },
+      'link[rel="canonical"]': { attr: 'href', val: pageUrl },
+      'meta[property="og:title"]': { attr: 'content', val: post.title + ' | My Doll Inventory' },
+      'meta[property="og:description"]': { attr: 'content', val: pageDesc },
+      'meta[property="og:url"]': { attr: 'content', val: pageUrl },
+      'meta[property="og:image"]': { attr: 'content', val: pageImage },
+      'meta[name="twitter:title"]': { attr: 'content', val: post.title + ' | My Doll Inventory' },
+      'meta[name="twitter:description"]': { attr: 'content', val: pageDesc },
+      'meta[name="twitter:image"]': { attr: 'content', val: pageImage }
+    };
+
+    for (var selector in metaUpdates) {
+      var el = document.querySelector(selector);
+      if (el) el.setAttribute(metaUpdates[selector].attr, metaUpdates[selector].val);
+    }
 
     // Set header
     document.getElementById('article-title').textContent = post.title;
