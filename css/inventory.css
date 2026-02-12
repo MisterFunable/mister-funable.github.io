@@ -151,6 +151,17 @@
   padding: 80px 2rem;
 }
 
+/* Info content container (used on guides page) */
+.info-content-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem 6rem;
+}
+
+.info-content-wrapper {
+  padding: 2rem 0;
+}
+
 /* Inventory Grid */
 .inventory-grid {
   display: grid;

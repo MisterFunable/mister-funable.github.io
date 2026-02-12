@@ -286,7 +286,7 @@ a.dropdown-btn:visited {
 }
 
 @media (max-width: 768px) {
-  .mobile-only-overview {
+  .dropdown-content a.mobile-only-overview {
     display: block;
   }
 }
